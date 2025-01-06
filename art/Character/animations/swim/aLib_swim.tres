@@ -1,0 +1,14 @@
+[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://iuuxa6ncl6g0"]
+
+[ext_resource type="Animation" uid="uid://cf46mfxec6p03" path="res://art/Character/animations/swim/s_fwd.tres" id="1_smt3h"]
+[ext_resource type="Animation" uid="uid://b5dnnw3teyc1c" path="res://art/Character/animations/swim/s_idle.tres" id="2_2duvn"]
+[ext_resource type="Animation" uid="uid://c03oiakjx1bdd" path="res://art/Character/animations/swim/s_left.tres" id="3_emiuj"]
+[ext_resource type="Animation" uid="uid://c6xfiod1iqxrq" path="res://art/Character/animations/swim/s_right.tres" id="4_jyuft"]
+
+[resource]
+_data = {
+"s_fwd": ExtResource("1_smt3h"),
+"s_idle": ExtResource("2_2duvn"),
+"s_left": ExtResource("3_emiuj"),
+"s_right": ExtResource("4_jyuft")
+}

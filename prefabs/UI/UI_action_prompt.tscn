@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ibxguf2n6yr5"]
+
+[ext_resource type="Script" path="res://scripts/UI_ActionPrompt.gd" id="1_c100w"]
+
+[node name="Action Prompt" type="Control" node_paths=PackedStringArray("output")]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.165
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_c100w")
+output = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -517.083
+offset_top = -81.0
+offset_right = 516.917
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+bbcode_enabled = true

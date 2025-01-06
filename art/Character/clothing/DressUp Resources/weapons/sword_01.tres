@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://cbifiv8rt7a6m"]
+
+[ext_resource type="PackedScene" uid="uid://3y4vbosjj5gx" path="res://prefabs/weapons/sword_01.tscn" id="1_sbfpr"]
+[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_25cb7"]
+
+[resource]
+resource_name = "sword 01"
+script = ExtResource("2_25cb7")
+accessory = ExtResource("1_sbfpr")
+offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+tags = Array[String]([])
+bones = Array[String](["prop.R"])

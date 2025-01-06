@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dayoldxf0ult2"]
+
+[ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="1_r8wfu"]
+[ext_resource type="Script" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_rvft0"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="2_w5cum"]
+
+[resource]
+resource_name = "Common Fruit"
+script = ExtResource("1_rvft0")
+icon = ExtResource("2_w5cum")
+drop_item = ExtResource("1_r8wfu")
+stackable = true
+fungible = false
+volumetric = false

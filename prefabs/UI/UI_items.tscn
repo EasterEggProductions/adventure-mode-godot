@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dettguqlldl03"]
+
+[ext_resource type="Script" path="res://scripts/UI_items.gd" id="1_h0128"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="2_ppxkj"]
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icon_coin.png" id="3_76e6f"]
+
+[node name="ui_items" type="Control" node_paths=PackedStringArray("ico_fruit", "txt_fruit", "ico_coins", "txt_coins")]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.165
+grow_vertical = 0
+script = ExtResource("1_h0128")
+ico_fruit = NodePath("VBoxContainer/item_commonfruit/TextureRect")
+txt_fruit = NodePath("VBoxContainer/item_commonfruit/Label")
+ico_coins = NodePath("VBoxContainer/item_coin/TextureRect")
+txt_coins = NodePath("VBoxContainer/item_coin/Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -62.0
+offset_right = 63.0
+offset_bottom = -22.0
+grow_vertical = 0
+
+[node name="item_commonfruit" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/item_commonfruit"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = -122.0
+offset_right = -58.0
+offset_bottom = 64.0
+texture = ExtResource("2_ppxkj")
+
+[node name="Label" type="Label" parent="VBoxContainer/item_commonfruit"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -4.0
+offset_right = 113.0
+offset_bottom = 19.0
+scale = Vector2(3, 3)
+vertical_alignment = 1
+
+[node name="item_coin" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/item_coin"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = -122.0
+offset_right = -58.0
+offset_bottom = 64.0
+texture = ExtResource("3_76e6f")
+
+[node name="Label" type="Label" parent="VBoxContainer/item_coin"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -4.0
+offset_right = 113.0
+offset_bottom = 19.0
+scale = Vector2(3, 3)
+vertical_alignment = 1

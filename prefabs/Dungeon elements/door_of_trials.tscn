@@ -1,0 +1,261 @@
+[gd_scene load_steps=24 format=4 uid="uid://vwkcbj8sdfmp"]
+
+[ext_resource type="Script" path="res://scripts/Puzzle/event_anim_trigger.gd" id="1_3g6u5"]
+[ext_resource type="Material" uid="uid://c6pfclkom172s" path="res://art/materials/door_of_trials.tres" id="2_1eiuk"]
+[ext_resource type="AudioStream" uid="uid://dwou0xwx1bbmp" path="res://art/audio/sfx/stone_door_grind.ogg" id="2_lg51x"]
+[ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="3_qcma3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm2su"]
+resource_name = "stone door"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rpqqb"]
+_surfaces = [{
+"aabb": AABB(0, 0, -1, 5.00001, 13.0018, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AQADAAAAAQACAAMABQAHAAYABQAEAAcAAgAFAAYAAgABAAUAAQAEAAUAAQAAAAQAAAAHAAQAAAADAAcAAwAGAAcAAwACAAYA"),
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAAAAAAD+////AAAAAAAAntgAAAAAAAAAAAAAAAD+/wAA//8AAP7//////wAAAACe2P//AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vtkfx"]
+resource_name = "adventure_mode_demoLevel_Plane_011"
+_surfaces = [{
+"aabb": AABB(0, 0, -1, 5.00001, 13.0018, 1),
+"attribute_data": PackedByteArray("WNMJ/VjTCf1Y0wn9WNNMJFjTTCRY00wk/3+jRf9/o0X/f6NF/38J/f9/Cf3/fwn9WNMJ/VjTCf1Y0wn9WNNMJFjTTCRY00wk/3+jRf9/o0X/f6NF/38J/f9/Cf3/fwn9"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AwAJAAAAAwAGAAkADwAVABIADwAMABUABwARABMABwAFABEABAAOABAABAACAA4AAQAWAA0AAQAKABYACwAUABcACwAIABQA"),
+"material": SubResource("StandardMaterial3D_wm2su"),
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAAAAAAD+/wAAAAD/v/7/AAAAAP+//v///wAAAAD+////AAD/v/7///8AAP+/AACe2AAAAAAAAJ7YAAD/vwAAntgAAP+/AAAAAAAAAAAAAAAAAAD/vwAAAAAAAP+//v8AAP///3/+/wAA////v/7/AAD///+//v///////3/+////////v/7///////+/AACe2P///38AAJ7Y////vwAAntj///+/AAAAAP///38AAAAA////vwAAAAD///+/////fwAA/3//fwAA/v//f/9/AABT66qU/v//f1PrqpT/f///////fwAA/3//f////3///wAA/3//fwAA/3////9/AABT66qU/3///1PrqpT/f////3///wAA/3//f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rpqqb")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jso1h"]
+points = PackedVector3Array(4.64263, 13.105, 0.135078, -0.103189, -0.103189, -1.10319, -0.103189, -0.103189, 0.135078, 5.05626, -0.103189, -1.10319, -0.103189, 11.2471, -1.10319, 5.05626, -0.103189, 0.135078, 5.05626, 13.105, -1.10319, -0.103189, 11.2471, 0.135078, 5.05626, 13.105, 0.135078, 4.02396, 12.8981, -1.10319, 4.02396, 12.8981, 0.135078, 4.64263, 13.105, -1.10319)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qb5eu"]
+_surfaces = [{
+"aabb": AABB(-5, 11.0018, -1, 10, 4, 1),
+"format": 34896613377,
+"index_count": 132,
+"index_data": PackedByteArray("CwAOAAgACwAPAA4ADwANAA4ADwAMAA0ACgANAAwACgAJAA0ACwAJAAoACwAIAAkAAgAHAAMAAgAGAAcABAAFAAEABAAAAAUAEQAIABAAEQAJAAgAEwAKABIAEwALAAoAEgAMABQAEgAKAAwAFQAJABEAFQANAAkAEAAOABYAEAAIAA4AFwALABMAFwAPAAsAFAAPABcAFAAMAA8AFgANABUAFgAOAA0AAgAQAAYAAgARABAAAQASAAQAAQATABIABAAUAAAABAASABQAAwARAAIAAwAVABEABgAWAAcABgAQABYABQATAAEABQAXABMAAAAXAAUAAAAUABcABwAVAAMABwAWABUA"),
+"lods": [0.194598, PackedByteArray("CwAOAAgACwAPAA4ADwANAA4ADwAMAA0ACgANAAwACgAJAA0ACwAJAAoACwAIAAkAAgAHAAMAAgAIAAcAAgAJAAgAAwANAAkABwAOAA0AAwAJAAIACAAOAAcABwANAAMABAAFAAEABAAMAAUABAAKAAwAAQALAAoADAAPAAUABQAPAAsAAQAKAAQABQALAAEA"), 0.803166, PackedByteArray("CwAOAAgACwAPAA4ADwANAA4ADwAMAA0ACgANAAwACgAJAA0ACwAJAAoACwAIAAkACwAKAAwADAAPAAsADQAJAAgACAAOAA0A")],
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("0ej/f2U8AAAtF/9/ZTwAAP9/LReZwwAA0ej/f5nDAAD/fy0XZTwAAP9/0ehlPAAALRf/f5nDAAD/f9HomcMAAAAA/3///wAA/38AAP//AAD/fwAAAAAAAAAA/38AAAAA////fwAAAAD///9///8AAP9//////wAA/3///wAAAACkC/9///8AAP9/pAv//wAA/3+kCwAAAACkC/9/AAAAAFr0/38AAAAAWvT/f///AAD/f1r0//8AAP9/WvQAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rv6to"]
+resource_name = "adventure_mode_demoLevel_Plane_012"
+_surfaces = [{
+"aabb": AABB(-5, 11.0018, -1, 10, 4, 1),
+"attribute_data": PackedByteArray("QcRMJEHETCRBxEwkvTtMJL07TCS9O0wk/3+aP/9/mj//f5o/QcRMJEHETCRBxEwk/3+aP/9/mj//f5o//3//CP9//wj/f/8IvTtMJL07TCS9O0wk/3//CP9//wj/f/8IpixMJKYsTCSmLEwk/3+jRf9/o0X/f6NF/3+jRf9/o0X/f6NFpixMJKYsTCSmLEwkWNNMJFjTTCRY00wkWNNMJFjTTCRY00wk/3/1Av9/9QL/f/UC/3/1Av9/9QL/f/UCOjRMJDo0TCQ6NEwk/3+bQv9/m0L/f5tC/3+bQv9/m0L/f5tCOjRMJDo0TCQ6NEwkxMtMJMTLTCTEy0wkxMtMJMTLTCTEy0wk/3/9Bf9//QX/f/0F/3/9Bf9//QX/f/0F/3+jRVjTTCT/f/UCvTtMJL07TCS9O0wk/3+aP0HETCRBxEwkQcRMJP9/mj//f5o//3//CP9//wj/f/8IpixMJP9/o0X/f6NF/3+jRaYsTCSmLEwkWNNMJFjTTCRY00wk/3/1Av9/9QL/f/UC"),
+"format": 34896613399,
+"index_count": 132,
+"index_data": PackedByteArray("IgAsABkAIgAvACwALgAoACsALgAlACgAHwApACYAHwAcACkAIwAdACAAIwAaAB0ABgAVAAkABgASABUADAAPAAMADAAAAA8AMwAYADAAMwAbABgAOQAeADYAOQAhAB4ANgAkADwANgAeACQAPwAbADMAPwAnABsAMAAqAEIAMAAYACoARQAhADkARQAtACEAPAAtAEUAPAAkAC0AQgAnAD8AQgAqACcABwAxABMABwA0ADEABAA3AA0ABAA6ADcADgA9AAEADgA4AD0ACgA1AAgACgBAADUAFABDABYAFAAyAEMAEAA7AAUAEABGADsAAgBHABEAAgA+AEcAFwBBAAsAFwBEAEEA"),
+"lods": [0.194598, PackedByteArray("IgBhABkAIgAuAGEALgAoAGEALgAlACgAHwApACYAHwBZACkAIwBZAB8AIwAaAFkABgAVAE8ABgAYABUABgBYABgATwBeAFgAFQBgAF4AUABYAE4AVwBgAFYAVgBfAFEAUgBUAEsAUgBdAFQAUgBaAF0ASwBbAFoAXQBiAFQAVABiAFsATABaAFMAVQBcAE0A"), 0.803166, PackedByteArray("IgBKABkAIgAuAEoALgAoAEoALgAlACgAHwApACYAHwBIACkAIwBIAB8AIwAaAEgAIQAeACQASQAtACEAJwAbABgAGAAqACcA")],
+"material": SubResource("StandardMaterial3D_wm2su"),
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 99,
+"vertex_data": PackedByteArray("0ej/f2U8AADR6P9/ZTztIdHo/39lPO0hLRf/f2U8AAAtF/9/ZTztIS0X/39lPO0h/38tF5nD/3//fy0XmcPWp/9/LReZw9an0ej/f5nD/3/R6P9/mcPWp9Ho/3+Zw9an/38tF2U8AAD/fy0XZTztIf9/LRdlPO0h/3/R6GU8AAD/f9HoZTztIf9/0ehlPO0hLRf/f5nD/38tF/9/mcPWpy0X/3+Zw9an/3/R6JnD/3//f9HomcPWp/9/0eiZw9anAAD/f////38AAP9/////vwAA/3////+//38AAP///3//fwAA////v/9/AAD///+//38AAAAAAAD/fwAAAAD/v/9/AAAAAP+/AAD/fwAAAAAAAP9/AAD/vwAA/38AAP+/////fwAAAAD///9/AAD/v////38AAP+/////f////3////9/////v////3////+//3///////3//f///////v/9///////+//3///wAAAAD/f///AAD/v/9///8AAP+/pAv/f////3+kC/9////Wp6QL/3///9an/3+kC////3//f6QL///Wp/9/pAv//9an/3+kCwAAAAD/f6QLAADtIf9/pAsAAO0hpAv/fwAAAACkC/9/AADtIaQL/38AAO0hWvT/fwAAAABa9P9/AADtIVr0/38AAO0hWvT/f////39a9P9////Wp1r0/3///9an/39a9P///3//f1r0///Wp/9/WvT//9an/39a9AAAAAD/f1r0AADtIf9/WvQAAO0h/38AAP///7////9/AABfCP9///////+/LRf/f2U81g0tF/9/ZTy9JS0X/39lPFsl/38tF5nD0KXR6P9/mcMdj9Ho/3+Zwz2l0ej/f5nDwaX/fy0XZTyeCP9/LRdlPOIl/3/R6GU8XAr/f9HoZTwHJf9/0eiZwz+jAAD/f///3pT/fwAA//9alv9/AAD///+//38AAAAA4RIAAP9/AAAfAwAA/38AAPQh////fwAA8wX///9///8zhv///3///12g/3//////QY7/f///////v/9///8AALEJ////f2H1Nl7IIWJ1////fzbenIqdCsih/3///3TZzEfLx4qm/3///8vHiqaKJjK4////fzbenIph9TZe////f50KyKHIIWJ1/3///3TZzEczOHRZ/3///zM4dFmKJjK4/3///1PrqpSrFKqU/3///6sUVGurFKqU////f6sUVGurFKqU////f1PrqpSrFKqU////f1PrVGurFFRr/3///1PrVGurFFRr/3///1PrVGtT66qU/v//f1PrVGtT66qU/3///3TZzEczOHRZ/3///3TZzEfLx4qm////fzbenIph9TZe////fzbenIqdCsih////f2H1Nl7IIWJ1/3///8vHiqaKJjK4/3///zM4dFmKJjK4/v//f50KyKHIIWJ19wf3h00VTZUH+PeHvOq9ahbrFmvqFBVrFuvnlMDqPpUU6+qU6BTolLHqTZUW6xdrCwILgusUE2tLAUuBLBXTahfz54z3B/eHS+9LbzpfxCD4FAdre9ODrG3VkKr+FP6U0gstdAf494fqAuqC")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qb5eu")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pgui6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kvmg5"]
+_surfaces = [{
+"aabb": AABB(-5, 0, -1, 5, 13.0018, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAAEAAMAAAABAAQAAAAHAAEAAAACAAcAAgADAAUAAgAAAAMAAwAGAAUAAwAEAAYABwAFAAYABwACAAUABwAEAAEABwAGAAQA"),
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD+/wAAAAD//57YAAAAAAAAAAAAAAAAAAD+////AAD//57Y//8AAAAAAAD//wAA//8AAP//AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_71rci"]
+resource_name = "adventure_mode_demoLevel_Plane_013"
+_surfaces = [{
+"aabb": AABB(-5, 0, -1, 5, 13.0018, 1),
+"attribute_data": PackedByteArray("pixMJKYsTCSmLEwk/3+jRf9/o0X/f6NFpiwJ/aYsCf2mLAn9pixMJKYsTCSmLEwk/3+jRf9/o0X/f6NFpiwJ/aYsCf2mLAn9/38J/f9/Cf3/fwn9/38J/f9/Cf3/fwn9"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AQANAAoAAQAEAA0AAAAVAAMAAAAGABUACAALABEACAACAAsACQASAA8ACQAMABIAFgAQABMAFgAHABAAFwAOAAUAFwAUAA4A"),
+"material": SubResource("StandardMaterial3D_wm2su"),
+"name": "stone door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD+/wAAAAAAAP7/AAD/vwAA/v8AAP+///+e2AAAAAD//57YAAD/v///ntgAAP+/AAAAAAAAAAAAAAAAAAD/vwAAAAAAAP+/AAD+/////38AAP7/////vwAA/v////+///+e2P///3///57Y////v///ntj///+/AAAAAP///38AAAAA////vwAAAAD///+///8AAP///3///wAA////v///AAD///+///8AAAAAAAD//wAAAAD/v///AAAAAP+//v//f1PrVGv/f////v//f1PrVGv/fwAA////fwAA/3//f////3///1PrVGv/f////3///1PrVGv/fwAA/3///wAA/3//f////3///wAA/3//fwAA////fwAA/3//fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kvmg5")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0hwc8"]
+points = PackedVector3Array(-4.07061, 12.8967, 0.13506, -5.10268, -0.101895, -1.10319, 0.0556726, -0.101895, -1.10319, -4.68965, 13.1048, -1.10319, -5.10268, -0.101895, 0.13506, 0.0556726, 11.2458, 0.13506, 0.0556726, -0.101895, 0.13506, 0.0556726, 11.2458, -1.10319, -5.10268, 13.1048, 0.13506, -5.10268, 13.1048, -1.10319, -4.07061, 12.8967, -1.10319, -4.68965, 13.1048, 0.13506)
+
+[sub_resource type="Animation" id="Animation_tm5u1"]
+resource_name = "door_open"
+length = 5.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door of Trials_R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 5, 1, 4, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door of Trials_L")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 5, 1, -4, 0, 0)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ph2jk"]
+_data = {
+"door_open": SubResource("Animation_tm5u1")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brs6k"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_qcma3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jorcp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lqow2"]
+gradient = SubResource("Gradient_jorcp")
+
+[sub_resource type="Curve" id="Curve_he0w1"]
+_data = [Vector2(0, 0.504087), 0.0, 3.11274, 0, 0, Vector2(1, 0), -1.01378, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f13a3"]
+curve = SubResource("Curve_he0w1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fb6mu"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 0, 0)
+angle_min = -720.0
+direction = Vector3(0, 0.5, 0.5)
+spread = 5.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 2, 0)
+damping_min = 3.0
+damping_max = 3.0
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_f13a3")
+color_ramp = SubResource("GradientTexture1D_lqow2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_f8iix"]
+
+[node name="Door of Trials" type="Node3D" node_paths=PackedStringArray("animator")]
+script = ExtResource("1_3g6u5")
+animator = NodePath("AnimationPlayer")
+animation = "door_open"
+
+[node name="Door of Trials_R" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_1eiuk")
+mesh = SubResource("ArrayMesh_vtkfx")
+skeleton = NodePath("")
+
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="Door of Trials_R"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door of Trials_R/AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jso1h")
+
+[node name="Door of Trials Topper" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_1eiuk")
+mesh = SubResource("ArrayMesh_rv6to")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door of Trials Topper"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door of Trials Topper/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_pgui6")
+
+[node name="Door of Trials_L" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_1eiuk")
+mesh = SubResource("ArrayMesh_71rci")
+skeleton = NodePath("")
+
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="Door of Trials_L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door of Trials_L/AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0hwc8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ph2jk")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_lg51x")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_brs6k")
+emitting = false
+amount = 128
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.83
+process_material = SubResource("ParticleProcessMaterial_fb6mu")
+draw_pass_1 = SubResource("QuadMesh_f8iix")

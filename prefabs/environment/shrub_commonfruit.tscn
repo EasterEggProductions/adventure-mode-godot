@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyacbq330bbx0"]
+
+[ext_resource type="PackedScene" uid="uid://bmhs1fv6rtqgy" path="res://art/meshes/shrub.glb" id="1_kvo3s"]
+[ext_resource type="Script" path="res://scripts/harvest_spawner.gd" id="2_c1xhp"]
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="2_rcx4b"]
+[ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="3_6mk2d"]
+[ext_resource type="Material" uid="uid://dlbhrpiy3mtxh" path="res://art/materials/foliage.tres" id="5_u17ng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykykr"]
+albedo_texture = ExtResource("2_rcx4b")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="shrub" node_paths=PackedStringArray("spawn_points") instance=ExtResource("1_kvo3s")]
+script = ExtResource("2_c1xhp")
+harvestable = ExtResource("3_6mk2d")
+spawn_points = [NodePath("hpt"), NodePath("hpt2"), NodePath("hpt3"), NodePath("hpt4")]
+
+[node name="Cone" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ykykr")
+surface_material_override/1 = ExtResource("5_u17ng")
+
+[node name="hpt" type="Node3D" parent="." index="1"]
+transform = Transform3D(0.943199, 0.312969, -0.111468, -0.332227, 0.888526, -0.31646, 0, 0.335517, 0.942034, -0.37515, 0.605164, -0.250488)
+
+[node name="hpt2" type="Node3D" parent="." index="2"]
+transform = Transform3D(0.980375, -0.197144, 0, 0.182244, 0.906277, -0.381377, 0.0751862, 0.373892, 0.92442, 0.413384, 0.595943, -0.0381632)
+
+[node name="hpt3" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.96076, 0.277382, 0, -0.277382, 0.96076, -0.20006, 0.623461, 0.352346)
+
+[node name="hpt4" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103812, 1.52782, 0)

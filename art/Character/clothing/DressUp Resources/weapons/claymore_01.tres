@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://b2ase43deh88d"]
+
+[ext_resource type="PackedScene" uid="uid://elg785mh1gua" path="res://prefabs/weapons/claymore_01.tscn" id="1_1rw23"]
+[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_175st"]
+
+[resource]
+resource_name = "claymore 01"
+script = ExtResource("2_175st")
+accessory = ExtResource("1_1rw23")
+offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+tags = Array[String]([])
+bones = Array[String](["prop.R"])

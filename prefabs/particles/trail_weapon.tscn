@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=4 uid="uid://d1kynsixmfk71"]
+
+[ext_resource type="PackedScene" uid="uid://dikwl6qfrniqt" path="res://art/Props/trail_weapon.glb" id="1_to7u7"]
+[ext_resource type="Script" path="res://scripts/trail_weapon.gd" id="2_67ji6"]
+
+[sub_resource type="Gradient" id="Gradient_71qwt"]
+offsets = PackedFloat32Array(0.485782, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6xv5"]
+gradient = SubResource("Gradient_71qwt")
+fill = 1
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30vu4"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_texture = SubResource("GradientTexture2D_w6xv5")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0n4qa"]
+resource_name = "trail_weapon_trail"
+_surfaces = [{
+"aabb": AABB(-1.19209e-07, -1, -5, 1.02384e-05, 1.00001, 5.00001),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAzMxMPgAAAADMzMw+AAAAAJqZGT8AAAAAzcxMPwAAgD/NzEw/AACAP5qZGT8AAIA/zMzMPgAAgD/MzEw+"),
+"bone_aabbs": [AABB(1.19209e-07, -1, -1.78814e-07, 1e-05, 1.00001, 1.0298e-05), AABB(7.15256e-08, -1, -1, 1e-05, 1.00001, 1.0252e-05), AABB(2.38419e-08, -1, -2, 1e-05, 1.00001, 1.0252e-05), AABB(-2.38419e-08, -1, -3, 1e-05, 1.00001, 1.0252e-05), AABB(-7.15256e-08, -1, -4, 1e-05, 1.00001, 1.00136e-05), AABB(-1.19209e-07, -1, -5, 1e-05, 1.00001, 1.00136e-05)],
+"format": 34359745559,
+"index_count": 30,
+"index_data": PackedByteArray("BAADAAsABAACAAMAAAAIAAEAAAAHAAgABwAJAAgABwAGAAkABgAKAAkABgAFAAoABQALAAoABQAEAAsA"),
+"material": SubResource("StandardMaterial3D_30vu4"),
+"primitive": 3,
+"skin_data": PackedByteArray("AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAFAAAAAAAAAP//AAAAAAAABQAAAAAAAAD//wAAAAAAAAQAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAgAAAAAAAAD//wAAAAAAAAEAAAAAAAAA//8AAAAAAAABAAAAAAAAAP//AAAAAAAAAgAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAAEAAAAAAAAAP//AAAAAAAA"),
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAANAAAALQAAAA0AAAANAAAgL8AAEC0AAAAtAAAADQAAKDAAAAAtP7/f78AAKDAmpmZs5qZmTMAAIDAzszMss7MzDIAAEDAzszMMs7MzLIAAADAmpmZM5qZmbMAAIC/mpmZMwAAgL8CAIC/zszMMgAAgL8BAADAzszMsgAAgL8BAEDAmpmZswAAgL8AAIDA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gomca"]
+shading_mode = 0
+albedo_color = Color(0.0333333, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ftoh"]
+material = SubResource("StandardMaterial3D_gomca")
+radius = 0.225
+radial_segments = 4
+rings = 1
+
+[node name="trail_weapon" instance=ExtResource("1_to7u7")]
+script = ExtResource("2_67ji6")
+
+[node name="Skeleton3D" parent="trail" index="0"]
+bones/0/position = Vector3(0.000474975, 0.000474975, 0.000474975)
+bones/1/position = Vector3(0.000474975, 1.00048, 0.000474975)
+bones/2/position = Vector3(0.000474975, 1.00048, 0.000474975)
+bones/3/position = Vector3(0.000474975, 1.00048, 0.000474975)
+bones/4/position = Vector3(0.000474975, 1.00048, 0.000474975)
+bones/5/position = Vector3(0.000474975, 1.00048, 0.000474975)
+bones/5/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
+
+[node name="trail_mesh" parent="trail/Skeleton3D" index="0"]
+mesh = SubResource("ArrayMesh_0n4qa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+visible = false
+mesh = SubResource("SphereMesh_3ftoh")

@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://mn3shk606yew"
+path.s3tc="res://.godot/imported/godette_godette_boots.png-22f2bc9bed4e04745600cf4496db9857.s3tc.ctex"
+path.etc2="res://.godot/imported/godette_godette_boots.png-22f2bc9bed4e04745600cf4496db9857.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e27b9fad6bb1d6de2f758ff6e25983df"
+}
+
+[deps]
+
+source_file="res://art/Character/clothing/godette_godette_boots.png"
+dest_files=["res://.godot/imported/godette_godette_boots.png-22f2bc9bed4e04745600cf4496db9857.s3tc.ctex", "res://.godot/imported/godette_godette_boots.png-22f2bc9bed4e04745600cf4496db9857.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

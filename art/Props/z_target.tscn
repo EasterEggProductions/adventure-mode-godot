@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34jdvaqt8gbn"]
+
+[ext_resource type="ArrayMesh" uid="uid://brxde3at3fjjc" path="res://art/meshes/target_reticle.obj" id="1_2c1bg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfdck"]
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+billboard_keep_scale = true
+grow = true
+
+[node name="z_target" type="Node3D"]
+visible = false
+
+[node name="TargetReticle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.135, 0, 0, 0, 1.135, 0, 0, 0, 1.135, 0, -0.605, 0)
+material_override = SubResource("StandardMaterial3D_sfdck")
+mesh = ExtResource("1_2c1bg")

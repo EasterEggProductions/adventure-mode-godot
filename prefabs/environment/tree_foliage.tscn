@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cme484l06g14s"]
+
+[ext_resource type="PackedScene" uid="uid://cn7wdk07ed863" path="res://art/meshes/tree.glb" id="1_4jcbf"]
+[ext_resource type="Script" path="res://scripts/tree.gd" id="2_rt06q"]
+[ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="3_qheo7"]
+[ext_resource type="Material" uid="uid://c1fi1h0g276op" path="res://art/materials/foliage_tree.tres" id="4_mwoia"]
+
+[node name="tree_foliage" instance=ExtResource("1_4jcbf")]
+script = ExtResource("2_rt06q")
+
+[node name="tree_base" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_qheo7")
+surface_material_override/1 = ExtResource("4_mwoia")
+
+[node name="tree_second" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_qheo7")
+surface_material_override/1 = ExtResource("4_mwoia")
+
+[node name="tree_top" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_mwoia")

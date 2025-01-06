@@ -1,0 +1,96 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=22 format=3 uid="uid://cl5ymw2k40a1r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ho5n8"]
+animation = &"aLib_swim/s_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yke7h"]
+animation = &"aLib_swim/s_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2r6l"]
+animation = &"aLib_swim/s_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eoafw"]
+animation = &"aLib_swim/s_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfr7e"]
+animation = &"aLib_swim/s_fwd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x0fmr"]
+animation = &"aLib_swim/s_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_chpav"]
+animation = &"aLib_swim/s_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27hyu"]
+animation = &"aLib_swim/s_left"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tq3tv"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_558dj"]
+graph_offset = Vector2(-137, -26)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_27hyu")
+nodes/Animation/position = Vector2(-30, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tq3tv")
+nodes/TimeScale/position = Vector2(188.5, 145)
+nodes/output/position = Vector2(320, 150)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3l5d"]
+animation = &"aLib_swim/s_right"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7qiuw"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jkmd4"]
+graph_offset = Vector2(-175, -11.5)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_o3l5d")
+nodes/Animation/position = Vector2(-74.5, 106.5)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_7qiuw")
+nodes/TimeScale/position = Vector2(170, 130)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1shei"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ho5n8")
+blend_point_0/pos = Vector2(0, 0.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_yke7h")
+blend_point_1/pos = Vector2(-0.1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_y2r6l")
+blend_point_2/pos = Vector2(0.1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_eoafw")
+blend_point_3/pos = Vector2(0, -0.1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_qfr7e")
+blend_point_4/pos = Vector2(0, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_x0fmr")
+blend_point_5/pos = Vector2(-0.3, 0.8)
+blend_point_6/node = SubResource("AnimationNodeAnimation_chpav")
+blend_point_6/pos = Vector2(0.3, 0.8)
+blend_point_7/node = SubResource("AnimationNodeBlendTree_558dj")
+blend_point_7/pos = Vector2(-1, 0)
+blend_point_8/node = SubResource("AnimationNodeBlendTree_jkmd4")
+blend_point_8/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cubx1"]
+animation = &"combat_sword/combat_attack_r-l"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jixm7"]
+animation = &"combat_sword/combat_jump_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x32q8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8gyy2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mtvdx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yn5hs"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d5ftx"]
+
+[resource]
+"states/MOVE swim/node" = SubResource("AnimationNodeBlendSpace2D_1shei")
+"states/MOVE swim/position" = Vector2(384, 71.5)
+states/combat_sword_combat_attack_r-l/node = SubResource("AnimationNodeAnimation_cubx1")
+states/combat_sword_combat_attack_r-l/position = Vector2(640, 184.5)
+states/combat_sword_combat_jump_attack/node = SubResource("AnimationNodeAnimation_jixm7")
+states/combat_sword_combat_jump_attack/position = Vector2(350, 192)
+transitions = ["Start", "MOVE swim", SubResource("AnimationNodeStateMachineTransition_x32q8"), "MOVE swim", "combat_sword_combat_jump_attack", SubResource("AnimationNodeStateMachineTransition_8gyy2"), "MOVE swim", "combat_sword_combat_attack_r-l", SubResource("AnimationNodeStateMachineTransition_mtvdx"), "combat_sword_combat_attack_r-l", "MOVE swim", SubResource("AnimationNodeStateMachineTransition_yn5hs"), "combat_sword_combat_jump_attack", "MOVE swim", SubResource("AnimationNodeStateMachineTransition_d5ftx")]
+graph_offset = Vector2(-196, -62)

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://btyn0xde5r8mh"]
+
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="1_jcnt1"]
+
+[resource]
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.67451, 0.67451, 0.67451, 1)
+albedo_texture = ExtResource("1_jcnt1")
+uv1_scale = Vector3(1.03, 0.18, 1.11)
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://c1fi1h0g276op"]
+
+[ext_resource type="Texture2D" uid="uid://grnudycr30bu" path="res://art/textures/noise_turbulent_trans_64.png" id="1_r5qua"]
+
+[sub_resource type="Gradient" id="Gradient_skdgy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sa8u3"]
+gradient = SubResource("Gradient_skdgy")
+fill_from = Vector2(0.576923, 0.478632)
+fill_to = Vector2(1, 1)
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.319
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.156863, 0.360784, 0.168627, 1)
+albedo_texture = ExtResource("1_r5qua")
+detail_mask = SubResource("GradientTexture2D_sa8u3")
+detail_uv_layer = 1
+uv1_triplanar = true
+uv2_scale = Vector3(1.625, 1.625, 1.625)
+uv2_triplanar = true

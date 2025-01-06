@@ -1,0 +1,110 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=3 uid="uid://b05s2yvv1ups3"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dej7"]
+animation = &"animationLib_climb/climb_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u7bjl"]
+animation = &"animationLib_climb/climb_left"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ohock"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_igc1y"]
+graph_offset = Vector2(-334, -5)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_u7bjl")
+nodes/Animation/position = Vector2(-240, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ohock")
+nodes/TimeScale/position = Vector2(52, 129)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6hihu"]
+animation = &"animationLib_climb/climb_look_dn"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1xs04"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_npr4y"]
+graph_offset = Vector2(-317, -27)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6hihu")
+nodes/Animation/position = Vector2(-340, 40)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1xs04")
+nodes/TimeScale/position = Vector2(1, 232)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ydprx"]
+animation = &"animationLib_climb/climb_look_right"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_888bn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ld2ey"]
+graph_offset = Vector2(-91.9871, 37.9655)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ydprx")
+nodes/Animation/position = Vector2(-140, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_888bn")
+nodes/TimeScale/position = Vector2(160, 220)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6131t"]
+animation = &"animationLib_climb/climb_look_up"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rq6j5"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6yp1x"]
+graph_offset = Vector2(-500.379, -134.416)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6131t")
+nodes/Animation/position = Vector2(-269.93, 29.0919)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rq6j5")
+nodes/TimeScale/position = Vector2(140, 80)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w2asr"]
+animation = &"animationLib_climb/climb_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cpvc4"]
+animation = &"animationLib_climb/climb_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_edh4p"]
+animation = &"animationLib_climb/climb_dn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ieoax"]
+animation = &"animationLib_climb/climb_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jsf0a"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_0dej7")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeBlendTree_igc1y")
+blend_point_1/pos = Vector2(-0.7, 0)
+blend_point_2/node = SubResource("AnimationNodeBlendTree_npr4y")
+blend_point_2/pos = Vector2(0, -0.7)
+blend_point_3/node = SubResource("AnimationNodeBlendTree_ld2ey")
+blend_point_3/pos = Vector2(0.7, 0)
+blend_point_4/node = SubResource("AnimationNodeBlendTree_6yp1x")
+blend_point_4/pos = Vector2(0, 0.7)
+blend_point_5/node = SubResource("AnimationNodeAnimation_w2asr")
+blend_point_5/pos = Vector2(-1, 0)
+blend_point_6/node = SubResource("AnimationNodeAnimation_cpvc4")
+blend_point_6/pos = Vector2(0, 1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_edh4p")
+blend_point_7/pos = Vector2(0, -1)
+blend_point_8/node = SubResource("AnimationNodeAnimation_ieoax")
+blend_point_8/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bexe2"]
+animation = &"animationLib_climb/climb_ledgeVault"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r2bnh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqq73"]
+advance_mode = 2
+advance_condition = &"ledge_vault_exit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kd4yn"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+"states/MOVE climb/node" = SubResource("AnimationNodeBlendSpace2D_jsf0a")
+"states/MOVE climb/position" = Vector2(489, 83)
+states/vault_exit/node = SubResource("AnimationNodeAnimation_bexe2")
+states/vault_exit/position = Vector2(677, 83)
+transitions = ["Start", "MOVE climb", SubResource("AnimationNodeStateMachineTransition_r2bnh"), "MOVE climb", "vault_exit", SubResource("AnimationNodeStateMachineTransition_kqq73"), "vault_exit", "End", SubResource("AnimationNodeStateMachineTransition_kd4yn")]
+graph_offset = Vector2(132, -39)

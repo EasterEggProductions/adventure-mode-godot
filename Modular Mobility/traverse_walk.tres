@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MovementPackage" load_steps=3 format=3 uid="uid://dxewe7nuv8lgj"]
+
+[ext_resource type="Script" path="res://Modular Mobility/MovementPackage.gd" id="1_r6yto"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://coym3jr0vat8x" path="res://art/Character/animator components/walk_root.tres" id="1_ucdt4"]
+
+[resource]
+script = ExtResource("1_r6yto")
+name = "walk"
+anim_tree = ExtResource("1_ucdt4")

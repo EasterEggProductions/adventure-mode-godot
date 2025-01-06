@@ -1,0 +1,163 @@
+# Blender 3.5.1 MTL File: 'walk_jog_run.blend'
+# www.blender.org
+
+newmtl material-00ACCCF1.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Receptionist/reception_girl__2200.png
+
+newmtl material-01352A08
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Treasure Chest Shop Gal/treasure_girl_0_2000.png
+
+newmtl material-01B9C954
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Mikau/zora_mikau_00_0.png
+
+newmtl material-01E97672
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Treasure Chest Shop Gal/treasure_girl_0_0.png
+
+newmtl material-020E522A
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Mikau/zora_mikau_m00_6A00.png
+
+newmtl material-024C16C5.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Receptionist/reception_girl__0.png
+
+newmtl material-027A3B6B.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Receptionist/reception_girl__0.png
+
+newmtl material-02DE7A4B
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Treasure Chest Shop Gal/treasure_girl_e_2800.png
+
+newmtl material-031541B2
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Mikau/zora_mikau_01_2200.png
+
+newmtl material-03C8B3CB
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Mikau/zora_mikau_e00_6200.png
+
+newmtl material-03E5EADA
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/3DS/MM/Mikau/zora_mikau_00_0.png
+
+newmtl mq_baseFace
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/ArmaturePrime/textures/mq_face.png
+
+newmtl mq_baseSkin
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/ArmaturePrime/textures/mq_body.png
+
+newmtl ruto_mat
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 1
+map_Kd ruto_00.png
+map_d ruto_00.png
+
+newmtl skeleton_mat
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/kalethequick/Documents/Development/CHARMAKER/Skeletons/SkeletonA.png
+map_Bump -bm 1.000000 /home/kalethequick/Documents/Development/CHARMAKER/Skeletons/SkeletonN.png
+
+newmtl windmillman_mat.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 1
+map_Kd windmillman_00.png
+map_d windmillman_00.png

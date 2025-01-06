@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://e4las240qute"]
+
+[ext_resource type="AudioStream" uid="uid://bbosa42k21qu7" path="res://art/audio/sfx/block_clang_01.ogg" id="1_ctjhc"]
+[ext_resource type="AudioStream" uid="uid://67j3315rybo6" path="res://art/audio/sfx/block_clang_02.ogg" id="2_3ceeq"]
+[ext_resource type="AudioStream" uid="uid://b4yoeggi0ahvs" path="res://art/audio/sfx/block_clang_03.ogg" id="3_ncd2c"]
+
+[sub_resource type="Curve" id="Curve_lenmd"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qc65o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.56014, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qhuy8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_45h2l"]
+curve_x = SubResource("Curve_lenmd")
+curve_y = SubResource("Curve_qc65o")
+curve_z = SubResource("Curve_qhuy8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y5fj5"]
+lifetime_randomness = 1.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_45h2l")
+color = Color(1, 0.483333, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_a1i2b"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o7mrd"]
+gradient = SubResource("Gradient_a1i2b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_ax0ev"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6hue3"]
+gradient = SubResource("Gradient_ax0ev")
+fill_from = Vector2(0.803419, 1)
+fill_to = Vector2(0.269231, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35f0d"]
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_o7mrd")
+emission_enabled = true
+emission = Color(0, 1, 0.75, 1)
+emission_energy_multiplier = 2.0
+emission_texture = SubResource("GradientTexture2D_6hue3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_88mul"]
+material = SubResource("StandardMaterial3D_35f0d")
+size = Vector2(0.05, 1)
+center_offset = Vector3(0, 1, 0)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yrjl4"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("1_ctjhc")
+stream_1/stream = ExtResource("2_3ceeq")
+stream_2/stream = ExtResource("3_ncd2c")
+
+[node name="metal_clang" type="GPUParticles3D"]
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_y5fj5")
+draw_pass_1 = SubResource("QuadMesh_88mul")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yrjl4")
+volume_db = 5.0
+autoplay = true

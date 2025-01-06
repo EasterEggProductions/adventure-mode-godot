@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="mvpk_climb" load_steps=3 format=3 uid="uid://casoj2le5m3x1"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b05s2yvv1ups3" path="res://art/Character/animator components/climb_root.tres" id="1_6pwcn"]
+[ext_resource type="Script" path="res://Modular Mobility/mvpk_climb.gd" id="1_mwqbf"]
+
+[resource]
+script = ExtResource("1_mwqbf")
+name = "climb"
+anim_tree = ExtResource("1_6pwcn")

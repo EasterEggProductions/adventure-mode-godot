@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvyjw256lsge2"]
+
+[ext_resource type="PackedScene" uid="uid://bplcmwnx6m8oa" path="res://art/meshes/grass.glb" id="1_k8mbf"]
+[ext_resource type="Material" uid="uid://dlbhrpiy3mtxh" path="res://art/materials/foliage.tres" id="2_dxcns"]
+
+[node name="grass" instance=ExtResource("1_k8mbf")]
+
+[node name="grass_1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_dxcns")
+
+[node name="grass_2" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_dxcns")

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Character" load_steps=12 format=3 uid="uid://pyeylu3rn4gk"]
+
+[ext_resource type="Resource" uid="uid://2g2xi3iipiu3" path="res://art/Character/clothing/DressUp Resources/human_flesh.tres" id="1_asamb"]
+[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="1_leg0u"]
+[ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="2_gwlss"]
+[ext_resource type="Script" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
+[ext_resource type="Texture2D" uid="uid://bxihym06dprn4" path="res://art/textures/icon_mannyQuinn.png" id="4_e7yfx"]
+[ext_resource type="Resource" uid="uid://dyhf0xu1bqbpi" path="res://art/Character/clothing/DressUp Resources/feet_boot_01.tres" id="4_irp83"]
+[ext_resource type="Resource" uid="uid://b7dq815w802rc" path="res://art/Character/clothing/DressUp Resources/hair_10_ponytail_01.tres" id="5_4g6oy"]
+[ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="6_dooa3"]
+[ext_resource type="Resource" uid="uid://bewat2ejmwowa" path="res://art/Character/clothing/DressUp Resources/utility_belt.tres" id="6_urf5m"]
+[ext_resource type="Resource" uid="uid://bwsshqau3scbu" path="res://art/Character/clothing/DressUp Resources/short coat.tres" id="7_edoh8"]
+[ext_resource type="Resource" uid="uid://be2gvr814505d" path="res://art/Character/clothing/DressUp Resources/skirt_of_skorp.tres" id="8_8to01"]
+
+[resource]
+resource_name = "Player"
+script = ExtResource("2_p2okw")
+portrait = ExtResource("4_e7yfx")
+given_name = "Player"
+strength = 0
+dexterity = 0
+constitution = 0
+inteligence = 0
+wisdom = 0
+charisma = 0
+health_max = 10.0
+health_current = 10.0
+health_regen = 0.0
+health_regen_delay = 3.0
+stamina_max = 20.0
+stamina_current = 5.0
+stamina_regen = 1.0
+stamina_regen_delay = 3.0
+poise_max = 15.0
+poise_current = 0.0
+poise_regen = 1.0
+poise_regen_delay = 3.0
+alive = true
+hand_right = ExtResource("2_gwlss")
+under_skeleton = ExtResource("6_dooa3")
+base_skin = ExtResource("1_asamb")
+outfit = Array[ExtResource("1_leg0u")]([ExtResource("4_irp83"), ExtResource("5_4g6oy"), ExtResource("6_urf5m"), ExtResource("7_edoh8"), ExtResource("8_8to01")])

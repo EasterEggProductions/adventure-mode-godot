@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://p8v3dhgr6n2n"
+path.s3tc="res://.godot/imported/godette_SkeletonN.png-d7fc507c7570d72d0092d010b5ceee2b.s3tc.ctex"
+path.etc2="res://.godot/imported/godette_SkeletonN.png-d7fc507c7570d72d0092d010b5ceee2b.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "54d5f2cd3733c5fdbac2853bd5a8dece"
+}
+
+[deps]
+
+source_file="res://art/Character/clothing/godette_SkeletonN.png"
+dest_files=["res://.godot/imported/godette_SkeletonN.png-d7fc507c7570d72d0092d010b5ceee2b.s3tc.ctex", "res://.godot/imported/godette_SkeletonN.png-d7fc507c7570d72d0092d010b5ceee2b.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://art/Character/clothing/godette_SkeletonN.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

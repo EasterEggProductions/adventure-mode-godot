@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqxi7q25mnc50"]
+
+[ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="1_w5ihn"]
+[ext_resource type="AudioStream" uid="uid://cmghgljomtesv" path="res://art/audio/sfx/bone_rattle.ogg" id="2_23hie"]
+
+[sub_resource type="Gradient" id="Gradient_np46a"]
+offsets = PackedFloat32Array(0, 0.128472, 0.475694, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.0941176, 0.0470588, 0.00392157, 0.964706, 0.943712, 0.734825, 0.515002, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p47ge"]
+gradient = SubResource("Gradient_np46a")
+
+[sub_resource type="Curve" id="Curve_fv36b"]
+_data = [Vector2(0, 1), 0.0, -2.00276, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ige70"]
+curve = SubResource("Curve_fv36b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3kcoy"]
+lifetime_randomness = 0.5
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 0, -0.335)
+spread = 10.0
+initial_velocity_max = 5.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, -9, 0)
+damping_min = 8.0
+damping_max = 8.977
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ige70")
+color_ramp = SubResource("GradientTexture1D_p47ge")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjkjj"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_w5ihn")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_q34g1"]
+material = SubResource("StandardMaterial3D_bjkjj")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vk1r8"]
+top_radius = 0.0
+bottom_radius = 0.06
+height = 0.5
+
+[node name="bone_dust" type="GPUParticles3D"]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3kcoy")
+draw_pass_1 = SubResource("QuadMesh_q34g1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_23hie")
+pitch_scale = 0.89
+autoplay = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -0.303217)
+visible = false
+mesh = SubResource("CylinderMesh_vk1r8")

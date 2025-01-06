@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://cabwsn82igehw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bv7kb3wlk0hq3" path="res://art/meshes/campfire.obj" id="1_wd6q8"]
+[ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="2_61r5n"]
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="3_cthw3"]
+[ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="4_k5agq"]
+[ext_resource type="ArrayMesh" uid="uid://dkkbofnga5jb3" path="res://art/meshes/boulder.obj" id="5_yaecd"]
+[ext_resource type="AudioStream" uid="uid://bow7ea31pd0u8" path="res://art/audio/sfx/campfire-02.ogg" id="6_f7w52"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqyqw"]
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+albedo_texture = ExtResource("3_cthw3")
+uv1_scale = Vector3(1.785, 1.785, 1.785)
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ufyx"]
+material = SubResource("StandardMaterial3D_gqyqw")
+radius = 1.0
+height = 0.2
+is_hemisphere = true
+
+[sub_resource type="Gradient" id="Gradient_v5th1"]
+offsets = PackedFloat32Array(0, 0.30597, 0.608209, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0.65, 0, 1, 1, 0.65098, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rmy22"]
+gradient = SubResource("Gradient_v5th1")
+
+[sub_resource type="Curve" id="Curve_pnpgw"]
+_data = [Vector2(0, 0), 0.0, 6.46418, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a8jha"]
+curve = SubResource("Curve_pnpgw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_64xje"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -720.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0.25, 0)
+damping_min = 0.2
+damping_max = 0.2
+scale_curve = SubResource("CurveTexture_a8jha")
+color_ramp = SubResource("GradientTexture1D_rmy22")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj2qj"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_k5agq")
+emission_enabled = true
+emission = Color(1, 0.592157, 0.247059, 1)
+emission_energy_multiplier = 3.5
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_mrldq"]
+material = SubResource("StandardMaterial3D_kj2qj")
+center_offset = Vector3(0, 0.25, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27t3c"]
+albedo_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+emission_enabled = true
+emission = Color(0.733333, 0.0509804, 0, 1)
+
+[node name="campfire" type="Node3D"]
+
+[node name="Campfire" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_wd6q8")
+surface_material_override/0 = ExtResource("2_61r5n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165589, 0)
+mesh = SubResource("SphereMesh_3ufyx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628241, 0)
+light_color = Color(0.964706, 0.615686, 0, 1)
+shadow_enabled = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 3.0
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_64xje")
+draw_pass_1 = SubResource("QuadMesh_mrldq")
+
+[node name="rock" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.148211, -2.98023e-08, 0.0629599)
+material_override = SubResource("StandardMaterial3D_27t3c")
+mesh = ExtResource("5_yaecd")
+
+[node name="rock2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0.144624, -2.98023e-08, 0.0861724)
+material_override = SubResource("StandardMaterial3D_27t3c")
+mesh = ExtResource("5_yaecd")
+
+[node name="rock3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, -0.0411427, -2.98023e-08, -0.322223)
+material_override = SubResource("StandardMaterial3D_27t3c")
+mesh = ExtResource("5_yaecd")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_f7w52")
+autoplay = true

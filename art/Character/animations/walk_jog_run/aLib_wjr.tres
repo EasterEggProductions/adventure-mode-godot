@@ -1,0 +1,30 @@
+[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://xojch5gcvv1r"]
+
+[ext_resource type="Animation" uid="uid://e0i0c5x61g2s" path="res://art/Character/animations/walk_jog_run/jog_fwd.tres" id="1_o7lyi"]
+[ext_resource type="Animation" uid="uid://dkeclnrv8h0ym" path="res://art/Character/animations/walk_jog_run/lean_left.tres" id="2_8vndx"]
+[ext_resource type="Animation" uid="uid://lv2e62ub3sfs" path="res://art/Character/animations/walk_jog_run/lean_right.tres" id="3_t1y82"]
+[ext_resource type="Animation" uid="uid://uamhdfsb8e5e" path="res://art/Character/animations/walk_jog_run/run_fwd.tres" id="4_ceytt"]
+[ext_resource type="Animation" uid="uid://n0l1yf826pps" path="res://art/Character/animations/walk_jog_run/walk_fwd.tres" id="5_pg87u"]
+[ext_resource type="Animation" uid="uid://bkje6uxy4g6bp" path="res://art/Character/animations/glider/airborne.tres" id="6_nkufd"]
+[ext_resource type="Animation" uid="uid://mrfaew2aej0" path="res://art/Character/animations/glider/land.tres" id="7_57sul"]
+[ext_resource type="Animation" uid="uid://v2o8e8c3bjxm" path="res://art/Character/animations/glider/jump_arc.tres" id="8_oku7f"]
+[ext_resource type="Animation" uid="uid://c8dnod7vmgq3s" path="res://art/Character/animations/glider/jump_standing.tres" id="9_rteds"]
+[ext_resource type="Animation" uid="uid://d3bsi2ks25nmn" path="res://art/Character/animations/walk_jog_run/idle.tres" id="10_fo0e3"]
+[ext_resource type="Animation" uid="uid://xdlgc2jbpk30" path="res://art/Character/animations/turns/turn_left_45s.tres" id="11_wpniw"]
+[ext_resource type="Animation" uid="uid://dvw0x71jfthxb" path="res://art/Character/animations/turns/turn_right_45s.tres" id="12_8b5m3"]
+
+[resource]
+_data = {
+"airborne": ExtResource("6_nkufd"),
+"idle": ExtResource("10_fo0e3"),
+"jog_fwd": ExtResource("1_o7lyi"),
+"jump_arc": ExtResource("8_oku7f"),
+"jump_standing": ExtResource("9_rteds"),
+"land": ExtResource("7_57sul"),
+"lean_left": ExtResource("2_8vndx"),
+"lean_right": ExtResource("3_t1y82"),
+"run_fwd": ExtResource("4_ceytt"),
+"turn_left_45s": ExtResource("11_wpniw"),
+"turn_right_45s": ExtResource("12_8b5m3"),
+"walk_fwd": ExtResource("5_pg87u")
+}

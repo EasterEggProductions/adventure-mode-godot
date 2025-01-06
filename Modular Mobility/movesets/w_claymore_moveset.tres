@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="mvpk_combat" load_steps=3 format=3 uid="uid://diybpprbfvy0g"]
+
+[ext_resource type="AnimationNodeBlendTree" uid="uid://umh8dohivb2b" path="res://art/Character/animator components/claymore_moveset.tres" id="1_uuh80"]
+[ext_resource type="Script" path="res://Modular Mobility/mvpk_combat.gd" id="2_pt3le"]
+
+[resource]
+script = ExtResource("2_pt3le")
+name = "claymore moveset"
+anim_tree = ExtResource("1_uuh80")

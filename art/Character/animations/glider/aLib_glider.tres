@@ -1,0 +1,20 @@
+[gd_resource type="AnimationLibrary" load_steps=8 format=3 uid="uid://bpwef0cra4iw2"]
+
+[ext_resource type="Animation" uid="uid://bj1jsta4ax7er" path="res://art/Character/animations/glider/glide_forward.tres" id="1_dhtw0"]
+[ext_resource type="Animation" uid="uid://b0bj2uswwbfyy" path="res://art/Character/animations/glider/glide_idle.tres" id="2_av7v1"]
+[ext_resource type="Animation" uid="uid://dg7bhufbim4ub" path="res://art/Character/animations/glider/glide_left.tres" id="3_ehhmv"]
+[ext_resource type="Animation" uid="uid://dugt5h2afwmcj" path="res://art/Character/animations/glider/glide_right.tres" id="4_750ge"]
+[ext_resource type="Animation" uid="uid://bt2a5c8bhnxcw" path="res://art/Character/animations/glider/glide_slow_back.tres" id="5_mxo6v"]
+[ext_resource type="Animation" uid="uid://cocxqk0gummgu" path="res://art/Character/animations/glider/glide_slow_left.tres" id="6_x21j1"]
+[ext_resource type="Animation" uid="uid://b0wcfxjnkt8j7" path="res://art/Character/animations/glider/glide_slow_right.tres" id="7_b450i"]
+
+[resource]
+_data = {
+"glide_forward": ExtResource("1_dhtw0"),
+"glide_idle": ExtResource("2_av7v1"),
+"glide_left": ExtResource("3_ehhmv"),
+"glide_right": ExtResource("4_750ge"),
+"glide_slow_back": ExtResource("5_mxo6v"),
+"glide_slow_left": ExtResource("6_x21j1"),
+"glide_slow_right": ExtResource("7_b450i")
+}

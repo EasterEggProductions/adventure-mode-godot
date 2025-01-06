@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="mvpk_walk" load_steps=3 format=3 uid="uid://ba3i5roa0cxxe"]
+
+[ext_resource type="Script" path="res://Modular Mobility/mvpk_walk.gd" id="1_cy0f7"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://coym3jr0vat8x" path="res://art/Character/animator components/walk_root.tres" id="1_qvt1v"]
+
+[resource]
+script = ExtResource("1_cy0f7")
+name = "walk"
+anim_tree = ExtResource("1_qvt1v")

@@ -1,0 +1,14 @@
+[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://bu8hawt708pm4"]
+
+[ext_resource type="Animation" uid="uid://cv7klrb6rbpuj" path="res://art/Character/animations/actions/chest_open.tres" id="1_284t0"]
+[ext_resource type="Animation" uid="uid://csmx3nwucxj5" path="res://art/Character/animations/actions/item_crush.tres" id="2_hvrk1"]
+[ext_resource type="Animation" uid="uid://cd60q0pgxwwgg" path="res://art/Character/animations/actions/item_drink.tres" id="3_jc4r3"]
+[ext_resource type="Animation" uid="uid://v20j6c14oreg" path="res://art/Character/animations/actions/item_eat.tres" id="4_eh1ud"]
+
+[resource]
+_data = {
+"chest_open": ExtResource("1_284t0"),
+"item_crush": ExtResource("2_hvrk1"),
+"item_drink": ExtResource("3_jc4r3"),
+"item_eat": ExtResource("4_eh1ud")
+}

@@ -1,0 +1,141 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=3 uid="uid://klj3e4sfah3g"]
+
+[ext_resource type="Curve" uid="uid://brijpnu58w121" path="res://art/Character/animator components/small_components/curve_minorOvershoot.tres" id="1_n840e"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ky3yf"]
+animation = &"aLib_combat_sword/combat_idle_greatsword_1h"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2mgeb"]
+animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74bl4"]
+animation = &"aLib_combat_sword/combat_block_shield_begin"
+use_custom_timeline = true
+timeline_length = 0.1
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3disu"]
+animation = &"aLib_combat_sword/combat_block_shield"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vefrs"]
+animation = &"aLib_combat_sword/combat_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppgm1"]
+animation = &"aLib_combat_sword/combat_block_shield_begin"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 0.1
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iw2yf"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.TWO_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hjmlm"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.ONE_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k4x24"]
+advance_mode = 2
+advance_expression = "hand_state == HandState.ONE_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2tcnc"]
+advance_mode = 2
+advance_expression = "hand_state == HandState.TWO_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j4y57"]
+advance_mode = 2
+advance_expression = "hand_state == HandState.UNARMED"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ucqpo"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.ONE_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jel8e"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.TWO_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6sbcu"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.UNARMED"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dutrb"]
+xfade_time = 0.3
+xfade_curve = ExtResource("1_n840e")
+advance_mode = 2
+advance_expression = "hand_state == HandState.UNARMED"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ssfuj"]
+advance_mode = 2
+advance_expression = "action_q_check(\"block\") == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wap3k"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4lcdk"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "action_q_check(\"block\")
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eeqv6"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_expression = "hand_state == HandState.TWO_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a1d6e"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_expression = "hand_state == HandState.UNARMED"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ygige"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_expression = "hand_state == HandState.ONE_HAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gutr1"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "action_q_check(\"block\")
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhgqv"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "action_q_check(\"block\")
+"
+
+[resource]
+states/1h/node = SubResource("AnimationNodeAnimation_ky3yf")
+states/1h/position = Vector2(616.281, -24.5)
+states/2h/node = SubResource("AnimationNodeAnimation_2mgeb")
+states/2h/position = Vector2(615.875, 280)
+states/End/position = Vector2(959, 87)
+states/block/node = SubResource("AnimationNodeAnimation_74bl4")
+states/block/position = Vector2(798, -24.5)
+states/blocking/node = SubResource("AnimationNodeAnimation_3disu")
+states/blocking/position = Vector2(824, 179)
+states/unarmed/node = SubResource("AnimationNodeAnimation_vefrs")
+states/unarmed/position = Vector2(467.5, 101.5)
+states/unblock/node = SubResource("AnimationNodeAnimation_ppgm1")
+states/unblock/position = Vector2(798, 280)
+transitions = ["1h", "2h", SubResource("AnimationNodeStateMachineTransition_iw2yf"), "2h", "1h", SubResource("AnimationNodeStateMachineTransition_hjmlm"), "Start", "1h", SubResource("AnimationNodeStateMachineTransition_k4x24"), "Start", "2h", SubResource("AnimationNodeStateMachineTransition_2tcnc"), "Start", "unarmed", SubResource("AnimationNodeStateMachineTransition_j4y57"), "unarmed", "1h", SubResource("AnimationNodeStateMachineTransition_ucqpo"), "unarmed", "2h", SubResource("AnimationNodeStateMachineTransition_jel8e"), "2h", "unarmed", SubResource("AnimationNodeStateMachineTransition_6sbcu"), "1h", "unarmed", SubResource("AnimationNodeStateMachineTransition_dutrb"), "blocking", "unblock", SubResource("AnimationNodeStateMachineTransition_ssfuj"), "block", "blocking", SubResource("AnimationNodeStateMachineTransition_wap3k"), "2h", "block", SubResource("AnimationNodeStateMachineTransition_4lcdk"), "unblock", "2h", SubResource("AnimationNodeStateMachineTransition_eeqv6"), "unblock", "unarmed", SubResource("AnimationNodeStateMachineTransition_a1d6e"), "unblock", "1h", SubResource("AnimationNodeStateMachineTransition_ygige"), "1h", "block", SubResource("AnimationNodeStateMachineTransition_gutr1"), "unarmed", "block", SubResource("AnimationNodeStateMachineTransition_hhgqv")]
+graph_offset = Vector2(-20, 31)

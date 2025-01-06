@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnba4a71ky10p"]
+
+[ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="1_4shne"]
+
+[sub_resource type="Gradient" id="Gradient_wrii5"]
+offsets = PackedFloat32Array(0, 0.0837696, 0.701571, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.054902, 0.0235294, 0.00392157, 0.462745, 0.0901961, 0.0470588, 0.00392157, 0.482353, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xcamb"]
+gradient = SubResource("Gradient_wrii5")
+
+[sub_resource type="Curve" id="Curve_wrx3n"]
+_data = [Vector2(0, 0), 0.0, 6.61813, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eveva"]
+curve = SubResource("Curve_wrx3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3abh3"]
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, -2, 0)
+damping_min = 2.0
+damping_max = 2.0
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_eveva")
+color_ramp = SubResource("GradientTexture1D_xcamb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjkjj"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4shne")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_q34g1"]
+material = SubResource("StandardMaterial3D_bjkjj")
+
+[node name="footfall particle" type="GPUParticles3D"]
+emitting = false
+amount = 16
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_3abh3")
+draw_pass_1 = SubResource("QuadMesh_q34g1")

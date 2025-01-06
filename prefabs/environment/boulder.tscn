@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://2lgruxx4kd5a"]
+
+[ext_resource type="ArrayMesh" uid="uid://dkkbofnga5jb3" path="res://art/meshes/boulder.obj" id="1_wsi24"]
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="2_i8dfj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lx3o3"]
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.509804, 0.439216, 0.352941, 1)
+albedo_texture = ExtResource("2_i8dfj")
+uv1_scale = Vector3(0.373, 0.373, 0.373)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c8rhl"]
+data = PackedVector3Array(0.7236, -0.4472, 0.5257, 0, -1, 0, -0.2764, -0.4472, 0.8506, 0, -1, 0, 0.7236, -0.4472, 0.5257, 0.7236, -0.4472, -0.5257, -0.2764, -0.4472, 0.8506, 0, -1, 0, -0.8944, -0.4472, 0, -0.8944, -0.4472, 0, 0, -1, 0, -0.2764, -0.4472, -0.8506, -0.2764, -0.4472, -0.8506, 0, -1, 0, 0.7236, -0.4472, -0.5257, 0.7236, -0.4472, -0.5257, 0.7236, -0.4472, 0.5257, 0.8944, 0.4472, 0, 0.7236, -0.4472, 0.5257, -0.2764, -0.4472, 0.8506, 0.2764, 0.4472, 0.8506, -0.2764, -0.4472, 0.8506, -0.8944, -0.4472, 0, -0.7236, 0.4472, 0.5257, -0.8944, -0.4472, 0, -0.2764, -0.4472, -0.8506, -0.7236, 0.4472, -0.5257, -0.2764, -0.4472, -0.8506, 0.7236, -0.4472, -0.5257, 0.2764, 0.4472, -0.8506, 0.8944, 0.4472, 0, 0.7236, -0.4472, 0.5257, 0.2764, 0.4472, 0.8506, 0.2764, 0.4472, 0.8506, -0.2764, -0.4472, 0.8506, -0.7236, 0.4472, 0.5257, -0.7236, 0.4472, 0.5257, -0.8944, -0.4472, 0, -0.7236, 0.4472, -0.5257, -0.7236, 0.4472, -0.5257, -0.2764, -0.4472, -0.8506, 0.2764, 0.4472, -0.8506, 0.2764, 0.4472, -0.8506, 0.7236, -0.4472, -0.5257, 0.8944, 0.4472, 0, 0.8944, 0.4472, 0, 0.2764, 0.4472, 0.8506, 0, 1, 0, 0.2764, 0.4472, 0.8506, -0.7236, 0.4472, 0.5257, 0, 1, 0, -0.7236, 0.4472, 0.5257, -0.7236, 0.4472, -0.5257, 0, 1, 0, -0.7236, 0.4472, -0.5257, 0.2764, 0.4472, -0.8506, 0, 1, 0, 0.2764, 0.4472, -0.8506, 0.8944, 0.4472, 0, 0, 1, 0)
+
+[node name="boulder" type="StaticBody3D"]
+
+[node name="Boulder" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_wsi24")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lx3o3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_c8rhl")

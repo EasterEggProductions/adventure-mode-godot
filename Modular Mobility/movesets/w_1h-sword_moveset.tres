@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="mvpk_combat" load_steps=3 format=3 uid="uid://cbn706s6jj2fj"]
+
+[ext_resource type="Script" path="res://Modular Mobility/mvpk_combat.gd" id="1_8fk7m"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bhi4toft5jpac" path="res://art/Character/animator components/strafe_root.tres" id="1_spl3d"]
+
+[resource]
+script = ExtResource("1_8fk7m")
+name = "one hand sword moveset"
+anim_tree = ExtResource("1_spl3d")

@@ -1,0 +1,128 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=25 format=3 uid="uid://dukebmuejahjs"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qyuku"]
+animation = &"walk_jog_run/jog_fwd"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lccqx"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_da2v0"]
+graph_offset = Vector2(-95, 67)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_qyuku")
+nodes/Animation/position = Vector2(0, 220)
+"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_lccqx")
+"nodes/SET_F[2]/position" = Vector2(370, 250)
+nodes/output/position = Vector2(610, 360)
+node_connections = [&"SET_F[2]", 0, &"Animation", &"output", 0, &"SET_F[2]"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i6s4s"]
+animation = &"walk_jog_run/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kfjrj"]
+animation = &"walk_jog_run/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7e4s"]
+animation = &"walk_jog_run/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gul4e"]
+animation = &"walk_jog_run/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vl7et"]
+animation = &"walk_jog_run/turn_right_45s"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_stou0"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ibcnr"]
+graph_offset = Vector2(-318, -70)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_vl7et")
+nodes/Animation/position = Vector2(-285.56, 83.0867)
+"nodes/SET_F[5]/node" = SubResource("AnimationNodeTimeScale_stou0")
+"nodes/SET_F[5]/position" = Vector2(0, 106.667)
+node_connections = [&"SET_F[5]", 0, &"Animation", &"output", 0, &"SET_F[5]"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6275b"]
+animation = &"walk_jog_run/jog_fwd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lpm44"]
+animation = &"walk_jog_run/turn_left_45s"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_rc8nq"]
+filter_enabled = true
+filters = ["char/Skeleton3D:Root"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_eol5t"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nirgt"]
+graph_offset = Vector2(20.845, 306.667)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_lpm44")
+nodes/Animation/position = Vector2(80, 660)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6275b")
+"nodes/Animation 2/position" = Vector2(240, 380)
+"nodes/SET_F[2]/node" = SubResource("AnimationNodeAdd2_rc8nq")
+"nodes/SET_F[2]/position" = Vector2(560, 420)
+"nodes/SET_F[5]/node" = SubResource("AnimationNodeTimeScale_eol5t")
+"nodes/SET_F[5]/position" = Vector2(390, 580)
+nodes/output/position = Vector2(1066.67, 533.333)
+node_connections = [&"SET_F[2]", 0, &"Animation 2", &"SET_F[2]", 1, &"SET_F[5]", &"SET_F[5]", 0, &"Animation", &"output", 0, &"SET_F[2]"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uqj7a"]
+animation = &"walk_jog_run/turn_right_45s"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_j7y0d"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k0cbc"]
+graph_offset = Vector2(108, 224)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_uqj7a")
+nodes/Animation/position = Vector2(319.44, 381.553)
+"nodes/SET_F[10]/node" = SubResource("AnimationNodeTimeScale_j7y0d")
+"nodes/SET_F[10]/position" = Vector2(563.053, 517.073)
+nodes/output/position = Vector2(826.667, 506.667)
+node_connections = [&"SET_F[10]", 0, &"Animation", &"output", 0, &"SET_F[10]"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_oabr1"]
+filters = ["char/Skeleton3D:Root"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvrl8"]
+animation = &"walk_jog_run/walk_fwd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8xb8h"]
+animation = &"walk_jog_run/turn_left_45s"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sh8oh"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pfw83"]
+graph_offset = Vector2(202.964, 177.408)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_oabr1")
+nodes/Add2/position = Vector2(780, 410)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8xb8h")
+nodes/Animation/position = Vector2(270, 540)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_gvrl8")
+"nodes/Animation 2/position" = Vector2(390, 310)
+"nodes/SET_F[10]/node" = SubResource("AnimationNodeTimeScale_sh8oh")
+"nodes/SET_F[10]/position" = Vector2(500, 450)
+nodes/output/position = Vector2(986.667, 373.333)
+node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"SET_F[10]", &"SET_F[10]", 0, &"Animation", &"output", 0, &"Add2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84qrw"]
+animation = &"walk_jog_run/walk_fwd"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeBlendTree_da2v0")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_i6s4s")
+blend_point_1/pos = Vector2(0, 0.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kfjrj")
+blend_point_2/pos = Vector2(-0.1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_b7e4s")
+blend_point_3/pos = Vector2(0.1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_gul4e")
+blend_point_4/pos = Vector2(0, -0.1)
+blend_point_5/node = SubResource("AnimationNodeBlendTree_ibcnr")
+blend_point_5/pos = Vector2(1, 0)
+blend_point_6/node = SubResource("AnimationNodeBlendTree_nirgt")
+blend_point_6/pos = Vector2(-1, 0)
+blend_point_7/node = SubResource("AnimationNodeBlendTree_k0cbc")
+blend_point_7/pos = Vector2(0.1, -0.9)
+blend_point_8/node = SubResource("AnimationNodeBlendTree_pfw83")
+blend_point_8/pos = Vector2(-0.1, -0.9)
+blend_point_9/node = SubResource("AnimationNodeAnimation_84qrw")
+blend_point_9/pos = Vector2(0, 0.7)

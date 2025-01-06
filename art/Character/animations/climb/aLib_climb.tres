@@ -1,0 +1,30 @@
+[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://c0vsckh87and1"]
+
+[ext_resource type="Animation" uid="uid://bj6tovf64qqr8" path="res://art/Character/animations/climb/climb_dn.tres" id="1_ystjw"]
+[ext_resource type="Animation" uid="uid://cqno5nhodyi6y" path="res://art/Character/animations/climb/climb_idle.tres" id="2_5nbxq"]
+[ext_resource type="Animation" uid="uid://biv5xhbajtpla" path="res://art/Character/animations/climb/climb_ledgeVault.tres" id="3_wviwa"]
+[ext_resource type="Animation" uid="uid://r3t6qtevno1y" path="res://art/Character/animations/climb/climb_left.tres" id="4_segfn"]
+[ext_resource type="Animation" uid="uid://d3c4bplk7845a" path="res://art/Character/animations/climb/climb_look_dn.tres" id="5_aibm6"]
+[ext_resource type="Animation" uid="uid://xkd2b5mf2fd2" path="res://art/Character/animations/climb/climb_look_left.tres" id="6_h831d"]
+[ext_resource type="Animation" uid="uid://xgw8fyr4lwhq" path="res://art/Character/animations/climb/climb_look_right.tres" id="7_t6jk6"]
+[ext_resource type="Animation" uid="uid://bkq34h5lgj7p7" path="res://art/Character/animations/climb/climb_look_up.tres" id="8_r1s8i"]
+[ext_resource type="Animation" uid="uid://cc3cma8oqjdww" path="res://art/Character/animations/climb/climb_right.tres" id="9_jvaeg"]
+[ext_resource type="Animation" uid="uid://yfe57xiftphe" path="res://art/Character/animations/climb/climb_up.tres" id="10_g8dsr"]
+[ext_resource type="Animation" uid="uid://hrq2pb7e0no2" path="res://art/Character/animations/climb/climb_up_left.tres" id="11_yo4q4"]
+[ext_resource type="Animation" uid="uid://b2qsro0uugm3l" path="res://art/Character/animations/climb/climb_up_right.tres" id="12_7o0ju"]
+
+[resource]
+_data = {
+"climb_dn": ExtResource("1_ystjw"),
+"climb_idle": ExtResource("2_5nbxq"),
+"climb_ledgeVault": ExtResource("3_wviwa"),
+"climb_left": ExtResource("4_segfn"),
+"climb_look_dn": ExtResource("5_aibm6"),
+"climb_look_left": ExtResource("6_h831d"),
+"climb_look_right": ExtResource("7_t6jk6"),
+"climb_look_up": ExtResource("8_r1s8i"),
+"climb_right": ExtResource("9_jvaeg"),
+"climb_up": ExtResource("10_g8dsr"),
+"climb_up_left": ExtResource("11_yo4q4"),
+"climb_up_right": ExtResource("12_7o0ju")
+}

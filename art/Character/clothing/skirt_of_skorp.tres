@@ -1,0 +1,35 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://cafrak15dcwnl"]
+
+[sub_resource type="Gradient" id="Gradient_3s7f0"]
+offsets = PackedFloat32Array(0.0327103, 0.504673, 1)
+colors = PackedColorArray(0.245077, 0, 0.0492387, 1, 0, 0, 0, 1, 0.401428, 0.488723, 0.311897, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ex3ms"]
+gradient = SubResource("Gradient_3s7f0")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_4128w"]
+offsets = PackedFloat32Array(0.443925, 0.635514, 0.682243)
+colors = PackedColorArray(0, 0, 0, 1, 0.57966, 0.0328807, 9.62615e-08, 1, 0.458405, 0.458405, 0.458405, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5gcc8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tr64"]
+color_ramp = SubResource("Gradient_4128w")
+noise = SubResource("FastNoiseLite_5gcc8")
+
+[sub_resource type="Gradient" id="Gradient_cgsjy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.457944, 0.794393, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.147672, 0.147672, 0.147672, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqaja"]
+gradient = SubResource("Gradient_cgsjy")
+fill_from = Vector2(0, 0.534188)
+fill_to = Vector2(0, 1)
+
+[resource]
+albedo_texture = SubResource("GradientTexture2D_ex3ms")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_jqaja")
+detail_albedo = SubResource("NoiseTexture2D_2tr64")

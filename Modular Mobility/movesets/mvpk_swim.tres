@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="mvpk_area_dep" load_steps=3 format=3 uid="uid://dijgug6xnkk83"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cl5ymw2k40a1r" path="res://art/Character/animator components/swim_root.tres" id="1_mx7rd"]
+[ext_resource type="Script" path="res://Modular Mobility/mvpk_areaDependant.gd" id="1_xhnu8"]
+
+[resource]
+script = ExtResource("1_xhnu8")
+area_type = "water"
+name = "swim"
+anim_tree = ExtResource("1_mx7rd")

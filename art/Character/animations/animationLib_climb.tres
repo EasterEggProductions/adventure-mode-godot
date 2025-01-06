@@ -1,0 +1,30 @@
+[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://dg1aitbg1i77i"]
+
+[ext_resource type="Animation" uid="uid://bj6tovf64qqr8" path="res://art/Character/animations/climb/climb_dn.tres" id="1_8et3h"]
+[ext_resource type="Animation" uid="uid://cqno5nhodyi6y" path="res://art/Character/animations/climb/climb_idle.tres" id="2_p05fu"]
+[ext_resource type="Animation" uid="uid://r3t6qtevno1y" path="res://art/Character/animations/climb/climb_left.tres" id="3_a05wj"]
+[ext_resource type="Animation" uid="uid://d3c4bplk7845a" path="res://art/Character/animations/climb/climb_look_dn.tres" id="4_3ycur"]
+[ext_resource type="Animation" uid="uid://xkd2b5mf2fd2" path="res://art/Character/animations/climb/climb_look_left.tres" id="5_1yxtx"]
+[ext_resource type="Animation" uid="uid://xgw8fyr4lwhq" path="res://art/Character/animations/climb/climb_look_right.tres" id="6_u4lqn"]
+[ext_resource type="Animation" uid="uid://bkq34h5lgj7p7" path="res://art/Character/animations/climb/climb_look_up.tres" id="7_y5y38"]
+[ext_resource type="Animation" uid="uid://cc3cma8oqjdww" path="res://art/Character/animations/climb/climb_right.tres" id="8_estok"]
+[ext_resource type="Animation" uid="uid://yfe57xiftphe" path="res://art/Character/animations/climb/climb_up.tres" id="9_0fe61"]
+[ext_resource type="Animation" uid="uid://hrq2pb7e0no2" path="res://art/Character/animations/climb/climb_up_left.tres" id="10_10v38"]
+[ext_resource type="Animation" uid="uid://b2qsro0uugm3l" path="res://art/Character/animations/climb/climb_up_right.tres" id="11_ex2w8"]
+[ext_resource type="Animation" uid="uid://biv5xhbajtpla" path="res://art/Character/animations/climb/climb_ledgeVault.tres" id="12_gttdd"]
+
+[resource]
+_data = {
+"climb_dn": ExtResource("1_8et3h"),
+"climb_idle": ExtResource("2_p05fu"),
+"climb_ledgeVault": ExtResource("12_gttdd"),
+"climb_left": ExtResource("3_a05wj"),
+"climb_look_dn": ExtResource("4_3ycur"),
+"climb_look_left": ExtResource("5_1yxtx"),
+"climb_look_right": ExtResource("6_u4lqn"),
+"climb_look_up": ExtResource("7_y5y38"),
+"climb_right": ExtResource("8_estok"),
+"climb_up": ExtResource("9_0fe61"),
+"climb_up_left": ExtResource("10_10v38"),
+"climb_up_right": ExtResource("11_ex2w8")
+}

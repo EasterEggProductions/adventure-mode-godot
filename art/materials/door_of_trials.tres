@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c6pfclkom172s"]
+
+[ext_resource type="Texture2D" uid="uid://p0muu4jr202m" path="res://art/textures/door_of_trials_128.png" id="1_h226i"]
+
+[resource]
+shading_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_h226i")

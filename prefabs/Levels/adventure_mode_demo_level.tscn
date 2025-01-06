@@ -1,0 +1,172 @@
+[gd_scene load_steps=27 format=3 uid="uid://8hu74ym7skte"]
+
+[ext_resource type="PackedScene" uid="uid://b803c7alksaap" path="res://art/meshes/adventure_mode_demoLevel.glb" id="1_t2rfk"]
+[ext_resource type="Texture2D" uid="uid://ssphl0m4lkp8" path="res://art/textures/grassdirt_32.png" id="2_0pgx1"]
+[ext_resource type="Shader" uid="uid://cv03aa201t3lx" path="res://art/shaders/adventure_mode_demo_level.tres" id="2_tsmgt"]
+[ext_resource type="Texture2D" uid="uid://cs1hklho2muo4" path="res://art/textures/cobble_stone_32.png" id="2_uqora"]
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="3_bv2ee"]
+[ext_resource type="AudioStream" uid="uid://b0vppucmmsow7" path="res://art/audio/sfx/watrfall_turbulent-river-waterfall_fc_mumlava_zazzsounddesign_cc0.ogg" id="6_gfhy8"]
+
+[sub_resource type="Gradient" id="Gradient_5dlxk"]
+offsets = PackedFloat32Array(0.289286, 0.625)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n4rqb"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dmm2m"]
+seamless = true
+color_ramp = SubResource("Gradient_5dlxk")
+noise = SubResource("FastNoiseLite_n4rqb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wpwv"]
+albedo_texture = ExtResource("2_0pgx1")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_dmm2m")
+detail_uv_layer = 1
+detail_albedo = ExtResource("2_0pgx1")
+uv1_scale = Vector3(0.17, 0.17, 0.17)
+uv1_offset = Vector3(0.165, 0, 0)
+uv1_triplanar = true
+uv2_scale = Vector3(0.37, 0.37, 0.37)
+uv2_offset = Vector3(0.21, -0.23, 0.22)
+uv2_triplanar = true
+
+[sub_resource type="Gradient" id="Gradient_nsok3"]
+colors = PackedColorArray(0, 0, 0, 1, 0.194349, 0.194349, 0.194349, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f1db5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pinb4"]
+seamless = true
+color_ramp = SubResource("Gradient_nsok3")
+noise = SubResource("FastNoiseLite_f1db5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlh0t"]
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.588235, 0.47451, 0.372549, 1)
+albedo_texture = ExtResource("3_bv2ee")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_pinb4")
+detail_uv_layer = 1
+detail_albedo = ExtResource("3_bv2ee")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv2_scale = Vector3(0.025, 0.025, 0.025)
+uv2_triplanar = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp4xn"]
+load_path = "res://.godot/imported/grassdirt_32.png-7915a9cb1d8e173670b994b60ab44018.s3tc.ctex"
+
+[sub_resource type="Gradient" id="Gradient_okv7r"]
+offsets = PackedFloat32Array(0, 0.389286)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oxam7"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3wt8w"]
+color_ramp = SubResource("Gradient_okv7r")
+noise = SubResource("FastNoiseLite_oxam7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vgr0"]
+albedo_color = Color(0.231373, 0.168627, 0.141176, 1)
+albedo_texture = ExtResource("3_bv2ee")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_3wt8w")
+detail_uv_layer = 1
+detail_albedo = SubResource("CompressedTexture2D_qp4xn")
+uv1_scale = Vector3(0.17, 0.17, 0.17)
+uv1_offset = Vector3(0.165, 0, 0)
+uv1_triplanar = true
+uv2_scale = Vector3(0.37, 0.37, 0.37)
+uv2_offset = Vector3(0.21, -0.23, 0.22)
+uv2_triplanar = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hfblt"]
+frequency = 0.0015
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_he5yt"]
+seamless = true
+noise = SubResource("FastNoiseLite_hfblt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4kcb"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0.513726, 0.301961, 0.0588235, 1)
+albedo_texture = ExtResource("2_uqora")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_he5yt")
+detail_uv_layer = 1
+detail_albedo = ExtResource("2_uqora")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv2_scale = Vector3(0.125, 0.125, 0.125)
+uv2_triplanar = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6ace"]
+render_priority = 0
+shader = ExtResource("2_tsmgt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afdip"]
+size = Vector3(134.245, 8, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v83tl"]
+size = Vector3(102.805, 8, 53.2587)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cjs5"]
+size = Vector3(51.8698, 8, 68.5731)
+
+[node name="adventure_mode_demoLevel" instance=ExtResource("1_t2rfk")]
+
+[node name="terrain" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4wpwv")
+surface_material_override/1 = SubResource("StandardMaterial3D_tlh0t")
+surface_material_override/2 = SubResource("StandardMaterial3D_7vgr0")
+
+[node name="Chamber of chamfers" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_g4kcb")
+
+[node name="elevator" parent="." index="2"]
+visible = false
+
+[node name="river" parent="." index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_b6ace")
+
+[node name="Door of Trials_R" parent="." index="5"]
+visible = false
+
+[node name="Door of Trials Topper" parent="." index="6"]
+visible = false
+
+[node name="Door of Trials_L" parent="." index="7"]
+visible = false
+
+[node name="sfx_waterfall" type="AudioStreamPlayer3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.9286, 19.7434, -56.8569)
+stream = ExtResource("6_gfhy8")
+pitch_scale = 0.75
+autoplay = true
+
+[node name="sfx_waterfall2" type="AudioStreamPlayer3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.866, 47.469, -181.232)
+stream = ExtResource("6_gfhy8")
+pitch_scale = 0.75
+autoplay = true
+
+[node name="water" type="Area3D" parent="." index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.4057, 19.0947, -162.705)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.1234, -4, 0)
+shape = SubResource("BoxShape3D_afdip")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="water" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.4033, -4, 66.6293)
+shape = SubResource("BoxShape3D_v83tl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="water" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.936, -4, 85.9071)
+shape = SubResource("BoxShape3D_6cjs5")

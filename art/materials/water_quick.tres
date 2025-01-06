@@ -1,0 +1,81 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c6llc8lhqck4e"]
+
+[sub_resource type="Shader" id="Shader_ocrmr"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 newOffset = vec2(uv1_offset.x+ (TIME * 0.005), uv1_offset.y + (TIME * 0.01));
+	vec2 base_uv = UV*uv1_scale.xy+newOffset.xy;
+	
+	vec2 overbiggen_Offset = vec2(uv1_offset.x+ (TIME * 0.004), uv1_offset.y + (TIME * 0.003));
+	vec2 overbiggen_uv = UV*uv1_scale.xy+overbiggen_Offset.xy;
+	
+	vec4 tex1 = texture(texture_albedo,base_uv);
+	vec4 tex2 = texture(texture_albedo,overbiggen_uv);
+	
+	vec4 albedo_tex = (tex1 * ((TIME * 0.005))) + (tex2 * (1.0 - (TIME * 0.005)));
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	//ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_pr7c6"]
+offsets = PackedFloat32Array(0, 0.846154, 1)
+colors = PackedColorArray(0, 0, 1, 0.501961, 0.101961, 0.509804, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4bqai"]
+noise_type = 2
+frequency = 0.075
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dh1qs"]
+seamless = true
+color_ramp = SubResource("Gradient_pr7c6")
+noise = SubResource("FastNoiseLite_4bqai")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_ocrmr")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_dh1qs")

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bmho6d4v6f88s"]
+
+[sub_resource type="Gradient" id="Gradient_fui4o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xmcda"]
+gradient = SubResource("Gradient_fui4o")
+fill = 1
+fill_from = Vector2(0.401709, 0.57265)
+
+[resource]
+albedo_color = Color(0.905882, 0.682353, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.1
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 0.05
+normal_scale = -6.95
+normal_texture = SubResource("GradientTexture2D_xmcda")

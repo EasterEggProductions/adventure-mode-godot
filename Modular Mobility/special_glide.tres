@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MovementPackage" load_steps=3 format=3 uid="uid://bq0to353u1bnu"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cf7bwupncf1cj" path="res://art/Character/animator components/glide_root.tres" id="1_lx5ql"]
+[ext_resource type="Script" path="res://Modular Mobility/MovementPackage.gd" id="1_nkxdy"]
+
+[resource]
+script = ExtResource("1_nkxdy")
+name = "glide"
+anim_tree = ExtResource("1_lx5ql")

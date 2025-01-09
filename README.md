@@ -83,5 +83,5 @@ To enhance your development workflow, the following tools are recommended:
 - **[Visual Studio Code](https://code.visualstudio.com/)**: A lightweight and versatile code editor available on various platforms.
   - Add-on: **[Comment Anchors](https://marketplace.visualstudio.com/items?itemName=ExodiusStudios.comment-anchors)**: Helps you organize and keep track of tasks or specific sections of code while working.
 
-- **[GodotEnv](https://github.com/you-win/GodotEnv)**: A tool for managing Godot addons efficiently. It simplifies the process of adding, updating, and organizing addons within your project. It is still young, but referencing other addons of specific versions seems like a good capability to keep the repository lean. This tool may become required to properly set up the project at some point. 
+- **[GodotEnv](https://github.com/chickensoft-games/GodotEnv)**: A tool for managing Godot addons efficiently. It simplifies the process of adding, updating, and organizing addons within your project. It is still young, but referencing other addons of specific versions seems like a good capability to keep the repository lean. This tool may become required to properly set up the project at some point. 
 

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendSpace2D" load_steps=25 format=3 uid="uid://dukebmuejahjs"]
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=29 format=3 uid="uid://dukebmuejahjs"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qyuku"]
 animation = &"walk_jog_run/jog_fwd"
@@ -26,18 +26,29 @@ animation = &"walk_jog_run/idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gul4e"]
 animation = &"walk_jog_run/idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m4rsm"]
+animation = &"walk_jog_run/jog_fwd"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vl7et"]
 animation = &"walk_jog_run/turn_right_45s"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_o8rr8"]
+filter_enabled = true
+filters = ["char/Skeleton3D:Root"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_stou0"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ibcnr"]
-graph_offset = Vector2(-318, -70)
+graph_offset = Vector2(-540, -159)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vl7et")
-nodes/Animation/position = Vector2(-285.56, 83.0867)
+nodes/Animation/position = Vector2(-460, 180)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_m4rsm")
+"nodes/Animation 2/position" = Vector2(-440, -40)
+"nodes/SET_F[2]/node" = SubResource("AnimationNodeAdd2_o8rr8")
+"nodes/SET_F[2]/position" = Vector2(120, -60)
 "nodes/SET_F[5]/node" = SubResource("AnimationNodeTimeScale_stou0")
-"nodes/SET_F[5]/position" = Vector2(0, 106.667)
-node_connections = [&"SET_F[5]", 0, &"Animation", &"output", 0, &"SET_F[5]"]
+"nodes/SET_F[5]/position" = Vector2(-100, 140)
+node_connections = [&"SET_F[2]", 0, &"Animation 2", &"SET_F[2]", 1, &"SET_F[5]", &"SET_F[5]", 0, &"Animation", &"output", 0, &"SET_F[2]"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6275b"]
 animation = &"walk_jog_run/jog_fwd"
@@ -52,7 +63,7 @@ filters = ["char/Skeleton3D:Root"]
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_eol5t"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nirgt"]
-graph_offset = Vector2(20.845, 306.667)
+graph_offset = Vector2(-30.9415, 231.376)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lpm44")
 nodes/Animation/position = Vector2(80, 660)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6275b")
@@ -64,22 +75,30 @@ nodes/Animation/position = Vector2(80, 660)
 nodes/output/position = Vector2(1066.67, 533.333)
 node_connections = [&"SET_F[2]", 0, &"Animation 2", &"SET_F[2]", 1, &"SET_F[5]", &"SET_F[5]", 0, &"Animation", &"output", 0, &"SET_F[2]"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3mqms"]
+animation = &"walk_jog_run/walk_fwd"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uqj7a"]
 animation = &"walk_jog_run/turn_right_45s"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_j7y0d"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k0cbc"]
-graph_offset = Vector2(108, 224)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_uqj7a")
-nodes/Animation/position = Vector2(319.44, 381.553)
-"nodes/SET_F[10]/node" = SubResource("AnimationNodeTimeScale_j7y0d")
-"nodes/SET_F[10]/position" = Vector2(563.053, 517.073)
-nodes/output/position = Vector2(826.667, 506.667)
-node_connections = [&"SET_F[10]", 0, &"Animation", &"output", 0, &"SET_F[10]"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_oabr1"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_gsi6r"]
+filter_enabled = true
 filters = ["char/Skeleton3D:Root"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k0cbc"]
+graph_offset = Vector2(-107, 256)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_uqj7a")
+nodes/Animation/position = Vector2(80, 600)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3mqms")
+"nodes/Animation 2/position" = Vector2(180, 440)
+"nodes/SET_F[10]/node" = SubResource("AnimationNodeTimeScale_j7y0d")
+"nodes/SET_F[10]/position" = Vector2(440, 600)
+"nodes/SET_F[2]/node" = SubResource("AnimationNodeAdd2_gsi6r")
+"nodes/SET_F[2]/position" = Vector2(620.246, 464.519)
+nodes/output/position = Vector2(826.667, 506.667)
+node_connections = [&"SET_F[10]", 0, &"Animation", &"SET_F[2]", 0, &"Animation 2", &"SET_F[2]", 1, &"SET_F[10]", &"output", 0, &"SET_F[2]"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvrl8"]
 animation = &"walk_jog_run/walk_fwd"
@@ -89,18 +108,21 @@ animation = &"walk_jog_run/turn_left_45s"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sh8oh"]
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_oabr1"]
+filters = ["char/Skeleton3D:Root"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pfw83"]
-graph_offset = Vector2(202.964, 177.408)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_oabr1")
-nodes/Add2/position = Vector2(780, 410)
+graph_offset = Vector2(-26.036, 170.408)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8xb8h")
-nodes/Animation/position = Vector2(270, 540)
+nodes/Animation/position = Vector2(160, 560)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_gvrl8")
 "nodes/Animation 2/position" = Vector2(390, 310)
 "nodes/SET_F[10]/node" = SubResource("AnimationNodeTimeScale_sh8oh")
-"nodes/SET_F[10]/position" = Vector2(500, 450)
+"nodes/SET_F[10]/position" = Vector2(540, 520)
+"nodes/SET_F[2]/node" = SubResource("AnimationNodeAdd2_oabr1")
+"nodes/SET_F[2]/position" = Vector2(780, 410)
 nodes/output/position = Vector2(986.667, 373.333)
-node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"SET_F[10]", &"SET_F[10]", 0, &"Animation", &"output", 0, &"Add2"]
+node_connections = [&"SET_F[10]", 0, &"Animation", &"SET_F[2]", 0, &"Animation 2", &"SET_F[2]", 1, &"SET_F[10]", &"output", 0, &"SET_F[2]"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84qrw"]
 animation = &"walk_jog_run/walk_fwd"

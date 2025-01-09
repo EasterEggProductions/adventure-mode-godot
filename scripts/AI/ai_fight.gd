@@ -96,7 +96,6 @@ func in_spot_range(_delta):
 	var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_d).x,-( thrall.global_basis.inverse() * -go_d).z)
 	thrall.desired_turn = transformed_move_dir.x
 	state = ATT_STATE.IDLE
-	thrall.attack_light = false
 	
 func in_attack_range(_delta):
 	thrall.combat_mode = true
@@ -140,7 +139,6 @@ func attacking():
 
 func retreating():
 	#print("RETREAT")
-	thrall.attack_light = false
 	# move away from player + some random side to side offset
 	thrall.enque_action("block")
 	goTo = thrall.global_position + ((thrall.global_position - player.global_position).normalized() * 2)
@@ -154,7 +152,6 @@ func retreating():
 
 func dodging():
 	#print("DODGE!")
-	thrall.attack_light = false
 	# move near player strafe around them
 	thrall.dodge = true
 	goTo = thrall.global_position + thrall.global_basis.x

@@ -213,7 +213,7 @@ ganty_thing = NodePath("../../cam_gantry_playerFollow")
 vignette = NodePath("../../user_interface/vinyette")
 target_locker = ExtResource("2_xa5ur")
 headsUpDisplay = NodePath("../../user_interface/HUD")
-action_prompt = NodePath("../../user_interface/HUD/Action Prompt")
+action_prompt = NodePath("../../user_interface/HUD/Action_prompt")
 
 [node name="Multplayer Manager" type="Node" parent="." node_paths=PackedStringArray("server_menu", "cam_gant", "cam_actu", "ip_input", "outfit_control")]
 script = ExtResource("3_608j4")
@@ -924,7 +924,7 @@ text = "412"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Action Prompt" parent="user_interface/HUD" instance=ExtResource("18_5ww34")]
+[node name="Action_prompt" parent="user_interface/HUD" instance=ExtResource("18_5ww34")]
 layout_mode = 1
 
 [node name="menu_start" type="Control" parent="user_interface/HUD"]

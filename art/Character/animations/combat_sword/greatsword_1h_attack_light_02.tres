@@ -424,7 +424,7 @@ tracks/58/keys = {
 "args": [],
 "method": &"anim_track_look"
 }, {
-"args": [4.0],
+"args": [4.0, {}],
 "method": &"anim_hurtbox_activate_right"
 }]
 }

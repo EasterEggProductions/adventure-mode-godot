@@ -16,3 +16,4 @@ addons/*
 !addons/.editorconfig
 
 .vscode
+.addons/*

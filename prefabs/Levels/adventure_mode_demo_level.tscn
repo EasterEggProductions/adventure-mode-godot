@@ -20,6 +20,7 @@ noise = SubResource("FastNoiseLite_n4rqb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wpwv"]
 albedo_texture = ExtResource("2_0pgx1")
+metallic_specular = 0.05
 detail_enabled = true
 detail_mask = SubResource("NoiseTexture2D_dmm2m")
 detail_uv_layer = 1
@@ -46,6 +47,7 @@ shading_mode = 2
 specular_mode = 2
 albedo_color = Color(0.588235, 0.47451, 0.372549, 1)
 albedo_texture = ExtResource("3_bv2ee")
+metallic_specular = 0.05
 detail_enabled = true
 detail_mask = SubResource("NoiseTexture2D_pinb4")
 detail_uv_layer = 1

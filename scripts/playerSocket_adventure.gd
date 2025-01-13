@@ -45,6 +45,20 @@ func _ready():
 	dot.name = "~dot~"
 
 
+	# Test maping for linux SDL PowerA controller, 
+	# I've had a lot of problems with them, all 
+	# kernel mappings and other applications work,
+	# But not Godot :< 
+	# The mapping that is recognised:
+	#var mapstring = "03000000d62000000240000001010000,PowerA Xbox One Spectra Infinity,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
+	# Modified mapping for new GUID:
+	var mapstring = "03000000d62000003220000001010000,PowerA Xbox One Spectra Infinity White,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
+	Input.add_joy_mapping(mapstring, true)
+	# Test to see if mapping works
+#	for x in Input.get_connected_joypads():
+#		print("Controller: %s\n%s\nInfo:\n%s" % [Input.get_joy_name(x), Input.get_joy_guid(x), Input.get_joy_info(x)])
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @export var deb_action = ""
 @export var deb_act = false

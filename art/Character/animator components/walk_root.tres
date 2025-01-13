@@ -1,6 +1,6 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=66 format=3 uid="uid://coym3jr0vat8x"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=45 format=3 uid="uid://coym3jr0vat8x"]
 
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dukebmuejahjs" path="res://art/Character/animator components/walk_blendspace.tres" id="1_f2otq"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://10yh2iq5uoji" path="res://art/Character/animator components/small_components/sm_movementTree_basic.tres" id="1_5ey4x"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_guvl1"]
 animation = &"combat_sword/combat_attack_r-l"
@@ -93,84 +93,6 @@ blend_point_1/node = SubResource("AnimationNodeBlendTree_12hc2")
 blend_point_1/pos = 1.0
 value_label = "0"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kx5y5"]
-animation = &"walk_jog_run/run_fwd"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e7i6k"]
-animation = &"walk_jog_run/run_fwd"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fxhkq"]
-animation = &"walk/turn_left 2"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1tyyi"]
-animation = &"walk_jog_run/lean_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxf7h"]
-animation = &"walk_jog_run/run_fwd"
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_hslnk"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_tq0lo"]
-filter_enabled = true
-filters = ["char/Skeleton3D:Root", "char/Skeleton3D:chest", "char/Skeleton3D:head", "char/Skeleton3D:hips", "char/Skeleton3D:neck", "char/Skeleton3D:spine"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_r4avb"]
-graph_offset = Vector2(-540.537, 75.7385)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_qxf7h")
-nodes/Animation/position = Vector2(-360, 40)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_fxhkq")
-"nodes/Animation 2/position" = Vector2(-390, 380)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_1tyyi")
-"nodes/Animation 3/position" = Vector2(-620, 310)
-"nodes/SET_F[0-5] /node" = SubResource("AnimationNodeAdd2_hslnk")
-"nodes/SET_F[0-5] /position" = Vector2(140, 240)
-"nodes/SET_F[1]/node" = SubResource("AnimationNodeAdd2_tq0lo")
-"nodes/SET_F[1]/position" = Vector2(3, 93)
-node_connections = [&"SET_F[0-5] ", 0, &"SET_F[1]", &"SET_F[0-5] ", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation", &"SET_F[1]", 1, &"Animation 3", &"output", 0, &"SET_F[0-5] "]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csgdf"]
-animation = &"walk/turn_right 2"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pan1y"]
-animation = &"walk_jog_run/lean_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_egx8i"]
-animation = &"walk_jog_run/run_fwd"
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_t1s07"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jh6at"]
-filter_enabled = true
-filters = ["char/Skeleton3D:Root", "char/Skeleton3D:chest", "char/Skeleton3D:head", "char/Skeleton3D:hips", "char/Skeleton3D:neck", "char/Skeleton3D:spine"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_skhmp"]
-graph_offset = Vector2(-478.227, -4.95456)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_egx8i")
-nodes/Animation/position = Vector2(-250, 77)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_csgdf")
-"nodes/Animation 2/position" = Vector2(-360, 250)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_pan1y")
-"nodes/Animation 3/position" = Vector2(-290, 420)
-"nodes/SET_F[0-5]/node" = SubResource("AnimationNodeAdd2_t1s07")
-"nodes/SET_F[0-5]/position" = Vector2(-40, 340)
-"nodes/SET_F[1]/node" = SubResource("AnimationNodeAdd2_jh6at")
-"nodes/SET_F[1]/position" = Vector2(37, 111)
-node_connections = [&"SET_F[0-5]", 0, &"Animation 2", &"SET_F[0-5]", 1, &"Animation 3", &"SET_F[1]", 0, &"Animation", &"SET_F[1]", 1, &"SET_F[0-5]", &"output", 0, &"SET_F[1]"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_563t5"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_kx5y5")
-blend_point_0/pos = Vector2(0, -0.7)
-blend_point_1/node = SubResource("AnimationNodeAnimation_e7i6k")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeBlendTree_r4avb")
-blend_point_2/pos = Vector2(-0.9, 0.9)
-blend_point_3/node = SubResource("AnimationNodeBlendTree_skhmp")
-blend_point_3/pos = Vector2(0.9, 0.9)
-blend_point_4/node = SubResource("AnimationNodeBlendTree_r4avb")
-blend_point_4/pos = Vector2(-1, -0.9)
-blend_point_5/node = SubResource("AnimationNodeBlendTree_skhmp")
-blend_point_5/pos = Vector2(1, -0.9)
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m20vb"]
 animation = &"aLib_combat_sword/combat_idle_crouch"
 
@@ -202,96 +124,68 @@ animation = &"walk_jog_run/airborne"
 advance_mode = 2
 advance_expression = "is_on_floor()"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_slw4a"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_86anj"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4hx0r"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bibi4"]
-xfade_time = 0.01
-advance_mode = 2
-advance_expression = "desired_move.y > 0.5"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ip24d"]
-xfade_time = 0.5
-advance_mode = 2
-advance_expression = "is_on_floor() == false"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bg5t4"]
-advance_mode = 2
-advance_expression = "is_on_floor() == true"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2png7"]
 advance_mode = 2
 advance_expression = "is_on_floor() == false"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_km826"]
-advance_mode = 2
-advance_expression = "desired_move.y > 0.5"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgr03"]
-xfade_time = 0.25
-advance_mode = 2
-advance_expression = "sprint == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d5g8a"]
-xfade_time = 0.25
-advance_mode = 2
-advance_expression = "sprint == false"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqs0k"]
-advance_mode = 2
-advance_expression = "demo_sit_lounge == true"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uitot"]
 xfade_time = 0.1
 advance_mode = 2
 advance_expression = "demo_sit_lounge == false"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f21mm"]
-xfade_time = 0.1
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3k80"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kbh8"]
-xfade_time = 0.1
-advance_mode = 2
-advance_expression = "health_current <= 0"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5mpbv"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ecnr0"]
 advance_mode = 2
 advance_expression = "action_q_check(\"dodge\")"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l6c78"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxsd3"]
 xfade_time = 0.75
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujaxa"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aoli6"]
+advance_mode = 2
+advance_expression = "desired_move.y > 0.5"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ihmcq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kewg"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "is_on_floor() == false
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_58civ"]
+advance_mode = 2
+advance_expression = "is_on_floor() == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sx767"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eig5m"]
+advance_mode = 2
+advance_expression = "desired_move.y > 0.5"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_anw0w"]
+advance_mode = 2
+advance_expression = "desired_move.y < -0.5 && is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_birn4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytnux"]
 xfade_time = 0.1
 advance_mode = 2
 advance_expression = "action_q_check(\"spell\")"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8s0ii"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5s3er"]
 xfade_time = 0.1
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fnkqw"]
-xfade_time = 0.5
-advance_mode = 2
-advance_expression = "desired_move.y < -0.5 && is_on_floor()"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lcw33"]
-xfade_time = 0.5
 advance_mode = 2
 advance_expression = "desired_move.y > 0.5"
 
@@ -301,10 +195,6 @@ states/BlendTree/position = Vector2(-173, 594)
 states/End/position = Vector2(-5, 204.5)
 "states/Jump w vel/node" = SubResource("AnimationNodeBlendSpace1D_dcyjj")
 "states/Jump w vel/position" = Vector2(495.327, -156.972)
-"states/MOVE sprint/node" = SubResource("AnimationNodeBlendSpace2D_563t5")
-"states/MOVE sprint/position" = Vector2(281, -159)
-"states/MOVE walk/node" = ExtResource("1_f2otq")
-"states/MOVE walk/position" = Vector2(224.667, 100)
 states/Start/position = Vector2(-14.1667, 99.9995)
 states/crouch/node = SubResource("AnimationNodeAnimation_m20vb")
 states/crouch/position = Vector2(513.5, 205)
@@ -312,6 +202,8 @@ states/death/node = SubResource("AnimationNodeAnimation_p78x1")
 states/death/position = Vector2(189, 242.5)
 states/dodgeroll/node = SubResource("AnimationNodeAnimation_xxu61")
 states/dodgeroll/position = Vector2(24.5, -216)
+states/mv/node = ExtResource("1_5ey4x")
+states/mv/position = Vector2(256, 100.165)
 states/sit_lounge_toStand/node = SubResource("AnimationNodeAnimation_x8s7q")
 states/sit_lounge_toStand/position = Vector2(-116.5, -81)
 states/sit_lounge_tscn/node = SubResource("AnimationNodeAnimation_t3rpe")
@@ -324,5 +216,5 @@ states/walk_land/node = SubResource("AnimationNodeAnimation_bj3bm")
 states/walk_land/position = Vector2(491.495, 102.416)
 states/walk_taking_off/node = SubResource("AnimationNodeAnimation_xf3j1")
 states/walk_taking_off/position = Vector2(494.619, -22.625)
-transitions = ["walk_airborne", "walk_land", SubResource("AnimationNodeStateMachineTransition_tddch"), "walk_land", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_slw4a"), "Jump w vel", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_86anj"), "Start", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_4hx0r"), "MOVE walk", "Jump w vel", SubResource("AnimationNodeStateMachineTransition_bibi4"), "MOVE walk", "walk_taking_off", SubResource("AnimationNodeStateMachineTransition_ip24d"), "walk_taking_off", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_bg5t4"), "walk_taking_off", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_2png7"), "MOVE sprint", "Jump w vel", SubResource("AnimationNodeStateMachineTransition_km826"), "MOVE walk", "MOVE sprint", SubResource("AnimationNodeStateMachineTransition_pgr03"), "MOVE sprint", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_d5g8a"), "MOVE walk", "sit_lounge_tscn", SubResource("AnimationNodeStateMachineTransition_xqs0k"), "sit_lounge_tscn", "sit_lounge_toStand", SubResource("AnimationNodeStateMachineTransition_uitot"), "sit_lounge_toStand", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_f21mm"), "MOVE walk", "death", SubResource("AnimationNodeStateMachineTransition_4kbh8"), "MOVE walk", "dodgeroll", SubResource("AnimationNodeStateMachineTransition_5mpbv"), "dodgeroll", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_l6c78"), "MOVE walk", "End", SubResource("AnimationNodeStateMachineTransition_ujaxa"), "MOVE walk", "spell", SubResource("AnimationNodeStateMachineTransition_ihmcq"), "spell", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_8s0ii"), "MOVE walk", "crouch", SubResource("AnimationNodeStateMachineTransition_fnkqw"), "crouch", "MOVE walk", SubResource("AnimationNodeStateMachineTransition_lcw33")]
-graph_offset = Vector2(-323, -41)
+transitions = ["walk_airborne", "walk_land", SubResource("AnimationNodeStateMachineTransition_tddch"), "Jump w vel", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_86anj"), "walk_taking_off", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_2png7"), "sit_lounge_tscn", "sit_lounge_toStand", SubResource("AnimationNodeStateMachineTransition_uitot"), "Start", "mv", SubResource("AnimationNodeStateMachineTransition_h3k80"), "mv", "dodgeroll", SubResource("AnimationNodeStateMachineTransition_ecnr0"), "dodgeroll", "mv", SubResource("AnimationNodeStateMachineTransition_qxsd3"), "mv", "Jump w vel", SubResource("AnimationNodeStateMachineTransition_aoli6"), "mv", "walk_taking_off", SubResource("AnimationNodeStateMachineTransition_0kewg"), "walk_taking_off", "mv", SubResource("AnimationNodeStateMachineTransition_58civ"), "walk_land", "mv", SubResource("AnimationNodeStateMachineTransition_sx767"), "crouch", "mv", SubResource("AnimationNodeStateMachineTransition_eig5m"), "mv", "crouch", SubResource("AnimationNodeStateMachineTransition_anw0w"), "spell", "mv", SubResource("AnimationNodeStateMachineTransition_birn4"), "mv", "spell", SubResource("AnimationNodeStateMachineTransition_ytnux"), "mv", "death", SubResource("AnimationNodeStateMachineTransition_5s3er")]
+graph_offset = Vector2(-178, 19)

@@ -1,6 +1,6 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=3 uid="uid://bvy120642v6uj"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=3 uid="uid://10yh2iq5uoji"]
 
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://ciqye8mtt71tr" path="res://art/Character/animations/combat_sword/z_blend_tree_strafe.tres" id="1_81klb"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://ciqye8mtt71tr" path="res://art/Character/animations/combat_sword/z_blend_tree_strafe.tres" id="1_afje2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lvj56"]
 animation = &"walk_jog_run/turn_right_45s"
@@ -16,12 +16,12 @@ animation = &"walk_jog_run/turn_left_45s"
 
 [resource]
 resource_name = "move_strafe-n-look"
-graph_offset = Vector2(-537.915, 16.2907)
+graph_offset = Vector2(-441.915, -4.70932)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_kb435")
 nodes/Animation/position = Vector2(-390, -10)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lvj56")
 "nodes/Animation 2/position" = Vector2(-410, 400)
-"nodes/MOVE strafe/node" = ExtResource("1_81klb")
+"nodes/MOVE strafe/node" = ExtResource("1_afje2")
 "nodes/MOVE strafe/position" = Vector2(-280, 170)
 "nodes/SET_F[50-01]/node" = SubResource("AnimationNodeTimeScale_kw0pj")
 "nodes/SET_F[50-01]/position" = Vector2(-80, 380)

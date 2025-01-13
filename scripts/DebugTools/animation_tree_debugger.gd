@@ -23,6 +23,8 @@ func do_tree():
 			message += "\n" + prop["name"]
 			message += " " + str(get(prop["name"]).is_playing())
 			message += " " + str(get(prop["name"]).get_current_node())
+			if "0/WalkSprint" in prop["name"]:
+				get(prop["name"]).travel("Start")
 	#print(get("parameters/playback"))
 	print(message)
 

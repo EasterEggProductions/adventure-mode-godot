@@ -313,6 +313,13 @@ func compile_new_anim_tree():
 				aset_BLOCK.append(item.name)
 			elif item.name.contains("JUMP"): # and item.name.contains("blend_position"):
 				aset_JUMP.append(item.name)
+		# This is a fix for the T-posing walk/sprint problem. 
+		# There is some error in nexted AnimationStateMachines automatically playing
+		# So here we manually call the problem child and start it.
+		# TODO - Make more generic, or find the cause of the error in starting
+		if item.name.contains("0/WalkSprint/playback"):
+				animation_tree.get(item.name).travel("Start")
+
 
 
 # SECTION Action Queue and buffer system

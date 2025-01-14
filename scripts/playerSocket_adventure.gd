@@ -52,8 +52,12 @@ func _ready():
 	# The mapping that is recognised:
 	#var mapstring = "03000000d62000000240000001010000,PowerA Xbox One Spectra Infinity,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
 	# Modified mapping for new GUID:
-	var mapstring = "03000000d62000003220000001010000,PowerA Xbox One Spectra Infinity White,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
-	Input.add_joy_mapping(mapstring, true)
+	var mapstrings = [
+		"03000000d62000003220000001010000,PowerA Xbox One Spectra Infinity White,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,",
+		"050000004d59475420436f6e74726f00,MYGT Bluetooth,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,"
+	]
+	for mapstring in mapstrings:
+		Input.add_joy_mapping(mapstring, true)
 	# Test to see if mapping works
 #	for x in Input.get_connected_joypads():
 #		print("Controller: %s\n%s\nInfo:\n%s" % [Input.get_joy_name(x), Input.get_joy_guid(x), Input.get_joy_info(x)])
@@ -125,19 +129,24 @@ func _collect_inputs(delta):
 		thrall.enque_action("spell")
 	
 	thrall.handle_movement(go_dir)
-	if Input.get_action_strength("p1_block") > 0.5:
-		if is_instance_valid(thrall.l_wep) && is_instance_valid(thrall.r_wep):
-			thrall.enque_action("attack_power")
-		else:
-			thrall.enque_action("block")	
-			if Input.is_action_just_released(player_prefix + "item_right_next"):
-				thrall.enque_action("blocked_attack")	
-	if Input.get_action_strength("p1_attack_light") > 0.5:
-		thrall.enque_action("attack_light")
-	if Input.get_action_strength("p1_attack_heavy") > 0.5:
-		thrall.enque_action("attack_heavy")
-	if Input.get_action_strength("p1_parry") > 0.5:
-		thrall.enque_action("attack_art")
+	if Input.is_action_pressed(player_prefix + "event_action"): 
+		# NOTE - In ER holding ^ this would bring up a quick item D-pad menu, and also do hand switching. 
+		# So this area could be refactored to more smoothly do that.
+		input_hand_switching()
+	else:
+		if Input.get_action_strength("p1_block") > 0.5:
+			if is_instance_valid(thrall.l_wep) && is_instance_valid(thrall.r_wep):
+				thrall.enque_action("attack_power")
+			else:
+				thrall.enque_action("block")	
+				if Input.is_action_just_released(player_prefix + "item_right_next"):
+					thrall.enque_action("blocked_attack")	
+		if Input.get_action_strength("p1_attack_light") > 0.5:
+			thrall.enque_action("attack_light")
+		if Input.get_action_strength("p1_attack_heavy") > 0.5:
+			thrall.enque_action("attack_heavy")
+		if Input.get_action_strength("p1_parry") > 0.5:
+			thrall.enque_action("attack_art")
 	
 	dot.global_position = thrall.global_position + go_dir
 
@@ -203,7 +212,6 @@ func _collect_inputs(delta):
 		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_dir).x,-( thrall.global_basis.inverse() * -go_dir).z)
 		thrall.desired_turn = transformed_move_dir.x
 		thrall.lock_targ_pos = Vector3.ZERO
-	input_hand_switching()
 
 @export var action_prompt : Control
 func find_interactable_objects():
@@ -264,13 +272,12 @@ func enthrall_new_thrall(new_thrall : Actor):
 
 
 func input_hand_switching():
-	if Input.is_action_pressed(player_prefix + "event_action"):
-		if Input.is_action_just_pressed(player_prefix + "attack_light"):
-			print("Toggle right hand")
-			if thrall.hand_state == Actor.HandState.ONE_HAND:
-				thrall.hand_state = Actor.HandState.TWO_HAND
-			else:
-				thrall.hand_state = Actor.HandState.ONE_HAND
-		elif Input.is_action_just_pressed(player_prefix + "block"):
-			thrall.hand_state = Actor.HandState.UNARMED # hack for a test
-			print("Toggle left hand")
+	if Input.is_action_just_pressed(player_prefix + "attack_light"):
+		print("Toggle right hand")
+		if thrall.hand_state == Actor.HandState.ONE_HAND:
+			thrall.hand_state = Actor.HandState.TWO_HAND
+		else:
+			thrall.hand_state = Actor.HandState.ONE_HAND
+	elif Input.is_action_just_pressed(player_prefix + "block"):
+		thrall.hand_state = Actor.HandState.UNARMED # hack for a test
+		print("Toggle left hand")

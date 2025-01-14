@@ -319,6 +319,7 @@ func compile_new_anim_tree():
 		# TODO - Make more generic, or find the cause of the error in starting
 		if item.name.contains("0/WalkSprint/playback"):
 				animation_tree.get(item.name).travel("Start")
+	animation_tree.active = true # set here to stop minor bone movement from showing up over and over again in git
 
 
 

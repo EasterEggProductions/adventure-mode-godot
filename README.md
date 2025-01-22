@@ -8,13 +8,21 @@ Adventure Mode is a 3D third-person template for the Godot engine that combines 
 - Not *Bloodborne* (I hate *Bloodborne*. Just go play *Devil May Cry*.)
 - **Elden Ring**
 
+Play a [demo here](https://www.eastereggproductions.com/games/browser/adventure_mode_godot/). It may take up to a minute to load. A controller is recommended, as there is currently no mouse look implimented. 
+
 ---
 
 ## Key Features
 - **Movement and Exploration**:
   - Moving and jumping in 3D space with a variety of modes: walking, running, jumping, climbing, swimming, and flying.
+<img src="https://github.com/user-attachments/assets/e5728c0c-11ca-41be-a485-e06e5fef4a73" width="200" title="Walking"/>
+<img src="https://github.com/user-attachments/assets/42dc540b-029a-4359-9870-614d4ab3aa6c" width="200" title="Climbing"/>
+<img src="https://github.com/user-attachments/assets/2150d6fc-59a6-4311-9915-90707c1020b8" width="200" title="Swimming"/>
+
 - **Combat**:
   - Basic melee and ranged attacks determined by data, such as equipped weapons or stats.
+<img src="https://github.com/user-attachments/assets/08a60027-7dfa-4de5-80be-21dd89a164dd" width="200" title="Combat"/>
+
 - **Item Management**:
   - Usage of items such as potions (both consumable and reusable).
 - **Multiplayer**:

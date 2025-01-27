@@ -20,8 +20,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
-
 func _on_butt_host_pressed() -> void:
 	if OS.get_name() == "Web":
 		print("Web build detected, quick, change everything about networking so it all breaks, quickly everyone!")
@@ -74,3 +72,7 @@ func add_player(peer_id):
 		cam_gant.cam.freeze = false
 		print("Iz noed? " + str(new_player.find_child("DresserUpper")))
 		outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
+		# get initial ping information
+		
+func get_ping(peer_id):
+	return

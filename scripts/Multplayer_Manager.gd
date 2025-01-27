@@ -73,6 +73,9 @@ func add_player(peer_id):
 		print("Iz noed? " + str(new_player.find_child("DresserUpper")))
 		outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
 		# get initial ping information
-		
+@rpc("any_peer", "call_local", "reliable")
 func get_ping(peer_id):
+	var start = Time.get_ticks_msec()
+	var ping = {"time": start}
+	
 	return

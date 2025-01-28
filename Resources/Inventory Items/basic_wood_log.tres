@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://crmpu2ncdckj"]
+
+[ext_resource type="Script" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_il7wh"]
+
+[sub_resource type="PackedScene" id="PackedScene_wwjx0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6nr8n"]
+
+[resource]
+script = ExtResource("1_il7wh")
+icon = SubResource("PlaceholderTexture2D_6nr8n")
+drop_item = SubResource("PackedScene_wwjx0")
+stackable = true
+fungible = false
+volumetric = false

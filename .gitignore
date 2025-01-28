@@ -17,3 +17,4 @@ addons/*
 
 .vscode
 .addons/*
+*.import

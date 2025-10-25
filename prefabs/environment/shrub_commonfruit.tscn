@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dyacbq330bbx0"]
 
 [ext_resource type="PackedScene" uid="uid://bmhs1fv6rtqgy" path="res://art/meshes/shrub.glb" id="1_kvo3s"]
-[ext_resource type="Script" path="res://scripts/harvest_spawner.gd" id="2_c1xhp"]
+[ext_resource type="Script" uid="uid://d2lcr3vwhx0p7" path="res://scripts/harvest_spawner.gd" id="2_c1xhp"]
 [ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="2_rcx4b"]
 [ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="3_6mk2d"]
 [ext_resource type="Material" uid="uid://dlbhrpiy3mtxh" path="res://art/materials/foliage.tres" id="5_u17ng"]

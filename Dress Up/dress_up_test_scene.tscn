@@ -1,29 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvrtei5mg3l66"]
+[gd_scene load_steps=19 format=3 uid="uid://cvrtei5mg3l66"]
 
-[ext_resource type="Script" path="res://Dress Up/DresserUpper.gd" id="2_6dr5i"]
+[ext_resource type="Script" uid="uid://cendvqu343aqi" path="res://Dress Up/DresserUpper.gd" id="2_6dr5i"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="2_pjwy7"]
-[ext_resource type="Script" path="res://Dress Up/DU_cam_control.gd" id="3_qlpsu"]
+[ext_resource type="Script" uid="uid://dbkfha8vppc8n" path="res://Dress Up/DU_cam_control.gd" id="3_qlpsu"]
 [ext_resource type="Resource" uid="uid://2g2xi3iipiu3" path="res://art/Character/clothing/DressUp Resources/human_flesh.tres" id="9_8bhuf"]
-[ext_resource type="Animation" uid="uid://c8lxaxgedgj2b" path="res://art/Character/animations/combat_sword/combat_idle.res" id="9_j1cmb"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_ji51b"]
-[ext_resource type="Animation" uid="uid://bcjdoe3fpv7k6" path="res://art/Character/animations/combat_sword/combat_strafe_left.res" id="10_a6ce8"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_ji51b"]
 [ext_resource type="Environment" uid="uid://c5vgp5xgbfy74" path="res://scenes/default_env.tres" id="10_hg8n6"]
-[ext_resource type="Script" path="res://Dress Up/scripts/DU_outfit_control.gd" id="15_syior"]
-[ext_resource type="Animation" uid="uid://c8igki0xek5vn" path="res://art/Character/animations/walk_jog_run/idle_wjr.res" id="38_ohooo"]
+[ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="15_syior"]
 [ext_resource type="Animation" uid="uid://e0i0c5x61g2s" path="res://art/Character/animations/walk_jog_run/jog_fwd.tres" id="39_5dlwb"]
 [ext_resource type="Animation" uid="uid://uamhdfsb8e5e" path="res://art/Character/animations/walk_jog_run/run_fwd.tres" id="40_nofrn"]
 [ext_resource type="Animation" uid="uid://n0l1yf826pps" path="res://art/Character/animations/walk_jog_run/walk_fwd.tres" id="41_n40cy"]
-[ext_resource type="Script" path="res://Dress Up/scripts/DU_anim_control.gd" id="46_jhhci"]
+[ext_resource type="Script" uid="uid://2awnwoprnepu" path="res://Dress Up/scripts/DU_anim_control.gd" id="46_jhhci"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1fs6a"]
 _data = {
-"combat_idle": ExtResource("9_j1cmb"),
-"combat_strafe_left": ExtResource("10_a6ce8"),
-"idle_wjr": ExtResource("38_ohooo"),
-"jog_fwd": ExtResource("39_5dlwb"),
-"run_fwd": ExtResource("40_nofrn"),
-"t-pose": ExtResource("2_pjwy7"),
-"walk_fwd": ExtResource("41_n40cy")
+&"jog_fwd": ExtResource("39_5dlwb"),
+&"run_fwd": ExtResource("40_nofrn"),
+&"t-pose": ExtResource("2_pjwy7"),
+&"walk_fwd": ExtResource("41_n40cy")
 }
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_btebg"]
@@ -491,8 +485,9 @@ bones/60/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")
+root_motion_local = false
 libraries = {
-"": SubResource("AnimationLibrary_1fs6a")
+&"": SubResource("AnimationLibrary_1fs6a")
 }
 playback_default_blend_time = 0.35
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://b1y6mww4o2p0g"]
 
-[ext_resource type="Script" path="res://scripts/harvestable.gd" id="1_rwb4i"]
+[ext_resource type="Script" uid="uid://dbsuj2ayqdw2n" path="res://scripts/harvestable.gd" id="1_rwb4i"]
 [ext_resource type="AudioStream" uid="uid://ynxg3mdpav8b" path="res://art/audio/sfx/nab.ogg" id="2_lj5ey"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t04wd"]

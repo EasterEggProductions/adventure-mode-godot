@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://d1kynsixmfk71"]
 
 [ext_resource type="PackedScene" uid="uid://dikwl6qfrniqt" path="res://art/Props/trail_weapon.glb" id="1_to7u7"]
-[ext_resource type="Script" path="res://scripts/trail_weapon.gd" id="2_67ji6"]
+[ext_resource type="Script" uid="uid://dpg3gk4wn7sui" path="res://scripts/trail_weapon.gd" id="2_67ji6"]
 
 [sub_resource type="Gradient" id="Gradient_71qwt"]
 offsets = PackedFloat32Array(0.485782, 1)

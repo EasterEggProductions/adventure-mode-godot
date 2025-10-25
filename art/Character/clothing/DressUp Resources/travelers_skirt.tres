@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Garment" load_steps=6 format=4 uid="uid://djhxw8u4ikomn"]
 
 [ext_resource type="Material" uid="uid://c0m7fwcm5dywh" path="res://art/Character/clothing/simple_metal.tres" id="1_muuw4"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_da4it"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_da4it"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jg2p"]
 

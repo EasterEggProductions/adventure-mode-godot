@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://d3xpjq6g2jknf"]
 
-[ext_resource type="Script" path="res://scripts/collectable.gd" id="1_nm1gy"]
+[ext_resource type="Script" uid="uid://c54hx0w66ktyv" path="res://scripts/collectable.gd" id="1_nm1gy"]
 [ext_resource type="AudioStream" uid="uid://bf76j61v56u05" path="res://art/audio/pickupCoin.wav" id="2_s7qlt"]
 [ext_resource type="Material" uid="uid://bmho6d4v6f88s" path="res://art/materials/gold.tres" id="2_w2062"]
 
@@ -26,7 +26,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107, 0.25, 1, 0.5,
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iygu8"]
 _data = {
-"coin_spin": SubResource("Animation_k6yb4")
+&"coin_spin": SubResource("Animation_k6yb4")
 }
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_k22an"]
@@ -49,6 +49,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 0.5
 emission_ring_inner_radius = 0.45
+emission_ring_cone_angle = 90.0
 angle_min = 45.0
 angle_max = 45.0
 direction = Vector3(0, 1, 0)

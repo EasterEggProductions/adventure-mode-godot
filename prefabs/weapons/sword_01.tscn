@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://3y4vbosjj5gx"]
 
-[ext_resource type="Script" path="res://scripts/armament.gd" id="1_bu51i"]
+[ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_bu51i"]
 [ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="1_eutt0"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_s35fm"]
 [ext_resource type="Material" uid="uid://cfbryicsvmobm" path="res://art/materials/debug_hitbox_transparent.tres" id="3_1ot13"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ibxguf2n6yr5"]
 
-[ext_resource type="Script" path="res://scripts/UI_ActionPrompt.gd" id="1_c100w"]
+[ext_resource type="Script" uid="uid://bn230nyjolbhr" path="res://scripts/UI_ActionPrompt.gd" id="1_c100w"]
 
 [node name="Action Prompt" type="Control" node_paths=PackedStringArray("output")]
 layout_mode = 3

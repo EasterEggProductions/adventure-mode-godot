@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Garment" load_steps=6 format=4 uid="uid://bwsshqau3scbu"]
 
 [ext_resource type="Material" uid="uid://cafrak15dcwnl" path="res://art/Character/clothing/skirt_of_skorp.tres" id="1_mgmnj"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_gn5c3"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_gn5c3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1377"]
 resource_name = "UV_work"

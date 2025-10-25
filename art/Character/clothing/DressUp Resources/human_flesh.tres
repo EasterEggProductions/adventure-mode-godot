@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://by4iie7eubiki" path="res://art/Character/clothing/manny_quinn_skin_mq_body.png" id="1_j7j0w"]
 [ext_resource type="Texture2D" uid="uid://cld1whnpcp4um" path="res://art/Character/clothing/manny_quinn_skin_mq_face.png" id="2_jcg8x"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_pc0d2"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_pc0d2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hc1m"]
 resource_name = "mq_baseSkin"

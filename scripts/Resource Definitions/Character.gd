@@ -66,6 +66,8 @@ var poise_regen_timer = 0.0
 @export var my_item : InventoryItem
 @export var my_otherItem : InventoryItem
 
+@export var my_inventory : Array[InventoryItem]
+
 ## Item held in right hand, weapon, shield, etc 
 @export var hand_right : Accessory
 ## Item held in left hand, awards, accolades, etc

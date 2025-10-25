@@ -1,15 +1,15 @@
 [gd_scene load_steps=69 format=3 uid="uid://bvdky0inf3c11"]
 
-[ext_resource type="Script" path="res://scripts/playerSocket_adventure.gd" id="1_03al4"]
+[ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_03al4"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_xa5ur"]
-[ext_resource type="Script" path="res://scripts/Multplayer_Manager.gd" id="3_608j4"]
-[ext_resource type="Script" path="res://scripts/cam_gantry_playerFollow.gd" id="4_1onkx"]
+[ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_608j4"]
+[ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_1onkx"]
 [ext_resource type="Environment" uid="uid://c5vgp5xgbfy74" path="res://scenes/default_env.tres" id="5_qqnwc"]
 [ext_resource type="PackedScene" uid="uid://8hu74ym7skte" path="res://prefabs/Levels/adventure_mode_demo_level.tscn" id="6_xtlsg"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_qmjli"]
-[ext_resource type="Script" path="res://scripts/UI/Game_HUD_Master.gd" id="11_whj5c"]
-[ext_resource type="Script" path="res://scripts/UI/HUD_status.gd" id="12_gt37g"]
-[ext_resource type="Script" path="res://Dress Up/scripts/DU_outfit_control.gd" id="12_kqqss"]
+[ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="11_whj5c"]
+[ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="12_gt37g"]
+[ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="12_kqqss"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="12_lnoy6"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="13_acglf"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="13_yb178"]
@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="15_jeyv0"]
 [ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icon_sword_goddette.png" id="16_cj551"]
 [ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icon_axe_questions.png" id="16_d7447"]
-[ext_resource type="Script" path="res://scripts/camera_control.gd" id="17_1y1j1"]
+[ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="17_1y1j1"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="18_5ww34"]
-[ext_resource type="Script" path="res://scripts/UI/HUD_currency.gd" id="21_fnwlj"]
+[ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="21_fnwlj"]
 [ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="21_jilyl"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="23_w8mif"]
 [ext_resource type="PackedScene" uid="uid://bldcnjo1gthob" path="res://prefabs/Dungeon elements/elevator_platform.tscn" id="24_s5s5f"]
@@ -29,9 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://cvyjw256lsge2" path="res://prefabs/environment/grass.tscn" id="26_4ciue"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="26_5srmb"]
 [ext_resource type="PackedScene" uid="uid://2lgruxx4kd5a" path="res://prefabs/environment/boulder.tscn" id="27_2y8m1"]
-[ext_resource type="Script" path="res://scripts/Hero Effects/footall_sfx.gd" id="27_6v26p"]
+[ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="27_6v26p"]
 [ext_resource type="PackedScene" uid="uid://cme484l06g14s" path="res://prefabs/environment/tree_foliage.tscn" id="28_3jqsb"]
-[ext_resource type="Script" path="res://scripts/AI/ai_fight.gd" id="28_5kths"]
+[ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="28_5kths"]
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="28_6apcs"]
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="29_n8i7l"]
 [ext_resource type="PackedScene" uid="uid://d3xpjq6g2jknf" path="res://prefabs/environment/coin_big.tscn" id="30_iem5u"]
@@ -205,9 +205,8 @@ metadata/_snap_enabled = true
 
 [node name="Player Sockets" type="Node" parent="."]
 
-[node name="p1_psock_adventure" type="Node" parent="Player Sockets" node_paths=PackedStringArray("enemies", "mainCam", "ganty_thing", "vignette", "headsUpDisplay", "action_prompt")]
+[node name="p1_psock_adventure" type="Node" parent="Player Sockets" node_paths=PackedStringArray("mainCam", "ganty_thing", "vignette", "headsUpDisplay", "action_prompt")]
 script = ExtResource("1_03al4")
-enemies = [null]
 mainCam = NodePath("../../Camera")
 ganty_thing = NodePath("../../cam_gantry_playerFollow")
 vignette = NodePath("../../user_interface/vinyette")
@@ -1058,7 +1057,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.754, 15.9007, -33.8653)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.616, 15.8264, -41.0111)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://prefabs/actor.tscn")
+_spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("../Multplayer Manager")
 
 [connection signal="body_entered" from="adventure_mode_demoLevel/Door of Trials/Area3D" to="adventure_mode_demoLevel/Door of Trials" method="trigger_animation"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Garment" load_steps=7 format=4 uid="uid://b7dq815w802rc"]
 
 [ext_resource type="Texture2D" uid="uid://b8owmvccbj6eo" path="res://art/Character/clothing/manny_quinn_hairstyles_mq_hair.png" id="1_u3qty"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_cmr5h"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_cmr5h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ekr"]
 resource_name = "hair"

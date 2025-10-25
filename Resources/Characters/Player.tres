@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Character" load_steps=12 format=3 uid="uid://pyeylu3rn4gk"]
+[gd_resource type="Resource" script_class="Character" load_steps=13 format=3 uid="uid://pyeylu3rn4gk"]
 
 [ext_resource type="Resource" uid="uid://2g2xi3iipiu3" path="res://art/Character/clothing/DressUp Resources/human_flesh.tres" id="1_asamb"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="1_leg0u"]
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="2_gwlss"]
-[ext_resource type="Script" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
+[ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="3_i2r5u"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_jsfxo"]
 [ext_resource type="Texture2D" uid="uid://bxihym06dprn4" path="res://art/textures/icon_mannyQuinn.png" id="4_e7yfx"]
 [ext_resource type="Resource" uid="uid://dyhf0xu1bqbpi" path="res://art/Character/clothing/DressUp Resources/feet_boot_01.tres" id="4_irp83"]
 [ext_resource type="Resource" uid="uid://b7dq815w802rc" path="res://art/Character/clothing/DressUp Resources/hair_10_ponytail_01.tres" id="5_4g6oy"]
@@ -36,7 +37,8 @@ poise_current = 0.0
 poise_regen = 1.0
 poise_regen_delay = 3.0
 alive = true
+my_inventory = Array[ExtResource("3_i2r5u")]([])
 hand_right = ExtResource("2_gwlss")
 under_skeleton = ExtResource("6_dooa3")
 base_skin = ExtResource("1_asamb")
-outfit = Array[ExtResource("1_leg0u")]([ExtResource("4_irp83"), ExtResource("5_4g6oy"), ExtResource("6_urf5m"), ExtResource("7_edoh8"), ExtResource("8_8to01")])
+outfit = Array[ExtResource("3_jsfxo")]([ExtResource("4_irp83"), ExtResource("5_4g6oy"), ExtResource("6_urf5m"), ExtResource("7_edoh8"), ExtResource("8_8to01")])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://vwkcbj8sdfmp"]
 
-[ext_resource type="Script" path="res://scripts/Puzzle/event_anim_trigger.gd" id="1_3g6u5"]
+[ext_resource type="Script" uid="uid://613jcwuiaqyi" path="res://scripts/Puzzle/event_anim_trigger.gd" id="1_3g6u5"]
 [ext_resource type="Material" uid="uid://c6pfclkom172s" path="res://art/materials/door_of_trials.tres" id="2_1eiuk"]
 [ext_resource type="AudioStream" uid="uid://dwou0xwx1bbmp" path="res://art/audio/sfx/stone_door_grind.ogg" id="2_lg51x"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="3_qcma3"]
@@ -165,7 +165,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ph2jk"]
 _data = {
-"door_open": SubResource("Animation_tm5u1")
+&"door_open": SubResource("Animation_tm5u1")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brs6k"]
@@ -244,7 +244,7 @@ shape = SubResource("ConvexPolygonShape3D_0hwc8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ph2jk")
+&"": SubResource("AnimationLibrary_ph2jk")
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

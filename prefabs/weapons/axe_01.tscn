@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://nl3382vwsaev"]
 
-[ext_resource type="Script" path="res://scripts/armament.gd" id="1_05eid"]
+[ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_05eid"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_fffj4"]
 [ext_resource type="PackedScene" uid="uid://c6uwjgcn5pnu8" path="res://art/Props/weapon_axe.glb" id="3_1y4f6"]
 [ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="3_271wk"]

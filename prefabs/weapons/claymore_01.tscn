@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://elg785mh1gua"]
 
-[ext_resource type="Script" path="res://scripts/armament.gd" id="1_14iyh"]
+[ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_14iyh"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_u6yws"]
 [ext_resource type="PackedScene" uid="uid://e4las240qute" path="res://prefabs/particles/metal_clang.tscn" id="3_qwv4q"]
 [ext_resource type="PackedScene" uid="uid://c0jbx6c6cnqt4" path="res://art/Props/claymore.glb" id="4_jmdxs"]

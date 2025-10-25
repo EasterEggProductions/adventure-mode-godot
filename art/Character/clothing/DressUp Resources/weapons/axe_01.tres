@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://ddfufc2ryu8lm"]
 
 [ext_resource type="PackedScene" uid="uid://nl3382vwsaev" path="res://prefabs/weapons/axe_01.tscn" id="1_q3dx4"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_jlba7"]
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_jlba7"]
 
 [resource]
 resource_name = "axe 01"

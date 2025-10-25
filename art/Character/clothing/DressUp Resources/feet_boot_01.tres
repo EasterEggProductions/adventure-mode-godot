@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Garment" load_steps=7 format=4 uid="uid://dyhf0xu1bqbpi"]
 
 [ext_resource type="Texture2D" uid="uid://cbt5hiadiev02" path="res://art/Character/clothing/clothing_pk_01_boot_cute_alb.png" id="1_1b6dy"]
-[ext_resource type="Script" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_1xgwh"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_1xgwh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybu7f"]
 resource_name = "boot_cute"

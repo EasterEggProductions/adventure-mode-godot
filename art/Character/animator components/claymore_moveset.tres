@@ -152,7 +152,7 @@ nodes/Movement/position = Vector2(-310, 40)
 "nodes/SET_F[1]/position" = Vector2(-40, 80)
 "nodes/a-SET_F[1]/node" = SubResource("AnimationNodeBlend2_evw1i")
 "nodes/a-SET_F[1]/position" = Vector2(160, 300)
-node_connections = [&"SET_F[1]", 0, &"Movement", &"SET_F[1]", 1, &"Handedness Idles", &"output", 0, &"SET_F[1]"]
+node_connections = [&"output", 0, &"SET_F[1]", &"SET_F[1]", 0, &"Movement", &"SET_F[1]", 1, &"Handedness Idles"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq74d"]
 animation = &"walk_jog_run/airborne"
@@ -572,7 +572,7 @@ graph_offset = Vector2(-201, -328)
 
 [resource]
 resource_name = "claymore moveset"
+nodes/output/position = Vector2(560, 250)
 "nodes/Attack Tree/node" = SubResource("AnimationNodeStateMachine_1wdgk")
 "nodes/Attack Tree/position" = Vector2(300, 240)
-nodes/output/position = Vector2(560, 250)
 node_connections = [&"output", 0, &"Attack Tree"]

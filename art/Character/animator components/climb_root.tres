@@ -14,7 +14,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_u7bjl")
 nodes/Animation/position = Vector2(-240, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ohock")
 nodes/TimeScale/position = Vector2(52, 129)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6hihu"]
 animation = &"animationLib_climb/climb_look_dn"
@@ -27,7 +27,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_6hihu")
 nodes/Animation/position = Vector2(-340, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1xs04")
 nodes/TimeScale/position = Vector2(1, 232)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ydprx"]
 animation = &"animationLib_climb/climb_look_right"
@@ -40,7 +40,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_ydprx")
 nodes/Animation/position = Vector2(-140, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_888bn")
 nodes/TimeScale/position = Vector2(160, 220)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6131t"]
 animation = &"animationLib_climb/climb_look_up"
@@ -53,7 +53,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_6131t")
 nodes/Animation/position = Vector2(-269.93, 29.0919)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rq6j5")
 nodes/TimeScale/position = Vector2(140, 80)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w2asr"]
 animation = &"animationLib_climb/climb_left"

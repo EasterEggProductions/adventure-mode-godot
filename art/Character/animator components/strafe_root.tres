@@ -12,7 +12,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_ya11n")
 nodes/Animation/position = Vector2(-20, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5eddg")
 nodes/TimeScale/position = Vector2(140, 140)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_guvl1"]
 animation = &"combat_sword/combat_attack_r-l"
@@ -165,7 +165,7 @@ nodes/Animation/position = Vector2(-300, 40)
 "nodes/SET_F[5]/position" = Vector2(-40, 60)
 "nodes/TURN stuff/node" = SubResource("AnimationNodeAdd3_qmuto")
 "nodes/TURN stuff/position" = Vector2(120, 120)
-node_connections = [&"SET_F[5-01]", 0, &"Animation 2", &"SET_F[5]", 0, &"Animation", &"TURN stuff", 0, &"SET_F[5]", &"TURN stuff", 1, &"MOVE strafe", &"TURN stuff", 2, &"SET_F[5-01]", &"output", 0, &"TURN stuff"]
+node_connections = [&"output", 0, &"TURN stuff", &"SET_F[5-01]", 0, &"Animation 2", &"SET_F[5]", 0, &"Animation", &"TURN stuff", 0, &"SET_F[5]", &"TURN stuff", 1, &"MOVE strafe", &"TURN stuff", 2, &"SET_F[5-01]"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jax7o"]
 animation = &"aLib_combat_sword/combat_dodgeroll"

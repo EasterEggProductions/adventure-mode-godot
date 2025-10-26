@@ -71,7 +71,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_vyssh")
 nodes/Animation/position = Vector2(-300, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_2v6mb")
 nodes/TimeScale/position = Vector2(11, 141)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjk6x"]
 animation = &"walk_jog_run/jump_arc"
@@ -84,7 +84,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_mjk6x")
 nodes/Animation/position = Vector2(-78, 124)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_g6h7q")
 nodes/TimeScale/position = Vector2(140, 140)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_dcyjj"]
 blend_point_0/node = SubResource("AnimationNodeBlendTree_uet24")
@@ -215,4 +215,4 @@ states/walk_land/position = Vector2(491.495, 102.416)
 states/walk_taking_off/node = SubResource("AnimationNodeAnimation_xf3j1")
 states/walk_taking_off/position = Vector2(494.619, -22.625)
 transitions = ["walk_airborne", "walk_land", SubResource("AnimationNodeStateMachineTransition_tddch"), "Jump w vel", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_86anj"), "walk_taking_off", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_2png7"), "sit_lounge_tscn", "sit_lounge_toStand", SubResource("AnimationNodeStateMachineTransition_uitot"), "Start", "mv", SubResource("AnimationNodeStateMachineTransition_h3k80"), "mv", "dodgeroll", SubResource("AnimationNodeStateMachineTransition_ecnr0"), "dodgeroll", "mv", SubResource("AnimationNodeStateMachineTransition_qxsd3"), "mv", "Jump w vel", SubResource("AnimationNodeStateMachineTransition_aoli6"), "mv", "walk_taking_off", SubResource("AnimationNodeStateMachineTransition_0kewg"), "walk_taking_off", "mv", SubResource("AnimationNodeStateMachineTransition_58civ"), "walk_land", "mv", SubResource("AnimationNodeStateMachineTransition_sx767"), "crouch", "mv", SubResource("AnimationNodeStateMachineTransition_eig5m"), "mv", "crouch", SubResource("AnimationNodeStateMachineTransition_anw0w"), "spell", "mv", SubResource("AnimationNodeStateMachineTransition_birn4"), "mv", "spell", SubResource("AnimationNodeStateMachineTransition_ytnux"), "mv", "death", SubResource("AnimationNodeStateMachineTransition_5s3er")]
-graph_offset = Vector2(-240, -270)
+graph_offset = Vector2(-275, -91)

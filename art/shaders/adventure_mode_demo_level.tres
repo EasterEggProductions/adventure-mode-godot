@@ -20,8 +20,8 @@ seed = 464981
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eowjx"]
-seamless = true
 noise = SubResource("FastNoiseLite_p5syw")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_o6sbi"]
 texture = SubResource("NoiseTexture2D_eowjx")
@@ -32,8 +32,8 @@ seed = 81638
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7aaob"]
-seamless = true
 noise = SubResource("FastNoiseLite_i0lei")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_axlpq"]
 texture = SubResource("NoiseTexture2D_7aaob")
@@ -58,7 +58,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_frg_2;
 uniform sampler2D tex_frg_3;

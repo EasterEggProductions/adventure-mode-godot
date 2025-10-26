@@ -28,12 +28,12 @@ animation = &"aLib_swim/s_left"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_558dj"]
 graph_offset = Vector2(-137, -26)
+nodes/output/position = Vector2(320, 150)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_27hyu")
 nodes/Animation/position = Vector2(-30, 100)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tq3tv")
 nodes/TimeScale/position = Vector2(188.5, 145)
-nodes/output/position = Vector2(320, 150)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3l5d"]
 animation = &"aLib_swim/s_right"
@@ -46,7 +46,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_o3l5d")
 nodes/Animation/position = Vector2(-74.5, 106.5)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_7qiuw")
 nodes/TimeScale/position = Vector2(170, 130)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1shei"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ho5n8")

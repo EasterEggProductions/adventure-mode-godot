@@ -15,8 +15,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.57966, 0.0328807, 9.62615e-08, 1, 0.4584
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5gcc8"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tr64"]
-color_ramp = SubResource("Gradient_4128w")
 noise = SubResource("FastNoiseLite_5gcc8")
+color_ramp = SubResource("Gradient_4128w")
 
 [sub_resource type="Gradient" id="Gradient_cgsjy"]
 interpolation_mode = 2

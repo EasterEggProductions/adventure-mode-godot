@@ -350,8 +350,15 @@ func action_q_check(action : String, consume=false) -> bool:
 	if action in action_q.keys():
 		if consume == true:
 			action_q.erase(action)
+		_action_q_net.rpc(action)
+		print("RPC?")
 		return true
 	return false
+
+@rpc
+func _action_q_net(msg : String):
+	enque_action(msg)
+	print(msg)
 # !SECTION - End action_q system
 
 # SECTION - Animation assistance functions 

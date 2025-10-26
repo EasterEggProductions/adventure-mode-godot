@@ -38,6 +38,8 @@ func move_fix():
 func _process(delta):
 	#patrol(delta)
 	#return
+	if multiplayer.is_server() == false:
+		return
 	if is_instance_valid(thrall) and thrall.alive == false:
 		return
 	timer -= delta

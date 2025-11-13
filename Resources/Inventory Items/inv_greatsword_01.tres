@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://r40l8bmnp7k5"]
+
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_3mm8t"]
+[ext_resource type="PackedScene" uid="uid://elg785mh1gua" path="res://prefabs/weapons/claymore_01.tscn" id="1_pxr5b"]
+[ext_resource type="Texture2D" uid="uid://ctfn7pqpaia6i" path="res://art/textures/icons/ico_greatsword_debug.png" id="2_7sfft"]
+[ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="2_8mpct"]
+
+[resource]
+resource_name = "Claymore"
+script = ExtResource("1_3mm8t")
+icon = ExtResource("2_7sfft")
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("2_8mpct"),
+"armament": ExtResource("1_pxr5b")
+})
+metadata/_custom_type_script = "uid://dv03uv3dfmr4a"

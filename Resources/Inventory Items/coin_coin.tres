@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bea3qd1gu8vr0"]
+
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="1_ha7f6"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="3_0b51v"]
+
+[resource]
+resource_name = "Coin Coin"
+script = ExtResource("3_0b51v")
+icon = ExtResource("1_ha7f6")
+fungible = true

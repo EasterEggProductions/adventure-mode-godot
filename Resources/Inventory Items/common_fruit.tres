@@ -2,13 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="1_r8wfu"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_rvft0"]
-[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="2_w5cum"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="2_w5cum"]
 
 [resource]
 resource_name = "Common Fruit"
 script = ExtResource("1_rvft0")
 icon = ExtResource("2_w5cum")
 drop_item = ExtResource("1_r8wfu")
-stackable = true
-fungible = false
-volumetric = false

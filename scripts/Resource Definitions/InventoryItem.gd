@@ -12,3 +12,6 @@ class_name InventoryItem
 @export var stackable = true
 @export var fungible = false
 @export var volumetric = false 
+
+@export_group("Extra Data")
+@export var extra_resources : Dictionary[String, Resource]

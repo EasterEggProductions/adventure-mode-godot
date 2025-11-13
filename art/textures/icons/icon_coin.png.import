@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmvl3hi1dbt0s"
-path="res://.godot/imported/icon_shield_upBlast.png-d146f81c773f920831ef9a871eefe7a9.ctex"
+uid="uid://b8ouugb0hh374"
+path="res://.godot/imported/icon_coin.png-4b4729f3403d0c695a37bcb939aab6a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_shield_upBlast.png"
-dest_files=["res://.godot/imported/icon_shield_upBlast.png-d146f81c773f920831ef9a871eefe7a9.ctex"]
+source_file="res://art/textures/icons/icon_coin.png"
+dest_files=["res://.godot/imported/icon_coin.png-4b4729f3403d0c695a37bcb939aab6a4.ctex"]
 
 [params]
 

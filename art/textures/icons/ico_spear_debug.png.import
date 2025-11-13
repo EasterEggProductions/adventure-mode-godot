@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vog6jseecl06"
-path="res://.godot/imported/icon_commonFruit.png-ff8e1b5e7dc87ecc6ce76c1979aae93a.ctex"
+uid="uid://c83otya1wshxo"
+path="res://.godot/imported/ico_spear_debug.png-813d4958976876a3f3d3614c3df3a41b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_commonFruit.png"
-dest_files=["res://.godot/imported/icon_commonFruit.png-ff8e1b5e7dc87ecc6ce76c1979aae93a.ctex"]
+source_file="res://art/textures/icons/ico_spear_debug.png"
+dest_files=["res://.godot/imported/ico_spear_debug.png-813d4958976876a3f3d3614c3df3a41b.ctex"]
 
 [params]
 

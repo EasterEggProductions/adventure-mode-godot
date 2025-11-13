@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://elg785mh1gua"]
+[gd_scene load_steps=10 format=3 uid="uid://elg785mh1gua"]
 
 [ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_14iyh"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_u6yws"]
 [ext_resource type="PackedScene" uid="uid://e4las240qute" path="res://prefabs/particles/metal_clang.tscn" id="3_qwv4q"]
 [ext_resource type="PackedScene" uid="uid://c0jbx6c6cnqt4" path="res://art/Props/claymore.glb" id="4_jmdxs"]
 [ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="4_l4qgb"]
+[ext_resource type="Resource" uid="uid://diybpprbfvy0g" path="res://Modular Mobility/movesets/w_claymore_moveset.tres" id="4_vc8ju"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1wjdx"]
 radius = 0.167
@@ -26,6 +27,7 @@ script = ExtResource("1_14iyh")
 damage = 6
 hit_effect = ExtResource("2_u6yws")
 block_effect = ExtResource("3_qwv4q")
+moveset = ExtResource("4_vc8ju")
 
 [node name="hitbox" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 3.72024e-08, -0.253, 0)

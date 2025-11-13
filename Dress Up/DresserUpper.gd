@@ -72,19 +72,21 @@ func accessory_equip(acc : Accessory):
 	accessories.append(acc)
 
 func accessory_unequip(acc : Accessory):
+	print("Removing Accessory " + str(acc))
 	if acc in things_worn.keys():
 		var accessory = things_worn[acc]
-		accessory.queue_free()
+		if is_instance_valid(accessory):
+			accessory.queue_free()
 	accessories.erase(acc)
 
 func accessory_item(acc : Accessory):
 	# Find item that exists physically, and return it
 	
 	if acc in things_worn:
-		print("Item found")
+		#print("Item found")
 		return things_worn[acc]
 	else:
-		print("Item not found")
+		#print("Item not found")
 		return null
 
 func outfit_save():

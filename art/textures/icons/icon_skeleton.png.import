@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxihym06dprn4"
-path="res://.godot/imported/icon_mannyQuinn.png-4f696c7f82bd18e629ec8d0e60569b9d.ctex"
+uid="uid://cx1a8kinoowmh"
+path="res://.godot/imported/icon_skeleton.png-0ecc3a7bdaebfcd76cb265ebce34df16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_mannyQuinn.png"
-dest_files=["res://.godot/imported/icon_mannyQuinn.png-4f696c7f82bd18e629ec8d0e60569b9d.ctex"]
+source_file="res://art/textures/icons/icon_skeleton.png"
+dest_files=["res://.godot/imported/icon_skeleton.png-0ecc3a7bdaebfcd76cb265ebce34df16.ctex"]
 
 [params]
 

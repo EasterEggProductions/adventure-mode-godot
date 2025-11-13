@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://e67eeeod2wdm"]
+
+[ext_resource type="PackedScene" uid="uid://r324nntujads" path="res://prefabs/weapons/spear_00.tscn" id="1_kp4tt"]
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_ckau6"]
+
+[resource]
+resource_name = "spear debug"
+script = ExtResource("2_ckau6")
+accessory = ExtResource("1_kp4tt")
+bones = Array[String](["prop.R"])

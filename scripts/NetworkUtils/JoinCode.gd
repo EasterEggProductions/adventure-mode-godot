@@ -2,14 +2,20 @@ extends Node
 class_name JoinCode
 
 const ALPHABET := "ABCDEFGHIJKLMNOPQRSTUVWXYZ234678"
-const LENGTH := 10
+const LENGTH := 8
 
-# Return: 10-character code as a String, empty string on failure.
+# Return: 8-character code as a String, empty string on failure.
 static func ip_to_code(ip: String, port: int) -> String:
 	var parts := ip.split(".")
 	if parts.size() != 4:
 		push_error("ip_to_code: invalid IPv4 address: %s" % ip)
 		return ""
+		
+	if port > 33999 || port < 33900:
+		push_error("ip_to_code: invalid port (must be [33900-33999]): %s" % port)
+		return ""
+	
+	var port_component := port - 33900
 
 	var a := int(parts[0])
 	var b := int(parts[1])
@@ -20,12 +26,12 @@ static func ip_to_code(ip: String, port: int) -> String:
 		return ""
 
 	var ip_num := (a << 24) | (b << 16) | (c << 8) | d
-	var packed := (int(ip_num) << 16) | (port & 0xFFFF)
-	packed = packed << 2 # 50-bit number containing the IP and port
+	var packed := (int(ip_num) << 7) | (port_component & 0x7F)
+	packed = packed << 1 # 40-bit number containing the 32-bit IP & 7-bit port
 
 	var code := ""
 	for i in LENGTH:
-		var shift := 45 - 5 * i
+		var shift := 35 - 5 * i
 		var index := int((packed >> shift) & 0x1F) # 5-bits per char
 		code += ALPHABET[index]
 	return code
@@ -44,10 +50,10 @@ static func code_to_ip(code: String) -> Array:
 			push_error("code_to_ip: invalid code")
 			return []
 		packedData = (packedData << 5) | ind
-	packedData = packedData >> 2 # Remove padding (imperfect fit)
+	packedData = packedData >> 1 # Remove padding
 
-	var ip_num := (packedData >> 16) & 0xFFFFFFFF
-	var port := packedData & 0xFFFF
+	var ip_num := (packedData >> 7) & 0xFFFFFFFF
+	var port := (packedData & 0x7F) + 33900
 
 	var oct_a := (ip_num >> 24) & 0xFF
 	var oct_b := (ip_num >> 16) & 0xFF

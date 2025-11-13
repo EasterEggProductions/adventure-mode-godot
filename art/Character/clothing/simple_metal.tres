@@ -6,9 +6,9 @@ colors = PackedColorArray(0.119012, 0.0705804, 0.0654891, 1, 0.319608, 0.368782,
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1fab2"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vproj"]
-seamless = true
-color_ramp = SubResource("Gradient_satwb")
 noise = SubResource("FastNoiseLite_1fab2")
+color_ramp = SubResource("Gradient_satwb")
+seamless = true
 
 [resource]
 albedo_texture = SubResource("NoiseTexture2D_vproj")

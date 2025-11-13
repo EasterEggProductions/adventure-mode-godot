@@ -7,6 +7,4 @@
 resource_name = "claymore 01"
 script = ExtResource("2_175st")
 accessory = ExtResource("1_1rw23")
-offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-tags = Array[String]([])
 bones = Array[String](["prop.R"])

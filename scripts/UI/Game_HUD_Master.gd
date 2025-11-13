@@ -34,3 +34,4 @@ func _quit():
 func inspect_new_thrall(new_thrall : Actor):
 	thrall = new_thrall
 	status_readout.inspect_new_thrall(new_thrall)
+	dpad_itemMenu.inspect_new_thrall(new_thrall)

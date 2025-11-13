@@ -11,6 +11,9 @@ var nop= WebSocketMultiplayerPeer.new()
 @export var ip_input : LineEdit
 @export var outfit_control : Control
 
+@export var player_1 : Character
+@export var player_2 : Character
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -62,6 +65,8 @@ func _start_local_only():
 func add_player(peer_id):
 	var new_player = PLAYER_SCENE.instantiate()
 	new_player.name = str(peer_id)
+	if peer_id != 1:
+		new_player.character = player_2
 	add_child(new_player)
 	print("New player: " + str(peer_id))
 	new_player.set_multiplayer_authority(peer_id)
@@ -74,3 +79,4 @@ func add_player(peer_id):
 		cam_gant.cam.freeze = false
 		print("Iz noed? " + str(new_player.find_child("DresserUpper")))
 		outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
+

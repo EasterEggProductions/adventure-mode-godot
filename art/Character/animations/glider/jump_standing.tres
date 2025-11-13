@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://c8dnod7vmgq3s"]
+[gd_resource type="Animation" format=3 uid="uid://c8dnod7vmgq3s"]
 
 [resource]
 resource_name = "jump_standing"

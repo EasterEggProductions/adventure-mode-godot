@@ -75,13 +75,13 @@ var belt_current : int = 0
 @export_subgroup("Right Hand Slots")
 var hand_r_current : int = 0
 ## The primmary weapon, the right D one in souls games
-@export var hand_right_slots : Array[Accessory]
+@export var hand_right_slots : Array[InventoryItem]
 @export var hand_r_size : int = 3
 ## Item held in left hand, awards, accolades, etc
 @export_subgroup("Left Hand Slots")
 var hand_l_current : int = 0
 ## The offhand item, the left D one in souls games
-@export var hand_left_slots : Array[Accessory]
+@export var hand_left_slots : Array[InventoryItem]
 @export var hand_l_size : int = 3
 @export_subgroup("Spell slots") 
 var spell_current : int = 0

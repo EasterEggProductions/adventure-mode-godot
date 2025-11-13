@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://bcl0k5bycdydn"]
+
+[ext_resource type="PackedScene" uid="uid://nl3382vwsaev" path="res://prefabs/weapons/axe_01.tscn" id="1_v1jqi"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_vykq8"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="2_oxewd"]
+[ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="2_xno5c"]
+
+[resource]
+resource_name = "Axe"
+script = ExtResource("1_vykq8")
+icon = ExtResource("2_oxewd")
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("2_xno5c"),
+"armament": ExtResource("1_v1jqi")
+})
+metadata/_custom_type_script = "uid://dv03uv3dfmr4a"

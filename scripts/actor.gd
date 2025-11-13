@@ -95,6 +95,12 @@ func _ready():
 	dress_up()
 	compile_new_anim_tree()
 
+	# FIXME - Workaround for offhand item not being unique
+	var narr : Array[InventoryItem] = []
+	for x in character.hand_left_slots:
+		narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+	character.hand_left_slots = narr
+
 
 
 ## Spawn or Respawn setup
@@ -242,12 +248,12 @@ func dress_up():
 
 	# NOTE TEST equip weapon as accessory... maybe? idk what is even going on here now
 	# TODO Improve this
-	if len(character.hand_left_slots) > 0 and character.hand_left_slots[character.hand_l_current] != null:
-		#character.hand_left = character.hand_left.duplicate()
-		character.hand_left_slots[character.hand_l_current].bones[0] = "prop.L" # NOTE - This is a workaround
-		dup.accessory_equip(character.hand_left_slots[character.hand_l_current])
-		l_wep = dup.accessory_item(character.hand_left_slots[character.hand_l_current]).get_child(0) as Armament
-		l_wep.equip_armament(self, true)
+	#if len(character.hand_left_slots) > 0 and character.hand_left_slots[character.hand_l_current] != null:
+	#	#character.hand_left = character.hand_left.duplicate()
+	#	character.hand_left_slots[character.hand_l_current].bones[0] = "prop.L" # NOTE - This is a workaround
+	#	dup.accessory_equip(character.hand_left_slots[character.hand_l_current])
+	#	l_wep = dup.accessory_item(character.hand_left_slots[character.hand_l_current]).get_child(0) as Armament
+	#	l_wep.equip_armament(self, true)
 
 	right_item_inc(0)
 	
@@ -263,22 +269,47 @@ func right_item_inc(move : int) -> void:
 		return
 	var dup = $DresserUpper as DresserUpper
 	#unequip thing if thing 
-	dup.accessory_unequip(character.hand_right_slots[character.hand_r_current])
+	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	dup.accessory_unequip(accessory)
+	if character.hand_r_current < 0:
+		return
 	character.hand_r_current = (character.hand_r_current + move) % len(character.hand_right_slots)
 	#equip thing
-	dup.accessory_equip(character.hand_right_slots[character.hand_r_current])
-	r_wep = dup.accessory_item(character.hand_right_slots[character.hand_r_current]).get_child(0) as Armament
+	accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	accessory.bones[0] = "prop.R" # NOTE - This is a workaround
+	dup.accessory_equip(accessory)
+	r_wep = dup.accessory_item(accessory).get_child(0) as Armament
 	r_wep.equip_armament(self, false)
 ## Moves <move> around the item array, wraps around array length
 func left_item_inc(move : int) -> void:
 	if len(character.hand_left_slots) == 0:
 		return
-	character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
+	var dup = $DresserUpper as DresserUpper
+	#unequip thing if thing 
+	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	#accessory = accessory.duplicate()
+	dup.accessory_unequip(accessory)
+	if len(character.hand_left_slots) == 1 and character.hand_l_current == 0:
+		character.hand_l_current = -1
+		return
+	else:
+		character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
+	#equip thing
+	accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	accessory.bones[0] = "prop.L" # NOTE - This is a workaround
+	dup.accessory_equip(accessory)
+	l_wep = dup.accessory_item(accessory).get_child(0) as Armament
+	l_wep.equip_armament(self, false)
+
+
+
 ## Moves <move> around the spell array, wraps around array length
 func spell_inc(move : int) -> void:
 	if len(character.spells_slots) == 0:
 		return
 	character.spell_current = (character.spell_current + move) % len(character.spells_slots)
+
+
 
 var damage_attack_id_buffer = []
 func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
@@ -318,7 +349,7 @@ func compile_new_anim_tree():
 	var counter = 0
 	## FIXME - Hard coded adding in movement sets from weapons
 	for thing in character.hand_right_slots:
-		var arm = thing.accessory.instantiate() as Armament
+		var arm = thing.extra_resources["armament"].instantiate() as Armament
 		var mvp = arm.moveset
 		if mvp not in movement_sets:
 			movement_sets.append(mvp)

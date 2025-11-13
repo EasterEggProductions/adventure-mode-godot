@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="Character" load_steps=9 format=3 uid="uid://bsmrpavn0sy6d"]
+[gd_resource type="Resource" script_class="Character" load_steps=8 format=3 uid="uid://bsmrpavn0sy6d"]
 
-[ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="1_f7ccb"]
 [ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="2_3yy8n"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="2_5gh6f"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="2_m8aie"]
-[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_ncqgr"]
+[ext_resource type="Resource" uid="uid://bcl0k5bycdydn" path="res://Resources/Inventory Items/inv_axe_01.tres" id="2_ncqgr"]
 [ext_resource type="Texture2D" uid="uid://cx1a8kinoowmh" path="res://art/textures/icons/icon_skeleton.png" id="3_5llvj"]
 [ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="3_ncqgr"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="5_ardxd"]
@@ -17,5 +16,5 @@ health_max = 6.0
 health_current = 6.0
 poise_max = 4.0
 my_inventory = Array[ExtResource("2_5gh6f")]([ExtResource("3_ncqgr"), null, null])
-hand_right_slots = Array[ExtResource("2_ncqgr")]([ExtResource("1_f7ccb")])
+hand_right_slots = Array[ExtResource("2_5gh6f")]([ExtResource("2_ncqgr")])
 under_skeleton = ExtResource("5_ardxd")

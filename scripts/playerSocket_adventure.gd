@@ -4,10 +4,10 @@ extends Node
 # A socket plugs into a thrall and controls it. Player or AI
 # Thralls take same inputs, attack, desired move direction, etc
 # Easily swap socket type, ex player switch to another character
-# or someone comes over the network and controlls something
+# or someone comes over the network and controls something
 # Made by KaletheQuick
 
-@export var thrall : CharacterBody3D # the thing to be controlled 
+@export var thrall : Actor # the thing to be controlled 
 @export var player_prefix = "p1_" # used for local multiplayer
 
 @export var enemies : Array[Actor]
@@ -34,6 +34,7 @@ var look_lock = false
 
 @export var headsUpDisplay : Control
 
+
 # acreas and interactable things
 
 func _ready():
@@ -50,7 +51,7 @@ func _ready():
 	# kernel mappings and other applications work,
 	# But not Godot :< 
 	# The mapping that is recognised:
-	#var mapstring = "03000000d62000000240000001010000,PowerA Xbox One Spectra Infinity,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
+	# var mapstring = "03000000d62000000240000001010000,PowerA Xbox One Spectra Infinity,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
 	# Modified mapping for new GUID:
 	var mapstrings = [
 		"03000000d62000003220000001010000,PowerA Xbox One Spectra Infinity White,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,",
@@ -76,6 +77,7 @@ func _process(_delta):
 			#deb_action = ""
 	#print(delta)
 	find_interactable_objects()
+
 
 	# NOTE - Demo purposes only
 
@@ -126,7 +128,8 @@ func _collect_inputs(delta):
 
 	
 	if Input.is_action_just_released(player_prefix + "use_item"):
-		thrall.enque_action("spell")
+		#thrall.enque_action("spell")
+		thrall.change_character()
 	
 	thrall.handle_movement(go_dir)
 	if Input.is_action_pressed(player_prefix + "event_action"): 
@@ -139,8 +142,6 @@ func _collect_inputs(delta):
 				thrall.enque_action("attack_power")
 			else:
 				thrall.enque_action("block")	
-				if Input.is_action_just_released(player_prefix + "item_right_next"):
-					thrall.enque_action("blocked_attack")	
 		if Input.get_action_strength("p1_attack_light") > 0.5:
 			thrall.enque_action("attack_light")
 		if Input.get_action_strength("p1_attack_heavy") > 0.5:
@@ -149,6 +150,22 @@ func _collect_inputs(delta):
 			thrall.enque_action("attack_art")
 	
 	dot.global_position = thrall.global_position + go_dir
+
+	
+	if Input.is_action_just_released(player_prefix + "item_belt_next"):
+		thrall.belt_item_inc(1)
+	if Input.is_action_just_released(player_prefix + "item_right_next"):
+		thrall.right_item_inc(1)
+	if Input.is_action_just_released(player_prefix + "item_left_next"):
+	#	if len(thrall.character.hand_left_slots) == 1 and thrall.character.hand_l_current == 0:
+	#		thrall.character.hand_l_current = -1 # Using negative number for kinda faux unequip hand
+	#		print("one item, unequipping")
+	#	else:
+	#		print("incriment item")
+	#		thrall.character.hand_l_current = 0
+		thrall.left_item_inc(1)
+	if Input.is_action_just_released(player_prefix + "item_spell_next"):
+		thrall.spell_inc(1)
 
 	# SECTION - Camera and lock on stuff
 	if Input.is_action_just_pressed(player_prefix + "look_lock"):
@@ -212,6 +229,11 @@ func _collect_inputs(delta):
 		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_dir).x,-( thrall.global_basis.inverse() * -go_dir).z)
 		thrall.desired_turn = transformed_move_dir.x
 		thrall.lock_targ_pos = Vector3.ZERO
+		# TODO - get a better system for switching between movement or weapon states
+	if thrall.combat_mode:
+		##combat_relax_timer -= delta
+		if thrall.combat_relax_timer <= 0 or Input.is_action_just_pressed(player_prefix + "start"):
+			thrall.combat_mode = false
 
 @export var action_prompt : Control
 func find_interactable_objects():

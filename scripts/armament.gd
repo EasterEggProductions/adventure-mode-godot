@@ -14,6 +14,8 @@ var attackID : int # random number to help prevent multi hits
 @export var hit_effect : PackedScene
 @export var block_effect : PackedScene
 
+@export var moveset : MovementPackage
+
 enum AttackState {HIT, MISS, BLOCKED}
 
 var cur_strike_data

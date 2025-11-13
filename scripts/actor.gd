@@ -52,6 +52,8 @@ var hand_state : HandState = HandState.UNARMED
 @export var to_equip_wep : Accessory
 var r_wep : Armament
 var l_wep : Armament
+@export var moveset_0 : MovementPackage
+@export var moveset_1 : MovementPackage
 # !SECTION
 @export_group("Character Stats") # TODO - Replace with things in the Character class
 var hurtboxes
@@ -92,6 +94,12 @@ func _ready():
 	hurtboxes = find_hurtboxes_recursive(self)
 	dress_up()
 	compile_new_anim_tree()
+
+	# FIXME - Workaround for offhand item not being unique
+	var narr : Array[InventoryItem] = []
+	for x in character.hand_left_slots:
+		narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+	character.hand_left_slots = narr
 
 
 
@@ -137,11 +145,7 @@ func _process(delta):
 		return
 	character.stats_regen(delta)
 	
-	# TODO - get a better system for switching between movement or weapon states
-	if combat_mode:
-		##combat_relax_timer -= delta
-		if combat_relax_timer <= 0 or Input.is_action_just_pressed("p1_item_left_next"):
-			combat_mode = false
+
 
 	movement_package_checks()
 	movement_sets[current_moveset].move_thrall(self, delta)
@@ -187,6 +191,8 @@ func _TEMPORARY_fall_death():
 
 
 func movement_package_checks():
+	if Input.is_key_pressed(KEY_0):
+		return
 	# Check to see if we need to move to a new state
 	var state_machine = animation_tree["parameters/playback"]
 	#print(state_machine.get_current_node ())
@@ -194,6 +200,21 @@ func movement_package_checks():
 		if x == current_moveset:
 			continue
 		if movement_sets[x].transfer_situation_check(self):
+			# Check if is attack moveset and currently equipped
+			print("Heh")
+			print(movement_sets[x].pack_type())
+			if movement_sets[x].pack_type() == "mvpk_combat":
+				print("Movement pack for combat!")
+				hand_state = HandState.ONE_HAND
+			else:
+				hand_state = HandState.UNARMED
+			#	print(r_wep.moveset.name)
+			#	print(movement_sets[x])
+			#	if r_wep.moveset == movement_sets[x]:
+			#		current_moveset = x
+			#		state_machine.travel(movement_sets[current_moveset].name)
+			#		return
+			#else:
 			current_moveset = x
 			
 			state_machine.travel(movement_sets[current_moveset].name)
@@ -227,22 +248,73 @@ func dress_up():
 
 	# NOTE TEST equip weapon as accessory... maybe? idk what is even going on here now
 	# TODO Improve this
-	if character.hand_left != null:
-		character.hand_left = character.hand_left.duplicate()
-		character.hand_left.bones[0] = "prop.L" # NOTE - This is a workaround
-		dup.accessory_equip(character.hand_left)
-		l_wep = dup.accessory_item(character.hand_left).get_child(0) as Armament
-		l_wep.equip_armament(self, true)
+	#if len(character.hand_left_slots) > 0 and character.hand_left_slots[character.hand_l_current] != null:
+	#	#character.hand_left = character.hand_left.duplicate()
+	#	character.hand_left_slots[character.hand_l_current].bones[0] = "prop.L" # NOTE - This is a workaround
+	#	dup.accessory_equip(character.hand_left_slots[character.hand_l_current])
+	#	l_wep = dup.accessory_item(character.hand_left_slots[character.hand_l_current]).get_child(0) as Armament
+	#	l_wep.equip_armament(self, true)
 
-	if character.hand_right != null:
-		dup.accessory_equip(character.hand_right)
-		r_wep = dup.accessory_item(character.hand_right).get_child(0) as Armament
-		r_wep.equip_armament(self, false)
+	right_item_inc(0)
+	
+
+## Moves <move> around the item array, wraps around array length
+func belt_item_inc(move : int) -> void:
+	if len(character.belt_items) == 0:
+		return
+	character.belt_current = (character.belt_current + move) % len(character.belt_items)
+## Moves <move> around the item array, wraps around array length
+func right_item_inc(move : int) -> void:
+	if len(character.hand_right_slots) == 0:
+		return
+	var dup = $DresserUpper as DresserUpper
+	#unequip thing if thing 
+	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	dup.accessory_unequip(accessory)
+	if character.hand_r_current < 0:
+		return
+	character.hand_r_current = (character.hand_r_current + move) % len(character.hand_right_slots)
+	#equip thing
+	accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	accessory.bones[0] = "prop.R" # NOTE - This is a workaround
+	dup.accessory_equip(accessory)
+	r_wep = dup.accessory_item(accessory).get_child(0) as Armament
+	r_wep.equip_armament(self, false)
+## Moves <move> around the item array, wraps around array length
+func left_item_inc(move : int) -> void:
+	if len(character.hand_left_slots) == 0:
+		return
+	var dup = $DresserUpper as DresserUpper
+	#unequip thing if thing 
+	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	#accessory = accessory.duplicate()
+	dup.accessory_unequip(accessory)
+	if len(character.hand_left_slots) == 1 and character.hand_l_current == 0:
+		character.hand_l_current = -1
+		return
+	else:
+		character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
+	#equip thing
+	accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	accessory.bones[0] = "prop.L" # NOTE - This is a workaround
+	dup.accessory_equip(accessory)
+	l_wep = dup.accessory_item(accessory).get_child(0) as Armament
+	l_wep.equip_armament(self, false)
+
+
+
+## Moves <move> around the spell array, wraps around array length
+func spell_inc(move : int) -> void:
+	if len(character.spells_slots) == 0:
+		return
+	character.spell_current = (character.spell_current + move) % len(character.spells_slots)
+
+
 
 var damage_attack_id_buffer = []
 func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
 	if invulnerable:
-		return Armament.AttackState.MISS # Dodged
+		return Armament.AttackState.MISS # Dodge
 	var returnable = Armament.AttackState.HIT
 	var damage = 1
 	if "physical" in damage_data.keys():
@@ -275,6 +347,12 @@ func block_attack(id : int):
 func compile_new_anim_tree():
 	var master_tree = AnimationNodeStateMachine.new()
 	var counter = 0
+	## FIXME - Hard coded adding in movement sets from weapons
+	for thing in character.hand_right_slots:
+		var arm = thing.extra_resources["armament"].instantiate() as Armament
+		var mvp = arm.moveset
+		if mvp not in movement_sets:
+			movement_sets.append(mvp)
 	for mvpk in movement_sets:
 		master_tree.add_node(mvpk.name, mvpk.anim_tree, Vector2(0, counter))
 

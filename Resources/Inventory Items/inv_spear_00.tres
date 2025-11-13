@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://cti80s5p2qdx"]
+
+[ext_resource type="PackedScene" uid="uid://r324nntujads" path="res://prefabs/weapons/spear_00.tscn" id="1_2gjy6"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_s4a00"]
+[ext_resource type="Resource" uid="uid://e67eeeod2wdm" path="res://art/Character/clothing/DressUp Resources/weapons/spear_00.tres" id="2_fdoas"]
+[ext_resource type="Texture2D" uid="uid://c83otya1wshxo" path="res://art/textures/icons/ico_spear_debug.png" id="2_pvxed"]
+
+[resource]
+resource_name = "Spear Debug"
+script = ExtResource("1_s4a00")
+icon = ExtResource("2_pvxed")
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("2_fdoas"),
+"armament": ExtResource("1_2gjy6")
+})
+metadata/_custom_type_script = "uid://dv03uv3dfmr4a"

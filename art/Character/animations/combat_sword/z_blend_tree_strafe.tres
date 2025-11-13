@@ -42,10 +42,10 @@ states/walk_jog_run_jog_fwd/position = Vector2(404, 60.5)
 states/walk_jog_run_run_fwd/node = SubResource("AnimationNodeAnimation_fmi3v")
 states/walk_jog_run_run_fwd/position = Vector2(404, 215)
 transitions = ["Start", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateMachineTransition_l2vn5"), "walk_jog_run_jog_fwd", "walk_jog_run_run_fwd", SubResource("AnimationNodeStateMachineTransition_uygdu"), "walk_jog_run_run_fwd", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateMachineTransition_wf7fu")]
-graph_offset = Vector2(-86, -25)
+graph_offset = Vector2(-13, -39)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jhl7d"]
-graph_offset = Vector2(-530.038, -84.514)
+graph_offset = Vector2(-562.038, -25.514008)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_d6nw5")
 nodes/Animation/position = Vector2(-420, 280)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_23htk")
@@ -67,7 +67,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_nvbd6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h8cpt"]
-graph_offset = Vector2(-540, -163)
+graph_offset = Vector2(-428.61, -61.336723)
 nodes/output/position = Vector2(320, 120)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_6qkea")
 nodes/Animation/position = Vector2(-279.51, -49.61)
@@ -135,7 +135,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jgh1n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pr3uq"]
-graph_offset = Vector2(459, 165)
+graph_offset = Vector2(30, 94)
 nodes/output/position = Vector2(1080, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_emcgg")
 nodes/Animation/position = Vector2(371.47, 179.08)
@@ -173,7 +173,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_tg26n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_10bw5"]
-graph_offset = Vector2(46.5, 208.5)
+graph_offset = Vector2(-133.5, 35.5)
 nodes/output/position = Vector2(820, 360)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_2ru5q")
 nodes/Animation/position = Vector2(346.06, 251.68)
@@ -221,7 +221,7 @@ filters = ["char/Skeleton3D:chest", "char/Skeleton3D:forearm.L", "char/Skeleton3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6umsd"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2ig4c"]
-graph_offset = Vector2(72.5, 199.5)
+graph_offset = Vector2(-172.5, 121.5)
 nodes/output/position = Vector2(1060, 500)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_1rkk2")
 nodes/Animation/position = Vector2(160, 260)
@@ -246,7 +246,7 @@ filters = ["char/Skeleton3D:chest", "char/Skeleton3D:forearm.L", "char/Skeleton3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ccyxd"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sgmam"]
-graph_offset = Vector2(-100.793, 145.444)
+graph_offset = Vector2(-142.793, 47.444)
 nodes/output/position = Vector2(960, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_j28jb")
 nodes/Animation/position = Vector2(90, 240)

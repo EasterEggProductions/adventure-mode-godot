@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bvdky0inf3c11"]
+[gd_scene load_steps=70 format=3 uid="uid://bvdky0inf3c11"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_03al4"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_xa5ur"]
@@ -11,23 +11,23 @@
 [ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="12_gt37g"]
 [ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="12_kqqss"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="12_lnoy6"]
-[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="13_acglf"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="13_acglf"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="13_yb178"]
-[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icon_coin.png" id="14_4d4gf"]
-[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icon_shield_nonagon.png" id="15_5lk5y"]
-[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icon_shield_upBlast.png" id="15_ihrlk"]
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="14_4d4gf"]
+[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icons/icon_shield_nonagon.png" id="15_5lk5y"]
+[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="15_ihrlk"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="15_jeyv0"]
-[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icon_sword_goddette.png" id="16_cj551"]
-[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icon_axe_questions.png" id="16_d7447"]
+[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icons/icon_sword_goddette.png" id="16_cj551"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="16_d7447"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="17_1y1j1"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="18_5ww34"]
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="21_fnwlj"]
-[ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="21_jilyl"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="23_w8mif"]
 [ext_resource type="PackedScene" uid="uid://bldcnjo1gthob" path="res://prefabs/Dungeon elements/elevator_platform.tscn" id="24_s5s5f"]
 [ext_resource type="PackedScene" uid="uid://dyacbq330bbx0" path="res://prefabs/environment/shrub_commonfruit.tscn" id="25_ou45n"]
 [ext_resource type="PackedScene" uid="uid://cvyjw256lsge2" path="res://prefabs/environment/grass.tscn" id="26_4ciue"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="26_5srmb"]
+[ext_resource type="Script" uid="uid://csij116ov7g68" path="res://scripts/UI/HUD_items.gd" id="26_cn4eu"]
 [ext_resource type="PackedScene" uid="uid://2lgruxx4kd5a" path="res://prefabs/environment/boulder.tscn" id="27_2y8m1"]
 [ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="27_6v26p"]
 [ext_resource type="PackedScene" uid="uid://cme484l06g14s" path="res://prefabs/environment/tree_foliage.tscn" id="28_3jqsb"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="28_6apcs"]
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="29_n8i7l"]
 [ext_resource type="PackedScene" uid="uid://d3xpjq6g2jknf" path="res://prefabs/environment/coin_big.tscn" id="30_iem5u"]
+[ext_resource type="AudioStream" uid="uid://2lp3jpxlpy3a" path="res://art/audio/sfx/tik.ogg" id="31_0wyf6"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="31_ti63h"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="34_b3pdd"]
 [ext_resource type="Material" uid="uid://c6pfclkom172s" path="res://art/materials/door_of_trials.tres" id="36_xg0i7"]
@@ -221,6 +222,14 @@ cam_gant = NodePath("../cam_gantry_playerFollow")
 cam_actu = NodePath("../Camera")
 ip_input = NodePath("../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
 outfit_control = NodePath("../user_interface/Outfit_control")
+
+[node name="Multplayer Manager" type="Node" parent="Multplayer Manager" node_paths=PackedStringArray("server_menu", "cam_gant", "cam_actu", "ip_input", "outfit_control")]
+script = ExtResource("3_608j4")
+server_menu = NodePath("../../user_interface/MultiplayerControl_debug")
+cam_gant = NodePath("../../cam_gantry_playerFollow")
+cam_actu = NodePath("../../Camera")
+ip_input = NodePath("../../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
+outfit_control = NodePath("../../user_interface/Outfit_control")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 64.8381, 0.66, -2.32)
@@ -501,6 +510,251 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 [node name="grass4" parent="adventure_mode_demoLevel/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
 
+[node name="adventure_mode_demoLevel2" parent="." instance=ExtResource("6_xtlsg")]
+
+[node name="Door of Trials" parent="adventure_mode_demoLevel2" instance=ExtResource("7_qmjli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -21)
+
+[node name="Area3D" type="Area3D" parent="adventure_mode_demoLevel2/Door of Trials"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.08257)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="adventure_mode_demoLevel2/Door of Trials/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.228271)
+shape = SubResource("BoxShape3D_habm8")
+
+[node name="Door of Trials2" parent="adventure_mode_demoLevel2" instance=ExtResource("7_qmjli")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22, -5, -53)
+
+[node name="Area3D" type="Area3D" parent="adventure_mode_demoLevel2/Door of Trials2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.08257)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="adventure_mode_demoLevel2/Door of Trials2/Area3D"]
+shape = SubResource("BoxShape3D_habm8")
+
+[node name="Door of Trials3" parent="adventure_mode_demoLevel2" instance=ExtResource("7_qmjli")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.435, 0.254404, 40.5392)
+
+[node name="Area3D" type="Area3D" parent="adventure_mode_demoLevel2/Door of Trials3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="adventure_mode_demoLevel2/Door of Trials3/Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mvlxy")
+
+[node name="Levelbits" type="Node3D" parent="adventure_mode_demoLevel2"]
+
+[node name="moving_platform" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("24_s5s5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5244, -5, -32.5106)
+other_position = Vector3(52.524, 30, -32.511)
+
+[node name="boulder" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.56941, -0.563753, 0.562805, 0.579103, 1.66127, 0.0492163, -0.546998, 0.141296, 1.66686, 2.85708, -2.38419e-07, -20.4149)
+
+[node name="boulder2" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.445, 0, 0, 0, 1.05938, 0.982718, 0, -0.982718, 1.05938, -29.9397, 0.0643425, -3.18015)
+
+[node name="boulder3" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.315, 0, 0, 0, 1.22597, -0.475622, 0, 0.475622, 1.22597, -20.3436, 0.299139, -17.3225)
+
+[node name="boulder4" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.809267, -0.521997, 0.488882, 0.585409, 0.907577, 1.49012e-08, -0.410831, 0.264996, 0.963013, -10.3403, 0.0113297, -22.1284)
+
+[node name="boulder5" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.850161, 0.532509, 0.357612, -0.44764, 0.917797, -0.302476, -0.459424, 0.0911477, 0.956476, -27.9568, 0.743837, -22.4573)
+
+[node name="boulder6" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.91683, -0.108041, -0.97883, -0.384498, 1.88987, -0.961556, 0.906611, 1.02993, 1.66172, -20.6955, -1.90735e-06, 3.36927)
+
+[node name="boulder7" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(2.34096, 3.55976, -4.28836, -5.23127, -0.200965, -3.0225, -1.92244, 4.88157, 3.00274, -45.12, -0.178, -20.537)
+
+[node name="boulder24" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.53708, 5.02137, -2.9942, -5.23127, -0.200965, -3.0225, -2.61023, 3.35969, 4.29433, -89.2711, 8.82718, -57.9732)
+
+[node name="boulder8" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(-0.997747, -0.0901785, 0.511853, -0.147778, -1.01298, -0.46653, 0.498284, -0.480995, 0.886556, -35.3412, 1.01177, -12.5817)
+
+[node name="boulder9" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.687976, -0.0620372, -0.44186, -0.0418982, 0.799466, -0.17748, 0.444222, 0.171482, 0.667578, -39.0755, 0.869865, -37.0173)
+
+[node name="boulder10" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.594812, 1.52184, -0.368559, -1.55282, 0.522582, -0.348252, -0.201421, 0.465344, 1.59641, -45.9115, 1.61479, -51.6469)
+
+[node name="boulder11" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.643967, 0.889028, 0.325516, -0.852886, 0.715656, -0.267295, -0.410996, -0.0921389, 1.06471, -50.4352, 2.44216, -36.388)
+
+[node name="boulder12" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.764334, 0.645254, 0.420316, -0.647383, 0.859106, -0.141621, -0.41703, -0.151023, 0.990203, -70.4723, 5.43081, -24.5708)
+
+[node name="boulder13" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.898823, 0.523114, 0.00832287, -0.476871, 0.825965, -0.414699, -0.215201, 0.354588, 0.953706, -77.208, 6.37141, -57.1983)
+
+[node name="boulder14" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.643967, 0.889028, 0.325516, -0.852886, 0.715656, -0.267295, -0.410996, -0.0921389, 1.06471, -88.6663, 8.21368, -31.5614)
+
+[node name="boulder15" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.68061, 0.413123, 1.08945, -0.733117, 1.86113, 0.425179, -0.905598, -0.739978, 1.6776, -64.9384, 4.16, -40.8866)
+
+[node name="boulder16" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.898823, 0.523114, 0.00832287, -0.476871, 0.825965, -0.414699, -0.215201, 0.354588, 0.953706, -88.6982, 8.40948, -49.6076)
+
+[node name="boulder17" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.39482, 1.17752, 0.767029, -1.1814, 1.56777, -0.258442, -0.761032, -0.2756, 1.80701, -125.824, 15.6099, -23.4308)
+
+[node name="boulder18" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1.68061, 0.413123, 1.08945, -0.733117, 1.86113, 0.425179, -0.905598, -0.739978, 1.6776, -129.057, 4.16, -25.4263)
+
+[node name="boulder19" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.643967, 0.889028, 0.325516, -0.852886, 0.715656, -0.267295, -0.410996, -0.0921389, 1.06471, -125.619, 15.5988, -21.6859)
+
+[node name="boulder20" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.898823, 0.523114, 0.00832287, -0.476871, 0.825965, -0.414699, -0.215201, 0.354588, 0.953706, -133.352, 16.1571, -42.6608)
+
+[node name="boulder21" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.764334, 0.645254, 0.420316, -0.647383, 0.859106, -0.141621, -0.41703, -0.151023, 0.990203, -110.791, 12.8014, -20.9387)
+
+[node name="boulder22" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(0.898823, 0.523114, 0.00832287, -0.476871, 0.825965, -0.414699, -0.215201, 0.354588, 0.953706, -117.515, 14.1693, -50.1685)
+
+[node name="boulder23" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("27_2y8m1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.025, 15.6163, -25.4515)
+
+[node name="campfire" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("29_n8i7l")]
+
+[node name="button_floor" parent="adventure_mode_demoLevel2/Levelbits" instance=ExtResource("31_ti63h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98832, 0.0323282, -0.82142)
+
+[node name="ClimbTestPillar" type="MeshInstance3D" parent="adventure_mode_demoLevel2/Levelbits"]
+transform = Transform3D(0.995185, 0.0980171, 0, -0.0980171, 0.995185, 0, 0, 0, 1, -4.13517, 1.10516, 0)
+mesh = SubResource("BoxMesh_06f0o")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="adventure_mode_demoLevel2/Levelbits/ClimbTestPillar"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="adventure_mode_demoLevel2/Levelbits/ClimbTestPillar/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_akcvl")
+
+[node name="Foliage" type="Node3D" parent="adventure_mode_demoLevel2/Levelbits"]
+
+[node name="grass6" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, 49.3307, 0.118605, 9.24175)
+
+[node name="grass7" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.745649, 0, 1.0649, 0, 1.3, 0, -1.0649, 0, 0.745649, 47.5656, -1.68776, 33.5489)
+
+[node name="grass8" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.441372, 0, -0.812906, 0, 0.925, 0, 0.812906, 0, 0.441372, 46.5166, -0.689367, 24.8915)
+
+[node name="grass9" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.379817, 0, 1.52336, 0, 1.57, 0, -1.52336, 0, 0.379817, 65.7123, -2.22465, 23.9513)
+
+[node name="grass10" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, 75.8088, -2.31419, 7.49255)
+
+[node name="grass11" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.441372, 0, -0.812906, 0, 0.925, 0, 0.812906, 0, 0.441372, 60.9337, -0.161158, 8.80344)
+
+[node name="grass12" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, 68.1534, 0.605288, -12.2048)
+
+[node name="grass13" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.441372, 0, -0.812906, 0, 0.925, 0, 0.812906, 0, 0.441372, 78.9233, -1.63367, -7.88219)
+
+[node name="grass14" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, 69.6417, -0.736336, 1.17551)
+
+[node name="grass15" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.379817, 0, 1.52336, 0, 1.57, 0, -1.52336, 0, 0.379817, 57.7643, 0.56879, -4.42937)
+
+[node name="grass16" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, 29.5662, -1.5628, 37.5547)
+
+[node name="grass17" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.745649, 0, 1.0649, 0, 1.3, 0, -1.0649, 0, 0.745649, 10.1986, -1.74949, 40.3621)
+
+[node name="grass18" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, 15.024, -3.8147e-06, 22.6613)
+
+[node name="grass19" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(-0.618165, 0, -0.951891, 0, 1.135, 0, 0.951891, 0, -0.618165, 31.7914, -1.90735e-06, 20.3517)
+
+[node name="grass20" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.441372, 0, -0.812906, 0, 0.925, 0, 0.812906, 0, 0.441372, 18.5243, 0, -17.1552)
+
+[node name="grass21" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, 23.3111, 0, -16.6375)
+
+[node name="grass22" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.441372, 0, -0.812906, 0, 0.925, 0, 0.812906, 0, 0.441372, 21.4146, 0, -12.4663)
+
+[node name="grass23" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, 29.38, 9.53674e-07, -12.8788)
+
+[node name="grass24" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.745649, 0, 1.0649, 0, 1.3, 0, -1.0649, 0, 0.745649, 37.426, 0, -4.31252)
+
+[node name="grass25" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, -39.7152, 1.42712, -15.3458)
+
+[node name="grass26" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, -12.5543, 0.075388, -22.434)
+
+[node name="grass27" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, -61.5889, 3.94202, -40.5482)
+
+[node name="grass28" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.745649, 0, 1.0649, 0, 1.3, 0, -1.0649, 0, 0.745649, -86.4307, 7.85982, -29.5777)
+
+[node name="grass29" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.256437, 0, 1.02851, 0, 1.06, 0, -1.02851, 0, 0.256437, -81.85, 7.27556, -52.072)
+
+[node name="grass30" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(0.92595, 0, -0.763294, 0, 1.2, 0, 0.763294, 0, 0.92595, -114.254, 13.4644, -49.6298)
+
+[node name="tree_foliage" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.9039, 8.71823, -30.1338)
+
+[node name="tree_foliage2" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.4628, 7.03553, -50.6181)
+
+[node name="tree_foliage3" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.3279, 6.74328, -40.7424)
+
+[node name="tree_foliage4" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.3517, 4.73426, -28.7828)
+
+[node name="tree_foliage5" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5661, 3.58734, -47.8047)
+
+[node name="tree_foliage6" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9345, 1.71519, -34.4122)
+
+[node name="tree_foliage7" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("28_3jqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.9531, 2.83593, -22.6515)
+
+[node name="shrub2" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("25_ou45n")]
+transform = Transform3D(0.62019, 0, 0.784452, 0, 1, 0, -0.784452, 0, 0.62019, -117.528, 14.1976, -20.9965)
+
+[node name="shrub3" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("25_ou45n")]
+transform = Transform3D(0.691891, 0, 0.722002, 0.0912034, 0.99199, -0.0873998, -0.716218, 0.12632, 0.686349, -120.419, 14.7612, -45.6009)
+
+[node name="shrub4" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("25_ou45n")]
+transform = Transform3D(-0.395016, 0, -0.918674, 0, 1, 0, 0.918674, 0, -0.395016, -96.7211, 9.92595, -52.7165)
+
+[node name="shrub" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("25_ou45n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9991, 0.0666323, -0.484264)
+
+[node name="grass" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+
+[node name="grass2" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="grass3" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
+[node name="grass4" parent="adventure_mode_demoLevel2/Levelbits/Foliage" instance=ExtResource("26_4ciue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.375178, 0.669904, -0.640679, -0.926834, -0.282171, 0.247706, -0.014842, 0.686737, 0.726754, 0, 0, 0)
 light_color = Color(1, 0.940078, 0.839877, 1)
@@ -516,11 +770,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ui_items" parent="user_interface" node_paths=PackedStringArray("door_unlock") instance=ExtResource("21_jilyl")]
-layout_mode = 1
-scale = Vector2(1.007, 1)
-door_unlock = NodePath("../../adventure_mode_demoLevel/Door of Trials")
 
 [node name="vinyette" type="TextureRect" parent="user_interface"]
 layout_mode = 1
@@ -567,7 +816,6 @@ placeholder_text = "ip addres of host"
 [node name="Outfit_control" type="Control" parent="user_interface" node_paths=PackedStringArray("available_area", "worn_area")]
 visible = false
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 3
 anchors_preset = 0
 script = ExtResource("12_kqqss")
 res_folder = "res://art/Character/clothing/DressUp Resources/"
@@ -714,12 +962,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -219.0
-offset_right = 222.0
-offset_bottom = 2.0
+offset_left = 32.0
+offset_top = -251.0
+offset_right = 253.0
+offset_bottom = -30.0
 grow_vertical = 0
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(0, 221)
+script = ExtResource("26_cn4eu")
 
 [node name="background" type="Control" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
@@ -730,7 +980,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="user_interface/HUD/dpad_itemMenu/background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -817,7 +1066,7 @@ offset_bottom = 220.0
 texture = ExtResource("13_yb178")
 expand_mode = 1
 
-[node name="placeholder item 1" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_belt" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -832,7 +1081,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_acglf")
 
-[node name="placeholder item 2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_left" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -848,7 +1097,7 @@ grow_vertical = 2
 texture = ExtResource("15_5lk5y")
 expand_mode = 1
 
-[node name="placeholder item 3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_right" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -863,7 +1112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_cj551")
 
-[node name="placeholder item 4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_spell" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 modulate = Color(1, 0.35, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -879,6 +1128,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_jeyv0")
 expand_mode = 1
+
+[node name="aud" type="AudioStreamPlayer" parent="user_interface/HUD/dpad_itemMenu"]
+stream = ExtResource("31_0wyf6")
+pitch_scale = 0.81
+max_polyphony = 2
 
 [node name="currency_readout" type="Control" parent="user_interface/HUD"]
 editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
@@ -1017,33 +1271,6 @@ script = ExtResource("27_6v26p")
 [node name="ai_attack" type="Node" parent="skele_01"]
 script = ExtResource("28_5kths")
 
-[node name="skele_04" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(0.36125, 0, -0.932469, 0, 1, 0, 0.932469, 0, 0.36125, -23.2931, 0.207531, -0.439989)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="skele_02" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 52.2022, 0.207531, -3.26289)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="footall_sfx3" type="Node" parent="skele_02"]
-script = ExtResource("27_6v26p")
-
-[node name="ai_attack" type="Node" parent="skele_02"]
-script = ExtResource("28_5kths")
-
-[node name="skele_03" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -115.023, 13.8204, -36.5369)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="footall_sfx3" type="Node" parent="skele_03"]
-script = ExtResource("27_6v26p")
-
-[node name="ai_attack" type="Node" parent="skele_03"]
-script = ExtResource("28_5kths")
-
 [node name="collectable" parent="." instance=ExtResource("30_iem5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.207, 15.6991, -28.892)
 
@@ -1063,6 +1290,9 @@ spawn_path = NodePath("../Multplayer Manager")
 [connection signal="body_entered" from="adventure_mode_demoLevel/Door of Trials/Area3D" to="adventure_mode_demoLevel/Door of Trials" method="trigger_animation"]
 [connection signal="body_entered" from="adventure_mode_demoLevel/Door of Trials2/Area3D" to="adventure_mode_demoLevel/Door of Trials2" method="trigger_animation"]
 [connection signal="body_exited" from="adventure_mode_demoLevel/Door of Trials3/Area3D" to="adventure_mode_demoLevel/Door of Trials3" method="trigger_animation"]
+[connection signal="body_entered" from="adventure_mode_demoLevel2/Door of Trials/Area3D" to="adventure_mode_demoLevel2/Door of Trials" method="trigger_animation"]
+[connection signal="body_entered" from="adventure_mode_demoLevel2/Door of Trials2/Area3D" to="adventure_mode_demoLevel2/Door of Trials2" method="trigger_animation"]
+[connection signal="body_exited" from="adventure_mode_demoLevel2/Door of Trials3/Area3D" to="adventure_mode_demoLevel2/Door of Trials3" method="trigger_animation"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]
 [connection signal="pressed" from="user_interface/HUD/menu_start/buttons/Button Quit" to="user_interface/HUD" method="_quit"]

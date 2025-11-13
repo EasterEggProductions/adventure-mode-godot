@@ -152,9 +152,9 @@ animation = &"walk/turn_left 2"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0fy2b"]
 resource_name = "move_strafe-n-look"
-graph_offset = Vector2(-363.536, -157.351)
+graph_offset = Vector2(-604.8693, -106.684326)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_kb435")
-nodes/Animation/position = Vector2(-300, 40)
+nodes/Animation/position = Vector2(-293.33334, 0)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lvj56")
 "nodes/Animation 2/position" = Vector2(-300, 380)
 "nodes/MOVE strafe/node" = ExtResource("1_mcnwu")
@@ -381,4 +381,4 @@ states/spells/position = Vector2(299.542, 40.875)
 states/sprint/node = SubResource("AnimationNodeAnimation_j4rrc")
 states/sprint/position = Vector2(653.667, -57)
 transitions = ["a_light_01", "a_light_02", SubResource("AnimationNodeStateMachineTransition_d58rr"), "a_light_02", "a_light_01", SubResource("AnimationNodeStateMachineTransition_4x4kn"), "Start", "draw_back", SubResource("AnimationNodeStateMachineTransition_km157"), "a_light_02", "a_hvy_jmpAtt", SubResource("AnimationNodeStateMachineTransition_eydmh"), "sheathe_back", "End", SubResource("AnimationNodeStateMachineTransition_mgcs1"), "crouch", "a_light_01", SubResource("AnimationNodeStateMachineTransition_jo034"), "crouch", "a_hvy_charge_1", SubResource("AnimationNodeStateMachineTransition_00ovn"), "monododge", "a_light_02", SubResource("AnimationNodeStateMachineTransition_quxtc"), "draw_back", "main mv", SubResource("AnimationNodeStateMachineTransition_ecsmi"), "monododge", "main mv", SubResource("AnimationNodeStateMachineTransition_64b2t"), "main mv", "parry", SubResource("AnimationNodeStateMachineTransition_xnfa2"), "parry", "main mv", SubResource("AnimationNodeStateMachineTransition_c3r4q"), "main mv", "a_light_01", SubResource("AnimationNodeStateMachineTransition_ckfq4"), "a_light_01", "main mv", SubResource("AnimationNodeStateMachineTransition_mjccd"), "main mv", "a_hvy_charge_1", SubResource("AnimationNodeStateMachineTransition_3f26f"), "a_hvy_charge_1", "main mv", SubResource("AnimationNodeStateMachineTransition_6ytut"), "main mv", "monododge", SubResource("AnimationNodeStateMachineTransition_psfq4"), "main mv", "sheathe_back", SubResource("AnimationNodeStateMachineTransition_jtmo3"), "a_hvy_jmpAtt", "main mv", SubResource("AnimationNodeStateMachineTransition_yx4xs"), "main mv", "poise_stagger", SubResource("AnimationNodeStateMachineTransition_h14p6"), "poise_stagger", "main mv", SubResource("AnimationNodeStateMachineTransition_2x0ff"), "a_light_02", "main mv", SubResource("AnimationNodeStateMachineTransition_ugyu6"), "main mv", "spells", SubResource("AnimationNodeStateMachineTransition_08gnw"), "spells", "main mv", SubResource("AnimationNodeStateMachineTransition_ixblm"), "a_hvy_charge_0", "main mv", SubResource("AnimationNodeStateMachineTransition_k2gxs"), "a_hvy_charge_1", "a_hvy_charge_0", SubResource("AnimationNodeStateMachineTransition_5bgpb"), "main mv", "crouch", SubResource("AnimationNodeStateMachineTransition_nxnoc"), "crouch", "main mv", SubResource("AnimationNodeStateMachineTransition_smjdf")]
-graph_offset = Vector2(-232, 107)
+graph_offset = Vector2(-572, -122)

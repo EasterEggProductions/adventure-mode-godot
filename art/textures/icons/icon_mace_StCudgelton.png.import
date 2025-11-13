@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxihym06dprn4"
-path="res://.godot/imported/icon_mannyQuinn.png-4f696c7f82bd18e629ec8d0e60569b9d.ctex"
+uid="uid://bpppudj4xrril"
+path="res://.godot/imported/icon_mace_StCudgelton.png-165accc0b6f3a14fe2dc1492b9a9b6d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_mannyQuinn.png"
-dest_files=["res://.godot/imported/icon_mannyQuinn.png-4f696c7f82bd18e629ec8d0e60569b9d.ctex"]
+source_file="res://art/textures/icons/icon_mace_StCudgelton.png"
+dest_files=["res://.godot/imported/icon_mace_StCudgelton.png-165accc0b6f3a14fe2dc1492b9a9b6d9.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -7,6 +7,4 @@
 resource_name = "axe 01"
 script = ExtResource("2_jlba7")
 accessory = ExtResource("1_q3dx4")
-offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-tags = Array[String]([])
 bones = Array[String](["prop.R"])

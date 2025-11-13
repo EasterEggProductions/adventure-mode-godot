@@ -52,7 +52,7 @@ var stamina_regen_timer = 0.0
 ## current poise 
 @export var poise_current = 0.0
 ## Amount per second that poise regenerates
-@export var poise_regen = 1.0
+@export var poise_regen = 5.0
 ## Time after drain that regeneration kicks in
 @export var poise_regen_delay = 3.0
 var poise_regen_timer = 0.0
@@ -63,15 +63,31 @@ var poise_regen_timer = 0.0
 ## And then those items /referenced/ in various slots and such.
 ## With only the core inventory dictionary adding or removing things
 @export_group("Inventory")
-@export var my_item : InventoryItem
-@export var my_otherItem : InventoryItem
-
+@export_subgroup("Whole inventory") 
+## Should be all items held by this character.
 @export var my_inventory : Array[InventoryItem]
-
+@export_subgroup("Belt : Quick Items") 
+## The quick items, the bottom D one in souls games
+@export var belt_items : Array[InventoryItem]
+@export var belt_size : int = 4
+var belt_current : int = 0
 ## Item held in right hand, weapon, shield, etc 
-@export var hand_right : Accessory
+@export_subgroup("Right Hand Slots")
+var hand_r_current : int = 0
+## The primmary weapon, the right D one in souls games
+@export var hand_right_slots : Array[InventoryItem]
+@export var hand_r_size : int = 3
 ## Item held in left hand, awards, accolades, etc
-@export var hand_left : Accessory
+@export_subgroup("Left Hand Slots")
+var hand_l_current : int = 0
+## The offhand item, the left D one in souls games
+@export var hand_left_slots : Array[InventoryItem]
+@export var hand_l_size : int = 3
+@export_subgroup("Spell slots") 
+var spell_current : int = 0
+## The spell slot, up D item in most souls games.
+@export var spells_slots : Array[InventoryItem]
+@export var spells_size : int = 3
 
 @export_group("Dress Up")
 ## Base skeleton used for effects such as dissolve or undead

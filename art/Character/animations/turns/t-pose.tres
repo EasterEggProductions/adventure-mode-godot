@@ -1,4 +1,4 @@
-[gd_resource type="Animation" format=3 uid="uid://miw003lyyq6p"]
+[gd_resource type="Animation" load_steps=0 format=3 uid="uid://miw003lyyq6p"]
 
 [resource]
 resource_name = "T-pose"
@@ -7,13 +7,20 @@ tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
 tracks/0/path = NodePath("char/Skeleton3D:Root")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.00335e-07, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 1.00334816e-07, 0, 0, 1)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = true
 tracks/1/enabled = true
 tracks/1/path = NodePath("char/Skeleton3D:head")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.142147, -1.17999e-07, -1.69452e-08, 0.989846)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.14214686, -1.07267e-07, 5.7786046e-08, 0.9898456)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("char/Skeleton3D:toe.L")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.39688e-07, -0.9612483, 0.27568412, 7.6011065e-07)

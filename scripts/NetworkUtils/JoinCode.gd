@@ -10,11 +10,11 @@ static func ip_to_code(ip: String, port: int) -> String:
 	if parts.size() != 4:
 		push_error("ip_to_code: invalid IPv4 address: %s" % ip)
 		return ""
-		
-	if port > 33999 || port < 33900:
+
+	if port > 33999 or port < 33900:
 		push_error("ip_to_code: invalid port (must be [33900-33999]): %s" % port)
 		return ""
-	
+
 	var port_component := port - 33900
 
 	var a := int(parts[0])

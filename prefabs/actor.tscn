@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://casoj2le5m3x1" path="res://Modular Mobility/movesets/mvpk_climb.tres" id="4_ud0ya"]
 [ext_resource type="Resource" uid="uid://dijgug6xnkk83" path="res://Modular Mobility/movesets/mvpk_swim.tres" id="5_1114p"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_5gopm"]
-[ext_resource type="Resource" uid="uid://diybpprbfvy0g" path="res://Modular Mobility/movesets/w_claymore_moveset.tres" id="8_tqg4d"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
 [ext_resource type="PackedScene" uid="uid://cwn7cgkq7jdmx" path="res://prefabs/particles/magic.tscn" id="11_l20t5"]
@@ -18,6 +17,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
 [ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
+[ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
 [ext_resource type="AnimationLibrary" uid="uid://bu8hawt708pm4" path="res://art/Character/animations/actions/aLib_actions.tres" id="21_qj7qg"]
@@ -31,6 +31,7 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://coym3jr0vat8x" path="res://art/Character/animator components/walk_root.tres" id="60_n8fbs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke2ik"]
+height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm1kx"]
 resource_name = "skeleton_mat"
@@ -394,7 +395,7 @@ properties/3/replication_mode = 1
 transform = Transform3D(0.999896, 0.00712085, -0.0125515, -0.0072158, 0.999946, -0.00753587, 0.0124971, 0.00762566, 0.999893, 0, 0, 0)
 script = ExtResource("1_u4ehk")
 character = ExtResource("2_y0m84")
-movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("3_yihif"), ExtResource("4_ud0ya"), ExtResource("5_1114p"), ExtResource("8_tqg4d")])
+movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("3_yihif"), ExtResource("4_ud0ya"), ExtResource("5_1114p")])
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 to_equip_wep = ExtResource("11_wjv3x")
 spell_effect = ExtResource("11_l20t5")
@@ -403,7 +404,7 @@ spell_effect = ExtResource("11_l20t5")
 visible = false
 
 [node name="travel_shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_ke2ik")
 
 [node name="skeleton" type="Node3D" parent="."]
@@ -1178,6 +1179,15 @@ shape = SubResource("CapsuleShape3D_w13a5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_0ha5t")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D"]
+transform = Transform3D(-0.11421572, -0.0393309, -0.9926772, 0.9763575, 0.1801442, -0.11947543, 0.18352382, -0.9828536, 0.017825812, 0.2872454, 0.69157124, 0.19536549)
+visible = false
+bone_name = "prop.L"
+bone_idx = 54
+
+[node name="shield_debug" parent="skeleton/char/Skeleton3D/BoneAttachment3D" instance=ExtResource("15_tqg4d")]
+transform = Transform3D(0.92577165, 0, -0.37808317, 0.375915, -0.10694082, 0.92046267, -0.040432524, -0.99426544, -0.099002786, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")

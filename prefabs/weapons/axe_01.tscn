@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://nl3382vwsaev"]
+[gd_scene load_steps=18 format=4 uid="uid://nl3382vwsaev"]
 
 [ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_05eid"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_fffj4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="3_271wk"]
 [ext_resource type="PackedScene" uid="uid://e4las240qute" path="res://prefabs/particles/metal_clang.tscn" id="3_ry28l"]
 [ext_resource type="Material" uid="uid://cfbryicsvmobm" path="res://art/materials/debug_hitbox_transparent.tres" id="4_d83eg"]
+[ext_resource type="Resource" uid="uid://diybpprbfvy0g" path="res://Modular Mobility/movesets/w_claymore_moveset.tres" id="4_u533v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdyns"]
 
@@ -111,6 +112,7 @@ script = ExtResource("1_05eid")
 damage = 3
 hit_effect = ExtResource("2_fffj4")
 block_effect = ExtResource("3_ry28l")
+moveset = ExtResource("4_u533v")
 
 [node name="godette_sword" type="Node3D" parent="."]
 transform = Transform3D(0.0242101, -0.138432, -0.242179, 0.255618, 0.108336, -0.0363726, 0.111685, -0.217945, 0.135745, -0.0211176, 0.121103, -0.0576759)

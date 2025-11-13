@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh82a1sw0mpyv"
-path="res://.godot/imported/icon_sword_goddette.png-125cba04049d6bf35478c79cb80edf5a.ctex"
+uid="uid://bpppudj4xrril"
+path="res://.godot/imported/icon_mace_StCudgelton.png-165accc0b6f3a14fe2dc1492b9a9b6d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_sword_goddette.png"
-dest_files=["res://.godot/imported/icon_sword_goddette.png-125cba04049d6bf35478c79cb80edf5a.ctex"]
+source_file="res://art/textures/icons/icon_mace_StCudgelton.png"
+dest_files=["res://.godot/imported/icon_mace_StCudgelton.png-165accc0b6f3a14fe2dc1492b9a9b6d9.ctex"]
 
 [params]
 

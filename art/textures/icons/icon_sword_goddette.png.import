@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1yr1h0oesfd4"
-path="res://.godot/imported/icon_axe_questions.png-f842797e74ef0925126b8b1fa80a36e0.ctex"
+uid="uid://dh82a1sw0mpyv"
+path="res://.godot/imported/icon_sword_goddette.png-879b38fdb413f81468e9d60868cde3fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_axe_questions.png"
-dest_files=["res://.godot/imported/icon_axe_questions.png-f842797e74ef0925126b8b1fa80a36e0.ctex"]
+source_file="res://art/textures/icons/icon_sword_goddette.png"
+dest_files=["res://.godot/imported/icon_sword_goddette.png-879b38fdb413f81468e9d60868cde3fa.ctex"]
 
 [params]
 

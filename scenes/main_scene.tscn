@@ -1,33 +1,35 @@
-[gd_scene load_steps=69 format=3 uid="uid://bvdky0inf3c11"]
+[gd_scene load_steps=72 format=3 uid="uid://bvdky0inf3c11"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_03al4"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_xa5ur"]
 [ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_608j4"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_1onkx"]
+[ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_p27gv"]
 [ext_resource type="Environment" uid="uid://c5vgp5xgbfy74" path="res://scenes/default_env.tres" id="5_qqnwc"]
+[ext_resource type="Resource" uid="uid://dhjk13nom42yg" path="res://Resources/Characters/StalNacht.tres" id="6_cn4eu"]
 [ext_resource type="PackedScene" uid="uid://8hu74ym7skte" path="res://prefabs/Levels/adventure_mode_demo_level.tscn" id="6_xtlsg"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_qmjli"]
 [ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="11_whj5c"]
 [ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="12_gt37g"]
 [ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="12_kqqss"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="12_lnoy6"]
-[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="13_acglf"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="13_acglf"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="13_yb178"]
-[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icon_coin.png" id="14_4d4gf"]
-[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icon_shield_nonagon.png" id="15_5lk5y"]
-[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icon_shield_upBlast.png" id="15_ihrlk"]
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="14_4d4gf"]
+[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icons/icon_shield_nonagon.png" id="15_5lk5y"]
+[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="15_ihrlk"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="15_jeyv0"]
-[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icon_sword_goddette.png" id="16_cj551"]
-[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icon_axe_questions.png" id="16_d7447"]
+[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icons/icon_sword_goddette.png" id="16_cj551"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="16_d7447"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="17_1y1j1"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="18_5ww34"]
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="21_fnwlj"]
-[ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="21_jilyl"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="23_w8mif"]
 [ext_resource type="PackedScene" uid="uid://bldcnjo1gthob" path="res://prefabs/Dungeon elements/elevator_platform.tscn" id="24_s5s5f"]
 [ext_resource type="PackedScene" uid="uid://dyacbq330bbx0" path="res://prefabs/environment/shrub_commonfruit.tscn" id="25_ou45n"]
 [ext_resource type="PackedScene" uid="uid://cvyjw256lsge2" path="res://prefabs/environment/grass.tscn" id="26_4ciue"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="26_5srmb"]
+[ext_resource type="Script" uid="uid://csij116ov7g68" path="res://scripts/UI/HUD_items.gd" id="26_cn4eu"]
 [ext_resource type="PackedScene" uid="uid://2lgruxx4kd5a" path="res://prefabs/environment/boulder.tscn" id="27_2y8m1"]
 [ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="27_6v26p"]
 [ext_resource type="PackedScene" uid="uid://cme484l06g14s" path="res://prefabs/environment/tree_foliage.tscn" id="28_3jqsb"]
@@ -35,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="28_6apcs"]
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="29_n8i7l"]
 [ext_resource type="PackedScene" uid="uid://d3xpjq6g2jknf" path="res://prefabs/environment/coin_big.tscn" id="30_iem5u"]
+[ext_resource type="AudioStream" uid="uid://2lp3jpxlpy3a" path="res://art/audio/sfx/tik.ogg" id="31_0wyf6"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="31_ti63h"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="34_b3pdd"]
 [ext_resource type="Material" uid="uid://c6pfclkom172s" path="res://art/materials/door_of_trials.tres" id="36_xg0i7"]
@@ -221,6 +224,18 @@ cam_gant = NodePath("../cam_gantry_playerFollow")
 cam_actu = NodePath("../Camera")
 ip_input = NodePath("../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
 outfit_control = NodePath("../user_interface/Outfit_control")
+player_1 = ExtResource("4_p27gv")
+player_2 = ExtResource("6_cn4eu")
+
+[node name="Multplayer Manager" type="Node" parent="Multplayer Manager" node_paths=PackedStringArray("server_menu", "cam_gant", "cam_actu", "ip_input", "outfit_control")]
+script = ExtResource("3_608j4")
+server_menu = NodePath("../../user_interface/MultiplayerControl_debug")
+cam_gant = NodePath("../../cam_gantry_playerFollow")
+cam_actu = NodePath("../../Camera")
+ip_input = NodePath("../../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
+outfit_control = NodePath("../../user_interface/Outfit_control")
+player_1 = ExtResource("4_p27gv")
+player_2 = ExtResource("6_cn4eu")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 64.8381, 0.66, -2.32)
@@ -517,11 +532,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ui_items" parent="user_interface" node_paths=PackedStringArray("door_unlock") instance=ExtResource("21_jilyl")]
-layout_mode = 1
-scale = Vector2(1.007, 1)
-door_unlock = NodePath("../../adventure_mode_demoLevel/Door of Trials")
-
 [node name="vinyette" type="TextureRect" parent="user_interface"]
 layout_mode = 1
 anchors_preset = 15
@@ -567,7 +577,6 @@ placeholder_text = "ip addres of host"
 [node name="Outfit_control" type="Control" parent="user_interface" node_paths=PackedStringArray("available_area", "worn_area")]
 visible = false
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 3
 anchors_preset = 0
 script = ExtResource("12_kqqss")
 res_folder = "res://art/Character/clothing/DressUp Resources/"
@@ -720,6 +729,7 @@ offset_right = 222.0
 offset_bottom = 2.0
 grow_vertical = 0
 pivot_offset = Vector2(0, 221)
+script = ExtResource("26_cn4eu")
 
 [node name="background" type="Control" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
@@ -730,7 +740,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="user_interface/HUD/dpad_itemMenu/background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -817,7 +826,7 @@ offset_bottom = 220.0
 texture = ExtResource("13_yb178")
 expand_mode = 1
 
-[node name="placeholder item 1" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_belt" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -832,7 +841,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_acglf")
 
-[node name="placeholder item 2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_left" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -848,7 +857,7 @@ grow_vertical = 2
 texture = ExtResource("15_5lk5y")
 expand_mode = 1
 
-[node name="placeholder item 3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_right" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -863,7 +872,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_cj551")
 
-[node name="placeholder item 4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+[node name="item_spell" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
 modulate = Color(1, 0.35, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -879,6 +888,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_jeyv0")
 expand_mode = 1
+
+[node name="aud" type="AudioStreamPlayer" parent="user_interface/HUD/dpad_itemMenu"]
+stream = ExtResource("31_0wyf6")
+volume_db = 10.0
+pitch_scale = 0.81
+max_polyphony = 2
 
 [node name="currency_readout" type="Control" parent="user_interface/HUD"]
 editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
@@ -1015,33 +1030,6 @@ to_equip_wep = ExtResource("28_6apcs")
 script = ExtResource("27_6v26p")
 
 [node name="ai_attack" type="Node" parent="skele_01"]
-script = ExtResource("28_5kths")
-
-[node name="skele_04" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(0.36125, 0, -0.932469, 0, 1, 0, 0.932469, 0, 0.36125, -23.2931, 0.207531, -0.439989)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="skele_02" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 52.2022, 0.207531, -3.26289)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="footall_sfx3" type="Node" parent="skele_02"]
-script = ExtResource("27_6v26p")
-
-[node name="ai_attack" type="Node" parent="skele_02"]
-script = ExtResource("28_5kths")
-
-[node name="skele_03" parent="." instance=ExtResource("26_5srmb")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -115.023, 13.8204, -36.5369)
-character = ExtResource("34_b3pdd")
-to_equip_wep = ExtResource("28_6apcs")
-
-[node name="footall_sfx3" type="Node" parent="skele_03"]
-script = ExtResource("27_6v26p")
-
-[node name="ai_attack" type="Node" parent="skele_03"]
 script = ExtResource("28_5kths")
 
 [node name="collectable" parent="." instance=ExtResource("30_iem5u")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjx57huytv66n"
-path="res://.godot/imported/icon_shield_nonagon.png-0154c409df51bcdf876f3d1772db1532.ctex"
+uid="uid://bn1ilcghbmw3e"
+path="res://.godot/imported/ico_sword_short_debug.png-72968e984390064b36393e7846b59328.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/icon_shield_nonagon.png"
-dest_files=["res://.godot/imported/icon_shield_nonagon.png-0154c409df51bcdf876f3d1772db1532.ctex"]
+source_file="res://art/textures/icons/ico_sword_short_debug.png"
+dest_files=["res://.godot/imported/ico_sword_short_debug.png-72968e984390064b36393e7846b59328.ctex"]
 
 [params]
 

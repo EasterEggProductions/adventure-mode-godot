@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Character" load_steps=10 format=3 uid="uid://dhjk13nom42yg"]
+
+[ext_resource type="Resource" uid="uid://cbifiv8rt7a6m" path="res://art/Character/clothing/DressUp Resources/weapons/sword_01.tres" id="1_0r1lr"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="2_x0ixi"]
+[ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="3_0r1lr"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="4_wy56a"]
+[ext_resource type="Texture2D" uid="uid://cx1a8kinoowmh" path="res://art/textures/icons/icon_skeleton.png" id="5_ecdhw"]
+[ext_resource type="Resource" uid="uid://cduwrj70ffguk" path="res://art/Character/clothing/DressUp Resources/gauntlet_of_razanik.tres" id="5_wy56a"]
+[ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="6_c2m3v"]
+[ext_resource type="Resource" uid="uid://bewat2ejmwowa" path="res://art/Character/clothing/DressUp Resources/utility_belt.tres" id="6_ecdhw"]
+[ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_p04gq"]
+
+[resource]
+resource_name = "StalNacht"
+script = ExtResource("6_c2m3v")
+portrait = ExtResource("5_ecdhw")
+given_name = "StalNacht"
+health_max = 6.0
+health_current = 6.0
+poise_max = 4.0
+my_inventory = Array[ExtResource("2_x0ixi")]([ExtResource("3_0r1lr"), null, null])
+hand_right = ExtResource("1_0r1lr")
+under_skeleton = ExtResource("7_p04gq")
+outfit = Array[ExtResource("4_wy56a")]([ExtResource("5_wy56a"), ExtResource("6_ecdhw")])

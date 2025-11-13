@@ -155,7 +155,7 @@ advance_expression = "desired_move.y > 0.5"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kewg"]
 xfade_time = 0.5
-advance_mode = 2
+advance_mode = 0
 advance_expression = "is_on_floor() == false
 "
 
@@ -215,4 +215,4 @@ states/walk_land/position = Vector2(491.495, 102.416)
 states/walk_taking_off/node = SubResource("AnimationNodeAnimation_xf3j1")
 states/walk_taking_off/position = Vector2(494.619, -22.625)
 transitions = ["walk_airborne", "walk_land", SubResource("AnimationNodeStateMachineTransition_tddch"), "Jump w vel", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_86anj"), "walk_taking_off", "walk_airborne", SubResource("AnimationNodeStateMachineTransition_2png7"), "sit_lounge_tscn", "sit_lounge_toStand", SubResource("AnimationNodeStateMachineTransition_uitot"), "Start", "mv", SubResource("AnimationNodeStateMachineTransition_h3k80"), "mv", "dodgeroll", SubResource("AnimationNodeStateMachineTransition_ecnr0"), "dodgeroll", "mv", SubResource("AnimationNodeStateMachineTransition_qxsd3"), "mv", "Jump w vel", SubResource("AnimationNodeStateMachineTransition_aoli6"), "mv", "walk_taking_off", SubResource("AnimationNodeStateMachineTransition_0kewg"), "walk_taking_off", "mv", SubResource("AnimationNodeStateMachineTransition_58civ"), "walk_land", "mv", SubResource("AnimationNodeStateMachineTransition_sx767"), "crouch", "mv", SubResource("AnimationNodeStateMachineTransition_eig5m"), "mv", "crouch", SubResource("AnimationNodeStateMachineTransition_anw0w"), "spell", "mv", SubResource("AnimationNodeStateMachineTransition_birn4"), "mv", "spell", SubResource("AnimationNodeStateMachineTransition_ytnux"), "mv", "death", SubResource("AnimationNodeStateMachineTransition_5s3er")]
-graph_offset = Vector2(-275, -91)
+graph_offset = Vector2(-199, -45)

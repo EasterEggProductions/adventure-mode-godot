@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://r324nntujads"]
+
+[ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_to6oj"]
+[ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_dlwcl"]
+[ext_resource type="PackedScene" uid="uid://e4las240qute" path="res://prefabs/particles/metal_clang.tscn" id="3_p8ist"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="4_dlwcl"]
+[ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="5_avpax"]
+[ext_resource type="PackedScene" uid="uid://c0jbx6c6cnqt4" path="res://art/Props/claymore.glb" id="6_kkts7"]
+[ext_resource type="PackedScene" uid="uid://dtvi83p6px6ro" path="res://art/Props/spear_debug.glb" id="7_p8ist"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bbids"]
+radius = 0.1
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbf1y"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.419608, 0, 0.133333, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r8k42"]
+material = SubResource("StandardMaterial3D_hbf1y")
+radius = 0.1
+height = 0.4
+
+[node name="spear_00" type="Node3D"]
+script = ExtResource("1_to6oj")
+damage = 6
+hit_effect = ExtResource("2_dlwcl")
+block_effect = ExtResource("3_p8ist")
+moveset = ExtResource("4_dlwcl")
+
+[node name="hitbox" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, 3.72024e-08, -0.253, 0)
+shape = SubResource("CapsuleShape3D_bbids")
+target_position = Vector3(0, -0.588, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="hitbox_vis" type="MeshInstance3D" parent="hitbox"]
+transform = Transform3D(1, 0, -2.98023e-08, 1.49012e-08, 1, 0, -1.78814e-07, 0, 1, -5.96046e-08, -0.588251, -2.38419e-07)
+visible = false
+mesh = SubResource("CapsuleMesh_r8k42")
+skeleton = NodePath("../..")
+
+[node name="trail_weapon" parent="." instance=ExtResource("5_avpax")]
+transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 8.74228e-08, 4.37114e-08, -1, 1, 4.37114e-08, 8.74228e-08, -9.58635e-08, -1.0462028, -6.6533e-08)
+
+[node name="claymore_gfx" parent="." instance=ExtResource("6_kkts7")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="spear_debug" parent="." instance=ExtResource("7_p8ist")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

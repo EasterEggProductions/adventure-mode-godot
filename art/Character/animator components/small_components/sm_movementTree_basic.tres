@@ -16,14 +16,14 @@ animation = &"walk_jog_run/turn_left_45s"
 
 [resource]
 resource_name = "move_strafe-n-look"
-graph_offset = Vector2(-441.915, -4.70932)
+graph_offset = Vector2(-556.1829, -25.806656)
 nodes/output/position = Vector2(410, 130)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_kb435")
 nodes/Animation/position = Vector2(-390, -10)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lvj56")
 "nodes/Animation 2/position" = Vector2(-410, 400)
 "nodes/MOVE strafe/node" = ExtResource("1_afje2")
-"nodes/MOVE strafe/position" = Vector2(-280, 170)
+"nodes/MOVE strafe/position" = Vector2(-360, 180)
 "nodes/SET_F[50-01]/node" = SubResource("AnimationNodeTimeScale_kw0pj")
 "nodes/SET_F[50-01]/position" = Vector2(-80, 380)
 "nodes/SET_F[50]/node" = SubResource("AnimationNodeTimeScale_x806i")

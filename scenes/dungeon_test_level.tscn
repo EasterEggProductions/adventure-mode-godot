@@ -1,0 +1,759 @@
+[gd_scene load_steps=53 format=3 uid="uid://bum0xv2mo4yvc"]
+
+[ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
+[ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
+[ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_exoum"]
+[ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_w765u"]
+[ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="5_6qx05"]
+[ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_4ytyr"]
+[ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="11_lvcw6"]
+[ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="17_axuds"]
+[ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="18_xr240"]
+[ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="19_tq2gj"]
+[ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="20_lb3h5"]
+[ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="21_owi7c"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icon_axe_questions.png" id="22_k6fxm"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="23_1p53d"]
+[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icon_shield_upBlast.png" id="24_5dn14"]
+[ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
+[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icon_shield_nonagon.png" id="26_xowv0"]
+[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icon_sword_goddette.png" id="27_1hl7c"]
+[ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="28_a1016"]
+[ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="29_1gxxf"]
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icon_coin.png" id="30_gyael"]
+[ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="31_2msmm"]
+[ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="32_18o74"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nes8p"]
+top_radius = 0.035
+bottom_radius = 1.0
+height = 1.0
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bof2w"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ssk5l"]
+material = SubResource("StandardMaterial3D_bof2w")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Gradient" id="Gradient_q1a7v"]
+offsets = PackedFloat32Array(0, 0.511848, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f7gbo"]
+gradient = SubResource("Gradient_q1a7v")
+
+[sub_resource type="Curve" id="Curve_6ehib"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.150628, 1), 0.0, 0.0, 0, 0, Vector2(0.807531, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ggq6r"]
+curve = SubResource("Curve_6ehib")
+
+[sub_resource type="Curve" id="Curve_f17rg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s41si"]
+curve = SubResource("Curve_f17rg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_chieh"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 10)
+angle_min = 1.07288e-05
+angle_max = 360.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_ggq6r")
+color_ramp = SubResource("GradientTexture1D_f7gbo")
+turbulence_enabled = true
+turbulence_noise_scale = 16.0
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 1.0
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_s41si")
+
+[sub_resource type="Gradient" id="Gradient_5pg33"]
+offsets = PackedFloat32Array(0, 0.227907, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4q1k5"]
+gradient = SubResource("Gradient_5pg33")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0cmi"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_4q1k5")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+distance_fade_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ys2f0"]
+material = SubResource("StandardMaterial3D_l0cmi")
+
+[sub_resource type="Gradient" id="Gradient_5s3dm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.512987, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.470588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ekrka"]
+gradient = SubResource("Gradient_5s3dm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_xb1qg"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hn0oc"]
+gradient = SubResource("Gradient_xb1qg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxbng"]
+bg_color = Color(0.3, 0.234, 0.234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.628885, 0.529557, 0, 1)
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkepa"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m6ce"]
+bg_color = Color(0.0500001, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbhy"]
+bg_color = Color(0.34, 0.34, 0.34, 1)
+
+[sub_resource type="Gradient" id="Gradient_cyabv"]
+offsets = PackedFloat32Array(0, 0.844156, 1)
+colors = PackedColorArray(0.222784, 0.252874, 0.280382, 0.356863, 0, 0, 0, 1, 0.533333, 0.533333, 0.533333, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rhyjy"]
+gradient = SubResource("Gradient_cyabv")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hmb0u"]
+
+[sub_resource type="Sky" id="Sky_jbiln"]
+sky_material = SubResource("ProceduralSkyMaterial_hmb0u")
+
+[sub_resource type="Environment" id="Environment_rrsck"]
+background_mode = 2
+sky = SubResource("Sky_jbiln")
+
+[node name="multiplayer_test_level" type="Node3D"]
+
+[node name="Player Sockets" type="Node" parent="."]
+
+[node name="p1_psock_adventure" type="Node" parent="Player Sockets" node_paths=PackedStringArray("mainCam", "ganty_thing", "vignette", "headsUpDisplay", "action_prompt")]
+script = ExtResource("1_g387x")
+mainCam = NodePath("../../Camera")
+ganty_thing = NodePath("../../cam_gantry_playerFollow")
+vignette = NodePath("../../user_interface/vinyette")
+target_locker = ExtResource("2_5jedr")
+headsUpDisplay = NodePath("../../user_interface/HUD")
+action_prompt = NodePath("../../user_interface/HUD/Action_prompt")
+
+[node name="Multplayer Manager" type="Node" parent="." node_paths=PackedStringArray("server_menu", "cam_gant", "cam_actu", "ip_input", "outfit_control")]
+script = ExtResource("3_exoum")
+server_menu = NodePath("../user_interface/MultiplayerControl_debug")
+cam_gant = NodePath("../cam_gantry_playerFollow")
+cam_actu = NodePath("../Camera")
+ip_input = NodePath("../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
+outfit_control = NodePath("../user_interface/Outfit_control")
+
+[node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 64.8381, 0.66, -2.32)
+script = ExtResource("4_w765u")
+cam = NodePath("../Camera")
+freeze = true
+
+[node name="level" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level"]
+use_collision = true
+size = Vector3(40, 0.1, 40)
+
+[node name="button_floor" parent="level" instance=ExtResource("11_lvcw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2999287, 0.04476735, -6.9007835)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
+script = ExtResource("5_6qx05")
+distance = 2.5
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.508387)
+visible = false
+mesh = SubResource("CylinderMesh_nes8p")
+
+[node name="Node3D" type="Node3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 0.85264, 0.522499, 0, -0.522499, 0.85264, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("SphereMesh_ssk5l")
+
+[node name="effect_dustMotes" type="GPUParticles3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, -4.17512)
+amount = 64
+lifetime = 15.0
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_chieh")
+draw_pass_1 = SubResource("QuadMesh_ys2f0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.375178, 0.669904, -0.640679, -0.926834, -0.282171, 0.247706, -0.014842, 0.686737, 0.726754, 0, 0, 0)
+light_color = Color(1, 0.940078, 0.839877, 1)
+shadow_enabled = true
+
+[node name="user_interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ui_items" parent="user_interface" instance=ExtResource("17_axuds")]
+layout_mode = 1
+scale = Vector2(1.007, 1)
+
+[node name="vinyette" type="TextureRect" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ekrka")
+
+[node name="MultiplayerControl_debug" type="Panel" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 26.0
+offset_right = -18.0
+offset_bottom = 138.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="user_interface/MultiplayerControl_debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="butt_Host" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="butt_Connect" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "Connect
+"
+
+[node name="LineEdit" type="LineEdit" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "localhost"
+placeholder_text = "ip addres of host"
+
+[node name="Outfit_control" type="Control" parent="user_interface" node_paths=PackedStringArray("available_area", "worn_area")]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+script = ExtResource("18_xr240")
+res_folder = "res://art/Character/clothing/DressUp Resources/"
+available_area = NodePath("HBoxContainer/Available Items")
+worn_area = NodePath("HBoxContainer/Worn Items")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="user_interface/Outfit_control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Available Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Available Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Available Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Worn Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Worn Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Worn Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Worn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUD" type="Control" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_tq2gj")
+
+[node name="status_readout" type="Control" parent="user_interface/HUD"]
+editor_description = "Displays health, stamina, but never EVER FP OR MANNA. I swear to god I'll add it in the licence that there will NEVER be a god damn manna bar. And status effect icons"
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_lb3h5")
+
+[node name="background" type="TextureRect" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 10.0
+offset_right = 522.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_hn0oc")
+expand_mode = 1
+
+[node name="bar_health" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 49.0
+offset_right = 444.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gkepa")
+value = 50.0
+show_percentage = false
+
+[node name="bar_stamina" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 74.0
+offset_right = 404.0
+offset_bottom = 94.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8m6ce")
+value = 100.0
+show_percentage = false
+
+[node name="bar_poise" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 99.0
+offset_right = 428.0
+offset_bottom = 119.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rfbhy")
+value = 100.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 45.0
+offset_right = 140.0
+offset_bottom = 126.0
+texture = ExtResource("21_owi7c")
+expand_mode = 1
+
+[node name="effect_icons" type="HBoxContainer" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 135.0
+offset_right = 212.0
+offset_bottom = 175.0
+
+[node name="effect_Questioned" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("22_k6fxm")
+expand_mode = 1
+
+[node name="effect_Fruitification" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("23_1p53d")
+expand_mode = 2
+
+[node name="effect_BlastedUp" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("24_5dn14")
+expand_mode = 2
+
+[node name="dpad_itemMenu" type="Control" parent="user_interface/HUD"]
+editor_description = "Displayes currently readied items."
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -219.0
+offset_right = 222.0
+offset_bottom = 2.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 221)
+
+[node name="background" type="Control" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="user_interface/HUD/dpad_itemMenu/background"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(20, 20)
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_rhyjy")
+
+[node name="TextureRect2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 64.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_rhyjy")
+
+[node name="TextureRect3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = 0.5
+offset_right = 0.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_rhyjy")
+
+[node name="TextureRect4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = -63.5
+offset_right = 64.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_rhyjy")
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background"]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+texture = ExtResource("25_v0mr7")
+expand_mode = 1
+
+[node name="placeholder item 1" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 24.5
+offset_right = 20.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_1p53d")
+
+[node name="placeholder item 2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -20.0
+offset_right = -25.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_xowv0")
+expand_mode = 1
+
+[node name="placeholder item 3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.5
+offset_top = -20.0
+offset_right = 68.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_1hl7c")
+
+[node name="placeholder item 4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+modulate = Color(1, 0.35, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -87.5
+offset_right = 28.5
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_a1016")
+expand_mode = 1
+
+[node name="currency_readout" type="Control" parent="user_interface/HUD"]
+editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -62.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("29_1gxxf")
+
+[node name="background" type="TextureRect" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -19.0
+offset_bottom = 9.0
+texture = SubResource("GradientTexture2D_hn0oc")
+expand_mode = 1
+
+[node name="currency_icon" type="TextureRect" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -24.0
+offset_right = 1.0
+offset_bottom = 16.0
+texture = ExtResource("30_gyael")
+
+[node name="Label" type="Label" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -81.0
+offset_top = -16.0
+offset_right = -41.0
+offset_bottom = 7.0
+text = "412"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Action_prompt" parent="user_interface/HUD" instance=ExtResource("31_2msmm")]
+layout_mode = 1
+
+[node name="menu_start" type="Control" parent="user_interface/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/menu_start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="user_interface/HUD/menu_start"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30]Adventure Mode[/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="user_interface/HUD/menu_start"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 161.0
+offset_right = 237.0
+offset_bottom = 402.0
+
+[node name="Button" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="butt_other" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "OTHER BUTTON"
+
+[node name="butt_other2" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "OTHER BUTTON"
+
+[node name="butt_other3" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "OTHER BUTTON"
+
+[node name="butt_other4" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "OTHER BUTTON"
+
+[node name="butt_other5" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "OTHER BUTTON"
+
+[node name="Button Quit" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="menu_map" type="Control" parent="user_interface/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="audio level ambiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_18o74")
+volume_db = -20.662
+autoplay = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
+spawn_path = NodePath("../Multplayer Manager")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rrsck")
+
+[node name="Door of Trials" parent="." instance=ExtResource("7_4ytyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8448353, 0.05000019, -15.249917)
+
+[connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
+[connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]
+[connection signal="pressed" from="user_interface/HUD/menu_start/buttons/Button Quit" to="user_interface/HUD" method="_quit"]

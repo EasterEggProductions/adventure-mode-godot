@@ -1,4 +1,5 @@
 extends Node3D
+class_name DungeonButton
 
 @export var reset_time = 0.0 
 
@@ -16,6 +17,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_activation_body_entered(body:Node3D) -> void:
+	print(body)
 	if "player" in body.name:
 		await get_tree().create_timer(1.0).timeout
 		$AnimationPlayer.play("depress")

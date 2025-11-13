@@ -4,14 +4,6 @@ class_name JoinCode
 const ALPHABET := "ABCDEFGHIJKLMNOPQRSTUVWXYZ234678"
 const LENGTH := 10
 
-func _ready():
-	var code = ip_to_code("192.168.1.42", 27015)
-	print("Generated code:", code)
-
-	var result = code_to_ip(code)
-	print("Decoded:", result)
-
-
 # Return: 10-character code as a String, empty string on failure.
 static func ip_to_code(ip: String, port: int) -> String:
 	var parts := ip.split(".")

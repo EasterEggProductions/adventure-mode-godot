@@ -214,8 +214,9 @@ freeze = true
 use_collision = true
 size = Vector3(40, 0.1, 40)
 
-[node name="button_floor" parent="level" instance=ExtResource("11_lvcw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2999287, 0.04476735, -6.9007835)
+[node name="button_floor" parent="level" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.134372, 0.04476735, 0.4245391)
+connected = NodePath("../../Door of Trials")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
@@ -752,7 +753,7 @@ spawn_path = NodePath("../Multplayer Manager")
 environment = SubResource("Environment_rrsck")
 
 [node name="Door of Trials" parent="." instance=ExtResource("7_4ytyr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8448353, 0.05000019, -15.249917)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.667197, 0.05000019, 0.60823727)
 
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]

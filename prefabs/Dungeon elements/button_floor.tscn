@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3w2vh510huih"]
 
-[ext_resource type="Script" uid="uid://dbkdvxftt0me0" path="res://scripts/Puzzle/button_floor.gd" id="1_lgodb"]
+[ext_resource type="Script" uid="uid://dbkdvxftt0me0" path="res://scripts/DungeonTools/button.gd" id="1_lgodb"]
 [ext_resource type="Texture2D" uid="uid://cqdfvw2xpj004" path="res://art/textures/floor_button.png" id="2_emy0j"]
 [ext_resource type="AudioStream" uid="uid://ynxg3mdpav8b" path="res://art/audio/sfx/nab.ogg" id="3_ydiid"]
 

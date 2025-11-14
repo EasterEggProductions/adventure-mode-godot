@@ -1,10 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://bum0xv2mo4yvc"]
+[gd_scene load_steps=54 format=3 uid="uid://bum0xv2mo4yvc"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
 [ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_exoum"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_w765u"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="5_6qx05"]
+[ext_resource type="PackedScene" uid="uid://viykbrm875h3" path="res://prefabs/Dungeon elements/example_dungeon_room.tscn" id="6_l8or3"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_4ytyr"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="11_lvcw6"]
 [ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="17_axuds"]
@@ -12,15 +13,15 @@
 [ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="19_tq2gj"]
 [ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="20_lb3h5"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="21_owi7c"]
-[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icon_axe_questions.png" id="22_k6fxm"]
-[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icon_commonFruit.png" id="23_1p53d"]
-[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icon_shield_upBlast.png" id="24_5dn14"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="22_k6fxm"]
+[ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="23_1p53d"]
+[ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="24_5dn14"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
-[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icon_shield_nonagon.png" id="26_xowv0"]
-[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icon_sword_goddette.png" id="27_1hl7c"]
+[ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icons/icon_shield_nonagon.png" id="26_xowv0"]
+[ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icons/icon_sword_goddette.png" id="27_1hl7c"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="28_a1016"]
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="29_1gxxf"]
-[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icon_coin.png" id="30_gyael"]
+[ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="30_gyael"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="31_2msmm"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="32_18o74"]
 
@@ -210,13 +211,11 @@ freeze = true
 
 [node name="level" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="level"]
-use_collision = true
-size = Vector3(40, 0.1, 40)
-
 [node name="button_floor" parent="level" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.134372, 0.04476735, 0.4245391)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69561, -0.050648004, -3.3937602)
 connected = NodePath("../../Door of Trials")
+
+[node name="example_dungeon_room" parent="level" instance=ExtResource("6_l8or3")]
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
@@ -753,7 +752,9 @@ spawn_path = NodePath("../Multplayer Manager")
 environment = SubResource("Environment_rrsck")
 
 [node name="Door of Trials" parent="." instance=ExtResource("7_4ytyr")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.667197, 0.05000019, 0.60823727)
+transform = Transform3D(-9.616506e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.616506e-09, -7.3612547, 0.05000019, 0.009371042)
+
+[node name="GridMap" type="GridMap" parent="."]
 
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]

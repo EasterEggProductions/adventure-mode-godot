@@ -1,0 +1,3 @@
+example_dungeon_room.glb:
+	https://opengameart.org/content/handpainted-stone-floor-texture
+	https://opengameart.org/content/wall-texture-1

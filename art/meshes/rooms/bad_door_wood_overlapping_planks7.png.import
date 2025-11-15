@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfyascmox3fwr"
-path.s3tc="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-5afe45a111e7c114169b68d2883b0153.s3tc.ctex"
-path.etc2="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-5afe45a111e7c114169b68d2883b0153.etc2.ctex"
+uid="uid://bwyrrpm6yclo3"
+path.s3tc="res://.godot/imported/bad_door_wood_overlapping_planks7.png-960603e23f33ae289f8a645c7186e38f.s3tc.ctex"
+path.etc2="res://.godot/imported/bad_door_wood_overlapping_planks7.png-960603e23f33ae289f8a645c7186e38f.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e3ff4dee2162a853ae10601c175a3d84"
+"md5": "3e80d77b91b6fe863443b2d6b8343c77"
 }
 
 [deps]
 
-source_file="res://art/meshes/example_dungeon_room_StoneFloorTexture.png"
-dest_files=["res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-5afe45a111e7c114169b68d2883b0153.s3tc.ctex", "res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-5afe45a111e7c114169b68d2883b0153.etc2.ctex"]
+source_file="res://art/meshes/rooms/bad_door_wood_overlapping_planks7.png"
+dest_files=["res://.godot/imported/bad_door_wood_overlapping_planks7.png-960603e23f33ae289f8a645c7186e38f.s3tc.ctex", "res://.godot/imported/bad_door_wood_overlapping_planks7.png-960603e23f33ae289f8a645c7186e38f.etc2.ctex"]
 
 [params]
 

@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_w765u"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="5_6qx05"]
 [ext_resource type="PackedScene" uid="uid://viykbrm875h3" path="res://prefabs/Dungeon elements/example_dungeon_room.tscn" id="6_l8or3"]
-[ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_4ytyr"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="11_lvcw6"]
 [ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="17_axuds"]
 [ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="18_xr240"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="22_k6fxm"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="23_1p53d"]
 [ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="24_5dn14"]
+[ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
 [ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icons/icon_shield_nonagon.png" id="26_xowv0"]
 [ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icons/icon_sword_goddette.png" id="27_1hl7c"]
@@ -181,6 +181,10 @@ sky_material = SubResource("ProceduralSkyMaterial_hmb0u")
 [sub_resource type="Environment" id="Environment_rrsck"]
 background_mode = 2
 sky = SubResource("Sky_jbiln")
+fog_enabled = true
+fog_light_color = Color(0.7743, 0.80939007, 0.87, 1)
+fog_light_energy = 0.45
+fog_density = 0.015
 
 [node name="multiplayer_test_level" type="Node3D"]
 
@@ -213,9 +217,10 @@ freeze = true
 
 [node name="button_floor" parent="level" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69561, -0.050648004, -3.3937602)
-connected = NodePath("../../Door of Trials")
+connected = NodePath("../../DungeonDoor")
 
 [node name="example_dungeon_room" parent="level" instance=ExtResource("6_l8or3")]
+enabled_doors = Array[String](["North", "asdf", "South", "East"])
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
@@ -247,6 +252,7 @@ draw_pass_1 = SubResource("QuadMesh_ys2f0")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.375178, 0.669904, -0.640679, -0.926834, -0.282171, 0.247706, -0.014842, 0.686737, 0.726754, 0, 0, 0)
 light_color = Color(1, 0.940078, 0.839877, 1)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="user_interface" type="Control" parent="."]
@@ -751,10 +757,10 @@ spawn_path = NodePath("../Multplayer Manager")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rrsck")
 
-[node name="Door of Trials" parent="." instance=ExtResource("7_4ytyr")]
-transform = Transform3D(-9.616506e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.616506e-09, -7.3612547, 0.05000019, 0.009371042)
-
 [node name="GridMap" type="GridMap" parent="."]
+
+[node name="DungeonDoor" parent="." instance=ExtResource("24_l8or3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.3608737, 0.008904851, 9.834766e-07)
 
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5f26qg2wgdq4"
-path.s3tc="res://.godot/imported/example_dungeon_room_wall.png-41c488c545d53c7fbdaaeb621db36c9c.s3tc.ctex"
-path.etc2="res://.godot/imported/example_dungeon_room_wall.png-41c488c545d53c7fbdaaeb621db36c9c.etc2.ctex"
+uid="uid://cfyascmox3fwr"
+path.s3tc="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.s3tc.ctex"
+path.etc2="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "aa6c6673a6f648c9d7d596f9e3ef6b25"
+"md5": "e3ff4dee2162a853ae10601c175a3d84"
 }
 
 [deps]
 
-source_file="res://art/meshes/example_dungeon_room_wall.png"
-dest_files=["res://.godot/imported/example_dungeon_room_wall.png-41c488c545d53c7fbdaaeb621db36c9c.s3tc.ctex", "res://.godot/imported/example_dungeon_room_wall.png-41c488c545d53c7fbdaaeb621db36c9c.etc2.ctex"]
+source_file="res://art/meshes/rooms/example_dungeon_room_StoneFloorTexture.png"
+dest_files=["res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.s3tc.ctex", "res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.etc2.ctex"]
 
 [params]
 

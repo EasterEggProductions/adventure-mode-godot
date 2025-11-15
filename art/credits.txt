@@ -1,3 +1,8 @@
 example_dungeon_room.glb:
 	https://opengameart.org/content/handpainted-stone-floor-texture
 	https://opengameart.org/content/wall-texture-1
+
+door.glb
+	https://opengameart.org/content/handpainted-brick-texture-pack
+	https://opengameart.org/content/free-urban-textures-wood
+	

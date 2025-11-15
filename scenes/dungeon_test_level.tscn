@@ -217,10 +217,14 @@ freeze = true
 
 [node name="button_floor" parent="level" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69561, -0.050648004, -3.3937602)
-connected = NodePath("../../DungeonDoor")
+connected = NodePath("../DungeonDoor")
+one_shot = true
 
 [node name="example_dungeon_room" parent="level" instance=ExtResource("6_l8or3")]
 enabled_doors = Array[String](["North", "asdf", "South", "East"])
+
+[node name="DungeonDoor" parent="level" instance=ExtResource("24_l8or3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.3608737, 0.008904851, 9.834766e-07)
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
@@ -758,9 +762,6 @@ spawn_path = NodePath("../Multplayer Manager")
 environment = SubResource("Environment_rrsck")
 
 [node name="GridMap" type="GridMap" parent="."]
-
-[node name="DungeonDoor" parent="." instance=ExtResource("24_l8or3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.3608737, 0.008904851, 9.834766e-07)
 
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]

@@ -209,7 +209,7 @@ color_ramp = SubResource("GradientTexture1D_lqow2")
 
 [node name="Door of Trials" type="Node3D"]
 script = ExtResource("1_3g6u5")
-animation = "door_open"
+open_animation = "door_open"
 
 [node name="Door of Trials_R" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_1eiuk")

@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Adventure-mode-godot"
-config/tags=PackedStringArray("wsu")
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
@@ -29,6 +28,10 @@ window/size/initial_position=Vector2i(1920, 0)
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dungeon_tools_gizmos/plugin.cfg")
 
 [file_customization]
 

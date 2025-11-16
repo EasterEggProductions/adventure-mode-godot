@@ -127,10 +127,12 @@ func _collect_inputs(delta):
 		ds_timer = 0
 
 	
-	if Input.is_action_just_released(player_prefix + "use_item"):
-		#thrall.enque_action("spell")
-		thrall.change_character()
-	
+	if Input.is_action_just_pressed(player_prefix + "use_item"):
+		# Grab current item from quick belt and if it has an action use it. 
+		var item : InventoryItem = thrall.character.get_current_belt()
+		if item != null and item.use_action != "":
+			thrall.enque_action(item.use_action)
+
 	thrall.handle_movement(go_dir)
 	if Input.is_action_pressed(player_prefix + "event_action"): 
 		# NOTE - In ER holding ^ this would bring up a quick item D-pad menu, and also do hand switching. 

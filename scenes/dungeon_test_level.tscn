@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bum0xv2mo4yvc"]
+[gd_scene load_steps=60 format=3 uid="uid://bum0xv2mo4yvc"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
@@ -15,11 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://sbfbjdptoey2" path="res://prefabs/Dungeon elements/dungeon_room2.tscn" id="22_ftuog"]
 [ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="22_k6fxm"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="23_1p53d"]
+[ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="23_ttnyw"]
 [ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="24_5dn14"]
 [ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
+[ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="24_rrlfs"]
+[ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="25_0dtdv"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
+[ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="26_jspmv"]
 [ext_resource type="Texture2D" uid="uid://cjx57huytv66n" path="res://art/textures/icons/icon_shield_nonagon.png" id="26_xowv0"]
 [ext_resource type="Texture2D" uid="uid://dh82a1sw0mpyv" path="res://art/textures/icons/icon_sword_goddette.png" id="27_1hl7c"]
+[ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="27_i2o0f"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="28_a1016"]
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="29_1gxxf"]
 [ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="30_gyael"]
@@ -697,27 +702,47 @@ cam_actu = NodePath("../Camera")
 ip_input = NodePath("../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
 outfit_control = NodePath("../user_interface/Outfit_control")
 
-[node name="Room" parent="." instance=ExtResource("6_l8or3")]
+[node name="Room" parent="." node_paths=PackedStringArray("room_doors") instance=ExtResource("6_l8or3")]
+room_doors = [NodePath("DungeonDoor")]
 
-[node name="button_floor" parent="Room" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
+[node name="Button1" parent="Room" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69561, -0.050648004, -3.3937602)
+connected = NodePath("../DungeonDoor")
+one_shot = true
+
+[node name="Button2" parent="Room" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.811531, -0.050648004, -3.3937602)
 connected = NodePath("../DungeonDoor")
 one_shot = true
 
 [node name="DungeonDoor" parent="Room" instance=ExtResource("24_l8or3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.3651595)
+required_switches = 2
 
-[node name="Room2" parent="." instance=ExtResource("22_ftuog")]
+[node name="Room2" parent="." node_paths=PackedStringArray("room_doors") instance=ExtResource("22_ftuog")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -14.782199)
+room_doors = [NodePath("DungeonDoor")]
 
 [node name="DungeonDoor" parent="Room2" instance=ExtResource("24_l8or3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00019931793, 0, -7.4060674)
+controlled_by_room = true
+
+[node name="skele_01" parent="Room2" instance=ExtResource("23_ttnyw")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 2.4572325, 0.207531, -0.70648754)
+character = ExtResource("24_rrlfs")
+to_equip_wep = ExtResource("25_0dtdv")
+
+[node name="footall_sfx3" type="Node" parent="Room2/skele_01"]
+script = ExtResource("26_jspmv")
+
+[node name="ai_attack" type="Node" parent="Room2/skele_01"]
+script = ExtResource("27_i2o0f")
 
 [node name="Room3" parent="." instance=ExtResource("6_l8or3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.771227, 0, -14.782)
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.550423, -0.252361, 0.795832, 0, 0.953222, 0.30227, -0.834886, -0.166376, 0.524675, 26.3394, 5.13614, 19.3451)
+transform = Transform3D(0.550423, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.83488595, -0.16637634, 0.52467555, 4.83519, 1.3658648, 3.2419815)
 script = ExtResource("5_6qx05")
 distance = 2.5
 freeze = true
@@ -744,7 +769,7 @@ process_material = SubResource("ParticleProcessMaterial_chieh")
 draw_pass_1 = SubResource("QuadMesh_ys2f0")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
-transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 64.8381, 0.66, -2.32)
+transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 5.3794537, 1.0375688, 3.4789197)
 script = ExtResource("4_w765u")
 cam = NodePath("../Camera")
 freeze = true

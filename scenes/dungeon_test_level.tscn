@@ -186,7 +186,7 @@ fog_light_color = Color(0.7743, 0.80939007, 0.87, 1)
 fog_light_energy = 0.45
 fog_density = 0.015
 
-[node name="multiplayer_test_level" type="Node3D"]
+[node name="DungeonTestLevel" type="Node3D"]
 
 [node name="Player Sockets" type="Node" parent="."]
 
@@ -213,17 +213,15 @@ script = ExtResource("4_w765u")
 cam = NodePath("../Camera")
 freeze = true
 
-[node name="level" type="Node3D" parent="."]
+[node name="Room" parent="." instance=ExtResource("6_l8or3")]
+enabled_doors = Array[String](["North", "asdf", "South", "East"])
 
-[node name="button_floor" parent="level" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
+[node name="button_floor" parent="Room" node_paths=PackedStringArray("connected") instance=ExtResource("11_lvcw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69561, -0.050648004, -3.3937602)
 connected = NodePath("../DungeonDoor")
 one_shot = true
 
-[node name="example_dungeon_room" parent="level" instance=ExtResource("6_l8or3")]
-enabled_doors = Array[String](["North", "asdf", "South", "East"])
-
-[node name="DungeonDoor" parent="level" instance=ExtResource("24_l8or3")]
+[node name="DungeonDoor" parent="Room" instance=ExtResource("24_l8or3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.3608737, 0.008904851, 9.834766e-07)
 
 [node name="Camera" type="Camera3D" parent="."]

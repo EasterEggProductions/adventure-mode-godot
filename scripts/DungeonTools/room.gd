@@ -4,11 +4,9 @@ class_name DungeonRoom
 enum DoorState { LOCKED, CLOSED, OPEN }
 
 @export_category("Door config")
-@export var disabled_door_scene: PackedScene = null
 @export var door_scene: PackedScene = null
 @export var enabled_doors: Array[String] = []
 
-@onready var door_locs = $DoorLocations
 
 var door_nodes: Dictionary = {}
 

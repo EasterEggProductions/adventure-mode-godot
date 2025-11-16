@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://v20j6c14oreg"]
+[gd_resource type="Animation" format=3 uid="uid://v20j6c14oreg"]
 
 [resource]
 resource_name = "item_eat"
@@ -409,3 +409,23 @@ tracks/57/path = NodePath("char/Skeleton3D:toe.L")
 tracks/57/interp = 0
 tracks/57/loop_wrap = true
 tracks/57/keys = PackedFloat32Array(0, 1, 5.853064e-08, -0.9612483, 0.27568424, 8.7176585e-07)
+tracks/58/type = "method"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("..")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0.33333334, 2.2333333, 2.7333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"anim_item_start"
+}, {
+"args": [],
+"method": &"anim_item_use"
+}, {
+"args": [],
+"method": &"anim_item_end"
+}]
+}

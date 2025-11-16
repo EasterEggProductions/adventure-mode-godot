@@ -15,6 +15,14 @@ func transfer_situation_check(thrall : Actor) -> bool:
 	return false
 
 func release_situation_check(thrall : Actor) -> bool:
+# parameters/claymore moveset/Attack Tree/playback
+	if name == "claymore moveset":
+		var state_machine : AnimationNodeStateMachinePlayback = thrall.animation_tree["parameters/" + name +"/Attack Tree/playback"]
+		#var my_node : AnimationNodeStateMachine = thrall.animation_tree.tree_root.get_node(name).get_node("Attack Tree")
+		#print(state_machine.get_current_node())
+		if state_machine.get_current_node() == "scheathe":
+			#thrall.combat_mode = false
+			return true
 	return !thrall.combat_mode
 
 

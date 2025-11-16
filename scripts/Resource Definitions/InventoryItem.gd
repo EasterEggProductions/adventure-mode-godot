@@ -15,3 +15,6 @@ class_name InventoryItem
 
 @export_group("Extra Data")
 @export var extra_resources : Dictionary[String, Resource]
+
+## The action to use the item if any, string for action_q
+@export var use_action = ""

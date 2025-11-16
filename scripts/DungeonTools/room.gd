@@ -3,11 +3,6 @@ class_name DungeonRoom
 
 enum DoorState { LOCKED, CLOSED, OPEN }
 
-@export_category("Door config")
-@export var door_scene: PackedScene = null
-@export var enabled_doors: Array[String] = []
-
-
 var door_nodes: Dictionary = {}
 
 func _ready() -> void:

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfyascmox3fwr"
-path.s3tc="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.s3tc.ctex"
-path.etc2="res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.etc2.ctex"
+uid="uid://dqj23uhjaf4si"
+path.s3tc="res://.godot/imported/example_room_2_StoneFloorTexture.png-55de295a822d1f5cb16a36325e271513.s3tc.ctex"
+path.etc2="res://.godot/imported/example_room_2_StoneFloorTexture.png-55de295a822d1f5cb16a36325e271513.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e3ff4dee2162a853ae10601c175a3d84"
+"md5": "7abb836999111c4b921db4697c3e5158"
 }
 
 [deps]
 
-source_file="res://art/meshes/rooms/example_dungeon_room_StoneFloorTexture.png"
-dest_files=["res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.s3tc.ctex", "res://.godot/imported/example_dungeon_room_StoneFloorTexture.png-4ea2e2cb5a475abfe4adaf99bc5e19f9.etc2.ctex"]
+source_file="res://art/meshes/rooms/example_room_2_StoneFloorTexture.png"
+dest_files=["res://.godot/imported/example_room_2_StoneFloorTexture.png-55de295a822d1f5cb16a36325e271513.s3tc.ctex", "res://.godot/imported/example_room_2_StoneFloorTexture.png-55de295a822d1f5cb16a36325e271513.etc2.ctex"]
 
 [params]
 

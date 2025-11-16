@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bum0xv2mo4yvc"]
+[gd_scene load_steps=61 format=3 uid="uid://bum0xv2mo4yvc"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="29_1gxxf"]
 [ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="30_gyael"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="31_2msmm"]
+[ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="31_rrlfs"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="32_18o74"]
 
 [sub_resource type="Gradient" id="Gradient_5s3dm"]
@@ -189,7 +190,8 @@ background_mode = 2
 sky = SubResource("Sky_jbiln")
 fog_enabled = true
 fog_light_color = Color(0.7743, 0.80939007, 0.87, 1)
-fog_light_energy = 0.3
+fog_light_energy = 0.2
+fog_density = 0.02
 
 [node name="DungeonTestLevel" type="Node3D"]
 
@@ -719,6 +721,18 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.3651595)
 required_switches = 2
 
+[node name="Torch" parent="Room" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(1, 0, 0, 0, 0.88005507, -0.47487175, 0, 0.47487175, 0.88005507, 4.450928, 1.827427, -7.2756042)
+
+[node name="Torch2" parent="Room" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(1, 0, 0, 0, 0.88005507, -0.47487175, 0, 0.47487175, 0.88005507, -5.195844, 1.827427, -7.2756042)
+
+[node name="Torch3" parent="Room" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(-4.371139e-08, 0.4756242, 0.87964857, 0, 0.87964857, -0.4756242, -1, -2.0790194e-08, -3.845066e-08, -7.3292255, 1.827427, 1.50949)
+
+[node name="Torch4" parent="Room" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(-4.371139e-08, -0.4756242, -0.87964857, 0, 0.87964857, -0.4756242, 1, -2.0790194e-08, -3.845066e-08, 7.3277044, 1.827427, 1.50949)
+
 [node name="Room2" parent="." node_paths=PackedStringArray("room_doors") instance=ExtResource("22_ftuog")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -14.782199)
 room_doors = [NodePath("DungeonDoor")]
@@ -737,6 +751,12 @@ script = ExtResource("26_jspmv")
 
 [node name="ai_attack" type="Node" parent="Room2/skele_01"]
 script = ExtResource("27_i2o0f")
+
+[node name="Torch" parent="Room2" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(1, 0, 0, 0, 0.88005507, -0.47487175, 0, 0.47487175, 0.88005507, 4.450928, 1.827427, -7.2756042)
+
+[node name="Torch2" parent="Room2" instance=ExtResource("31_rrlfs")]
+transform = Transform3D(1, 0, 0, 0, 0.88005507, -0.47487175, 0, 0.47487175, 0.88005507, -5.195844, 1.827427, -7.2756042)
 
 [node name="Room3" parent="." instance=ExtResource("6_l8or3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.771227, 0, -14.782)

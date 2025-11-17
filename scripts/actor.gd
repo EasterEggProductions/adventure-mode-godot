@@ -61,6 +61,7 @@ var alive = true
 
 # SECTION Signals 
 # SECTION for leveling bar
+signal actor_killed(actor_node:Actor)
 signal killed_something
 signal xp_get
 signal item_get(item_name)
@@ -139,13 +140,13 @@ func _process(delta):
 		character.alive = false
 		animation_tree.active = false
 		$skeleton/AnimationPlayer.play("death")
-		await get_tree().create_timer(5).timeout
-		spawn()
+		emit_signal("actor_killed", self) # NOTE: added for dungeon tools demo
+		#await get_tree().create_timer(5).timeout
+		#spawn()
+		
 	if character.alive == false:
 		return
 	character.stats_regen(delta)
-	
-
 
 	movement_package_checks()
 	movement_sets[current_moveset].move_thrall(self, delta)

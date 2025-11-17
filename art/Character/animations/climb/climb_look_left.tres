@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://xkd2b5mf2fd2"]
+[gd_resource type="Animation" format=3 uid="uid://xkd2b5mf2fd2"]
 
 [resource]
 resource_name = "climb_look_left"

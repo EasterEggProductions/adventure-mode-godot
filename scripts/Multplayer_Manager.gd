@@ -1,7 +1,7 @@
 extends Node
 
 const PLAYER_SCENE = preload("res://prefabs/actor.tscn")
-const PORT = 33911
+var PORT: int = 33911 # Default port value (will be replaced if a free port is found).
 
 var upnp = UPNP.new()
 var upnp_thread = null
@@ -18,6 +18,20 @@ var nop= WebSocketMultiplayerPeer.new()
 @export var cam_actu : Camera3D
 @export var ip_input : LineEdit
 @export var outfit_control : Control
+
+# Attempts to find an available port by trying to create a temp ENet server.
+func find_available_port(start_port: int, end_port: int) -> int:
+	for p in range(start_port, end_port + 1):
+		var test_peer := ENetMultiplayerPeer.new()
+		var result := test_peer.create_server(p) # Tests the binding to this port.
+		test_peer.close() # Releases the test server.
+		
+		# If the server creation succeeded, then this port is free. 
+		if result == OK:
+			return p
+	
+	# No ports in the range were available.
+	return -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -95,12 +109,32 @@ func _on_butt_host_pressed() -> void:
 		print("Web build detected, quick, change everything about networking so it all breaks, quickly everyone!")
 		_start_local_only()
 	server_menu.hide()
+	
+	# Scans the port range for a valid port to host on.
+	var found_port := find_available_port(33900, 33999)
+	
+	# If no port is avialble, return to the menu.
+	if found_port == -1:
+		print("No available port found in range 33900-33999")
+		server_menu.show()
+		return
+
+	# Uses the first available port found in the scan. 
+	PORT = found_port
+	print("Selected hosting port: ", PORT)
 
 	# Run port forwarding using upnp
 	upnp_thread = Thread.new()
 	upnp_thread.start(_upnp_setup)
 
-	enet_peer.create_server(PORT)
+	# Creates a server on the selected port.
+	var err := enet_peer.create_server(PORT)
+	# If the binding fails, then return to the menu.
+	if err != OK:
+		print("Failed to host server on port: ", PORT)
+		server_menu.show()
+		return
+		
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 

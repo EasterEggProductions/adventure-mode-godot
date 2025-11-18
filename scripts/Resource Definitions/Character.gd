@@ -116,3 +116,28 @@ func stats_regen(delta : float):
 		stamina_current = clamp(stamina_current + (delta * stamina_regen), -100, stamina_max)
 	if poise_regen_timer <= 0:
 		poise_current = clamp(poise_current + (delta * poise_regen), 0, poise_max)
+
+# SECTION Items and management
+
+func get_current_belt() -> InventoryItem:
+	if len(belt_items) > 0:
+		return belt_items[belt_current]
+	return null
+func get_current_hand_r() -> InventoryItem:
+	if len(hand_right_slots) > 0:
+		return hand_right_slots[hand_r_current]
+	return null
+func get_current_hand_l() -> InventoryItem:
+	if len(hand_left_slots) > 0:
+		return hand_left_slots[hand_l_current]
+	return null
+func get_current_spell() -> InventoryItem:
+	if len(spells_slots) > 0:
+		return spells_slots[spell_current]
+	return null
+
+# !SECTION
+
+# TODO - Change this so the inventory is one array of all items. 
+# TODO - Then make the various slot arrays merely reference the items
+# Though perhaps this is not the approach for outfits in the future, as items worn aren't considred to be in the inventory... hmm

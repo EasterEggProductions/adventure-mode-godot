@@ -61,6 +61,7 @@ var alive = true
 
 # SECTION Signals 
 # SECTION for leveling bar
+signal actor_killed(actor_node:Actor)
 signal killed_something
 signal xp_get
 signal item_get(item_name)
@@ -139,13 +140,13 @@ func _process(delta):
 		character.alive = false
 		animation_tree.active = false
 		$skeleton/AnimationPlayer.play("death")
-		await get_tree().create_timer(5).timeout
-		spawn()
+		emit_signal("actor_killed", self) # NOTE: added for dungeon tools demo
+		#await get_tree().create_timer(5).timeout
+		#spawn()
+		
 	if character.alive == false:
 		return
 	character.stats_regen(delta)
-	
-
 
 	movement_package_checks()
 	movement_sets[current_moveset].move_thrall(self, delta)
@@ -346,6 +347,7 @@ func block_attack(id : int):
 
 func compile_new_anim_tree():
 	var master_tree = AnimationNodeStateMachine.new()
+	master_tree.state_machine_type = AnimationNodeStateMachine.STATE_MACHINE_TYPE_NESTED
 	var counter = 0
 	## FIXME - Hard coded adding in movement sets from weapons
 	for thing in character.hand_right_slots:
@@ -399,7 +401,10 @@ func compile_new_anim_tree():
 				animation_tree.get(item.name).travel("Start")
 	animation_tree.active = true # set here to stop minor bone movement from showing up over and over again in git
 
-
+	animation_tree.connect("animation_finished", cb)
+	
+func cb(msg : String):
+	print("CB MSG: " + msg)
 
 # SECTION Action Queue and buffer system
 # NOTE - Action queue system. Things are put on and have a short 
@@ -455,24 +460,45 @@ func anim_track_move():
 	#look_at(global_position + (global_position - lock_targ_pos))
 	
 
-@export var spell_effect : PackedScene
-func anim_spell_state(_state : int):
-	var new_spell = spell_effect.instantiate()
-	get_parent().add_child(new_spell)
-	new_spell.global_position = global_position + Vector3(0,1,0) + basis.z
-
-
-func anim_hurtbox_activate_right(stanima_cost : float, dvalues : Dictionary):
+## Activates an item in a hand for melee damage
+## <hands> is faux enum, null or 0 is right, 1 is left, 2 is both.
+func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : int):
 	character.stamina_current -= stanima_cost
 	character.stamina_regen_timer = character.stamina_regen_delay
-	r_wep.activate_strike(dvalues)
-	# TODO - left weapon
+	if hands == null or hands == 0:
+		r_wep.activate_strike(dvalues)
+	elif hands == 1:
+		l_wep.activate_strike(dvalues)
+	elif hands == 2:
+		r_wep.activate_strike(dvalues)
+		l_wep.activate_strike(dvalues)
 
-func anim_hurtbox_activate_left(stanima_cost : float, dvalues : Dictionary):
-	character.stamina_current -= stanima_cost
-	character.stamina_regen_timer = character.stamina_regen_delay
-	l_wep.activate_strike(dvalues)
-	# TODO - left weapon
+## Inital pulling out of item, hide weapons
+func anim_item_start():
+	l_wep.visible = false
+	r_wep.visible = false
+	var prop = character.get_current_belt().drop_item.instantiate()
+	prop.name = "prop"
+	r_wep.get_parent().add_child(prop)
+	pass 
+
+## Actual use and consumption of item, apply effect
+func anim_item_use():
+
+	pass 
+
+## Turn off temporary item, return to weapons
+func anim_item_end():
+	var p =	r_wep.get_parent().find_child("prop")
+	for child in r_wep.get_parent().get_children():
+		print(child)
+		if child.name == "prop":
+			p = child
+	print(p)
+	p.queue_free()
+	r_wep.visible = true
+	l_wep.visible = true
+	pass
 
 func invulnerability_time(time : float):
 	var timer = get_tree().create_timer(time)

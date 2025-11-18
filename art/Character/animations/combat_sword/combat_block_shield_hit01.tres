@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://da3s103i61epy"]
+[gd_resource type="Animation" format=3 uid="uid://da3s103i61epy"]
 
 [resource]
 resource_name = "combat_block_shield_hit01"

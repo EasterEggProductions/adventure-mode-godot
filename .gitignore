@@ -11,6 +11,7 @@ export_presets.cfg
 # TODO Break off Dress up and possibly Modular Mobility, to be managed by GodotEnv
 # Ignore all addons since they are managed by GodotEnv:
 addons/*
+!addons/dungeon_tools_gizmos
 
 # Don't ignore the editorconfig file in the addons directory.
 !addons/.editorconfig

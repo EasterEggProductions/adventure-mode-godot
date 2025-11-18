@@ -171,7 +171,9 @@ func add_player(peer_id):
 	var new_player = PLAYER_SCENE.instantiate()
 	new_player.name = str(peer_id)
 	add_child(new_player)
+	new_player.add_to_group("Players") # NOTE: added for easy player checks in dungeon tools
 	print("New player: " + str(peer_id))
+	
 	new_player.set_multiplayer_authority(peer_id)
 	if peer_id == multiplayer.get_unique_id():
 		print("We is us!")

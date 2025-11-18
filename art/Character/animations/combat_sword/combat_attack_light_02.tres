@@ -424,8 +424,8 @@ tracks/58/keys = {
 "args": [],
 "method": &"anim_track_look"
 }, {
-"args": [3.0, {}],
-"method": &"anim_hurtbox_activate_right"
+"args": [3.0, {}, 0],
+"method": &"anim_hurtbox_activate"
 }]
 }
 tracks/59/type = "audio"

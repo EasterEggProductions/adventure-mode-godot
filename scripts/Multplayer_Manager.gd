@@ -1,7 +1,15 @@
 extends Node
 
 const PLAYER_SCENE = preload("res://prefabs/actor.tscn")
-const PORT = 8080
+const PORT = 33911
+
+var upnp = UPNP.new()
+var upnp_thread = null
+var upnp_status = null
+var upnp_udp_res = null
+var upnp_tcp_res = null
+var upnp_setup_complete = false
+
 var enet_peer = ENetMultiplayerPeer.new()
 var nop= WebSocketMultiplayerPeer.new()
 
@@ -13,20 +21,85 @@ var nop= WebSocketMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	# Handle changes from UPNP thread once they are complete
+	if upnp_setup_complete:
+		_on_upnp_completed()
+		# Reset so it isn't called multiple times
+		upnp_setup_complete = false
 
+# Establishes port mappings on host session creation
+func _upnp_setup():
+	var err = upnp.discover()
+	upnp_status = err
 
+	if err == OK and upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+		# Create mappings for both UDP and TCP transimssion
+		upnp_udp_res = upnp.add_port_mapping(PORT, PORT, ProjectSettings.get_setting("application/config/name"), "UDP")
+		upnp_tcp_res = upnp.add_port_mapping(PORT, PORT, ProjectSettings.get_setting("application/config/name"), "TCP")
+
+	upnp_setup_complete = true
+
+# Prints and verifies success of port mapping and thread creation, prints external host ip for testing
+func _on_upnp_completed():
+	if upnp_status != OK:
+		print("UPNP discovery failed with error: ", upnp_status)
+		return
+
+	# Check if port mapping was successful
+	if upnp_udp_res == UPNP.UPNP_RESULT_SUCCESS:
+		print("UDP port mapped successfully on port: ", PORT)
+	else:
+		print("Failure to add UDP mapping on port: ", PORT)
+
+	if upnp_tcp_res == UPNP.UPNP_RESULT_SUCCESS:
+		print("TCP port mapped successfully on port: ", PORT)
+	else:
+		print("Failure to add TCP mapping on port: ", PORT)
+
+	# Output host ip for testing
+	var external_ip = upnp.query_external_address()
+	if external_ip == "":
+		print("Failed to obtain external IP address.")
+	else:
+		print("External IP address obtained: ", external_ip)
+
+	# Close upnp thread
+	if upnp_thread != null:
+		upnp_thread.wait_to_finish()
+		upnp_thread = null
+
+# Called when node is freed or removed, we should externally call this on application quit (currently doesn't run)
+func _exit_tree():
+	var delete_udp = upnp.delete_port_mapping(PORT, "UDP")
+	if delete_udp == UPNP.UPNP_RESULT_SUCCESS:
+		print("UDP port mapping successfully removed on port: ", PORT)
+	else:
+		print("Failure to remove UDP mapping on port: ", PORT)
+	
+	var delete_tcp = upnp.delete_port_mapping(PORT, "TCP")
+	if delete_tcp == UPNP.UPNP_RESULT_SUCCESS:
+		print("TCP port mapping successfully removed on port: ", PORT)
+	else:
+		print("Failure to remove TCP mapping on port: ", PORT)
+	
+	if upnp_thread != null:
+		upnp_thread.wait_to_finish()
+		upnp_thread = null
 
 func _on_butt_host_pressed() -> void:
 	if OS.get_name() == "Web":
 		print("Web build detected, quick, change everything about networking so it all breaks, quickly everyone!")
 		_start_local_only()
 	server_menu.hide()
+
+	# Run port forwarding using upnp
+	upnp_thread = Thread.new()
+	upnp_thread.start(_upnp_setup)
+
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
@@ -36,6 +109,7 @@ func _on_butt_host_pressed() -> void:
 
 func _on_butt_connect_pressed() -> void:
 	var server_ip = ip_input.text
+	print("Connecting IP: ", server_ip)
 	# TODO Validate ip
 	server_menu.hide()
 	enet_peer.create_client(server_ip, PORT)

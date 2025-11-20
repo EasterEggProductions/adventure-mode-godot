@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://chwqjvpft7wxd"]
+[gd_scene load_steps=58 format=4 uid="uid://chwqjvpft7wxd"]
 
 [ext_resource type="Script" uid="uid://dfgob8wlfeeqm" path="res://scripts/actor.gd" id="1_u4ehk"]
 [ext_resource type="Resource" uid="uid://ba3i5roa0cxxe" path="res://Modular Mobility/movesets/mvpk_walk.tres" id="2_4jbd7"]
@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_5gopm"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
-[ext_resource type="PackedScene" uid="uid://cwn7cgkq7jdmx" path="res://prefabs/particles/magic.tscn" id="11_l20t5"]
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="11_wjv3x"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
@@ -398,7 +397,6 @@ character = ExtResource("2_y0m84")
 movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("3_yihif"), ExtResource("4_ud0ya"), ExtResource("5_1114p")])
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 to_equip_wep = ExtResource("11_wjv3x")
-spell_effect = ExtResource("11_l20t5")
 
 [node name="Node3D" parent="." instance=ExtResource("15_r6335")]
 visible = false

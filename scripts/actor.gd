@@ -474,8 +474,10 @@ func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : i
 
 ## Inital pulling out of item, hide weapons
 func anim_item_start():
-	l_wep.visible = false
-	r_wep.visible = false
+	if is_instance_valid(l_wep):
+		l_wep.visible = false
+	if is_instance_valid(r_wep):
+		r_wep.visible = false
 	var prop = character.get_current_belt().drop_item.instantiate()
 	prop.name = "prop"
 	r_wep.get_parent().add_child(prop)
@@ -495,8 +497,10 @@ func anim_item_end():
 			p = child
 	print(p)
 	p.queue_free()
-	r_wep.visible = true
-	l_wep.visible = true
+	if is_instance_valid(l_wep):
+		l_wep.visible = true
+	if is_instance_valid(r_wep):
+		r_wep.visible = true
 	pass
 
 func invulnerability_time(time : float):

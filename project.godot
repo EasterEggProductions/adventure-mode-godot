@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Adventure-mode-godot"
-run/main_scene="res://scenes/main_scene.tscn"
+run/main_scene="uid://c08g4uhla3np5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout="res://art/audio/default_bus_layout.tres"
+
+[autoload]
+
+MgrTransition="*res://scripts/Managers/mgr_transition.tscn"
 
 [display]
 

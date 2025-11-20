@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://cpjfjvsj5dcyk"]
+
+[ext_resource type="Resource" uid="uid://ciel6qljda5o2" path="res://art/Character/clothing/DressUp Resources/weapons/sword_of_godot.tres" id="1_sah4e"]
+[ext_resource type="PackedScene" uid="uid://cpcq0thn0vjex" path="res://prefabs/weapons/sword_of_godot.tscn" id="2_sah4e"]
+[ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="3_lasy2"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="4_hnymu"]
+
+[resource]
+resource_name = "Sword of Godot"
+script = ExtResource("4_hnymu")
+icon = ExtResource("3_lasy2")
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("1_sah4e"),
+"armament": ExtResource("2_sah4e")
+})
+metadata/_custom_type_script = "uid://dv03uv3dfmr4a"

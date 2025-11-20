@@ -485,7 +485,6 @@ bones/60/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")
-root_motion_local = false
 libraries = {
 &"": SubResource("AnimationLibrary_1fs6a")
 }

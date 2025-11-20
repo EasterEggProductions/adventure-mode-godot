@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bvdky0inf3c11"]
+[gd_scene load_steps=71 format=3 uid="uid://bvdky0inf3c11"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_03al4"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_xa5ur"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://d3xpjq6g2jknf" path="res://prefabs/environment/coin_big.tscn" id="30_iem5u"]
 [ext_resource type="AudioStream" uid="uid://2lp3jpxlpy3a" path="res://art/audio/sfx/tik.ogg" id="31_0wyf6"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="31_ti63h"]
+[ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="33_p27gv"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="34_b3pdd"]
 [ext_resource type="Material" uid="uid://c6pfclkom172s" path="res://art/materials/door_of_trials.tres" id="36_xg0i7"]
 
@@ -222,14 +223,6 @@ cam_gant = NodePath("../cam_gantry_playerFollow")
 cam_actu = NodePath("../Camera")
 ip_input = NodePath("../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
 outfit_control = NodePath("../user_interface/Outfit_control")
-
-[node name="Multplayer Manager" type="Node" parent="Multplayer Manager" node_paths=PackedStringArray("server_menu", "cam_gant", "cam_actu", "ip_input", "outfit_control")]
-script = ExtResource("3_608j4")
-server_menu = NodePath("../../user_interface/MultiplayerControl_debug")
-cam_gant = NodePath("../../cam_gantry_playerFollow")
-cam_actu = NodePath("../../Camera")
-ip_input = NodePath("../../user_interface/MultiplayerControl_debug/VBoxContainer/LineEdit")
-outfit_control = NodePath("../../user_interface/Outfit_control")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 64.8381, 0.66, -2.32)
@@ -1236,14 +1229,14 @@ text = "OTHER BUTTON"
 layout_mode = 2
 text = "OTHER BUTTON"
 
-[node name="butt_other5" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+[node name="butt_main_menu" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "OTHER BUTTON"
+text = "Quit to Menu"
+script = ExtResource("33_p27gv")
 
 [node name="Button Quit" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "Quit
-"
+text = "Quit to Desktop"
 
 [node name="menu_map" type="Control" parent="user_interface/HUD"]
 visible = false

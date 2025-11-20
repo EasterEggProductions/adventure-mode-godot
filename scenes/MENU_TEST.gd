@@ -2,11 +2,13 @@ extends Button
 
 @export var scene_to_go_to : PackedScene
 @export var quit = false
+@export var focus = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     connect("pressed", boop)
-    if not quit:
+    if focus:
         grab_focus()
 
 

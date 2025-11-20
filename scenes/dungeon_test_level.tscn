@@ -1,23 +1,23 @@
-[gd_scene load_steps=61 format=3 uid="uid://bum0xv2mo4yvc"]
+[gd_scene load_steps=63 format=3 uid="uid://devyu2gs5kgtv"]
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
 [ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_exoum"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_w765u"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="5_6qx05"]
-[ext_resource type="PackedScene" uid="uid://viykbrm875h3" path="res://prefabs/Dungeon elements/dungeon_room1.tscn" id="6_l8or3"]
+[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_room1.tscn" id="6_l8or3"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="11_lvcw6"]
-[ext_resource type="PackedScene" uid="uid://dettguqlldl03" path="res://prefabs/UI/UI_items.tscn" id="17_axuds"]
 [ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="18_xr240"]
 [ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="19_tq2gj"]
 [ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="20_lb3h5"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="21_owi7c"]
-[ext_resource type="PackedScene" uid="uid://sbfbjdptoey2" path="res://prefabs/Dungeon elements/dungeon_room2.tscn" id="22_ftuog"]
+[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_room2.tscn" id="22_ftuog"]
 [ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="22_k6fxm"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="23_1p53d"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="23_ttnyw"]
 [ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="24_5dn14"]
-[ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
+[ext_resource type="Script" uid="uid://csij116ov7g68" path="res://scripts/UI/HUD_items.gd" id="24_jspmv"]
+[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="24_rrlfs"]
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="25_0dtdv"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
@@ -27,75 +27,12 @@
 [ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="27_i2o0f"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="28_a1016"]
 [ext_resource type="Script" uid="uid://b0ng13qg3tlrb" path="res://scripts/UI/HUD_currency.gd" id="29_1gxxf"]
+[ext_resource type="AudioStream" uid="uid://2lp3jpxlpy3a" path="res://art/audio/sfx/tik.ogg" id="29_i2o0f"]
 [ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="30_gyael"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="31_2msmm"]
-[ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="31_rrlfs"]
+[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/torch.tscn" id="31_rrlfs"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="32_18o74"]
-
-[sub_resource type="Gradient" id="Gradient_5s3dm"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.512987, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.470588)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ekrka"]
-gradient = SubResource("Gradient_5s3dm")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_xb1qg"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hn0oc"]
-gradient = SubResource("Gradient_xb1qg")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxbng"]
-bg_color = Color(0.3, 0.234, 0.234, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.628885, 0.529557, 0, 1)
-border_blend = true
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkepa"]
-bg_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m6ce"]
-bg_color = Color(0.0500001, 1, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbhy"]
-bg_color = Color(0.34, 0.34, 0.34, 1)
-
-[sub_resource type="Gradient" id="Gradient_cyabv"]
-offsets = PackedFloat32Array(0, 0.844156, 1)
-colors = PackedColorArray(0.222784, 0.252874, 0.280382, 0.356863, 0, 0, 0, 1, 0.533333, 0.533333, 0.533333, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rhyjy"]
-gradient = SubResource("Gradient_cyabv")
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_81d6m"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.532468, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
-gradient = SubResource("Gradient_81d6m")
-fill = 1
-fill_from = Vector2(1, 0.6)
-fill_to = Vector2(0.1, 0.1)
-metadata/_snap_enabled = true
+[ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="33_6orry"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nes8p"]
 top_radius = 0.035
@@ -193,497 +130,72 @@ fog_light_color = Color(0.7743, 0.80939007, 0.87, 1)
 fog_light_energy = 0.2
 fog_density = 0.02
 
+[sub_resource type="Gradient" id="Gradient_5s3dm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.512987, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.470588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ngpvi"]
+gradient = SubResource("Gradient_5s3dm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_xb1qg"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jduq"]
+gradient = SubResource("Gradient_xb1qg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g387x"]
+bg_color = Color(0.3, 0.234, 0.234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.628885, 0.529557, 0, 1)
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jedr"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exoum"]
+bg_color = Color(0.0500001, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w765u"]
+bg_color = Color(0.34, 0.34, 0.34, 1)
+
+[sub_resource type="Gradient" id="Gradient_cyabv"]
+offsets = PackedFloat32Array(0, 0.844156, 1)
+colors = PackedColorArray(0.222784, 0.252874, 0.280382, 0.356863, 0, 0, 0, 1, 0.533333, 0.533333, 0.533333, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qx05"]
+gradient = SubResource("Gradient_cyabv")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p4ng8"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
 [node name="DungeonTestLevel" type="Node3D"]
-
-[node name="user_interface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ui_items" parent="user_interface" instance=ExtResource("17_axuds")]
-layout_mode = 1
-scale = Vector2(1.007, 1)
-
-[node name="vinyette" type="TextureRect" parent="user_interface"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_ekrka")
-
-[node name="MultiplayerControl_debug" type="Panel" parent="user_interface"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -170.0
-offset_top = 26.0
-offset_right = -18.0
-offset_bottom = 138.0
-grow_horizontal = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="user_interface/MultiplayerControl_debug"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="butt_Host" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
-layout_mode = 2
-text = "Host"
-
-[node name="butt_Connect" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
-layout_mode = 2
-text = "Connect
-"
-
-[node name="LineEdit" type="LineEdit" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
-layout_mode = 2
-text = "localhost"
-placeholder_text = "ip addres of host"
-
-[node name="Outfit_control" type="Control" parent="user_interface" node_paths=PackedStringArray("available_area", "worn_area")]
-visible = false
-custom_minimum_size = Vector2(500, 0)
-anchors_preset = 0
-script = ExtResource("18_xr240")
-res_folder = "res://art/Character/clothing/DressUp Resources/"
-available_area = NodePath("HBoxContainer/Available Items")
-worn_area = NodePath("HBoxContainer/Worn Items")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="user_interface/Outfit_control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Available Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Available Items"]
-custom_minimum_size = Vector2(250, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Available Items/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Available"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Worn Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Worn Items"]
-custom_minimum_size = Vector2(250, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Worn Items/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Worn"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HUD" type="Control" parent="user_interface"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("19_tq2gj")
-
-[node name="status_readout" type="Control" parent="user_interface/HUD"]
-editor_description = "Displays health, stamina, but never EVER FP OR MANNA. I swear to god I'll add it in the licence that there will NEVER be a god damn manna bar. And status effect icons"
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("20_lb3h5")
-
-[node name="background" type="TextureRect" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 10.0
-offset_right = 522.0
-offset_bottom = 180.0
-texture = SubResource("GradientTexture2D_hn0oc")
-expand_mode = 1
-
-[node name="bar_health" type="ProgressBar" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 49.0
-offset_right = 444.0
-offset_bottom = 69.0
-theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gkepa")
-value = 50.0
-show_percentage = false
-
-[node name="bar_stamina" type="ProgressBar" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 74.0
-offset_right = 404.0
-offset_bottom = 94.0
-theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8m6ce")
-value = 100.0
-show_percentage = false
-
-[node name="bar_poise" type="ProgressBar" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 99.0
-offset_right = 428.0
-offset_bottom = 119.0
-theme_override_styles/background = SubResource("StyleBoxFlat_mxbng")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rfbhy")
-value = 100.0
-show_percentage = false
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = 59.0
-offset_top = 45.0
-offset_right = 140.0
-offset_bottom = 126.0
-texture = ExtResource("21_owi7c")
-expand_mode = 1
-
-[node name="effect_icons" type="HBoxContainer" parent="user_interface/HUD/status_readout"]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 135.0
-offset_right = 212.0
-offset_bottom = 175.0
-
-[node name="effect_Questioned" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("22_k6fxm")
-expand_mode = 1
-
-[node name="effect_Fruitification" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("23_1p53d")
-expand_mode = 2
-
-[node name="effect_BlastedUp" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("24_5dn14")
-expand_mode = 2
-
-[node name="dpad_itemMenu" type="Control" parent="user_interface/HUD"]
-editor_description = "Displayes currently readied items."
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -219.0
-offset_right = 222.0
-offset_bottom = 2.0
-grow_vertical = 0
-pivot_offset = Vector2(0, 221)
-
-[node name="background" type="Control" parent="user_interface/HUD/dpad_itemMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="user_interface/HUD/dpad_itemMenu/background"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.785398
-pivot_offset = Vector2(20, 20)
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -63.5
-offset_right = 0.5
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-texture = SubResource("GradientTexture2D_rhyjy")
-
-[node name="TextureRect2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.5
-offset_top = 0.5
-offset_right = 64.5
-offset_bottom = 64.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-texture = SubResource("GradientTexture2D_rhyjy")
-
-[node name="TextureRect3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = 0.5
-offset_right = 0.5
-offset_bottom = 64.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-texture = SubResource("GradientTexture2D_rhyjy")
-
-[node name="TextureRect4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.5
-offset_top = -63.5
-offset_right = 64.5
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-texture = SubResource("GradientTexture2D_rhyjy")
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background"]
-layout_mode = 0
-offset_right = 220.0
-offset_bottom = 220.0
-texture = ExtResource("25_v0mr7")
-expand_mode = 1
-
-[node name="placeholder item 1" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 24.5
-offset_right = 20.0
-offset_bottom = 64.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("23_1p53d")
-
-[node name="placeholder item 2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -20.0
-offset_right = -25.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("26_xowv0")
-expand_mode = 1
-
-[node name="placeholder item 3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 28.5
-offset_top = -20.0
-offset_right = 68.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("27_1hl7c")
-
-[node name="placeholder item 4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
-modulate = Color(1, 0.35, 0, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -87.5
-offset_right = 28.5
-offset_bottom = -28.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("28_a1016")
-expand_mode = 1
-
-[node name="currency_readout" type="Control" parent="user_interface/HUD"]
-editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -62.0
-offset_right = -23.0
-offset_bottom = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(1.5, 1.5)
-script = ExtResource("29_1gxxf")
-
-[node name="background" type="TextureRect" parent="user_interface/HUD/currency_readout"]
-layout_mode = 0
-offset_left = -129.0
-offset_top = -19.0
-offset_bottom = 9.0
-texture = SubResource("GradientTexture2D_hn0oc")
-expand_mode = 1
-
-[node name="currency_icon" type="TextureRect" parent="user_interface/HUD/currency_readout"]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -24.0
-offset_right = 1.0
-offset_bottom = 16.0
-texture = ExtResource("30_gyael")
-
-[node name="Label" type="Label" parent="user_interface/HUD/currency_readout"]
-layout_mode = 0
-offset_left = -81.0
-offset_top = -16.0
-offset_right = -41.0
-offset_bottom = 7.0
-text = "412"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Action_prompt" parent="user_interface/HUD" instance=ExtResource("31_2msmm")]
-layout_mode = 1
-
-[node name="menu_start" type="Control" parent="user_interface/HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/menu_start"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_5ujdn")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="user_interface/HUD/menu_start"]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 105.0
-offset_right = 343.0
-offset_bottom = 155.0
-bbcode_enabled = true
-text = "[font_size=30]Adventure Mode[/font_size]"
-autowrap_mode = 0
-
-[node name="buttons" type="VBoxContainer" parent="user_interface/HUD/menu_start"]
-layout_mode = 0
-offset_left = 87.0
-offset_top = 161.0
-offset_right = 237.0
-offset_bottom = 402.0
-
-[node name="Button" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "Start Game"
-
-[node name="butt_other" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "OTHER BUTTON"
-
-[node name="butt_other2" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "OTHER BUTTON"
-
-[node name="butt_other3" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "OTHER BUTTON"
-
-[node name="butt_other4" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "OTHER BUTTON"
-
-[node name="butt_other5" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "OTHER BUTTON"
-
-[node name="Button Quit" type="Button" parent="user_interface/HUD/menu_start/buttons"]
-layout_mode = 2
-text = "Quit
-"
-
-[node name="menu_map" type="Control" parent="user_interface/HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Player Sockets" type="Node" parent="."]
 
@@ -811,6 +323,517 @@ spawn_path = NodePath("../Multplayer Manager")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rrsck")
+
+[node name="user_interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vinyette" type="TextureRect" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ngpvi")
+
+[node name="MultiplayerControl_debug" type="Panel" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 26.0
+offset_right = -18.0
+offset_bottom = 138.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="user_interface/MultiplayerControl_debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="butt_Host" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="butt_Connect" type="Button" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "Connect
+"
+
+[node name="LineEdit" type="LineEdit" parent="user_interface/MultiplayerControl_debug/VBoxContainer"]
+layout_mode = 2
+text = "localhost"
+placeholder_text = "ip addres of host"
+
+[node name="Outfit_control" type="Control" parent="user_interface" node_paths=PackedStringArray("available_area", "worn_area")]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+script = ExtResource("18_xr240")
+res_folder = "res://art/Character/clothing/DressUp Resources/"
+available_area = NodePath("HBoxContainer/Available Items")
+worn_area = NodePath("HBoxContainer/Worn Items")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="user_interface/Outfit_control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Available Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Available Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Available Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Worn Items" type="VBoxContainer" parent="user_interface/Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="user_interface/Outfit_control/HBoxContainer/Worn Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="user_interface/Outfit_control/HBoxContainer/Worn Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Worn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUD" type="Control" parent="user_interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_tq2gj")
+
+[node name="status_readout" type="Control" parent="user_interface/HUD"]
+editor_description = "Displays health, stamina, but never EVER FP OR MANNA. I swear to god I'll add it in the licence that there will NEVER be a god damn manna bar. And status effect icons"
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_lb3h5")
+
+[node name="background" type="TextureRect" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 10.0
+offset_right = 522.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_7jduq")
+expand_mode = 1
+
+[node name="bar_health" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 49.0
+offset_right = 444.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g387x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5jedr")
+value = 50.0
+show_percentage = false
+
+[node name="bar_stamina" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 74.0
+offset_right = 404.0
+offset_bottom = 94.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g387x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exoum")
+value = 100.0
+show_percentage = false
+
+[node name="bar_poise" type="ProgressBar" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 99.0
+offset_right = 428.0
+offset_bottom = 119.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g387x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w765u")
+value = 100.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 45.0
+offset_right = 140.0
+offset_bottom = 126.0
+texture = ExtResource("21_owi7c")
+expand_mode = 1
+
+[node name="effect_icons" type="HBoxContainer" parent="user_interface/HUD/status_readout"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 135.0
+offset_right = 212.0
+offset_bottom = 175.0
+
+[node name="effect_Questioned" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("22_k6fxm")
+expand_mode = 1
+
+[node name="effect_Fruitification" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("23_1p53d")
+expand_mode = 2
+
+[node name="effect_BlastedUp" type="TextureRect" parent="user_interface/HUD/status_readout/effect_icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("24_5dn14")
+expand_mode = 2
+
+[node name="dpad_itemMenu" type="Control" parent="user_interface/HUD"]
+editor_description = "Displayes currently readied items."
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -251.0
+offset_right = 253.0
+offset_bottom = -30.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(0, 221)
+script = ExtResource("24_jspmv")
+
+[node name="background" type="Control" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="user_interface/HUD/dpad_itemMenu/background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(20, 20)
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_6qx05")
+
+[node name="TextureRect2" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 64.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_6qx05")
+
+[node name="TextureRect3" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = 0.5
+offset_right = 0.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_6qx05")
+
+[node name="TextureRect4" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = -63.5
+offset_right = 64.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_6qx05")
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu/background"]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+texture = ExtResource("25_v0mr7")
+expand_mode = 1
+
+[node name="item_belt" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 24.5
+offset_right = 20.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_1p53d")
+
+[node name="item_left" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -20.0
+offset_right = -25.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_xowv0")
+expand_mode = 1
+
+[node name="item_right" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.5
+offset_top = -20.0
+offset_right = 68.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_1hl7c")
+
+[node name="item_spell" type="TextureRect" parent="user_interface/HUD/dpad_itemMenu"]
+modulate = Color(1, 0.35, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -87.5
+offset_right = 28.5
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_a1016")
+expand_mode = 1
+
+[node name="aud" type="AudioStreamPlayer" parent="user_interface/HUD/dpad_itemMenu"]
+stream = ExtResource("29_i2o0f")
+pitch_scale = 0.81
+max_polyphony = 2
+
+[node name="currency_readout" type="Control" parent="user_interface/HUD"]
+editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -62.0
+offset_right = -23.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("29_1gxxf")
+
+[node name="background" type="TextureRect" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -19.0
+offset_bottom = 9.0
+texture = SubResource("GradientTexture2D_7jduq")
+expand_mode = 1
+
+[node name="currency_icon" type="TextureRect" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -24.0
+offset_right = 1.0
+offset_bottom = 16.0
+texture = ExtResource("30_gyael")
+
+[node name="Label" type="Label" parent="user_interface/HUD/currency_readout"]
+layout_mode = 0
+offset_left = -81.0
+offset_top = -16.0
+offset_right = -41.0
+offset_bottom = 7.0
+text = "412"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Action_prompt" parent="user_interface/HUD" instance=ExtResource("31_2msmm")]
+layout_mode = 1
+
+[node name="menu_start" type="Control" parent="user_interface/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="user_interface/HUD/menu_start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_p4ng8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="user_interface/HUD/menu_start"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30]Adventure Mode[/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="user_interface/HUD/menu_start"]
+layout_mode = 0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
+
+[node name="Button" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Equipment"
+
+[node name="butt_other" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Inventory"
+
+[node name="butt_other2" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Crafting"
+
+[node name="butt_other5" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Online"
+
+[node name="butt_other3" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Messages"
+
+[node name="butt_other4" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Options"
+
+[node name="butt_main_menu" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit to Menu"
+script = ExtResource("33_6orry")
+focus = true
+
+[node name="Button Quit" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit to Desktop"
+
+[node name="menu_map" type="Control" parent="user_interface/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Host" to="Multplayer Manager" method="_on_butt_host_pressed"]
 [connection signal="pressed" from="user_interface/MultiplayerControl_debug/VBoxContainer/butt_Connect" to="Multplayer Manager" method="_on_butt_connect_pressed"]

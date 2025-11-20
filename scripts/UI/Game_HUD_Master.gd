@@ -30,7 +30,7 @@ func _process(delta):
 		status_readout.visible = !menu_start.visible
 		if menu_start.visible:
 			menu_start.find_child("buttons").get_child(0).grab_focus()
-	if Input.is_anything_pressed():
+	if Input.is_anything_pressed() and is_instance_valid(thrall):
 		fade_timer = 10.0
 		if is_instance_valid(fade_tweener):
 			fade_tweener.stop()
@@ -55,4 +55,4 @@ func _quit():
 func inspect_new_thrall(new_thrall : Actor):
 	thrall = new_thrall
 	status_readout.inspect_new_thrall(new_thrall)
-	#dpad_itemMenu.inspect_new_thrall(new_thrall)
+	dpad_itemMenu.inspect_new_thrall(new_thrall)

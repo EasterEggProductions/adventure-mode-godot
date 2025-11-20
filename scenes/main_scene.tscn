@@ -1204,38 +1204,57 @@ autowrap_mode = 0
 
 [node name="buttons" type="VBoxContainer" parent="user_interface/HUD/menu_start"]
 layout_mode = 0
-offset_left = 87.0
-offset_top = 161.0
-offset_right = 237.0
-offset_bottom = 402.0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
 
 [node name="Button" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "Start Game"
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Equipment"
 
 [node name="butt_other" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "OTHER BUTTON"
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Inventory"
 
 [node name="butt_other2" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "OTHER BUTTON"
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Crafting"
+
+[node name="butt_other5" type="Button" parent="user_interface/HUD/menu_start/buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Online"
 
 [node name="butt_other3" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "OTHER BUTTON"
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Messages"
 
 [node name="butt_other4" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
-text = "OTHER BUTTON"
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Options"
 
 [node name="butt_main_menu" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Quit to Menu"
 script = ExtResource("33_p27gv")
+focus = true
 
 [node name="Button Quit" type="Button" parent="user_interface/HUD/menu_start/buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Quit to Desktop"
 
 [node name="menu_map" type="Control" parent="user_interface/HUD"]

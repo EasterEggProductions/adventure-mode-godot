@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7hmf2emqb4n7"]
+
+[ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_0orqv"]
+[ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="1_4svdq"]
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[node name="menu_start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_0orqv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30]Adventure Mode[/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
+
+[node name="equip" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Equipment"
+
+[node name="inventory" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Inventory"
+
+[node name="crafting" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Crafting"
+
+[node name="online" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Online"
+
+[node name="messages" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Messages"
+
+[node name="options" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Options"
+
+[node name="butt_main_menu" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit to Menu"
+script = ExtResource("1_4svdq")
+focus = true
+
+[node name="Button Quit" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit to Desktop"

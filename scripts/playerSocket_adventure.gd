@@ -73,7 +73,7 @@ func _process(_delta):
 	if deb_act:
 		deb_act = false
 		if deb_action != "":
-			thrall.action_q.append(deb_action)
+			thrall.enque_action(deb_action)
 			#deb_action = ""
 	#print(delta)
 	find_interactable_objects()
@@ -126,6 +126,12 @@ func _collect_inputs(delta):
 		thrall.dodge = false
 		ds_timer = 0
 
+	thrall.handle_movement(go_dir)
+	dot.global_position = thrall.global_position + go_dir
+	target_lock(delta, go_dir)
+	## This prevents us from gathering button inputs, but we can still move and look around. 
+	if is_instance_valid(headsUpDisplay.child_menu):
+		return
 	
 	if Input.is_action_just_pressed(player_prefix + "use_item"):
 		# Grab current item from quick belt and if it has an action use it. 
@@ -133,7 +139,6 @@ func _collect_inputs(delta):
 		if item != null and item.use_action != "":
 			thrall.enque_action(item.use_action)
 
-	thrall.handle_movement(go_dir)
 	if Input.is_action_pressed(player_prefix + "event_action"): 
 		# NOTE - In ER holding ^ this would bring up a quick item D-pad menu, and also do hand switching. 
 		# So this area could be refactored to more smoothly do that.
@@ -151,7 +156,6 @@ func _collect_inputs(delta):
 		if Input.get_action_strength("p1_parry") > 0.5:
 			thrall.enque_action("attack_art")
 	
-	dot.global_position = thrall.global_position + go_dir
 
 	
 	if Input.is_action_just_released(player_prefix + "item_belt_next"):
@@ -206,36 +210,6 @@ func _collect_inputs(delta):
 		else:
 			print("look unlock")
 
-	if look_lock:
-		if locked_target.alive == false:
-			look_lock = false
-			locked_target = null
-		else:
-			mainCam.target_curr = locked_target.global_position + Vector3(0,2,0)
-			dot.global_position = locked_target.global_position + Vector3(0,2,0)
-			dot.visible = true
-			
-			dot.look_at(mainCam.global_position)
-			dot.get_node("TargetReticle").rotate_z(delta) 
-			dot.scale = Vector3.ONE + (Vector3.ONE * ((1 + (sin(Time.get_unix_time_from_system() * 12)*0.5))) * 0.5 )
-
-			#TODO - put this look vector somewhere else? idk
-			var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * (thrall.global_position - locked_target.global_position).normalized()).x,-( thrall.global_basis.inverse() * -go_dir).z)
-			thrall.desired_turn = transformed_move_dir.x
-			thrall.lock_targ_pos = locked_target.global_position
-			#print(transformed_move_dir.x)
-	else:
-		dot.visible = false
-		mainCam.target_curr = Vector3.ZERO
-		#TODO - put this look vector somewhere else? idk
-		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_dir).x,-( thrall.global_basis.inverse() * -go_dir).z)
-		thrall.desired_turn = transformed_move_dir.x
-		thrall.lock_targ_pos = Vector3.ZERO
-		# TODO - get a better system for switching between movement or weapon states
-	if thrall.combat_mode:
-		##combat_relax_timer -= delta
-		if thrall.combat_relax_timer <= 0 or Input.is_action_just_pressed(player_prefix + "start"):
-			thrall.combat_mode = false
 
 @export var action_prompt : Control
 func find_interactable_objects():
@@ -276,6 +250,12 @@ func find_interactable_objects():
 					crop.my_pickup_logic()
 					thrall.item_get.emit("fruit")
 				return
+			elif result["collider"] is ActionArea:
+				var act_area = result["collider"] as ActionArea
+				action_prompt.show_prompt(act_area.message_text)
+				if Input.is_action_just_pressed(player_prefix + "event_action"):
+					act_area.start_action(thrall)
+				return
 			else:
 				action_prompt.hide_prompt()
 	return
@@ -305,3 +285,32 @@ func input_hand_switching():
 	elif Input.is_action_just_pressed(player_prefix + "block"):
 		thrall.hand_state = Actor.HandState.UNARMED # hack for a test
 		print("Toggle left hand")
+
+
+func target_lock(delta : float, go_dir : Vector3):
+	if look_lock:
+		if locked_target.alive == false:
+			look_lock = false
+			locked_target = null
+		else:
+			mainCam.target_curr = locked_target.global_position + Vector3(0,2,0)
+			dot.global_position = locked_target.global_position + Vector3(0,2,0)
+			dot.visible = true
+			
+			dot.look_at(mainCam.global_position)
+			dot.get_node("TargetReticle").rotate_z(delta) 
+			dot.scale = Vector3.ONE + (Vector3.ONE * ((1 + (sin(Time.get_unix_time_from_system() * 12)*0.5))) * 0.5 )
+
+			#TODO - put this look vector somewhere else? idk
+			var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * (thrall.global_position - locked_target.global_position).normalized()).x,-( thrall.global_basis.inverse() * -go_dir).z)
+			thrall.desired_turn = transformed_move_dir.x
+			thrall.lock_targ_pos = locked_target.global_position
+			#print(transformed_move_dir.x)
+	else:
+		dot.visible = false
+		mainCam.target_curr = Vector3.ZERO
+		#TODO - put this look vector somewhere else? idk
+		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_dir).x,-( thrall.global_basis.inverse() * -go_dir).z)
+		thrall.desired_turn = transformed_move_dir.x
+		thrall.lock_targ_pos = Vector3.ZERO
+		# TODO - get a better system for switching between movement or weapon states

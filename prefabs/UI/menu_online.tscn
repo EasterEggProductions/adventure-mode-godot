@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmfepp5yot35o"]
+
+[ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_6u6vu"]
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[node name="menu_rest" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6u6vu")
+close_button = NodePath("buttons/Button resume")
+focus_button = NodePath("buttons/equip")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30][i]Online Options[/i][/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
+
+[node name="equip" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Go Online"
+
+[node name="inventory" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Join Friend"
+
+[node name="crafting" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Invade Som Guy"
+
+[node name="Ascetic" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Enable Herobrine"
+
+[node name="Button resume" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "resyoom :)"

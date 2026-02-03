@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cabwsn82igehw"]
+[gd_scene load_steps=32 format=3 uid="uid://cabwsn82igehw"]
 
 [ext_resource type="ArrayMesh" uid="uid://bv7kb3wlk0hq3" path="res://art/meshes/campfire.obj" id="1_wd6q8"]
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="2_61r5n"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="4_k5agq"]
 [ext_resource type="ArrayMesh" uid="uid://dkkbofnga5jb3" path="res://art/meshes/boulder.obj" id="5_yaecd"]
 [ext_resource type="AudioStream" uid="uid://bow7ea31pd0u8" path="res://art/audio/sfx/campfire-02.ogg" id="6_f7w52"]
+[ext_resource type="Script" uid="uid://glp0whcgq1uy" path="res://scripts/ActionArea.gd" id="7_ee1o0"]
+[ext_resource type="Script" uid="uid://orn3w7f80e5i" path="res://scripts/world_rest_and_reset.gd" id="8_0k21c"]
+[ext_resource type="AudioStream" uid="uid://dobhs75v3syes" path="res://art/audio/sfx/world_reset_01.ogg" id="8_y8ccy"]
+[ext_resource type="PackedScene" uid="uid://c2x0akl6hgm86" path="res://prefabs/UI/menu_rest.tscn" id="10_12rpo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqyqw"]
 albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -70,6 +74,62 @@ albedo_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 emission_enabled = true
 emission = Color(0.733333, 0.0509804, 0, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0k21c"]
+radius = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ee1o0"]
+offsets = PackedFloat32Array(0, 0.2631579, 0.7473684, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0k21c"]
+gradient = SubResource("Gradient_ee1o0")
+
+[sub_resource type="Curve" id="Curve_ee1o0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13504823, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.8147668), -0.6757472, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0k21c"]
+curve = SubResource("Curve_ee1o0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8ccy"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -720.0
+angular_velocity_max = 719.99994
+gravity = Vector3(0, 0, 0)
+scale_min = 14.0
+scale_max = 16.0
+scale_curve = SubResource("CurveTexture_0k21c")
+color_ramp = SubResource("GradientTexture1D_0k21c")
+
+[sub_resource type="Gradient" id="Gradient_12rpo"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b0wgs"]
+frequency = 0.0038
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1x158"]
+noise = SubResource("FastNoiseLite_b0wgs")
+color_ramp = SubResource("Gradient_12rpo")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqu5i"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_1x158")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_0t4ia"]
+material = SubResource("StandardMaterial3D_kqu5i")
+
 [node name="campfire" type="Node3D"]
 
 [node name="Campfire" type="MeshInstance3D" parent="."]
@@ -110,3 +170,33 @@ mesh = ExtResource("5_yaecd")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_f7w52")
 autoplay = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("7_ee1o0")
+message_text = "Rest"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0k21c")
+
+[node name="rest_reset_effect" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 32
+lifetime = 20.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_y8ccy")
+draw_pass_1 = SubResource("SphereMesh_0t4ia")
+
+[node name="reset_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_y8ccy")
+volume_db = -10.0
+
+[node name="World_Rest_and_Reset" type="Node" parent="." node_paths=PackedStringArray("reset_particles", "reset_sfx")]
+script = ExtResource("8_0k21c")
+reset_particles = NodePath("../rest_reset_effect")
+reset_sfx = NodePath("../reset_sfx")
+rest_menu = ExtResource("10_12rpo")
+
+[connection signal="do_action" from="Area3D" to="World_Rest_and_Reset" method="rest"]

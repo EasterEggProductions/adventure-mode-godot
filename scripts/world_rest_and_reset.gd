@@ -15,7 +15,7 @@ func rest(thrall : Actor):
 	# NOTE - A bit of a hack to get it working for now
 	player_socket = $"/root/multiplayer_test_level/Player Sockets/p1_psock_adventure"
 	self.thrall = player_socket.thrall
-	player_socket.thrall = null
+	player_socket.cont_state = player_socket.ControlState.NONE
 	#for child in psock.get_children():
 	#	print(child.name)
 	#print(psock)
@@ -31,5 +31,5 @@ func reset():
 
 func get_back_up():
 	print("Get back up")
-	player_socket.thrall = thrall
+	player_socket.cont_state = player_socket.ControlState.FULL
 	player_socket = null

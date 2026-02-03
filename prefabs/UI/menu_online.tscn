@@ -14,7 +14,7 @@ fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
-[node name="menu_rest" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
+[node name="menu_online" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

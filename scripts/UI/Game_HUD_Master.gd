@@ -26,11 +26,8 @@ func _ready():
 func _process(delta):
 	if child_menu == null and Input.is_action_just_released("p1_start"):
 		open_submenu(menu_start)
-		#menu_start.visible = !menu_start.visible
-		#dpad_itemMenu.visible = !menu_start.visible
-		#status_readout.visible = !menu_start.visible
-		#if menu_start.visible:
-		#	menu_start.find_child("buttons").get_child(0).grab_focus()
+		player_socket = $"/root/multiplayer_test_level/Player Sockets/p1_psock_adventure"
+		player_socket.cont_state = player_socket.ControlState.WALK_ONLY
 	if Input.is_anything_pressed() and is_instance_valid(thrall):
 		fade_timer = 10.0
 		if is_instance_valid(fade_tweener):
@@ -57,3 +54,7 @@ func inspect_new_thrall(new_thrall : Actor):
 	thrall = new_thrall
 	status_readout.inspect_new_thrall(new_thrall)
 	dpad_itemMenu.inspect_new_thrall(new_thrall)
+
+func focus():
+	player_socket = $"/root/multiplayer_test_level/Player Sockets/p1_psock_adventure"
+	player_socket.cont_state = player_socket.ControlState.FULL

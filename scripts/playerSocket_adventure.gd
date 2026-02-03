@@ -35,6 +35,9 @@ var look_lock = false
 @export var headsUpDisplay : Control
 
 
+enum ControlState {FULL, WALK_ONLY, NONE}
+var cont_state = ControlState.FULL
+
 # acreas and interactable things
 
 func _ready():
@@ -88,10 +91,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _collect_inputs(delta):
-	pass 
-	# TODO - Collect player input
-	# 2    - Change to relevant stuff
-	# 3    - Pass forward desired inputs to thrall 
+	if cont_state == ControlState.NONE:
+		return
 
 	var input_dir = Input.get_vector(player_prefix + "move_left", player_prefix + "move_right", player_prefix + "move_dn", player_prefix + "move_up")
 
@@ -130,7 +131,7 @@ func _collect_inputs(delta):
 	dot.global_position = thrall.global_position + go_dir
 	target_lock(delta, go_dir)
 	## This prevents us from gathering button inputs, but we can still move and look around. 
-	if is_instance_valid(headsUpDisplay.child_menu):
+	if cont_state == ControlState.WALK_ONLY:
 		return
 	
 	if Input.is_action_just_pressed(player_prefix + "use_item"):

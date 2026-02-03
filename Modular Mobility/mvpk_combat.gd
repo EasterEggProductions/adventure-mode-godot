@@ -1,9 +1,7 @@
 extends MovementPackage
-
 # A class to hold a specific moveset
 class_name mvpk_combat
 
-var LDT = 0.1 # last delta time, some error or something, idk
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func pack_type():

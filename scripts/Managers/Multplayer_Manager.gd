@@ -10,9 +10,12 @@ var upnp_udp_res = null
 var upnp_tcp_res = null
 var upnp_setup_complete = false
 
-var enet_peer = ENetMultiplayerPeer.new()
+#generic peer var, needs to be dynamic to switch between steam and Enet
+var dynamic_peer
+#var enet_peer = ENetMultiplayerPeer.new()
 var nop= WebSocketMultiplayerPeer.new()
 
+@export_enum("Steam", "Enet") var network_mode : String = "Enet"
 @export var server_menu : Control
 @export var cam_gant : Node3D 
 @export var cam_actu : Camera3D
@@ -131,18 +134,22 @@ func _on_butt_host_pressed() -> void:
 	upnp_thread = Thread.new()
 	upnp_thread.start(_upnp_setup)
 
-	# Creates a server on the selected port.
-	var err := enet_peer.create_server(PORT)
-	# If the binding fails, then return to the menu.
-	if err != OK:
-		print("Failed to host server on port: ", PORT)
-		#server_menu.show()
-		return
-		
-	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_connected.connect(add_player)
-
-	add_player(multiplayer.get_unique_id())
+	if network_mode == "Enet":
+		dynamic_peer = ENetMultiplayerPeer.new()
+		# Creates a server on the selected port.
+		if dynamic_peer.create_server(PORT) != OK:
+			# If the binding fails, then return to the menu.
+			print("Failed to host server on port: ", PORT)
+			server_menu.show()
+			return
+		multiplayer.multiplayer_peer = dynamic_peer
+		multiplayer.peer_connected.connect(add_player)
+		add_player(multiplayer.get_unique_id())
+	elif network_mode == "Steam":
+		#dynamic_peer = SteamMultiplayerPeer.new()
+		#^requires steam plugin, also need separate handling for steam lobby creation
+		print("Steam plugin not found")
+	
 	#server_menu.visible = false
 
 func _on_butt_connect_pressed() -> void:
@@ -150,8 +157,14 @@ func _on_butt_connect_pressed() -> void:
 	print("Connecting IP: ", server_ip)
 	# TODO Validate ip
 	#server_menu.hide()
-	enet_peer.create_client(server_ip, PORT)
-	multiplayer.multiplayer_peer = enet_peer
+	if network_mode == "Enet":
+		dynamic_peer = ENetMultiplayerPeer.new()
+		dynamic_peer.create_client(server_ip, PORT)
+		
+	elif network_mode == "Steam":
+		print("Steam plugin not found")
+	
+	multiplayer.multiplayer_peer = dynamic_peer
 	#server_menu.visible = false
 
 func _start_local_only():	

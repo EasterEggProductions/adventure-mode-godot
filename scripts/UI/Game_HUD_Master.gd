@@ -20,13 +20,14 @@ func _ready():
 	if thrall == null:
 		modulate = Color.TRANSPARENT
 	fade_tweener = get_tree().create_tween()
+	MgrPlayerSocket.get_player_one().headsUpDisplay = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if child_menu == null and Input.is_action_just_released("p1_start"):
 		open_submenu(menu_start)
-		player_socket = $"/root/multiplayer_test_level/Player Sockets/p1_psock_adventure"
+		player_socket = MgrPlayerSocket.get_player_one()
 		player_socket.cont_state = player_socket.ControlState.WALK_ONLY
 	if Input.is_anything_pressed() and is_instance_valid(thrall):
 		fade_timer = 10.0
@@ -56,5 +57,5 @@ func inspect_new_thrall(new_thrall : Actor):
 	dpad_itemMenu.inspect_new_thrall(new_thrall)
 
 func focus():
-	player_socket = $"/root/multiplayer_test_level/Player Sockets/p1_psock_adventure"
+	player_socket = MgrPlayerSocket.get_player_one()
 	player_socket.cont_state = player_socket.ControlState.FULL

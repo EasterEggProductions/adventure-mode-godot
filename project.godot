@@ -22,6 +22,8 @@ buses/default_bus_layout="res://art/audio/default_bus_layout.tres"
 [autoload]
 
 MgrTransition="*res://scripts/Managers/mgr_transition.tscn"
+MgrPlayerSocket="*res://scripts/Managers/PlayerSocketManager.gd"
+MgrMultiplayer="*res://scripts/Managers/Multplayer_Manager.gd"
 
 [display]
 

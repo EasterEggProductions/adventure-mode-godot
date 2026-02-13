@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7hmf2emqb4n7"]
+[gd_scene load_steps=7 format=3 uid="uid://b7hmf2emqb4n7"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_0orqv"]
 [ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="1_4svdq"]
+[ext_resource type="Script" uid="uid://363cvvu4w731" path="res://scripts/UI/menu_goto.gd" id="3_7lig3"]
+[ext_resource type="PackedScene" uid="uid://cmfepp5yot35o" path="res://prefabs/UI/menu_online.tscn" id="4_80ljt"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
 interpolation_mode = 2
@@ -98,3 +100,11 @@ focus = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Quit to Desktop"
+
+[node name="online2" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Online"
+script = ExtResource("3_7lig3")
+menu = ExtResource("4_80ljt")
+parent_menu = NodePath("../..")

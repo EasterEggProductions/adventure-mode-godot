@@ -6,19 +6,18 @@ extends Node
 # Easily swap socket type, ex player switch to another character
 # or someone comes over the network and controls something
 # Made by KaletheQuick
+class_name PlayerSocket
 
 @export var thrall : Actor # the thing to be controlled 
 @export var player_prefix = "p1_" # used for local multiplayer
 
-@export var enemies : Array[Actor]
+var enemies : Array[Actor]
 var locked_target : Actor
 
 var primary_thrall = true
 
 @export var mainCam : Camera3D 
 @export var ganty_thing : Node3D
-@export var vignette : Control
-@export var title_card : Control
 
 var dot : Node3D # debug
 
@@ -71,7 +70,7 @@ func _ready():
 @export var deb_action = ""
 @export var deb_act = false
 func _process(_delta):
-	if thrall == null:
+	if thrall == null or player_prefix != "p1_":
 		return
 	if deb_act:
 		deb_act = false
@@ -85,11 +84,14 @@ func _process(_delta):
 	# NOTE - Demo purposes only
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("p1_map"):
+		MgrPlayerSocket.spawn_player()
 	if thrall == null:
 		return
 	_collect_inputs(delta)
-
-
+	if thrall.is_on_floor():
+		MgrPlayerSocket.player_last_saved_pos = thrall.transform
+		
 func _collect_inputs(delta):
 	if cont_state == ControlState.NONE:
 		return

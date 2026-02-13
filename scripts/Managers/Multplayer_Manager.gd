@@ -35,7 +35,11 @@ func find_available_port(start_port: int, end_port: int) -> int:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	multiplayer.peer_connected.connect(_on_player_connected)
+	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_ok)
+	multiplayer.connection_failed.connect(_on_connected_fail)
+	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -108,7 +112,7 @@ func _on_butt_host_pressed() -> void:
 	if OS.get_name() == "Web":
 		print("Web build detected, quick, change everything about networking so it all breaks, quickly everyone!")
 		_start_local_only()
-	server_menu.hide()
+	#server_menu.hide()
 	
 	# Scans the port range for a valid port to host on.
 	var found_port := find_available_port(33900, 33999)
@@ -116,7 +120,7 @@ func _on_butt_host_pressed() -> void:
 	# If no port is avialble, return to the menu.
 	if found_port == -1:
 		print("No available port found in range 33900-33999")
-		server_menu.show()
+		#server_menu.show()
 		return
 
 	# Uses the first available port found in the scan. 
@@ -132,32 +136,32 @@ func _on_butt_host_pressed() -> void:
 	# If the binding fails, then return to the menu.
 	if err != OK:
 		print("Failed to host server on port: ", PORT)
-		server_menu.show()
+		#server_menu.show()
 		return
 		
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 
 	add_player(multiplayer.get_unique_id())
-	server_menu.visible = false
+	#server_menu.visible = false
 
 func _on_butt_connect_pressed() -> void:
-	var server_ip = ip_input.text
+	var server_ip = "localhost" #ip_input.text
 	print("Connecting IP: ", server_ip)
 	# TODO Validate ip
-	server_menu.hide()
+	#server_menu.hide()
 	enet_peer.create_client(server_ip, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	server_menu.visible = false
+	#server_menu.visible = false
 
 func _start_local_only():	
-	server_menu.hide()
+	#server_menu.hide()
 	var new_player = PLAYER_SCENE.instantiate()
 	#new_player.name = "Thrall Local Player"
 	#add_child(new_player)
 	print("New player: Local only")
 	print("We is us!")
-	get_parent().find_child("Player Sockets").find_child("p1_psock_adventure").enthrall_new_thrall(new_player)
+	MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
 	cam_gant.thrall = new_player
 	cam_gant.cam.target_current = new_player
 	cam_gant.freeze = false
@@ -168,19 +172,79 @@ func _start_local_only():
 	outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
 
 func add_player(peer_id):
-	var new_player = PLAYER_SCENE.instantiate()
-	new_player.name = str(peer_id)
-	add_child(new_player)
-	new_player.add_to_group("Players") # NOTE: added for easy player checks in dungeon tools
-	print("New player: " + str(peer_id))
-	
-	new_player.set_multiplayer_authority(peer_id)
+	print("Add player")
+	var new_player : Actor
 	if peer_id == multiplayer.get_unique_id():
+		new_player = MgrPlayerSocket.spawn_player()
+		add_child(new_player)
+		new_player.name = "PLAYER|" + str(peer_id)
+		#new_player.transform = MgrPlayerSocket.player_last_saved_pos
 		print("We is us!")
-		get_parent().find_child("Player Sockets").find_child("p1_psock_adventure").enthrall_new_thrall(new_player)
-		cam_gant.thrall = new_player
-		cam_gant.cam.target_current = new_player
-		cam_gant.freeze = false
-		cam_gant.cam.freeze = false
-		print("Iz noed? " + str(new_player.find_child("DresserUpper")))
-		outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
+		MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
+		#cam_gant.thrall = new_player
+		#cam_gant.cam.target_current = new_player
+		#cam_gant.freeze = false
+		#cam_gant.cam.freeze = false
+		MgrPlayerSocket.get_player_one().ganty_thing.thrall = new_player
+		MgrPlayerSocket.get_player_one().ganty_thing.cam.target_current = new_player
+		MgrPlayerSocket.get_player_one().ganty_thing.freeze = false
+		MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
+		MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
+		#outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
+	else:
+		new_player = PLAYER_SCENE.instantiate()
+		new_player.name = "PLAYER|" + str(peer_id)
+		get_tree().current_scene.add_child(new_player)
+		new_player.add_to_group("Players") # NOTE: added for easy player checks in dungeon tools
+		print("New player: " + str(peer_id))
+	print("P join: " + str(peer_id) + ", me: " + str(multiplayer.get_unique_id()))
+
+	new_player.set_multiplayer_authority(peer_id)
+	take_guy.rpc("PLAYER|" + str(peer_id), peer_id)
+
+func get_join_code() -> String:
+	if upnp_status == 0 and upnp_udp_res == 0 and upnp_tcp_res == 0:
+		return JoinCode.ip_to_code("192.168.0.130", PORT)
+	elif upnp_thread == null:
+		return "go online to create code"
+	else:
+		return "generating join code..."
+
+func apply_join_code(jc : String):
+	var dat = JoinCode.code_to_ip(jc)
+	var ip_addr = dat[0]
+	PORT = dat[1]
+	_on_butt_connect_pressed()
+
+
+func _on_player_connected():
+	print(str(multiplayer.get_unique_id()) + " called _on_player_connected")
+
+func _on_player_disconnected():
+	print(str(multiplayer.get_unique_id()) + " called _on_player_disconnected")
+
+func _on_connected_ok():
+	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")
+	#for child in get_tree().current_scene.get_children():
+	#	print(child.name)
+	#var my_thrall = get_tree().current_scene.find_child(str(multiplayer.get_unique_id()))
+	#print(my_thrall)
+
+func _on_connected_fail():
+	print(str(multiplayer.get_unique_id()) + " called _on_connected_fail")
+
+func _on_server_disconnected():
+	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
+
+@rpc
+func take_guy(nodename : String, peer_id : int):
+	var my_thrall = get_tree().current_scene.find_child(nodename, false, false)
+	print("This my guy? " + str(my_thrall))
+	my_thrall.set_multiplayer_authority(peer_id)
+	if multiplayer.get_unique_id() == peer_id:
+		MgrPlayerSocket.get_player_one().ganty_thing.thrall = my_thrall
+		MgrPlayerSocket.get_player_one().ganty_thing.cam.target_current = my_thrall
+		MgrPlayerSocket.get_player_one().ganty_thing.freeze = false
+		MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
+		MgrPlayerSocket.get_player_one().enthrall_new_thrall(my_thrall)
+	

@@ -2,22 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dgbtlj6yg1hj7" path="res://scripts/playerSocket_adventure.gd" id="1_g387x"]
 [ext_resource type="PackedScene" uid="uid://b34jdvaqt8gbn" path="res://art/Props/z_target.tscn" id="2_5jedr"]
-[ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Multplayer_Manager.gd" id="3_exoum"]
+[ext_resource type="Script" uid="uid://cq5je6sh2yyo6" path="res://scripts/Managers/Multplayer_Manager.gd" id="3_exoum"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="4_w765u"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="5_6qx05"]
-[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_room1.tscn" id="6_l8or3"]
+[ext_resource type="PackedScene" uid="uid://viykbrm875h3" path="res://prefabs/Dungeon elements/dungeon_room1.tscn" id="6_l8or3"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="11_lvcw6"]
 [ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="18_xr240"]
 [ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="19_tq2gj"]
 [ext_resource type="Script" uid="uid://rxn7ke0a8tev" path="res://scripts/UI/HUD_status.gd" id="20_lb3h5"]
 [ext_resource type="Texture2D" uid="uid://dbt40o1sy8732" path="res://icon.svg" id="21_owi7c"]
-[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_room2.tscn" id="22_ftuog"]
+[ext_resource type="PackedScene" uid="uid://sbfbjdptoey2" path="res://prefabs/Dungeon elements/dungeon_room2.tscn" id="22_ftuog"]
 [ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="22_k6fxm"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="23_1p53d"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="23_ttnyw"]
 [ext_resource type="Texture2D" uid="uid://cmvl3hi1dbt0s" path="res://art/textures/icons/icon_shield_upBlast.png" id="24_5dn14"]
 [ext_resource type="Script" uid="uid://csij116ov7g68" path="res://scripts/UI/HUD_items.gd" id="24_jspmv"]
-[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
+[ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="24_l8or3"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="24_rrlfs"]
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="25_0dtdv"]
 [ext_resource type="Texture2D" uid="uid://clacrlmn71n6m" path="res://art/textures/dpad_itemMenu.png" id="25_v0mr7"]
@@ -30,7 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://2lp3jpxlpy3a" path="res://art/audio/sfx/tik.ogg" id="29_i2o0f"]
 [ext_resource type="Texture2D" uid="uid://b8ouugb0hh374" path="res://art/textures/icons/icon_coin.png" id="30_gyael"]
 [ext_resource type="PackedScene" uid="uid://ibxguf2n6yr5" path="res://prefabs/UI/UI_action_prompt.tscn" id="31_2msmm"]
-[ext_resource type="PackedScene" path="res://prefabs/Dungeon elements/torch.tscn" id="31_rrlfs"]
+[ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="31_rrlfs"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="32_18o74"]
 [ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="33_6orry"]
 
@@ -199,11 +199,10 @@ metadata/_snap_enabled = true
 
 [node name="Player Sockets" type="Node" parent="."]
 
-[node name="p1_psock_adventure" type="Node" parent="Player Sockets" node_paths=PackedStringArray("mainCam", "ganty_thing", "vignette", "headsUpDisplay", "action_prompt")]
+[node name="p1_psock_adventure" type="Node" parent="Player Sockets" node_paths=PackedStringArray("mainCam", "ganty_thing", "headsUpDisplay", "action_prompt")]
 script = ExtResource("1_g387x")
 mainCam = NodePath("../../Camera")
 ganty_thing = NodePath("../../cam_gantry_playerFollow")
-vignette = NodePath("../../user_interface/vinyette")
 target_locker = ExtResource("2_5jedr")
 headsUpDisplay = NodePath("../../user_interface/HUD")
 action_prompt = NodePath("../../user_interface/HUD/Action_prompt")

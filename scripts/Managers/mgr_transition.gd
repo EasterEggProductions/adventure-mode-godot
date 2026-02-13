@@ -24,6 +24,7 @@ func change_scene_to_file(target: String) -> void:
 
 func change_scene_to_pack(target: PackedScene):	
 	print(target)
+	MgrPlayerSocket.get_player_one().thrall = null
 	if target == null or is_instance_valid(target) == false:
 		# Default to returning to the main scene
 		current_load_target = ProjectSettings.get("application/run/main_scene")
@@ -46,6 +47,7 @@ func change_scene_to_pack(target: PackedScene):
 	transitioning = false
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("transition")
+	#MgrPlayerSocket.spawn_player()
 
 func start_transition(target: String):	
 	print("start trans")
@@ -65,6 +67,7 @@ func finish_transition():
 	print("resume")
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("transition")
+	MgrPlayerSocket.spawn_player()
 
 #func _extra_cleanup():
 #	if MgrPlayer.ship != null:

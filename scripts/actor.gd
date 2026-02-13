@@ -72,22 +72,9 @@ signal attack_hit(actor_hit, attack_id)
 @onready var start_pos = global_position
 
 func _enter_tree() -> void:
-	if name != "1" && multiplayer.get_unique_id() > 1:
-		set_multiplayer_authority(str(name).to_int())
-		get_parent().get_parent().find_child("Player Sockets").find_child("p1_psock_adventure").enthrall_new_thrall(self)
-		var cam_gant = get_parent().get_parent().find_child("cam_gantry_playerFollow")
-		cam_gant.thrall = self
-		cam_gant.cam.target_current = self
-		cam_gant.freeze = false
-		cam_gant.cam.freeze = false
-		var netman = get_parent()
-		netman.outfit_control.dress_up_controller = self.find_child("DresserUpper")
-
-	# TODO - Remove this hack, better grouping required
-	if "skele" in name:
-		add_to_group("enemies")
-	else:
-		add_to_group("players")
+	if name.begins_with("PLAYER|"):
+		var id = int(name.split("|")[1])
+		set_multiplayer_authority(id)
 
 func _ready():
 	character = character.duplicate()

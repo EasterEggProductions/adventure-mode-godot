@@ -14,8 +14,7 @@ var camLookAccell = 3.14
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	MgrPlayerSocket.get_player_one().ganty_thing = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,7 +59,7 @@ func player_look(delta):
 	look_rotation_vel = disLook * delta * camLookAccell
 	var default_angle = -20
 	if cam.target_curr == Vector3.ZERO: # NOTE - No target
-		rotate(global_basis.x, look_rotation_vel.y)
+		rotate(global_basis.x.normalized(), look_rotation_vel.y)
 		rotate_y(-look_rotation_vel.x)
 		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -60,20)
 	else:

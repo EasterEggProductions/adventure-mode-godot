@@ -12,10 +12,10 @@
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_5gopm"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
-[ext_resource type="PackedScene" uid="uid://cwn7cgkq7jdmx" path="res://prefabs/particles/magic.tscn" id="11_l20t5"]
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="11_wjv3x"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
+[ext_resource type="Script" uid="uid://c4j1um8mg7us3" path="res://scripts/Utilities/nametag.gd" id="15_eg6sy"]
 [ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
 [ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
@@ -398,7 +398,6 @@ character = ExtResource("2_y0m84")
 movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("3_yihif"), ExtResource("4_ud0ya"), ExtResource("5_1114p")])
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 to_equip_wep = ExtResource("11_wjv3x")
-spell_effect = ExtResource("11_l20t5")
 
 [node name="Node3D" parent="." instance=ExtResource("15_r6335")]
 visible = false
@@ -1189,6 +1188,21 @@ bone_idx = 54
 [node name="shield_debug" parent="skeleton/char/Skeleton3D/BoneAttachment3D" instance=ExtResource("15_tqg4d")]
 transform = Transform3D(0.92577165, 0, -0.37808317, 0.375915, -0.10694082, 0.92046267, -0.040432524, -0.99426544, -0.099002786, 0, 0, 0)
 
+[node name="name_followeee" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D"]
+transform = Transform3D(0.9999499, 0.00040917099, 0.010012001, 4.61936e-07, 0.9991641, -0.04087907, -0.01002039, 0.040876865, 0.9991139, -0.0519452, 1.3245903, 0.25534236)
+bone_name = "head"
+bone_idx = 5
+
+[node name="nametag" type="Label3D" parent="skeleton/char/Skeleton3D/name_followeee" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+offset = Vector2(0, 64)
+billboard = 1
+no_depth_test = true
+text = "Player"
+script = ExtResource("15_eg6sy")
+target = NodePath("../../../../..")
+refresh = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")
 libraries = {
@@ -1227,25 +1241,25 @@ parameters/BlendTree/horace/request = 0
 "parameters/Jump w vel/1/TimeScale/scale" = 1.0
 "parameters/mv/MOVE strafe/blend_position" = Vector2(-0.0022831, 0.988119)
 "parameters/mv/MOVE strafe/0/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/0/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/0/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/1/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/2/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/3/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/4/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/5/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/5/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/5/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/6/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/6/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/6/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/7/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/7/SET_F[2]/scale" = 1.0
 "parameters/mv/MOVE strafe/8/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/8/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/8/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/9/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/9/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/9/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/10/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/10/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/10/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/11/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/11/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/11/SET_F[1]/scale" = 1.0
 "parameters/mv/SET_F[50-01]/scale" = 1.0
 "parameters/mv/SET_F[50]/scale" = 1.0
 "parameters/mv/TURN stuff/add_amount" = 0.0

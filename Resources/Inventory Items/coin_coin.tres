@@ -8,3 +8,4 @@ resource_name = "Coin Coin"
 script = ExtResource("3_0b51v")
 icon = ExtResource("1_ha7f6")
 fungible = true
+use_action = "item_crush"

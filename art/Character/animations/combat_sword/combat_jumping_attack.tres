@@ -182,8 +182,8 @@ tracks/24/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.3, {}],
-"method": &"anim_hurtbox_activate_right"
+"args": [0.3, {}, 0],
+"method": &"anim_hurtbox_activate"
 }]
 }
 tracks/25/type = "audio"

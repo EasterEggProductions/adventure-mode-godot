@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 
 @export var seize_focus = false
 
@@ -6,7 +6,7 @@ extends Control
 @onready var dpad_itemMenu = $dpad_itemMenu
 @onready var currency_readout = $currency_readout
 @onready var action_prompt = $Action_prompt
-@onready var menu_start = $menu_start
+@export var menu_start : PackedScene
 
 var player_socket
 var thrall : Actor
@@ -20,17 +20,16 @@ func _ready():
 	if thrall == null:
 		modulate = Color.TRANSPARENT
 	fade_tweener = get_tree().create_tween()
+	MgrPlayerSocket.get_player_one().headsUpDisplay = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_released("p1_start"):
-		menu_start.visible = !menu_start.visible
-		dpad_itemMenu.visible = !menu_start.visible
-		status_readout.visible = !menu_start.visible
-		if menu_start.visible:
-			menu_start.find_child("buttons").get_child(0).grab_focus()
-	if Input.is_anything_pressed():
+	if child_menu == null and Input.is_action_just_released("p1_start"):
+		open_submenu(menu_start)
+		player_socket = MgrPlayerSocket.get_player_one()
+		player_socket.cont_state = player_socket.ControlState.WALK_ONLY
+	if Input.is_anything_pressed() and is_instance_valid(thrall):
 		fade_timer = 10.0
 		if is_instance_valid(fade_tweener):
 			fade_tweener.stop()
@@ -55,4 +54,8 @@ func _quit():
 func inspect_new_thrall(new_thrall : Actor):
 	thrall = new_thrall
 	status_readout.inspect_new_thrall(new_thrall)
-	#dpad_itemMenu.inspect_new_thrall(new_thrall)
+	dpad_itemMenu.inspect_new_thrall(new_thrall)
+
+func focus():
+	player_socket = MgrPlayerSocket.get_player_one()
+	player_socket.cont_state = player_socket.ControlState.FULL

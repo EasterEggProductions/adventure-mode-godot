@@ -9,3 +9,4 @@ resource_name = "Common Fruit"
 script = ExtResource("1_rvft0")
 icon = ExtResource("2_w5cum")
 drop_item = ExtResource("1_r8wfu")
+use_action = "item_eat"

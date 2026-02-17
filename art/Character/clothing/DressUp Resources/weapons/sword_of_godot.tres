@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://ciel6qljda5o2"]
+
+[ext_resource type="PackedScene" uid="uid://cpcq0thn0vjex" path="res://prefabs/weapons/sword_of_godot.tscn" id="1_air47"]
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://Dress Up/Resource Definitions/Accessory.gd" id="2_8o7st"]
+
+[resource]
+resource_name = "sword 01"
+script = ExtResource("2_8o7st")
+accessory = ExtResource("1_air47")
+bones = Array[String](["prop.R"])

@@ -11,8 +11,8 @@ default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0, 1, 0)]
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_da5wr"]
 width = 1024
 height = 1024
-seamless = true
 noise = SubResource("FastNoiseLite_ryijf")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_xh3n7"]
 texture = SubResource("NoiseTexture2D_da5wr")
@@ -59,9 +59,9 @@ colors = PackedColorArray(0.105587, 0.267835, 7.21961e-08, 1, 6.61798e-08, 0.121
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ti1x2"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dumw6"]
-seamless = true
-color_ramp = SubResource("Gradient_1p5pb")
 noise = SubResource("FastNoiseLite_ti1x2")
+color_ramp = SubResource("Gradient_1p5pb")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_nfo3d"]
 texture = SubResource("NoiseTexture2D_dumw6")
@@ -100,9 +100,9 @@ frequency = 0.0917
 fractal_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rxi48"]
-seamless = true
-color_ramp = SubResource("Gradient_t446d")
 noise = SubResource("FastNoiseLite_qmpcg")
+color_ramp = SubResource("Gradient_t446d")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_d0vj4"]
 texture = SubResource("NoiseTexture2D_rxi48")
@@ -120,9 +120,9 @@ noise_type = 2
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hxm41"]
-seamless = true
-color_ramp = SubResource("Gradient_n374d")
 noise = SubResource("FastNoiseLite_gyjq4")
+color_ramp = SubResource("Gradient_n374d")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_od6ca"]
 texture = SubResource("NoiseTexture2D_hxm41")
@@ -154,9 +154,9 @@ frequency = 0.0148
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ksy70"]
 width = 1024
 height = 1024
-seamless = true
-color_ramp = SubResource("Gradient_yq4k8")
 noise = SubResource("FastNoiseLite_acl14")
+color_ramp = SubResource("Gradient_yq4k8")
+seamless = true
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8ymqf"]
 texture = SubResource("NoiseTexture2D_ksy70")
@@ -172,7 +172,7 @@ input_name = "vertex"
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_frg_42;
 uniform sampler2D tex_frg_44;

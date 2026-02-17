@@ -34,10 +34,8 @@ var camLookVel = Vector3.ZERO
 
 @export var offsetty = 800
 
-func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#prev_mouse_pos = get_viewport().get_mouse_position() 
-	pass
+func _ready():	
+	MgrPlayerSocket.get_player_one().mainCam = self
 
 # NOTE - _physics causes jitter, but _process causes a strange bug that looks at your feet on 144hz monitor
 func _physics_process(delta: float) -> void:

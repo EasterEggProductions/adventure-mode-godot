@@ -1,21 +1,23 @@
-[gd_resource type="Resource" script_class="Character" load_steps=17 format=3 uid="uid://pyeylu3rn4gk"]
+[gd_resource type="Resource" script_class="Character" load_steps=19 format=3 uid="uid://pyeylu3rn4gk"]
 
-[ext_resource type="Resource" uid="uid://2g2xi3iipiu3" path="res://art/Character/clothing/DressUp Resources/human_flesh.tres" id="1_asamb"]
+[ext_resource type="Resource" uid="uid://dordbggjqolii" path="res://art/Character/clothing/DressUp Resources/godette_face.tres" id="1_e66sy"]
 [ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
 [ext_resource type="Resource" uid="uid://no46v4visn5r" path="res://Resources/Inventory Items/inv_sword_00.tres" id="3_hi2oo"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="3_i2r5u"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_jsfxo"]
 [ext_resource type="Resource" uid="uid://bea3qd1gu8vr0" path="res://Resources/Inventory Items/coin_coin.tres" id="3_lr5lw"]
-[ext_resource type="Resource" uid="uid://dyhf0xu1bqbpi" path="res://art/Character/clothing/DressUp Resources/feet_boot_01.tres" id="4_irp83"]
 [ext_resource type="Resource" uid="uid://cti80s5p2qdx" path="res://Resources/Inventory Items/inv_spear_00.tres" id="4_jdhlo"]
 [ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="4_l7lj6"]
-[ext_resource type="Resource" uid="uid://b7dq815w802rc" path="res://art/Character/clothing/DressUp Resources/hair_10_ponytail_01.tres" id="5_4g6oy"]
 [ext_resource type="Resource" uid="uid://r40l8bmnp7k5" path="res://Resources/Inventory Items/inv_greatsword_01.tres" id="5_lr5lw"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="6_dooa3"]
-[ext_resource type="Resource" uid="uid://bewat2ejmwowa" path="res://art/Character/clothing/DressUp Resources/utility_belt.tres" id="6_urf5m"]
-[ext_resource type="Resource" uid="uid://bwsshqau3scbu" path="res://art/Character/clothing/DressUp Resources/short coat.tres" id="7_edoh8"]
-[ext_resource type="Resource" uid="uid://be2gvr814505d" path="res://art/Character/clothing/DressUp Resources/skirt_of_skorp.tres" id="8_8to01"]
+[ext_resource type="Resource" uid="uid://cpjfjvsj5dcyk" path="res://Resources/Inventory Items/inv_sword_of_godot.tres" id="6_l7lj6"]
+[ext_resource type="Resource" uid="uid://bedu2jx3ufh5d" path="res://art/Character/clothing/DressUp Resources/godette_backpack.tres" id="10_7fqv6"]
+[ext_resource type="Resource" uid="uid://djoo10w4ak5w4" path="res://art/Character/clothing/DressUp Resources/godette_boots.tres" id="11_gvuh6"]
+[ext_resource type="Resource" uid="uid://chgq7u50cxo5l" path="res://art/Character/clothing/DressUp Resources/godette_gloves.tres" id="12_fe3iw"]
 [ext_resource type="Texture2D" uid="uid://bxihym06dprn4" path="res://art/textures/icons/icon_mannyQuinn.png" id="13_jdhlo"]
+[ext_resource type="Resource" uid="uid://bx0d32cp5f4cs" path="res://art/Character/clothing/DressUp Resources/godette_hair.tres" id="13_qlqjw"]
+[ext_resource type="Resource" uid="uid://daitg66ljblx7" path="res://art/Character/clothing/DressUp Resources/godette_legs.tres" id="14_as43j"]
+[ext_resource type="Resource" uid="uid://di0i8hhb3ylu4" path="res://art/Character/clothing/DressUp Resources/godette_shirt.tres" id="15_d47c1"]
 
 [resource]
 resource_name = "Player"
@@ -23,8 +25,8 @@ script = ExtResource("2_p2okw")
 portrait = ExtResource("13_jdhlo")
 given_name = "Player"
 belt_items = Array[ExtResource("3_i2r5u")]([ExtResource("3_lr5lw"), ExtResource("4_l7lj6")])
-hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("3_hi2oo"), ExtResource("4_jdhlo"), ExtResource("5_lr5lw")])
+hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("5_lr5lw")])
 hand_left_slots = Array[ExtResource("3_i2r5u")]([ExtResource("3_hi2oo")])
 under_skeleton = ExtResource("6_dooa3")
-base_skin = ExtResource("1_asamb")
-outfit = Array[ExtResource("3_jsfxo")]([ExtResource("4_irp83"), ExtResource("5_4g6oy"), ExtResource("6_urf5m"), ExtResource("7_edoh8"), ExtResource("8_8to01")])
+base_skin = ExtResource("1_e66sy")
+outfit = Array[ExtResource("3_jsfxo")]([ExtResource("10_7fqv6"), ExtResource("11_gvuh6"), ExtResource("12_fe3iw"), ExtResource("13_qlqjw"), ExtResource("14_as43j"), ExtResource("15_d47c1")])

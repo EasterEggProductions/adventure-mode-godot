@@ -1,0 +1,167 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmfepp5yot35o"]
+
+[ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_6u6vu"]
+[ext_resource type="Script" uid="uid://courl7sd25328" path="res://scripts/UI/menu_networking.gd" id="2_bgubu"]
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[node name="menu_online" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6u6vu")
+close_button = NodePath("buttons/Button resume")
+focus_button = NodePath("buttons/host")
+
+[node name="ui_networking" type="Node" parent="." node_paths=PackedStringArray("debout", "join_code_out", "jc_input")]
+script = ExtResource("2_bgubu")
+debout = NodePath("../Control/RichTextLabel")
+join_code_out = NodePath("../Control2/Join Code")
+jc_input = NodePath("../JC Input/Join Code")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30][i]Online Options[/i][/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
+
+[node name="host" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Go Online"
+
+[node name="join friend" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Join Friend"
+
+[node name="invasion" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Invade Som Guy"
+
+[node name="Ascetic" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Enable Herobrine"
+
+[node name="Button resume" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "resyoom :)"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -262.0
+offset_right = 282.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+text = "Join Code: 2314243r
+IP: 939345
+UPNP: No
+PNPU: Yiss"
+selection_enabled = true
+
+[node name="Control2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -77.0
+offset_right = 239.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(5.28, 0)
+alignment = 1
+
+[node name="Join Code" type="RichTextLabel" parent="Control2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 2
+text = "What the fuck is going on"
+selection_enabled = true
+
+[node name="clipboard button" type="Button" parent="Control2"]
+layout_mode = 2
+text = "Copy"
+
+[node name="JC Input" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 379.0
+offset_top = -946.0
+offset_right = 857.0
+offset_bottom = -906.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(5.28, 0)
+alignment = 1
+
+[node name="Join Code" type="LineEdit" parent="JC Input"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Join Code ex YCBN34"
+max_length = 8
+
+[connection signal="pressed" from="buttons/host" to="ui_networking" method="_button_host"]
+[connection signal="pressed" from="buttons/join friend" to="ui_networking" method="_button_connect"]
+[connection signal="pressed" from="Control2/clipboard button" to="ui_networking" method="_on_clipboard_button_pressed"]

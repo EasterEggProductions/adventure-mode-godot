@@ -418,11 +418,11 @@ tracks/58/path = NodePath("..")
 tracks/58/interp = 1
 tracks/58/loop_wrap = true
 tracks/58/keys = {
-"times": PackedFloat32Array(0.33),
+"times": PackedFloat32Array(0.33333334),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [2.0, {}],
-"method": &"anim_hurtbox_activate_left"
+"args": [2.0, {}, 2],
+"method": &"anim_hurtbox_activate"
 }]
 }
 tracks/59/type = "value"

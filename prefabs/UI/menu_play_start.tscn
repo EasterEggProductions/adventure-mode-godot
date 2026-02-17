@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7hmf2emqb4n7"]
+[gd_scene load_steps=8 format=3 uid="uid://b7hmf2emqb4n7"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_0orqv"]
 [ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="1_4svdq"]
 [ext_resource type="Script" uid="uid://363cvvu4w731" path="res://scripts/UI/menu_goto.gd" id="3_7lig3"]
+[ext_resource type="PackedScene" uid="uid://c08g4uhla3np5" path="res://scenes/title_scene.tscn" id="3_80ljt"]
 [ext_resource type="PackedScene" uid="uid://cmfepp5yot35o" path="res://prefabs/UI/menu_online.tscn" id="4_80ljt"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
@@ -17,7 +18,7 @@ fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
-[node name="menu_start" type="Control"]
+[node name="menu_start" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0orqv")
+close_button = NodePath("buttons/return")
+focus_button = NodePath("buttons/return")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -52,6 +55,11 @@ offset_left = 113.875
 offset_top = 227.51
 offset_right = 397.875
 offset_bottom = 657.51
+
+[node name="return" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Return"
 
 [node name="equip" type="Button" parent="buttons"]
 layout_mode = 2
@@ -94,7 +102,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Quit to Menu"
 script = ExtResource("1_4svdq")
-focus = true
+scene_to_go_to = ExtResource("3_80ljt")
 
 [node name="Button Quit" type="Button" parent="buttons"]
 layout_mode = 2

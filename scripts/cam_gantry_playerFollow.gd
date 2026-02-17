@@ -79,7 +79,7 @@ func _input(event):
 		look_rotation_vel = disLook * 0.1 * camLookAccell
 		var default_angle = -20
 		if cam.target_curr == Vector3.ZERO: # NOTE - No target
-			rotate(global_basis.x, look_rotation_vel.y)
+			rotate(global_basis.x.normalized(), look_rotation_vel.y)
 			rotate_y(-look_rotation_vel.x)
 			global_rotation_degrees.x = clamp(global_rotation_degrees.x, -60,20)
 		else:

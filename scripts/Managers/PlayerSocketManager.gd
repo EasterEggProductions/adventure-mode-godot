@@ -21,7 +21,7 @@ func get_player_one() -> PlayerSocket:
 
 func spawn_player() -> Actor:
 	var new_player : Actor = preload("res://prefabs/actor.tscn").instantiate() 
-	get_tree().current_scene.add_child(new_player)
+	#get_tree().current_scene.add_child(new_player)
 	new_player.transform = player_last_saved_pos
 	new_player.add_to_group("Players")
 	# mainCam

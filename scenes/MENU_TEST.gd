@@ -4,6 +4,7 @@ extends Button
 @export var quit = false
 @export var focus = false
 
+@export var spawn : String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,5 +17,7 @@ func boop():
     print("Button Boop!")
     if quit:
         get_tree().quit()
-    else:
+    elif spawn == "":
         MgrTransition.change_scene_to_pack(scene_to_go_to)
+    else:
+        MgrTransition.level_transition(scene_to_go_to.resource_path, spawn)

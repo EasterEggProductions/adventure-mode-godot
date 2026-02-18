@@ -158,7 +158,7 @@ func _on_butt_host_pressed() -> void:
 	#server_menu.visible = false
 
 func _on_butt_connect_pressed() -> void:
-	
+	MgrTransition.msg_small("Attempting to join world", 5)
 	print("Connecting IP: ", SRV_IP)
 	# TODO Validate ip
 	#server_menu.hide()
@@ -255,6 +255,8 @@ func _on_player_disconnected():
 	print(str(multiplayer.get_unique_id()) + " called _on_player_disconnected")
 
 func _on_connected_ok():
+
+	MgrTransition.msg_small("Welcome to world as a guest", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")
 	connection_level[multiplayer.get_unique_id()] = MgrTransition.current_level.resource_path
 	#for child in get_tree().current_scene.get_children():
@@ -263,9 +265,11 @@ func _on_connected_ok():
 	#print(my_thrall)
 
 func _on_connected_fail():
+	MgrTransition.msg_small("Connection Failed", 3)
 	print(str(multiplayer.get_unique_id()) + " called _on_connected_fail")
 
 func _on_server_disconnected():
+	MgrTransition.msg_small("Connection to this world lost, returning home...", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
 	MgrTransition.target_spawn_point = ''
 	MgrTransition.change_scene_to_pack(preload("res://scenes/title_scene.tscn")) 

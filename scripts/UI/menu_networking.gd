@@ -42,3 +42,9 @@ func populate_debug_readout():
 
 func _on_clipboard_button_pressed() -> void:
     DisplayServer.clipboard_set(MgrMultiplayer.get_join_code())
+
+func _on_join_local_button_pressed() -> void:
+    #join local r something
+    MgrMultiplayer.SRV_IP = "localhost"
+    MgrMultiplayer.PORT = 33900
+    MgrMultiplayer._on_butt_connect_pressed()

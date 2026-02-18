@@ -6,6 +6,9 @@ var current_load_target = ""
 var target_spawn_point : String
 var current_level : PackedScene
 
+@onready var big_msg = $big_msg
+@onready var little_msg = $little_msg
+
 func change_scene_to_pack(target: PackedScene):	
 	print(target)
 	MgrPlayerSocket.get_player_one().thrall = null
@@ -99,3 +102,23 @@ func level_transition(scene : String, spawn_point : String):
 	target_spawn_point = spawn_point
 	MgrMultiplayer.inform_of_level_change(new_level.resource_path)
 	change_scene_to_pack(current_level)
+
+
+func msg_big(message : String, time : float):
+	big_msg.text = message
+	big_msg.visible = true
+	var t = get_tree().create_tween()
+	t.tween_property(big_msg, "modulate", Color.WHITE, 1)
+	await get_tree().create_timer(time).timeout
+	t.tween_property(big_msg, "modulate", Color.TRANSPARENT, 1)
+	big_msg.visible = false
+
+
+func msg_small(message : String, time : float):
+	little_msg.text = message
+	little_msg.visible = true
+	var t = get_tree().create_tween()
+	t.tween_property(little_msg, "modulate", Color.WHITE, 1)
+	await get_tree().create_timer(time).timeout
+	t.tween_property(little_msg, "modulate", Color.TRANSPARENT, 1)
+	little_msg.visible = false

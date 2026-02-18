@@ -1,6 +1,6 @@
 extends Button
 
-@export var scene_to_go_to : PackedScene
+@export var scene_to_go_to : String
 @export var quit = false
 @export var focus = false
 
@@ -18,6 +18,6 @@ func boop():
     if quit:
         get_tree().quit()
     elif spawn == "":
-        MgrTransition.change_scene_to_pack(scene_to_go_to)
+        MgrTransition.change_scene_to_pack(load(scene_to_go_to)) 
     else:
-        MgrTransition.level_transition(scene_to_go_to.resource_path, spawn)
+        MgrTransition.level_transition(scene_to_go_to, spawn)

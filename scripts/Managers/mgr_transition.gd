@@ -23,7 +23,7 @@ func change_scene_to_file(target: String) -> void:
 	$AnimationPlayer.play_backwards("transition")
 
 func change_scene_to_pack(target: PackedScene):	
-	print(target)
+	print("target scene: " + str(target))
 	MgrPlayerSocket.get_player_one().thrall = null
 	if target == null or is_instance_valid(target) == false:
 		# Default to returning to the main scene

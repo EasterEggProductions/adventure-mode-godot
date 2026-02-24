@@ -261,3 +261,26 @@ func take_guy(nodename : String, peer_id : int):
 		MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
 		MgrPlayerSocket.get_player_one().enthrall_new_thrall(my_thrall)
 	
+
+func inform_of_level_change(levelname : String):
+	# TODO check to see if multiplayer is even running
+	net_change_level.rpc(levelname, multiplayer.get_unique_id())
+	connection_level[multiplayer.get_unique_id()] = levelname
+
+@rpc("any_peer")
+func net_change_level(levelname : String, peer_id : int):
+	print("Player %s has switched to level %s" % [str(peer_id), levelname])
+	# If this player is changing from the level we are in, we need to despawn them
+	if connection_level.has(peer_id) and connection_level[peer_id] == connection_level[multiplayer.get_unique_id()]:
+		print("Player was on current level, now we get rid of him")
+		get_tree().current_scene.remove_player(peer_id)
+	else:
+		print("Player was on a different level, we should still track that")
+	connection_level[peer_id] = levelname
+
+func visibility_filter(connection : int) -> bool:
+	if connection_level.has(connection):
+		var our_level = connection_level[multiplayer.get_unique_id()]
+		var their_level = connection_level[connection]
+		return our_level == their_level	
+	return true

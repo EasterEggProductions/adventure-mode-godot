@@ -1,4 +1,4 @@
-extends Node3D
+extends DungeonObject
 class_name DungeonButton
 
 @export var connected: DungeonDoor = null
@@ -33,3 +33,7 @@ func _on_activation_body_exited(body: Node3D) -> void:
 		emit_signal("on_release", self)
 		$AnimationPlayer.play_backwards("depress")
 		$aud.play(0.2)
+
+## Dungeon object methods
+func serialize() -> Dictionary:
+	return {"pressed": _pressed}

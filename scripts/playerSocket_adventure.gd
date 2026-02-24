@@ -129,6 +129,13 @@ func _collect_inputs(delta):
 		thrall.dodge = false
 		ds_timer = 0
 
+	
+	if Input.is_action_just_pressed(player_prefix + "use_item"):
+		# Grab current item from quick belt and if it has an action use it. 
+		var item : InventoryItem = thrall.character.get_current_belt()
+		if item != null and item.use_action != "":
+			thrall.enque_action(item.use_action)
+
 	thrall.handle_movement(go_dir)
 	dot.global_position = thrall.global_position + go_dir
 	target_lock(delta, go_dir)

@@ -3,6 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<<< HEAD:art/meshes/rooms/bad_door.glb.import
 uid="uid://cicuo8uvxnqtg"
 path="res://.godot/imported/bad_door.glb-60dfe776d71814ca1dd81c2687216feb.scn"
 
@@ -10,6 +11,15 @@ path="res://.godot/imported/bad_door.glb-60dfe776d71814ca1dd81c2687216feb.scn"
 
 source_file="res://art/meshes/rooms/bad_door.glb"
 dest_files=["res://.godot/imported/bad_door.glb-60dfe776d71814ca1dd81c2687216feb.scn"]
+========
+uid="uid://7gmx45iw6vif"
+path="res://.godot/imported/godette.glb-381ed241dcbafa6bac3f7ac466e843af.scn"
+
+[deps]
+
+source_file="res://art/Character/clothing/Godette/godette.glb"
+dest_files=["res://.godot/imported/godette.glb-381ed241dcbafa6bac3f7ac466e843af.scn"]
+>>>>>>>> origin/main:art/Character/clothing/Godette/godette.glb.import
 
 [params]
 

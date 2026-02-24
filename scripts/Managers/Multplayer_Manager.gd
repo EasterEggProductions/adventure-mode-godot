@@ -1,6 +1,8 @@
 extends Node
 
 const PLAYER_SCENE = preload("res://prefabs/actor.tscn")
+var SRV_IP: String = "localhost"
+var EXT_IP: String = ""
 var PORT: int = 33911 # Default port value (will be replaced if a free port is found).
 
 var upnp = UPNP.new()
@@ -21,6 +23,9 @@ var nop= WebSocketMultiplayerPeer.new()
 @export var cam_actu : Camera3D
 @export var ip_input : LineEdit
 @export var outfit_control : Control
+
+## What map each connection is on
+var connection_level : Dictionary[int, String] = {0:""}
 
 # Attempts to find an available port by trying to create a temp ENet server.
 func find_available_port(start_port: int, end_port: int) -> int:
@@ -82,11 +87,11 @@ func _on_upnp_completed():
 		print("Failure to add TCP mapping on port: ", PORT)
 
 	# Output host ip for testing
-	var external_ip = upnp.query_external_address()
-	if external_ip == "":
+	EXT_IP = upnp.query_external_address()
+	if EXT_IP == "":
 		print("Failed to obtain external IP address.")
 	else:
-		print("External IP address obtained: ", external_ip)
+		print("External IP address obtained: ", EXT_IP)
 
 	# Close upnp thread
 	if upnp_thread != null:
@@ -144,7 +149,7 @@ func _on_butt_host_pressed() -> void:
 			return
 		multiplayer.multiplayer_peer = dynamic_peer
 		multiplayer.peer_connected.connect(add_player)
-		add_player(multiplayer.get_unique_id())
+		#add_player(multiplayer.get_unique_id())
 	elif network_mode == "Steam":
 		#dynamic_peer = SteamMultiplayerPeer.new()
 		#^requires steam plugin, also need separate handling for steam lobby creation
@@ -153,16 +158,17 @@ func _on_butt_host_pressed() -> void:
 	#server_menu.visible = false
 
 func _on_butt_connect_pressed() -> void:
-	var server_ip = "localhost" #ip_input.text
-	print("Connecting IP: ", server_ip)
+	MgrTransition.msg_small("Attempting to join world", 5)
+	print("Connecting IP: ", SRV_IP)
 	# TODO Validate ip
 	#server_menu.hide()
 	if network_mode == "Enet":
 		dynamic_peer = ENetMultiplayerPeer.new()
-		dynamic_peer.create_client(server_ip, PORT)
+		dynamic_peer.create_client(SRV_IP, PORT)
 		
 	elif network_mode == "Steam":
 		print("Steam plugin not found")
+		## TODO Found the steam plugin
 	
 	multiplayer.multiplayer_peer = dynamic_peer
 	#server_menu.visible = false
@@ -184,12 +190,13 @@ func _start_local_only():
 	print("Iz noed? " + str(new_player.find_child("DresserUpper")))
 	outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
 
-func add_player(peer_id):
-	print("Add player")
+func add_player_OLD(peer_id):
+	print("%d:Add player" % multiplayer.get_unique_id())
+	connection_level[peer_id] = ""
 	var new_player : Actor
 	if peer_id == multiplayer.get_unique_id():
 		new_player = MgrPlayerSocket.spawn_player()
-		add_child(new_player)
+		get_tree().current_scene.add_child(new_player)
 		new_player.name = "PLAYER|" + str(peer_id)
 		#new_player.transform = MgrPlayerSocket.player_last_saved_pos
 		print("We is us!")
@@ -204,6 +211,7 @@ func add_player(peer_id):
 		MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
 		MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
 		#outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
+		new_player.add_to_group("local_player")
 	else:
 		new_player = PLAYER_SCENE.instantiate()
 		new_player.name = "PLAYER|" + str(peer_id)
@@ -215,9 +223,19 @@ func add_player(peer_id):
 	new_player.set_multiplayer_authority(peer_id)
 	take_guy.rpc("PLAYER|" + str(peer_id), peer_id)
 
+func add_player(peer_id : int):
+	print("%d:Add player" % multiplayer.get_unique_id())
+	bring_player_in_to_the_game_or_something.rpc_id(peer_id, connection_level, MgrTransition.current_level.resource_path, "spawn_1")
+
+@rpc
+func bring_player_in_to_the_game_or_something(everyonealreadyhereandwheretheyare : Dictionary, your_start_level : String, your_spawn_point : String):
+	connection_level = everyonealreadyhereandwheretheyare
+	MgrTransition.level_transition(your_start_level, your_spawn_point)
+
+
 func get_join_code() -> String:
 	if upnp_status == 0 and upnp_udp_res == 0 and upnp_tcp_res == 0:
-		return JoinCode.ip_to_code("192.168.0.130", PORT)
+		return JoinCode.ip_to_code(EXT_IP, PORT)
 	elif upnp_thread == null:
 		return "go online to create code"
 	else:
@@ -225,7 +243,7 @@ func get_join_code() -> String:
 
 func apply_join_code(jc : String):
 	var dat = JoinCode.code_to_ip(jc)
-	var ip_addr = dat[0]
+	SRV_IP = dat[0]
 	PORT = dat[1]
 	_on_butt_connect_pressed()
 
@@ -237,17 +255,25 @@ func _on_player_disconnected():
 	print(str(multiplayer.get_unique_id()) + " called _on_player_disconnected")
 
 func _on_connected_ok():
+
+	MgrTransition.msg_small("Welcome to world as a guest", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")
+	connection_level[multiplayer.get_unique_id()] = MgrTransition.current_level.resource_path
 	#for child in get_tree().current_scene.get_children():
 	#	print(child.name)
 	#var my_thrall = get_tree().current_scene.find_child(str(multiplayer.get_unique_id()))
 	#print(my_thrall)
 
 func _on_connected_fail():
+	MgrTransition.msg_small("Connection Failed", 3)
 	print(str(multiplayer.get_unique_id()) + " called _on_connected_fail")
 
 func _on_server_disconnected():
+	MgrTransition.msg_small("Connection to this world lost, returning home...", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
+	MgrTransition.target_spawn_point = ''
+	MgrTransition.change_scene_to_pack(preload("res://scenes/title_scene.tscn")) 
+	# did not want to use level_transition, to let it grow to have other functionality
 
 @rpc
 func take_guy(nodename : String, peer_id : int):

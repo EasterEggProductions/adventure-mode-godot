@@ -390,6 +390,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath(".:sprint")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:name")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [node name="actor" type="CharacterBody3D"]
 transform = Transform3D(0.999896, 0.00712085, -0.0125515, -0.0072158, 0.999946, -0.00753587, 0.0124971, 0.00762566, 0.999893, 0, 0, 0)
@@ -1291,4 +1294,5 @@ replication_config = SubResource("SceneReplicationConfig_0m668")
 max_polyphony = 4
 
 [node name="footall_sfx2" type="Node" parent="."]
+process_mode = 4
 script = ExtResource("59_becxn")

@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Actor
 
+static var ALL_EVER_MADE : Array[Actor] = []
+
 @export var character : Character
 
 var desired_move = Vector3.ZERO
@@ -72,9 +74,14 @@ signal attack_hit(actor_hit, attack_id)
 @onready var start_pos = global_position
 
 func _enter_tree() -> void:
+	ALL_EVER_MADE.append(self)
+	$MultiplayerSynchronizer.add_visibility_filter(MgrMultiplayer.visibility_filter)
 	if name.begins_with("PLAYER|"):
 		var id = int(name.split("|")[1])
 		set_multiplayer_authority(id)
+		if id == multiplayer.get_unique_id():
+			add_to_group("local_player")
+		print(get_groups())
 
 func _ready():
 	character = character.duplicate()
@@ -420,7 +427,8 @@ func action_q_check(action : String, consume=false) -> bool:
 	if action in action_q.keys():
 		if consume == true:
 			action_q.erase(action)
-		_action_q_net.rpc(action)
+		if is_multiplayer_authority():
+			_action_q_net.rpc(action)
 		return true
 	return false
 
@@ -438,7 +446,7 @@ func _action_q_net(msg : String):
 func anim_track_look():
 	if lock_targ_pos != Vector3.ZERO:
 		look_at(global_position + (global_position - lock_targ_pos))
-	else:
+	elif global_position - desired_move != Vector3.ZERO:
 		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 

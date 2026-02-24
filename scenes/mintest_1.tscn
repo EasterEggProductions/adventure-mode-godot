@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnqlrj65vap60"]
+[gd_scene load_steps=14 format=3 uid="uid://bnqlrj65vap60"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_ele46"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dxgjy"]

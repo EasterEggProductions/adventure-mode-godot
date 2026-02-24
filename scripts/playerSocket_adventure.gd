@@ -85,7 +85,11 @@ func _process(_delta):
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("p1_map"):
-		MgrPlayerSocket.spawn_player()
+		for act in Actor.ALL_EVER_MADE:
+			if is_instance_valid(act):
+				print("%s|- %s:%s auth:%d ~ groups:%s" % [multiplayer.get_unique_id(), act.name, act.get_parent().name, act.get_multiplayer_authority(), str(act.get_groups())])
+				#print(str(multiplayer.get_unique_id())+"|- "+ act.get_parent().name +"- auth:"+ str(act.get_multiplayer_authority()))
+	#	MgrPlayerSocket.spawn_player()
 	if thrall == null:
 		return
 	_collect_inputs(delta)
@@ -223,7 +227,7 @@ func _collect_inputs(delta):
 
 @export var action_prompt : Control
 func find_interactable_objects():
-	pass 
+	return 
 	# TODO - Sphere cast or ray cast for items. 
 	# TODO - Reevaluate object interaction for more generic use
 

@@ -9,7 +9,7 @@ var current_level : PackedScene
 @onready var big_msg = $big_msg
 @onready var little_msg = $little_msg
 
-func change_scene_to_pack(target: PackedScene):	
+func change_scene_to_pack(target: PackedScene):
 	print(target)
 	MgrPlayerSocket.get_player_one().thrall = null
 	if target == null or is_instance_valid(target) == false:
@@ -20,7 +20,7 @@ func change_scene_to_pack(target: PackedScene):
 		current_load_target = str(target)
 	print(target)
 	if transitioning:
-		return 
+		return
 	transitioning = true
 	$AnimationPlayer.play("transition")
 	#MgrMultiplayerS.map_loadUpdate("loading", current_load_target)
@@ -64,7 +64,7 @@ func reload_last_save():
 	$DUST.visible_characters = 0
 	$Buttons.visible = false
 	$Buttons.modulate = Color.TRANSPARENT
-	
+
 #	#var savegame = "user://save.tres"
 #	# Make sure save folder is here
 #	var dir = DirAccess.open("user://")

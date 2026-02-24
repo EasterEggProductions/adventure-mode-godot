@@ -23,6 +23,8 @@ func _on_activation_body_entered(body: Node3D) -> void:
 		await get_tree().create_timer(depress_delay).timeout
 		_pressed = true
 		emit_signal("on_triggered", self)
+		notify() # notify level of state change
+		
 		$AnimationPlayer.play("depress")
 		$aud.play(0.2)
 
@@ -31,6 +33,8 @@ func _on_activation_body_exited(body: Node3D) -> void:
 		await get_tree().create_timer(depress_delay).timeout
 		_pressed = false
 		emit_signal("on_release", self)
+		notify() # notify level of state change
+		
 		$AnimationPlayer.play_backwards("depress")
 		$aud.play(0.2)
 

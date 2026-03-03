@@ -8,7 +8,7 @@ class_name DungeonButton
 signal on_triggered(node:DungeonButton)
 signal on_release(node:DungeonButton)
 
-var _pressed = false
+var _pressed: bool = false
 
 func _ready() -> void:
 	if connected:

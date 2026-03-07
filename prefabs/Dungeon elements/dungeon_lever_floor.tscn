@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b74jkadrhs24g"]
+
+[ext_resource type="PackedScene" uid="uid://dxcewduogisbq" path="res://art/meshes/dungeon_lever_floor.glb" id="1_axs6d"]
+[ext_resource type="Script" uid="uid://ctmpp0b27nxtd" path="res://scripts/DungeonTools/animation_interaction.gd" id="2_ct0ig"]
+[ext_resource type="Texture2D" uid="uid://bbhniccii5fd5" path="res://art/textures/floor_lever_albedo.png" id="3_ct0ig"]
+[ext_resource type="Script" uid="uid://glp0whcgq1uy" path="res://scripts/ActionArea.gd" id="4_xyw66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyw66"]
+albedo_texture = ExtResource("3_ct0ig")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_av7dv"]
+radius = 1.0
+
+[node name="dungeon_lever_floor" instance=ExtResource("1_axs6d")]
+script = ExtResource("2_ct0ig")
+actor_animation_name = "aLib_dungeon_actions/lever_L2R"
+my_animation_name = "flip_L2R"
+
+[node name="Skeleton3D" parent="armature" index="0"]
+bones/1/rotation = Quaternion(0, 0, -0.2588191, 0.9659258)
+
+[node name="Cube_001" parent="armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xyw66")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("4_xyw66")
+message_text = "Ker-CHUNK"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_av7dv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+volume_db = -5.0
+
+[connection signal="do_action" from="Area3D" to="." method="_on_do_action"]

@@ -44,10 +44,10 @@ func _process(delta):
 		return
 	timer -= delta
 
-	if get_tree().get_nodes_in_group("players").size() == 0:
+	if get_tree().get_nodes_in_group("Players").size() == 0:
 		return
 	if is_instance_valid(player) == false:
-		for play in get_tree().get_nodes_in_group("players"):
+		for play in get_tree().get_nodes_in_group("Players"):
 			if play is Actor and play.alive == true:
 				player = play
 				break

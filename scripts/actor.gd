@@ -151,6 +151,7 @@ func _physics_process(_delta):
 		return	
 	apply_animation_params()	
 	_TEMPORARY_fall_death()
+	#movement_sets[current_moveset].move_thrall(self, _delta)
 	return
 
 
@@ -404,7 +405,7 @@ func cb(msg : String):
 # NOTE - Action queue system. Things are put on and have a short 
 # buffer time after which they are knocked off. I am not sure if this
 # is a good approach, but I'm trying it out
-const ACTION_Q_BUFFER_TIME = 50.0 #milliseconds
+const ACTION_Q_BUFFER_TIME = 200.0 #milliseconds
 var action_q = {}
 
 func enque_action(action : String):
@@ -451,7 +452,9 @@ func anim_track_look():
 	#look_at(global_position + (global_position - lock_targ_pos))
 
 func anim_track_move():
-		look_at(global_position - desired_move)
+	if global_position == desired_move:
+		return
+	look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 	
 
@@ -470,10 +473,7 @@ func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : i
 
 ## Inital pulling out of item, hide weapons
 func anim_item_start():
-	if is_instance_valid(l_wep):
-		l_wep.visible = false
-	if is_instance_valid(r_wep):
-		r_wep.visible = false
+	anim_hide_weapons()
 	var prop = character.get_current_belt().drop_item.instantiate()
 	prop.name = "prop"
 	r_wep.get_parent().add_child(prop)
@@ -493,11 +493,20 @@ func anim_item_end():
 			p = child
 	print(p)
 	p.queue_free()
+	anim_show_weapons()
+	pass
+
+func anim_hide_weapons():
+	if is_instance_valid(l_wep):
+		l_wep.visible = false
+	if is_instance_valid(r_wep):
+		r_wep.visible = false
+
+func anim_show_weapons():	
 	if is_instance_valid(l_wep):
 		l_wep.visible = true
 	if is_instance_valid(r_wep):
 		r_wep.visible = true
-	pass
 
 func invulnerability_time(time : float):
 	var timer = get_tree().create_timer(time)

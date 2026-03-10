@@ -447,14 +447,15 @@ func _action_q_net(msg : String):
 func anim_track_look():
 	if lock_targ_pos != Vector3.ZERO:
 		look_at(global_position + (global_position - lock_targ_pos))
-	elif global_position - desired_move != Vector3.ZERO:
+	elif desired_move.length_squared() > 0.05:# != Vector3.ZERO:
 		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 
 func anim_track_move():
 	if global_position == desired_move:
 		return
-	look_at(global_position - desired_move)
+	if desired_move.length_squared() > 0.05:
+		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 	
 

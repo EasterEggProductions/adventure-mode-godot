@@ -102,11 +102,18 @@ shape = SubResource("ConcavePolygonShape3D_ne6dc")
 [node name="Dungeon Objects" type="Node3D" parent="."]
 
 [node name="button_floor" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1379175, 0.048714615, 4.874057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.773464, 0.048714615, 4.0411997)
 connected = NodePath("../DoorToNowhereAtAllYup")
+
+[node name="button_floor2" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
+transform = Transform3D(0.900182, 0, 0.43551394, 0, 1, 0, -0.43551394, 0, 0.900182, -6.059924, 0.1, 4.8907)
+connected = NodePath("../DungeonDoor")
 
 [node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
 transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)
+
+[node name="DungeonDoor" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
+transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -0.99994093, -0.14927983, -0.082744986, 8.974243)
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)

@@ -55,22 +55,25 @@ func level_start():
 	## Hook up all dungeon objects, assign their local scene IDs
 	if dungeon_objects:
 		var next_obj_id = 0
+		var data = MgrDungeonState.load_objects(self.name)
+		
 		for node in dungeon_objects.get_children():
 			if !(node is DungeonObject):
 				push_warning(node.name + " is not a dungeon object.")
 				continue
-			node.connect("state_update", self._on_object_update)
 			node.id = next_obj_id
+			node.connect("state_update", self._on_object_update)
+			if data != null:
+				node.deserialize(data[node.id]) # NOTE: assumes that all dungeon object nodes save something (even if it's an empty dict)
 			next_obj_id += 1
 		
-
 # called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 	print(node.name + ": " + str(data))
 
-## For despawning players and cleaning up before going to another level. 
-func level_exit():
-	pass
+func save_objects():
+	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
+	MgrDungeonState.save_objects(self.name, data)
 
 func remove_player(conn_id : int):
 	print(spawned_players)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnqlrj65vap60"]
+[gd_scene load_steps=16 format=3 uid="uid://bnqlrj65vap60"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_ele46"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dxgjy"]
@@ -7,8 +7,9 @@
 [ext_resource type="Material" uid="uid://c1lmf8kes7c51" path="res://art/materials/unified_earth_material.material" id="5_ld3tc"]
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="6_0ic28"]
 [ext_resource type="Material" uid="uid://c0m7fwcm5dywh" path="res://art/Character/clothing/simple_metal.tres" id="6_ne6dc"]
-[ext_resource type="Script" path="res://scripts/DungeonTools/exit_zone.gd" id="7_dxgjy"]
+[ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="7_dxgjy"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="9_jx6oe"]
+[ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="9_ld3tc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpnnu"]
 
@@ -100,8 +101,12 @@ shape = SubResource("ConcavePolygonShape3D_ne6dc")
 
 [node name="Dungeon Objects" type="Node3D" parent="."]
 
-[node name="button_floor" parent="Dungeon Objects" instance=ExtResource("9_jx6oe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48549247, 0.048714615, 1.7075531)
+[node name="button_floor" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1379175, 0.048714615, 4.874057)
+connected = NodePath("../DoorToNowhereAtAllYup")
+
+[node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
+transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)

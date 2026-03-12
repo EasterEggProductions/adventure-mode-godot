@@ -3,8 +3,9 @@ extends Node
 ## Singleton for managing dungeon object state between scenes
 ## maybe expanded into broader world save system?
 
-# Scene names are the index for serialized dungeon object data
-# (scene name) -> Array[Dictonary], where index is dungeon object ID
+# Scene names are the index for serialized dungeon object data, stored as a dictionary of dictionaries.
+# Dictonary(scene name -> Dictonary(object_name -> Dictonary))
+# example: object_data["some_scene_name"]["some_object_name"]["the_property_i_want"]
 var object_data: Dictionary = {}
 
 func _ready() -> void:
@@ -20,9 +21,9 @@ func load_objects(scene_name: String):
 
 func save_objects(scene_name: String, dungeon_objects: Array) -> void:
 	# grab all the object data
-	var data = []
-	for node in dungeon_objects:
-		data.append(node.serialize())
+	var all_data = {}
+	for object: DungeonObject in dungeon_objects:
+		all_data[object.name] = object.serialize()
 	# save it
-	object_data[scene_name] = data
-	print("SAVED: ", data)
+	object_data[scene_name] = all_data
+	#print("SAVED: ", all_data)

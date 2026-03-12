@@ -3,7 +3,7 @@ class_name DungeonObject
 
 signal state_update(node: DungeonObject, data: Dictionary)
 
-var id: int = 0
+#var id: int = 0 # not used
 
 # Called whenever a dungeon object needs to update its state, goes up to the level manager
 func notify() -> void:

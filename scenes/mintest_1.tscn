@@ -102,12 +102,18 @@ shape = SubResource("ConcavePolygonShape3D_ne6dc")
 [node name="Dungeon Objects" type="Node3D" parent="."]
 
 [node name="button_floor" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.773464, 0.048714615, 4.0411997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.284885, 0.048714615, 2.764522)
 connected = NodePath("../DoorToNowhereAtAllYup")
+one_shot = true
 
 [node name="button_floor2" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
-transform = Transform3D(0.900182, 0, 0.43551394, 0, 1, 0, -0.43551394, 0, 0.900182, -6.059924, 0.1, 4.8907)
+transform = Transform3D(0.9969678, 0, -0.077815294, 0, 1, 0, 0.077815294, 0, 0.9969678, -3.461689, 0.1, 7.015143)
 connected = NodePath("../DungeonDoor")
+one_shot = true
+
+[node name="button_floor3" parent="Dungeon Objects" instance=ExtResource("9_jx6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97898, 0.097430184, -5.8487444)
+one_shot = true
 
 [node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
 transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)
@@ -167,6 +173,12 @@ text = "Minimum Test Two"
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
+
+[node name="exit sign to 5" type="Label3D" parent="."]
+transform = Transform3D(0.62657654, 0, -0.7793598, 0, 1, 0, 0.7793598, 0, 0.62657654, 5.6497073, 1.840968, -6.5009565)
+pixel_size = 0.008
+text = "Open the door in Test Two!!
+(not functional yet)"
 
 [connection signal="body_entered" from="exit zone mintest_2" to="exit zone mintest_2" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]

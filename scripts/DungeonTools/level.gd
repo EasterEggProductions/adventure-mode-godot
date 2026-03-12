@@ -52,20 +52,18 @@ func level_start():
 	else: 
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
 		
-	## Hook up all dungeon objects, assign their local scene IDs
+	## Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
-		var next_obj_id = 0
 		var data = MgrDungeonState.load_objects(self.name)
-		
-		for node in dungeon_objects.get_children():
-			if !(node is DungeonObject):
-				push_warning(node.name + " is not a dungeon object.")
+		for object in dungeon_objects.get_children():
+			if !(object is DungeonObject):
+				push_warning(object.name + " is not a dungeon object.")
 				continue
-			node.id = next_obj_id
-			node.connect("state_update", self._on_object_update)
-			if data != null:
-				node.deserialize(data[node.id]) # NOTE: assumes that all dungeon object nodes save something (even if it's an empty dict)
-			next_obj_id += 1
+			# if we have a data entry, load it up
+			if data != null && data.has(object.name):
+				object.deserialize(data[object.name])
+			object.connect("state_update", self._on_object_update)
+			
 		
 # called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:

@@ -1,4 +1,4 @@
-extends Node3D
+extends WorldEnvironment
 
 @export var day_length: float = 30.0
 
@@ -7,13 +7,7 @@ extends Node3D
 # I believe this is the only value needed for multiplayer sync. 
 @export_range(0.0, 1.0) var time_of_day: float = 0.0
 
-
-@onready var sun_pivot: Node3D = $SunPivot
-
-@onready var sun: DirectionalLight3D = $SunPivot/DirectionalLight3D
-
-@onready var world_env: WorldEnvironment = $WorldEnvironment
-
+@onready var sun: DirectionalLight3D = $Sun
 
 # Emitted whenever time_of_day changes.
 signal time_changed(new_time)
@@ -89,7 +83,7 @@ func _update_sun():
 	var angle = time_of_day * 360.0
 
 	# Sun rotation.
-	sun_pivot.rotation_degrees.x = angle
+	sun.rotation_degrees.x = angle
 
 
 # Transition Checks 

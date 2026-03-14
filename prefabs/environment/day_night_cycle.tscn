@@ -21,15 +21,8 @@ sky_material = SubResource("PhysicalSkyMaterial_qf6xv")
 background_mode = 2
 sky = SubResource("Sky_n5duk")
 
-[node name="DayNightCycle" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.9689251, 0.24735416, 0, -0.24735416, 0.9689251, 0, 0, 0)
+[node name="DayNightCycle" type="WorldEnvironment"]
+environment = SubResource("Environment_4dyh5")
 script = ExtResource("1_e4bus")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4dyh5")
-
-[node name="SunPivot" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SunPivot"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="."]

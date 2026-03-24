@@ -24,3 +24,5 @@ func __body_enter(dat):
 		tween.tween_callback(self.queue_free)
 		var thrall = dat as Actor
 		thrall.item_get.emit("coin")
+
+

@@ -17,8 +17,8 @@ func _ready() -> void:
 	MgrPlayerSocket.get_player_one().ganty_thing = self
 
 
-#also changed _physics_process to process here for jitter fix
-func _process(delta: float) -> void:
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
 	if thrall == null:
 		return
 	var desired_pos = thrall.global_position
@@ -29,9 +29,15 @@ func _process(delta: float) -> void:
 		return
 	if velocity.length() > 10:
 		velocity = velocity.normalized() * 10
+		# NOTE - This is a hack, the velocity equation had a good feel too it, but went off the rails into the NaNosphere after a certain distance
+	#global_position = lerp(global_position, desired_pos, 0.01)
 	global_position += velocity * delta * 2#* (desired_pos - global_position).length()
+	#global_position = desired_pos #velocity * delta * (desired_pos - global_position).length()
+	#if Input.is_action_just_pressed("p1_look_lock"):
+	#	look_at(thrall.global_position + (thrall.global_basis.z * 10))
+	#cam.look_at(thrall.global_position + (Vector3.UP * 1.8))
 	player_look(delta)
-
+	
 
 func ray_cam_pos():
 	# Phys ray

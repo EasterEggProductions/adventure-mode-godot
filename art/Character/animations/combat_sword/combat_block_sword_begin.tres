@@ -1,4 +1,4 @@
-[gd_resource type="Animation" format=3 uid="uid://cp3dmx8w0u8tr"]
+[gd_resource type="Animation" load_steps=0 format=3 uid="uid://cp3dmx8w0u8tr"]
 
 [resource]
 resource_name = "combat_block_sword_begin"
@@ -51,7 +51,7 @@ tracks/6/enabled = true
 tracks/6/path = NodePath("char/Skeleton3D:head")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
-tracks/6/keys = PackedFloat32Array(0, 1, -0.41403657, 0.19449882, -0.03315933, 0.88861936)
+tracks/6/keys = PackedFloat32Array(0, 1, -0.41363868, 0.19448401, -0.03324641, 0.8888047)
 tracks/7/type = "rotation_3d"
 tracks/7/imported = true
 tracks/7/enabled = true
@@ -374,48 +374,55 @@ tracks/52/path = NodePath("char/Skeleton3D:foot.R")
 tracks/52/interp = 0
 tracks/52/loop_wrap = true
 tracks/52/keys = PackedFloat32Array(0, 1, -0.7542984, -0.032987844, -0.19507132, 0.62601364)
-tracks/53/type = "rotation_3d"
+tracks/53/type = "position_3d"
 tracks/53/imported = true
 tracks/53/enabled = true
 tracks/53/path = NodePath("char/Skeleton3D:toe.R")
 tracks/53/interp = 0
 tracks/53/loop_wrap = true
-tracks/53/keys = PackedFloat32Array(0, 1, 2.4972712e-08, 0.9612483, -0.27568418, 8.806758e-07)
+tracks/53/keys = PackedFloat32Array(0, 1, -1.8712948e-08, 0.11632038, 2.8713888e-08)
 tracks/54/type = "rotation_3d"
 tracks/54/imported = true
 tracks/54/enabled = true
-tracks/54/path = NodePath("char/Skeleton3D:thigh.L")
+tracks/54/path = NodePath("char/Skeleton3D:toe.R")
 tracks/54/interp = 0
 tracks/54/loop_wrap = true
-tracks/54/keys = PackedFloat32Array(0, 1, 0.7960911, 0.17738189, -0.111208096, 0.5678094)
+tracks/54/keys = PackedFloat32Array(0, 1, 2.4972712e-08, 0.9612483, -0.27568418, 8.806758e-07)
 tracks/55/type = "rotation_3d"
 tracks/55/imported = true
 tracks/55/enabled = true
-tracks/55/path = NodePath("char/Skeleton3D:shin.L")
+tracks/55/path = NodePath("char/Skeleton3D:thigh.L")
 tracks/55/interp = 0
 tracks/55/loop_wrap = true
-tracks/55/keys = PackedFloat32Array(0, 1, 0.5779156, 0.003998145, 0.0032908893, 0.81608015)
+tracks/55/keys = PackedFloat32Array(0, 1, 0.7960911, 0.17738189, -0.111208096, 0.5678094)
 tracks/56/type = "rotation_3d"
 tracks/56/imported = true
 tracks/56/enabled = true
-tracks/56/path = NodePath("char/Skeleton3D:foot.L")
+tracks/56/path = NodePath("char/Skeleton3D:shin.L")
 tracks/56/interp = 0
 tracks/56/loop_wrap = true
-tracks/56/keys = PackedFloat32Array(0, 1, -0.62293977, 0.046319727, 0.10315835, 0.77405363)
+tracks/56/keys = PackedFloat32Array(0, 1, 0.5779156, 0.003998145, 0.0032908893, 0.81608015)
 tracks/57/type = "rotation_3d"
 tracks/57/imported = true
 tracks/57/enabled = true
-tracks/57/path = NodePath("char/Skeleton3D:toe.L")
+tracks/57/path = NodePath("char/Skeleton3D:foot.L")
 tracks/57/interp = 0
 tracks/57/loop_wrap = true
-tracks/57/keys = PackedFloat32Array(0, 1, 5.3492037e-08, -0.9612483, 0.27568424, 8.7581975e-07)
-tracks/58/type = "value"
-tracks/58/imported = false
+tracks/57/keys = PackedFloat32Array(0, 1, -0.62293977, 0.046319727, 0.10315835, 0.77405363)
+tracks/58/type = "rotation_3d"
+tracks/58/imported = true
 tracks/58/enabled = true
-tracks/58/path = NodePath("..:block")
-tracks/58/interp = 1
+tracks/58/path = NodePath("char/Skeleton3D:toe.L")
+tracks/58/interp = 0
 tracks/58/loop_wrap = true
-tracks/58/keys = {
+tracks/58/keys = PackedFloat32Array(0, 1, 5.3492037e-08, -0.9612483, 0.27568424, 8.7581975e-07)
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("..:block")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,

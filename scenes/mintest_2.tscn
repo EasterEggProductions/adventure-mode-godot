@@ -30,8 +30,8 @@ script = ExtResource("1_mt1uk")
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
 script = ExtResource("2_8jl22")
-cam = NodePath("../Camera")
 freeze = true
+cam = NodePath("../Camera")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.55042297, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.8348859, -0.16637634, 0.52467555, 26.3394, 5.13614, 19.3451)

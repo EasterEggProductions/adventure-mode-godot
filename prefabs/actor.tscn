@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://chwqjvpft7wxd"]
+[gd_scene load_steps=62 format=4 uid="uid://chwqjvpft7wxd"]
 
 [ext_resource type="Script" uid="uid://dfgob8wlfeeqm" path="res://scripts/actor.gd" id="1_u4ehk"]
 [ext_resource type="Resource" uid="uid://ba3i5roa0cxxe" path="res://Modular Mobility/movesets/mvpk_walk.tres" id="2_4jbd7"]
@@ -15,10 +15,10 @@
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="11_wjv3x"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
-[ext_resource type="Script" uid="uid://c4j1um8mg7us3" path="res://scripts/Utilities/nametag.gd" id="15_eg6sy"]
 [ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
 [ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
+[ext_resource type="Script" uid="uid://cb8nougtfnyyb" path="res://scripts/Utilities/Character_tag_status.gd" id="16_eg6sy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
 [ext_resource type="AnimationLibrary" uid="uid://bu8hawt708pm4" path="res://art/Character/animations/actions/aLib_actions.tres" id="21_qj7qg"]
 [ext_resource type="Animation" uid="uid://sannddwxaokq" path="res://art/Character/animations/idles/sit_lounge.tscn.tres" id="21_wb04b"]
@@ -335,6 +335,25 @@ height = 0.162668
 material = SubResource("StandardMaterial3D_en2o0")
 radius = 0.064
 height = 0.163
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eg6sy"]
+viewport_path = NodePath("skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02bdd"]
+bg_color = Color(0.3, 0.234, 0.234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.628885, 0.529557, 0, 1)
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8whn"]
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_d1d6e"]
 resource_name = "EMPTY"
@@ -1196,15 +1215,52 @@ transform = Transform3D(0.9999499, 0.00040917099, 0.010012001, 4.61936e-07, 0.99
 bone_name = "head"
 bone_idx = 5
 
-[node name="nametag" type="Label3D" parent="skeleton/char/Skeleton3D/name_followeee" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-offset = Vector2(0, 64)
+[node name="display_tags" type="Sprite3D" parent="skeleton/char/Skeleton3D/name_followeee" node_paths=PackedStringArray("target")]
+editor_description = "Used to display name tags and progress bars above the player's head just below their name tag. For now, there's a player name and health bar that will display in-game."
+transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, -0.0029046237, 0.5255556, -0.017142579)
 billboard = 1
-no_depth_test = true
-text = "Player"
-script = ExtResource("15_eg6sy")
+texture = SubResource("ViewportTexture_eg6sy")
+script = ExtResource("16_eg6sy")
 target = NodePath("../../../../..")
 refresh = true
+
+[node name="SubViewport" type="SubViewport" parent="skeleton/char/Skeleton3D/name_followeee/display_tags"]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(297, 51)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport"]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="nametag" type="Label" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bar_health" type="ProgressBar" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_02bdd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h8whn")
+value = 50.0
+show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")

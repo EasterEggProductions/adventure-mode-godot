@@ -1399,7 +1399,7 @@ anim_player = NodePath("../skeleton/AnimationPlayer")
 "parameters/MV blendtree/SET_F[15)/scale" = 1.0
 "parameters/MV blendtree/SET_F[15]b/scale" = 1.0
 "parameters/MV blendtree/MOVE/blend_position" = Vector2(0.008379936, 0.13550591)
-"parameters/MV blendtree/SET_F[1]/scale" = 1.0
+"parameters/MV blendtree/SET_F[2]/scale" = 1.0
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999997, 0, 0, 0)

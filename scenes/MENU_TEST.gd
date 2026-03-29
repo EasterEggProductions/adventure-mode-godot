@@ -9,7 +9,7 @@ extends Button
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     connect("pressed", boop)
-    if focus:
+    if not quit:
         grab_focus()
 
 

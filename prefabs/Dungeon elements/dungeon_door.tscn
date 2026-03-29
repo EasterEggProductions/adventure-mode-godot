@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://jqfsyx37ts4u"]
 
-[ext_resource type="PackedScene" uid="uid://cicuo8uvxnqtg" path="res://art/meshes/rooms/bad_door.glb" id="1_5lhcv"]
+[ext_resource type="PackedScene" uid="uid://sik0d6pakfvu" path="res://art/meshes/rooms/bad_door.glb" id="1_5lhcv"]
 [ext_resource type="Script" uid="uid://613jcwuiaqyi" path="res://scripts/DungeonTools/dungeon_door.gd" id="2_gox5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gox5o"]
@@ -47,7 +47,7 @@ _data = {
 
 [node name="DungeonDoor" instance=ExtResource("1_5lhcv")]
 script = ExtResource("2_gox5o")
-open_animation = "open"
+open_anim_name = "open"
 
 [node name="DoorBody" type="StaticBody3D" parent="door" index="0"]
 
@@ -64,3 +64,5 @@ shape = SubResource("ConcavePolygonShape3D_gox5o")
 libraries = {
 &"": SubResource("AnimationLibrary_0sbqu")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

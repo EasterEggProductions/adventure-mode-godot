@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=35 format=3 uid="uid://cfw145vp451ic"]
+[gd_resource type="AnimationLibrary" load_steps=38 format=3 uid="uid://cfw145vp451ic"]
 
 [ext_resource type="Animation" uid="uid://cguwuuiv343q3" path="res://art/Character/animations/combat_sword/combat_block_shield.tres" id="7_h3ppe"]
 [ext_resource type="Animation" uid="uid://d3v6bkclnlkik" path="res://art/Character/animations/combat_sword/combat_attack_light_01.tres" id="7_uxj2a"]
@@ -34,41 +34,47 @@
 [ext_resource type="Animation" uid="uid://cyev484xggyy3" path="res://art/Character/animations/combat_sword/combat_block_shield_begin.tres" id="32_6w4xf"]
 [ext_resource type="Animation" uid="uid://cp3dmx8w0u8tr" path="res://art/Character/animations/combat_sword/combat_block_sword_begin.tres" id="33_h2gs7"]
 [ext_resource type="Animation" uid="uid://bgnsydaea824" path="res://art/Character/animations/combat_sword/combat_attack_power_01.tres" id="34_ct3hd"]
+[ext_resource type="Animation" uid="uid://baj5nunaoq8p4" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_01.tres" id="35_be6ol"]
+[ext_resource type="Animation" uid="uid://dpjnwoux34qw" path="res://art/Character/animations/combat_sword/combat_idle_sword_1h.tres" id="36_hhx8c"]
+[ext_resource type="Animation" uid="uid://cindt05ihwa3x" path="res://art/Character/animations/combat_sword/combat_idle_sword_2h.tres" id="37_88gcf"]
 
 [resource]
 _data = {
-"backstep": ExtResource("28_ftgwk"),
-"combat_attack_hvy_thrust_charge_0": ExtResource("22_obg4u"),
-"combat_attack_hvy_thrust_charge_1": ExtResource("23_6sdsy"),
-"combat_attack_light_01": ExtResource("7_uxj2a"),
-"combat_attack_light_02": ExtResource("8_8upsl"),
-"combat_attack_power_01": ExtResource("34_ct3hd"),
-"combat_block_shield": ExtResource("7_h3ppe"),
-"combat_block_shield_begin": ExtResource("32_6w4xf"),
-"combat_block_shield_hit01": ExtResource("29_vf6xn"),
-"combat_block_sword": ExtResource("30_avqqb"),
-"combat_block_sword_begin": ExtResource("33_h2gs7"),
-"combat_block_sword_hit01": ExtResource("31_id3f1"),
-"combat_dodgeroll": ExtResource("20_vbtp8"),
-"combat_draw_back": ExtResource("8_6njax"),
-"combat_heavyish_attack": ExtResource("16_b28td"),
-"combat_idle": ExtResource("9_tpor7"),
-"combat_idle_crouch": ExtResource("18_2tb7a"),
-"combat_idle_greatsword_1h": ExtResource("24_d68y2"),
-"combat_idle_greatsword_2h": ExtResource("25_6762h"),
-"combat_jumping_attack": ExtResource("17_uf7nn"),
-"combat_parry_shield": ExtResource("19_7jhn8"),
-"combat_poisebreak": ExtResource("26_muk3i"),
-"combat_poisebreak_idle": ExtResource("27_1vc5s"),
-"combat_spell_L_01": ExtResource("21_j4upo"),
-"combat_strafe_b_l": ExtResource("14_tg5ba"),
-"combat_strafe_b_r": ExtResource("10_50rst"),
-"combat_strafe_bwd": ExtResource("16_ufga7"),
-"combat_strafe_f_l": ExtResource("12_w2rh3"),
-"combat_strafe_f_r": ExtResource("13_c8xy2"),
-"combat_strafe_fwd": ExtResource("11_gjrde"),
-"combat_strafe_left": ExtResource("27_y33r5"),
-"combat_strafe_right": ExtResource("15_mwjd2"),
-"greatsword_1h_attack_light_01": ExtResource("28_d6wgc"),
-"greatsword_1h_attack_light_02": ExtResource("29_8saxf")
+&"backstep": ExtResource("28_ftgwk"),
+&"combat_attack_hvy_thrust_charge_0": ExtResource("22_obg4u"),
+&"combat_attack_hvy_thrust_charge_1": ExtResource("23_6sdsy"),
+&"combat_attack_light_01": ExtResource("7_uxj2a"),
+&"combat_attack_light_02": ExtResource("8_8upsl"),
+&"combat_attack_light_2h_01": ExtResource("35_be6ol"),
+&"combat_attack_power_01": ExtResource("34_ct3hd"),
+&"combat_block_shield": ExtResource("7_h3ppe"),
+&"combat_block_shield_begin": ExtResource("32_6w4xf"),
+&"combat_block_shield_hit01": ExtResource("29_vf6xn"),
+&"combat_block_sword": ExtResource("30_avqqb"),
+&"combat_block_sword_begin": ExtResource("33_h2gs7"),
+&"combat_block_sword_hit01": ExtResource("31_id3f1"),
+&"combat_dodgeroll": ExtResource("20_vbtp8"),
+&"combat_draw_back": ExtResource("8_6njax"),
+&"combat_heavyish_attack": ExtResource("16_b28td"),
+&"combat_idle": ExtResource("9_tpor7"),
+&"combat_idle_crouch": ExtResource("18_2tb7a"),
+&"combat_idle_greatsword_1h": ExtResource("24_d68y2"),
+&"combat_idle_greatsword_2h": ExtResource("25_6762h"),
+&"combat_idle_sword_1h": ExtResource("36_hhx8c"),
+&"combat_idle_sword_2h": ExtResource("37_88gcf"),
+&"combat_jumping_attack": ExtResource("17_uf7nn"),
+&"combat_parry_shield": ExtResource("19_7jhn8"),
+&"combat_poisebreak": ExtResource("26_muk3i"),
+&"combat_poisebreak_idle": ExtResource("27_1vc5s"),
+&"combat_spell_L_01": ExtResource("21_j4upo"),
+&"combat_strafe_b_l": ExtResource("14_tg5ba"),
+&"combat_strafe_b_r": ExtResource("10_50rst"),
+&"combat_strafe_bwd": ExtResource("16_ufga7"),
+&"combat_strafe_f_l": ExtResource("12_w2rh3"),
+&"combat_strafe_f_r": ExtResource("13_c8xy2"),
+&"combat_strafe_fwd": ExtResource("11_gjrde"),
+&"combat_strafe_left": ExtResource("27_y33r5"),
+&"combat_strafe_right": ExtResource("15_mwjd2"),
+&"greatsword_1h_attack_light_01": ExtResource("28_d6wgc"),
+&"greatsword_1h_attack_light_02": ExtResource("29_8saxf")
 }

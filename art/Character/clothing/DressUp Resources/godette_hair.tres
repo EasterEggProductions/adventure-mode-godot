@@ -48,9 +48,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_rreqn"]
+[sub_resource type="Skin" id="Skin_46n2p"]
 resource_name = "Skin"
-bind_count = 64
+bind_count = 63
 bind/0/name = &"Root"
 bind/0/bone = -1
 bind/0/pose = Transform3D(1, 0, 0, 0, 1, 2.3841858e-07, 0, -1.6292067e-07, 1, 0, 0, 0)
@@ -240,12 +240,9 @@ bind/61/pose = Transform3D(0.9999999, -1.1863162e-06, -5.931866e-07, 7.90299e-07
 bind/62/name = &"toe.L"
 bind/62/bone = -1
 bind/62/pose = Transform3D(-0.9999999, -4.634848e-07, -2.0878495e-13, 1.0394162e-06, 4.4703398e-07, 0.999997, -5.2877914e-07, 1, 3.2782455e-07, 0.16314998, -0.03700602, -0.015029751)
-bind/63/name = &"neutral_bone"
-bind/63/bone = -1
-bind/63/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
 [resource]
 resource_name = "Godette Hair"
 script = ExtResource("3_y3lla")
 mesh = SubResource("ArrayMesh_34sbl")
-skin = SubResource("Skin_rreqn")
+skin = SubResource("Skin_46n2p")

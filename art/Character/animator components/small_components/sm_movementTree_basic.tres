@@ -16,7 +16,7 @@ animation = &"walk_jog_run/turn_left_45s"
 
 [resource]
 resource_name = "move_strafe-n-look"
-graph_offset = Vector2(-556.1829, -25.806656)
+graph_offset = Vector2(-435.18292, 69.193344)
 nodes/output/position = Vector2(410, 130)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_kb435")
 nodes/Animation/position = Vector2(-390, -10)

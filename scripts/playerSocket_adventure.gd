@@ -227,7 +227,7 @@ func _collect_inputs(delta):
 
 @export var action_prompt : Control
 func find_interactable_objects():
-	return 
+	 
 	# TODO - Sphere cast or ray cast for items. 
 	# TODO - Reevaluate object interaction for more generic use
 

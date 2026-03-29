@@ -15,10 +15,10 @@
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="11_wjv3x"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
-[ext_resource type="Script" uid="uid://c4j1um8mg7us3" path="res://scripts/Utilities/nametag.gd" id="15_eg6sy"]
 [ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
 [ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
+[ext_resource type="Script" uid="uid://cb8nougtfnyyb" path="res://scripts/Utilities/Character_tag_status.gd" id="16_eg6sy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
 [ext_resource type="AnimationLibrary" uid="uid://bu8hawt708pm4" path="res://art/Character/animations/actions/aLib_actions.tres" id="21_qj7qg"]
 [ext_resource type="Animation" uid="uid://sannddwxaokq" path="res://art/Character/animations/idles/sit_lounge.tscn.tres" id="21_wb04b"]
@@ -336,6 +336,25 @@ height = 0.162668
 material = SubResource("StandardMaterial3D_en2o0")
 radius = 0.064
 height = 0.163
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eg6sy"]
+viewport_path = NodePath("skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02bdd"]
+bg_color = Color(0.3, 0.234, 0.234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.628885, 0.529557, 0, 1)
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8whn"]
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_d1d6e"]
 resource_name = "EMPTY"

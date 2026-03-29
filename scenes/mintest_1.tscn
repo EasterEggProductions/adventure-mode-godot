@@ -30,8 +30,9 @@ data = PackedVector3Array(-14.142137, -5, -14.142134, -20, -5, -1.7484556e-06, 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_ele46"]
 size = Vector3(1, 1, 3)
 
-[node name="mintest_1" type="Node3D"]
+[node name="mintest_1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_ele46")
+dungeon_objects = NodePath("Dungeon Objects")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
@@ -44,14 +45,6 @@ transform = Transform3D(0.55042297, -0.25236094, 0.795832, 0, 0.9532224, 0.30227
 script = ExtResource("3_ne6dc")
 distance = 2.5
 freeze = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.65986574, 0.21336862, -0.7204517, -0.6615762, -0.61955595, 0.4224536, -0.35622215, 0.7553965, 0.5499833, 0, 0, 0)
-light_color = Color(1, 0.940078, 0.839877, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_m0f1x")
 
 [node name="play_ui" parent="." instance=ExtResource("4_jx6oe")]
 
@@ -101,6 +94,28 @@ material = ExtResource("6_0ic28")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level_geometry/CSGBox3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ne6dc")
+
+[node name="Dungeon Objects" type="Node3D" parent="."]
+
+[node name="button_floor" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.284885, 0.048714615, 2.764522)
+connected = NodePath("../DoorToNowhereAtAllYup")
+one_shot = true
+
+[node name="button_floor2" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
+transform = Transform3D(0.9969678, 0, -0.077815294, 0, 1, 0, 0.077815294, 0, 0.9969678, -3.461689, 0.1, 7.015143)
+connected = NodePath("../DungeonDoor")
+one_shot = true
+
+[node name="button_floor3" parent="Dungeon Objects" instance=ExtResource("9_jx6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97898, 0.097430184, -5.8487444)
+one_shot = true
+
+[node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
+transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)
+
+[node name="DungeonDoor" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
+transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -0.99994093, -0.14927983, -0.082744986, 8.974243)
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)

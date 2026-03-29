@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://buw61jj5xaa1f"]
+
+[ext_resource type="Script" uid="uid://d1urdaxx0wfn8" path="res://scripts/day_night_cycle.gd" id="1_e4bus"]
+
+[sub_resource type="Gradient" id="Gradient_o7ujk"]
+colors = PackedColorArray(0, 0, 0.44705883, 1, 0.051970966, 0.05197096, 0.05197095, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4bus"]
+gradient = SubResource("Gradient_o7ujk")
+fill_from = Vector2(1, 0.5105105)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qf6xv"]
+turbidity = 30.0
+sun_disk_scale = 0.0
+night_sky = SubResource("GradientTexture2D_e4bus")
+
+[sub_resource type="Sky" id="Sky_n5duk"]
+sky_material = SubResource("PhysicalSkyMaterial_qf6xv")
+
+[sub_resource type="Environment" id="Environment_4dyh5"]
+background_mode = 2
+sky = SubResource("Sky_n5duk")
+
+[node name="DayNightCycle" type="WorldEnvironment"]
+environment = SubResource("Environment_4dyh5")
+script = ExtResource("1_e4bus")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]

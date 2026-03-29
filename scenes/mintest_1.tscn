@@ -42,14 +42,6 @@ script = ExtResource("3_ne6dc")
 distance = 2.5
 freeze = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.65986574, 0.21336862, -0.7204517, -0.6615762, -0.61955595, 0.4224536, -0.35622215, 0.7553965, 0.5499833, 0, 0, 0)
-light_color = Color(1, 0.940078, 0.839877, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_m0f1x")
-
 [node name="play_ui" parent="." instance=ExtResource("4_jx6oe")]
 
 [node name="level_geometry" type="Node3D" parent="."]
@@ -123,10 +115,8 @@ transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
-monitoring = false
-monitorable = false
 script = ExtResource("7_dxgjy")
-scene_to_go_to = "res://scenes/mintest_2.tscn"
+scene_to_go_to = "uid://mmcbimeh6tmj"
 spawn_point = "spawn_2"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_2"]
@@ -135,8 +125,6 @@ shape = SubResource("BoxShape3D_ele46")
 
 [node name="exit zone mintest_3" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7484555e-07, 1, 12)
-monitoring = false
-monitorable = false
 script = ExtResource("7_dxgjy")
 scene_to_go_to = "res://scenes/mintest_3.tscn"
 spawn_point = "spawn_1"

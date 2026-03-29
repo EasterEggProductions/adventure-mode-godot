@@ -38,8 +38,8 @@ func _ready():
 	MgrPlayerSocket.get_player_one().mainCam = self
 
 # NOTE - _physics causes jitter, but _process causes a strange bug that looks at your feet on 144hz monitor
-func _physics_process(delta: float) -> void:
-
+#changed physics_process to _process, 
+func _process(delta: float) -> void:
 	if is_instance_valid(target_current) == false: # Guard clause style, baby!
 		return 
 	if freeze:
@@ -85,8 +85,9 @@ func _look(delta):
 	if target_curr != Vector3.ZERO:
 		_look_target_lock(delta)
 		return
-	target_curr = target_current.global_position
-	look_at(target_curr)
+	#remove:
+	#target_curr = target_current.global_position
+	look_at(target_current.global_position)
 	rotate(basis.x, deg_to_rad(31.5))
 
 func _look_target_lock(_delta):

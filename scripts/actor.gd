@@ -152,6 +152,10 @@ func _physics_process(_delta):
 	apply_animation_params()	
 	_TEMPORARY_fall_death()
 	#movement_sets[current_moveset].move_thrall(self, _delta)
+
+	move_and_slide()
+	if is_multiplayer_authority():
+		net_sync.rpc(desired_move, rotation, position, sprint)
 	return
 
 
@@ -189,6 +193,8 @@ func _TEMPORARY_fall_death():
 func movement_package_checks():
 	if Input.is_key_pressed(KEY_0):
 		return
+	if is_multiplayer_authority() == false:
+		return
 	# Check to see if we need to move to a new state
 	var state_machine = animation_tree["parameters/playback"]
 	#print(state_machine.get_current_node ())
@@ -214,17 +220,27 @@ func movement_package_checks():
 			current_moveset = x
 			
 			state_machine.travel(movement_sets[current_moveset].name)
+			if is_multiplayer_authority():
+				net_anim_pack_change.rpc(current_moveset)
 			return
 	# Check to see if we need to bail out of our current state
 	if current_moveset != 0 and movement_sets[current_moveset].release_situation_check(self):
 		current_moveset = 0
 		state_machine.travel(movement_sets[current_moveset].name)
+		if is_multiplayer_authority():
+			net_anim_pack_change.rpc(current_moveset)
 		return
 
+@rpc
+func net_anim_pack_change(pack : int):
+	print("Current: %d, Remote: %d" % [current_moveset, pack])
+	if pack != current_moveset:
+		print("Gotta swap them bad boys!")
+		current_moveset = pack
+		animation_tree["parameters/playback"].travel(movement_sets[current_moveset].name)
+
+
 var attackID = 0
-
-
-
 
 func awful_practice_find_parent_actor(node : Node3D):
 	if node is Actor:
@@ -429,13 +445,13 @@ func action_q_check(action : String, consume=false) -> bool:
 		if consume == true:
 			action_q.erase(action)
 		if is_multiplayer_authority():
-			_action_q_net.rpc(action)
+			_action_q_net.rpc(action, current_moveset)
 		return true
 	return false
 
 @rpc
-func _action_q_net(msg : String):
-	enque_action(msg)
+func _action_q_net(act : String, current_pack : int):
+	enque_action(act)
 # !SECTION - End action_q system
 
 # SECTION - Animation assistance functions 
@@ -515,3 +531,15 @@ func invulnerability_time(time : float):
 	await timer.timeout
 	invulnerable = false
 # !SECTION - Animation helper functions
+
+
+
+@rpc("unreliable")
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool):
+	if is_multiplayer_authority():
+		return
+	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
+	desired_move = d_move
+	rotation = c_rotation
+	position = c_position
+	sprint = c_sprint

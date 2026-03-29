@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnqlrj65vap60"]
+[gd_scene load_steps=19 format=3 uid="uid://bnqlrj65vap60"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_ele46"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dxgjy"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="9_lu6gv"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="10_m0f1x"]
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="11_p4uty"]
-[ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="12_d6byw"]
 [ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="13_qufpn"]
 [ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="14_m0f1x"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="9_jx6oe"]
@@ -165,16 +164,13 @@ pixel_size = 0.008
 text = "Minimum Test Two"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
+_spawnable_scenes = PackedStringArray("<null>")
 spawn_path = NodePath("..")
 
 [node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("9_lu6gv")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 4.606803, 0.207531, 4.7386885)
 character = ExtResource("10_m0f1x")
 to_equip_wep = ExtResource("11_p4uty")
-
-[node name="footall_sfx3" type="Node" parent="skele_01"]
-script = ExtResource("12_d6byw")
 
 [node name="ai_attack" type="Node" parent="skele_01"]
 script = ExtResource("13_qufpn")

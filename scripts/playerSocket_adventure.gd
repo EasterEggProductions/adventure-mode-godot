@@ -19,7 +19,7 @@ var primary_thrall = true
 @export var mainCam : Camera3D 
 @export var ganty_thing : Node3D
 
-var dot : Node3D # debug
+var dot : Node3D # Lock on reticle
 
 # Input checks for dodge vs sprint
 # Soulslike = Dodge and sprint are same button. Tap or hold for difference
@@ -230,7 +230,7 @@ func find_interactable_objects():
 	 
 	# TODO - Sphere cast or ray cast for items. 
 	# TODO - Reevaluate object interaction for more generic use
-
+	return
 	# Phys ray
 	var space_state = thrall.get_world_3d().direct_space_state
 	var origin = thrall.global_position + Vector3.UP

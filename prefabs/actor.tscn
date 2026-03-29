@@ -425,15 +425,6 @@ to_equip_wep = ExtResource("11_wjv3x")
 [node name="IDTAG" type="Node3D" parent="."]
 transform = Transform3D(1, 4.3655746e-11, -9.313226e-10, -4.656613e-10, 1, 0, 9.313226e-10, 4.656613e-10, 1, 0, 0, 0)
 
-[node name="nametag" type="Label3D" parent="IDTAG" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.99997264, 0.00032755738, 0.0073848204, -9.135179e-06, 0.9990717, -0.04307654, -0.007392047, 0.043075204, 0.9990445, -0.03875456, 1.3376881, 0.21693785)
-offset = Vector2(0, 64)
-billboard = 1
-no_depth_test = true
-text = "Hit Points"
-script = ExtResource("15_eg6sy")
-target = NodePath("../..")
-refresh = true
 
 [node name="Node3D" parent="." instance=ExtResource("15_r6335")]
 visible = false
@@ -1228,6 +1219,54 @@ transform = Transform3D(0.92577165, 0, -0.37808317, 0.375915, -0.10694082, 0.920
 transform = Transform3D(0.9999849, 0.00013497472, 0.005490385, -3.425777e-05, 0.9998318, -0.01833868, -0.005491942, 0.018338114, 0.9998168, -0.030727733, 1.2134709, 0.025818795)
 bone_name = "head"
 bone_idx = 5
+
+
+[node name="display_tags" type="Sprite3D" parent="skeleton/char/Skeleton3D/name_followeee" node_paths=PackedStringArray("target")]
+editor_description = "Used to display name tags and progress bars above the player's head just below their name tag. For now, there's a player name and health bar that will display in-game."
+transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, -0.0029046237, 0.5255556, -0.017142579)
+billboard = 1
+texture = SubResource("ViewportTexture_eg6sy")
+script = ExtResource("16_eg6sy")
+target = NodePath("../../../../..")
+refresh = true
+
+[node name="SubViewport" type="SubViewport" parent="skeleton/char/Skeleton3D/name_followeee/display_tags"]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(297, 51)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport"]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="nametag" type="Label" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bar_health" type="ProgressBar" parent="skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_02bdd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h8whn")
+value = 50.0
+show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")

@@ -2,36 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:art/meshes/rooms/bad_door_ruin_wall_02.png.import
-uid="uid://b4a5lgl24dl0c"
+uid="uid://dh43dn5tsrtal"
 path.s3tc="res://.godot/imported/bad_door_ruin_wall_02.png-e34cfbbb4766620f7bf1a9c3093de068.s3tc.ctex"
 path.etc2="res://.godot/imported/bad_door_ruin_wall_02.png-e34cfbbb4766620f7bf1a9c3093de068.etc2.ctex"
-========
-uid="uid://bfjr2s7ja1xjy"
-path.s3tc="res://.godot/imported/godette_godette_shirt.png-31a5632561549e2705403e1144aff44d.s3tc.ctex"
-path.etc2="res://.godot/imported/godette_godette_shirt.png-31a5632561549e2705403e1144aff44d.etc2.ctex"
->>>>>>>> origin/main:art/Character/clothing/Godette/godette_godette_shirt.png.import
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={
-<<<<<<<< HEAD:art/meshes/rooms/bad_door_ruin_wall_02.png.import
-"md5": "41db668b955201d1e6c4704bd2cf8a03"
-========
-"md5": "91644406e3361230dbc3b1ae4cc2d957"
->>>>>>>> origin/main:art/Character/clothing/Godette/godette_godette_shirt.png.import
-}
 
 [deps]
 
-<<<<<<<< HEAD:art/meshes/rooms/bad_door_ruin_wall_02.png.import
 source_file="res://art/meshes/rooms/bad_door_ruin_wall_02.png"
 dest_files=["res://.godot/imported/bad_door_ruin_wall_02.png-e34cfbbb4766620f7bf1a9c3093de068.s3tc.ctex", "res://.godot/imported/bad_door_ruin_wall_02.png-e34cfbbb4766620f7bf1a9c3093de068.etc2.ctex"]
-========
-source_file="res://art/Character/clothing/Godette/godette_godette_shirt.png"
-dest_files=["res://.godot/imported/godette_godette_shirt.png-31a5632561549e2705403e1144aff44d.s3tc.ctex", "res://.godot/imported/godette_godette_shirt.png-31a5632561549e2705403e1144aff44d.etc2.ctex"]
->>>>>>>> origin/main:art/Character/clothing/Godette/godette_godette_shirt.png.import
 
 [params]
 

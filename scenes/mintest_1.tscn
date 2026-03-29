@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="12_d6byw"]
 [ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="13_qufpn"]
 [ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="14_m0f1x"]
+[ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="9_jx6oe"]
+[ext_resource type="PackedScene" uid="uid://jqfsyx37ts4u" path="res://prefabs/Dungeon elements/dungeon_door.tscn" id="9_ld3tc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpnnu"]
 

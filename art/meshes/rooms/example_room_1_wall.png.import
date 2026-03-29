@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciwpf1mxr5vwc"
-path="res://.godot/imported/example_room_2_wall.png-d2145dd531dbc3e96e66115e61242752.ctex"
+uid="uid://b8kn65fvkvis8"
+path="res://.godot/imported/example_room_1_wall.png-a7b57138c5ff6574cfadc7d16d6fe89c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/meshes/rooms/example_room_2_wall.png"
-dest_files=["res://.godot/imported/example_room_2_wall.png-d2145dd531dbc3e96e66115e61242752.ctex"]
+source_file="res://art/meshes/rooms/example_room_1_wall.png"
+dest_files=["res://.godot/imported/example_room_1_wall.png-a7b57138c5ff6574cfadc7d16d6fe89c.ctex"]
 
 [params]
 

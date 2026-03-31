@@ -1,18 +1,18 @@
-extends Node3D
 class_name Level
+extends Node3D
 
 ## Top level of the gameplay level
-## Serializes things 
+## Serializes things
 
-@export var spawn_point : Node3D 
-@export var exit_zone : Area3D
+@export var spawn_point : Spawnpoint3D
+@export var exit_zone : ExitZone3D
 # parent of all dungeon obejcts
 @export var dungeon_objects: Node3D
 
 var spawned_players : Array[Actor] = []
 var local_player : Actor
 
-## 
+##
 func level_start():
 	print("level start...")
 	#var entering_player = MgrPlayerSocket.spawn_player()
@@ -32,7 +32,7 @@ func level_start():
 	## TODO make a player spawning function or something
 	var new_player : Actor = MgrPlayerSocket.spawn_player()
 	add_child(new_player)
-	new_player.name = "PLAYER|" + str(our_id) # NOTE Hardcoded name where part of name is used as data 
+	new_player.name = "PLAYER|" + str(our_id) # NOTE Hardcoded name where part of name is used as data
 	#new_player.transform = MgrPlayerSocket.player_last_saved_pos
 	MgrPlayerSocket.get_player_one().ganty_thing.thrall = new_player
 	MgrPlayerSocket.get_player_one().ganty_thing.cam.target_current = new_player
@@ -49,9 +49,9 @@ func level_start():
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
 		MgrTransition.target_spawn_point = ""
-	else: 
+	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
-		
+
 	## Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
 		var data = MgrDungeonState.load_objects(self.name)
@@ -63,8 +63,8 @@ func level_start():
 			if data != null && data.has(object.name):
 				object.deserialize(data[object.name])
 			object.connect("state_update", self._on_object_update)
-			
-		
+
+
 # called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 	print(node.name + ": " + str(data))

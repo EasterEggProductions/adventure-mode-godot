@@ -1,4 +1,6 @@
 @tool
+@icon("res://art/textures/icons/icon_exit_zone.svg")
+class_name ExitZone3D
 extends Area3D
 
 ## The resource path is required to prevent cyclic dependencies
@@ -46,7 +48,7 @@ func _update_possible_nodes():
 	notify_property_list_changed()
 
 func _recursive_node_search(node: Node):
-	if node is Node3D:
+	if node is Spawnpoint3D:
 		_possible_nodes.append(node.name)
 	for child in node.get_children():
 		_recursive_node_search(child)

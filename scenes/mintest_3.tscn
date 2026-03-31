@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xxwv5lo6nds0"]
+[gd_scene load_steps=15 format=3 uid="uid://xxwv5lo6nds0"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_a2g3t"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_6pq1t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://c0m7fwcm5dywh" path="res://art/Character/clothing/simple_metal.tres" id="6_ctw3f"]
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="7_tco56"]
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="8_beci2"]
+[ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="9_6pq1t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpnnu"]
 
@@ -98,11 +99,10 @@ shape = SubResource("ConcavePolygonShape3D_a2g3t")
 
 [node name="exit zone mintest_1" type="Area3D" parent="."]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -8.485281, 1, -8.485281)
-monitoring = false
-monitorable = false
 script = ExtResource("8_beci2")
 scene_to_go_to = "res://scenes/mintest_1.tscn"
 spawn_point = "spawn_2"
+metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -110,11 +110,10 @@ shape = SubResource("BoxShape3D_ele46")
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071068, 8.485281, 1, -8.485281)
-monitoring = false
-monitorable = false
 script = ExtResource("8_beci2")
 scene_to_go_to = "res://scenes/mintest_2.tscn"
 spawn_point = "spawn_1"
+metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -122,9 +121,13 @@ shape = SubResource("BoxShape3D_ele46")
 
 [node name="spawn_1" type="Node3D" parent="."]
 transform = Transform3D(0.70710677, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.70710677, -6.3639607, 0.5, -6.3639607)
+script = ExtResource("9_6pq1t")
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
 [node name="spawn_2" type="Node3D" parent="."]
 transform = Transform3D(0.70710665, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710665, 6.3639593, 0.5, -6.3639603)
+script = ExtResource("9_6pq1t")
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
 [node name="level title" type="Label3D" parent="."]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0, 4, 5.656854)

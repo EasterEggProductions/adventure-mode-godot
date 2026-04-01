@@ -10,7 +10,7 @@ var desired_move = Vector3.ZERO
 var desired_turn = 0.0 # left or right -+ 
 var lock_targ_pos : Vector3 = Vector3.ZERO
 # NOTE - Desired move used to handle everything. But locking on and strafing 
-# 		 involved having the directing you were looking, IE turned towards
+# 		 involved having the direction you were looking, IE turned towards
 #		 and the direction of movement, be separate. 
 
 @export_group("Animation Flags")
@@ -155,7 +155,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	if is_multiplayer_authority():
-		net_sync.rpc(desired_move, rotation, position, sprint)
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current)
 	return
 
 
@@ -325,6 +325,8 @@ func spell_inc(move : int) -> void:
 
 var damage_attack_id_buffer = []
 func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
+	if !is_multiplayer_authority():
+		return Armament.AttackState.PUSH
 	if invulnerable:
 		return Armament.AttackState.MISS # Dodge
 	var returnable = Armament.AttackState.HIT
@@ -535,7 +537,7 @@ func invulnerability_time(time : float):
 
 
 @rpc("unreliable")
-func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool):
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health):
 	if is_multiplayer_authority():
 		return
 	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
@@ -543,3 +545,4 @@ func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sp
 	rotation = c_rotation
 	position = c_position
 	sprint = c_sprint
+	character.health_current = c_health

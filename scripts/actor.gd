@@ -369,7 +369,7 @@ func compile_new_anim_tree():
 		if mvp not in movement_sets:
 			movement_sets.append(mvp)
 	for mvpk in movement_sets:
-		master_tree.add_node(mvpk.name, mvpk.anim_tree, Vector2(0, counter))
+		master_tree.add_node(mvpk.name, mvpk.anim_tree.duplicate(true), Vector2(0, counter))
 
 	var masterstate_transition = AnimationNodeStateMachineTransition.new()
 	masterstate_transition.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_ENABLED

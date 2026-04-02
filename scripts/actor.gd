@@ -163,7 +163,7 @@ func _physics_process(_delta):
 
 func apply_animation_params():
 	# NOTE - This is a hack, i'll detail how it works.
-	# all animator paramiters are iterated through,
+	# all animator parameters are iterated through,
 	# their names are checked for certain keys.
 	# Each key implies (ugh) a certain value type
 	# Example, MOVE will be given the vector2 desired move

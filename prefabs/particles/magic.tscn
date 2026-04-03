@@ -88,5 +88,5 @@ mesh = SubResource("QuadMesh_wxk1f")
 autoplay = true
 
 [node name="RemoveAfterDelay" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 20.0
 script = ExtResource("1_o5c1g")

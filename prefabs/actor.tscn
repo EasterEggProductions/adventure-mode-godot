@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bqengtjtjsi85" path="res://prefabs/actor_nametag.tscn" id="12_eg6sy"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
-[ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
 [ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
@@ -33,6 +32,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke2ik"]
 height = 1.8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tqg4d"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm1kx"]
 resource_name = "skeleton_mat"
@@ -403,15 +405,13 @@ movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResour
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 to_equip_wep = ExtResource("11_wjv3x")
 
-[node name="Node3D" parent="." instance=ExtResource("15_r6335")]
-visible = false
-
 [node name="travel_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_ke2ik")
 
 [node name="actor_nametag" parent="." node_paths=PackedStringArray("target") instance=ExtResource("12_eg6sy")]
 transform = Transform3D(0.99994123, -0.0072706942, 0.00796757, 0.0070272298, 0.999519, 0.03017157, -0.008183122, -0.030113928, 0.9995124, -0.036441498, 2.1253297, 0.015423419)
+texture = SubResource("ViewportTexture_tqg4d")
 target = NodePath("..")
 
 [node name="skeleton" type="Node3D" parent="."]

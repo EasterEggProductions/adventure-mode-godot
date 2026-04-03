@@ -328,6 +328,6 @@ func spawn_me_in_coach(connection : int) -> void:
 	get_tree().current_scene.add_child(new_player)
 	##await get_tree().create_timer(10).timeout
 	print("New guy path: "+ str(new_player.get_path()))
-	var bute = "PLAYER|" + str(connection)
+	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS) # NOTE This function will probably handle enemy player spawning and those need different visibility
 	get_tree().current_scene.spawned_players.append(new_player)
 	#take_guy.rpc(bute, connection)

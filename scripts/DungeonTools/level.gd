@@ -26,6 +26,7 @@ func level_start():
 		var con_player : Actor = MgrPlayerSocket.spawn_player()
 		con_player.name = "PLAYER|" + str(conn)
 		con_player.set_multiplayer_authority(conn)
+		con_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS)
 		add_child(con_player)
 		spawned_players.append(con_player)
 
@@ -42,6 +43,7 @@ func level_start():
 	MgrPlayerSocket.get_player_one().cont_state = MgrPlayerSocket.get_player_one().ControlState.FULL
 	new_player.set_multiplayer_authority(our_id)
 	new_player.add_to_group("local_player")
+	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.NEVER)
 	spawned_players.append(new_player)
 	local_player = new_player
 

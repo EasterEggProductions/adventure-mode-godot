@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqengtjtjsi85"]
+
+[ext_resource type="Script" uid="uid://cb8nougtfnyyb" path="res://scripts/Utilities/Character_tag_status.gd" id="1_513s8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eg6sy"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02bdd"]
+bg_color = Color(0.3, 0.234, 0.234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.628885, 0.529557, 0, 1)
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8whn"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="actor_nametag" type="Sprite3D"]
+editor_description = "Used to display name tags and progress bars above the player's head just below their name tag. For now, there's a player name and health bar that will display in-game."
+transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, 0, 0, 0)
+pixel_size = 0.0015
+billboard = 1
+fixed_size = true
+texture = SubResource("ViewportTexture_eg6sy")
+script = ExtResource("1_513s8")
+refresh = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(297, 51)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="nametag" type="Label" parent="SubViewport/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Your Name Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bar_health" type="ProgressBar" parent="SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_02bdd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h8whn")
+value = 50.0
+show_percentage = false

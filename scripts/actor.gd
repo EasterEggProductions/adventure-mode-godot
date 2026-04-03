@@ -7,6 +7,7 @@ static var ALL_EVER_MADE : Array[Actor] = []
 @export var character : Character
 
 var desired_move = Vector3.ZERO
+var transformed_move_dir = Vector2.ZERO
 var desired_turn = 0.0 # left or right -+ 
 var lock_targ_pos : Vector3 = Vector3.ZERO
 # NOTE - Desired move used to handle everything. But locking on and strafing 
@@ -170,7 +171,8 @@ func apply_animation_params():
 	# Others to come. It's awful, I know. 
 
 	# SECTION Our current things, computing them once: 
-	var transformed_move_dir =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	var tmd =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	transformed_move_dir = lerp(transformed_move_dir, tmd, 0.25)
 	for ani in aset_BLOCK:
 		animation_tree.set(ani, 1 if "block" in action_q.keys() else 0)
 	for ani in aset_MOVE:

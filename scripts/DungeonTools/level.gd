@@ -39,6 +39,7 @@ func level_start():
 	MgrPlayerSocket.get_player_one().ganty_thing.freeze = false
 	MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
 	MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
+	MgrPlayerSocket.get_player_one().cont_state = MgrPlayerSocket.get_player_one().ControlState.FULL
 	new_player.set_multiplayer_authority(our_id)
 	new_player.add_to_group("local_player")
 	spawned_players.append(new_player)

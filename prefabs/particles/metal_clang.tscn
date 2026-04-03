@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://e4las240qute"]
+[gd_scene load_steps=17 format=3 uid="uid://e4las240qute"]
 
 [ext_resource type="AudioStream" uid="uid://bbosa42k21qu7" path="res://art/audio/sfx/block_clang_01.ogg" id="1_ctjhc"]
 [ext_resource type="AudioStream" uid="uid://67j3315rybo6" path="res://art/audio/sfx/block_clang_02.ogg" id="2_3ceeq"]
 [ext_resource type="AudioStream" uid="uid://b4yoeggi0ahvs" path="res://art/audio/sfx/block_clang_03.ogg" id="3_ncd2c"]
+[ext_resource type="Script" uid="uid://bb0aytx332wm1" path="res://scripts/Utilities/remove_after_delay.gd" id="4_bpthw"]
 
 [sub_resource type="Curve" id="Curve_lenmd"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -88,3 +89,7 @@ draw_pass_1 = SubResource("QuadMesh_88mul")
 stream = SubResource("AudioStreamRandomizer_yrjl4")
 volume_db = 5.0
 autoplay = true
+
+[node name="RemoveAfterDelay" type="Timer" parent="."]
+wait_time = 3.0
+script = ExtResource("4_bpthw")

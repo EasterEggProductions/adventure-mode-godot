@@ -91,7 +91,7 @@ func hurtbox_check() -> void:
 
 func spawn_hit_effect(effect : PackedScene, pos : Vector3, lookAt : Vector3):
 	var nHit = effect.instantiate()
-	get_tree().root.add_child(nHit)
+	get_tree().current_scene.add_child(nHit)
 	nHit.global_position = pos
 	nHit.look_at(lookAt)
 	nHit.emitting = true

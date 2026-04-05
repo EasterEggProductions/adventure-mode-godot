@@ -25,4 +25,3 @@ func move_thrall(thrall : Actor, delta : float):
 	thrall.velocity.y -= gravity * delta
 	thrall.quaternion = thrall.quaternion * ((thrall.animation_tree.get_root_motion_rotation() / delta) * 10)
 	# Actually move thrall
-	thrall.move_and_slide()

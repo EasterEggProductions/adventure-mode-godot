@@ -248,8 +248,8 @@ func apply_join_code(jc : String):
 	_on_butt_connect_pressed()
 
 
-func _on_player_connected():
-	print(str(multiplayer.get_unique_id()) + " called _on_player_connected")
+func _on_player_connected(_my_id : int):
+	print(str(multiplayer.get_unique_id()) + " called _on_player_connected: " + str(_my_id))
 
 func _on_player_disconnected():
 	print(str(multiplayer.get_unique_id()) + " called _on_player_disconnected")
@@ -279,7 +279,7 @@ func _on_server_disconnected():
 func take_guy(nodename : String, peer_id : int):
 	var my_thrall = get_tree().current_scene.find_child(nodename, false, false)
 	print("This my guy? " + str(my_thrall))
-	my_thrall.set_multiplayer_authority(peer_id)
+	#my_thrall.set_multiplayer_authority(peer_id)
 	if multiplayer.get_unique_id() == peer_id:
 		MgrPlayerSocket.get_player_one().ganty_thing.thrall = my_thrall
 		MgrPlayerSocket.get_player_one().ganty_thing.cam.target_current = my_thrall
@@ -292,16 +292,21 @@ func inform_of_level_change(levelname : String):
 	# TODO check to see if multiplayer is even running
 	net_change_level.rpc(levelname, multiplayer.get_unique_id())
 	connection_level[multiplayer.get_unique_id()] = levelname
+	# If we are coming in to a level, we need to spawn that player!
+
 
 @rpc("any_peer")
 func net_change_level(levelname : String, peer_id : int):
 	print("Player %s has switched to level %s" % [str(peer_id), levelname])
 	# If this player is changing from the level we are in, we need to despawn them
-	if connection_level.has(peer_id) and connection_level[peer_id] == connection_level[multiplayer.get_unique_id()]:
-		print("Player was on current level, now we get rid of him")
+	if connection_level.has(peer_id) and connection_level[peer_id] == connection_level[multiplayer.get_unique_id()]:		
+		MgrTransition.msg_small("Player %s has left to %s" % [str(peer_id), levelname], 7)
 		get_tree().current_scene.remove_player(peer_id)
+	elif levelname == connection_level[multiplayer.get_unique_id()]:
+		MgrTransition.msg_small("Player %s has joined you in %s" % [str(peer_id), levelname], 7)
+		spawn_me_in_coach(peer_id)
 	else:
-		print("Player was on a different level, we should still track that")
+		MgrTransition.msg_small("Player %s has moved about levels..." % str(peer_id), 7)
 	connection_level[peer_id] = levelname
 
 func visibility_filter(connection : int) -> bool:
@@ -310,3 +315,19 @@ func visibility_filter(connection : int) -> bool:
 		var their_level = connection_level[connection]
 		return our_level == their_level	
 	return true
+
+func TEST_SPAWN_REMOTE(connection : int) -> void:
+	print("remote spawning a guy")
+	spawn_me_in_coach.rpc_id(1, connection) 
+
+@rpc("any_peer")
+func spawn_me_in_coach(connection : int) -> void:
+	var new_player : Actor = MgrPlayerSocket.spawn_player()
+	new_player.name = "PLAYER|" + str(connection)
+	#new_player.set_multiplayer_authority(connection)
+	get_tree().current_scene.add_child(new_player)
+	##await get_tree().create_timer(10).timeout
+	print("New guy path: "+ str(new_player.get_path()))
+	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS) # NOTE This function will probably handle enemy player spawning and those need different visibility
+	get_tree().current_scene.spawned_players.append(new_player)
+	#take_guy.rpc(bute, connection)

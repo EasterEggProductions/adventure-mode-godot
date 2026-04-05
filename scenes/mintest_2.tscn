@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://mmcbimeh6tmj"]
+[gd_scene load_steps=15 format=3 uid="uid://mmcbimeh6tmj"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_mt1uk"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_8jl22"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="6_3jfx2"]
 [ext_resource type="Material" uid="uid://c0m7fwcm5dywh" path="res://art/Character/clothing/simple_metal.tres" id="6_ob250"]
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="7_8jl22"]
+[ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="9_ex7ou"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpnnu"]
 
@@ -30,8 +31,8 @@ script = ExtResource("1_mt1uk")
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
 script = ExtResource("2_8jl22")
-freeze = true
 cam = NodePath("../Camera")
+freeze = true
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.55042297, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.8348859, -0.16637634, 0.52467555, 26.3394, 5.13614, 19.3451)
@@ -98,11 +99,10 @@ shape = SubResource("ConcavePolygonShape3D_ob250")
 
 [node name="exit zone mintest_3" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.2453663e-07, 1, 12)
-monitoring = false
-monitorable = false
 script = ExtResource("7_8jl22")
-scene_to_go_to = "res://scenes/mintest_3.tscn"
+scene_to_go_to = "uid://xxwv5lo6nds0"
 spawn_point = "spawn_2"
+metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -110,11 +110,10 @@ shape = SubResource("BoxShape3D_ele46")
 
 [node name="exit zone mintest_1" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 1, -6.993822e-07)
-monitoring = false
-monitorable = false
 script = ExtResource("7_8jl22")
 scene_to_go_to = "res://scenes/mintest_1.tscn"
 spawn_point = "spawn_1"
+metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -122,9 +121,13 @@ shape = SubResource("BoxShape3D_ele46")
 
 [node name="spawn_1" type="Node3D" parent="."]
 transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, -4.808253e-07, 0.5, 9)
+script = ExtResource("9_ex7ou")
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
 [node name="spawn_2" type="Node3D" parent="."]
 transform = Transform3D(1.3113416e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.3113416e-07, -8.999998, 0.5, 5.602719e-07)
+script = ExtResource("9_ex7ou")
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
 [node name="level title" type="Label3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 4, -3.9999998)
@@ -146,5 +149,4 @@ text = "Minimum Test Three"
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
-[connection signal="body_entered" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_1" to="exit zone mintest_1" method="_start_level_transition"]

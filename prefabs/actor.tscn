@@ -13,12 +13,11 @@
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
 [ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="11_wjv3x"]
+[ext_resource type="PackedScene" uid="uid://bqengtjtjsi85" path="res://prefabs/actor_nametag.tscn" id="12_eg6sy"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
-[ext_resource type="PackedScene" uid="uid://5c6ejfrw3p7m" path="res://prefabs/weapons/glider.tscn" id="15_r6335"]
 [ext_resource type="PackedScene" uid="uid://btujxgqh3huo8" path="res://art/Props/shield_debug.glb" id="15_tqg4d"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
-[ext_resource type="Script" uid="uid://cb8nougtfnyyb" path="res://scripts/Utilities/Character_tag_status.gd" id="16_eg6sy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
 [ext_resource type="AnimationLibrary" uid="uid://bu8hawt708pm4" path="res://art/Character/animations/actions/aLib_actions.tres" id="21_qj7qg"]
 [ext_resource type="Animation" uid="uid://sannddwxaokq" path="res://art/Character/animations/idles/sit_lounge.tscn.tres" id="21_wb04b"]
@@ -33,6 +32,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke2ik"]
 height = 1.8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tqg4d"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm1kx"]
 resource_name = "skeleton_mat"
@@ -337,25 +339,6 @@ material = SubResource("StandardMaterial3D_en2o0")
 radius = 0.064
 height = 0.163
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_eg6sy"]
-viewport_path = NodePath("skeleton/char/Skeleton3D/name_followeee/display_tags/SubViewport")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02bdd"]
-bg_color = Color(0.3, 0.234, 0.234, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.628885, 0.529557, 0, 1)
-border_blend = true
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8whn"]
-bg_color = Color(1, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_d1d6e"]
 resource_name = "EMPTY"
 
@@ -422,25 +405,14 @@ movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResour
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 to_equip_wep = ExtResource("11_wjv3x")
 
-[node name="IDTAG" type="Node3D" parent="."]
-transform = Transform3D(1, 4.3655746e-11, -9.313226e-10, -4.656613e-10, 1, 0, 9.313226e-10, 4.656613e-10, 1, 0, 0, 0)
-
-[node name="nametag" type="Label3D" parent="IDTAG" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.99997264, 0.00032755738, 0.0073848204, -9.135179e-06, 0.9990717, -0.04307654, -0.007392047, 0.043075204, 0.9990445, -0.03875456, 1.3376881, 0.21693785)
-offset = Vector2(0, 64)
-billboard = 1
-no_depth_test = true
-text = "Hit Points"
-script = ExtResource("15_eg6sy")
-target = NodePath("../..")
-refresh = true
-
-[node name="Node3D" parent="." instance=ExtResource("15_r6335")]
-visible = false
-
 [node name="travel_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_ke2ik")
+
+[node name="actor_nametag" parent="." node_paths=PackedStringArray("target") instance=ExtResource("12_eg6sy")]
+transform = Transform3D(0.99994123, -0.0072706942, 0.00796757, 0.0070272298, 0.999519, 0.03017157, -0.008183122, -0.030113928, 0.9995124, -0.036441498, 2.1253297, 0.015423419)
+texture = SubResource("ViewportTexture_tqg4d")
+target = NodePath("..")
 
 [node name="skeleton" type="Node3D" parent="."]
 transform = Transform3D(1, 4.36557e-11, -9.31323e-10, -4.65661e-10, 1, 0, 9.31323e-10, 4.65661e-10, 1, 0, 0, 0)
@@ -1224,11 +1196,6 @@ bone_idx = 54
 [node name="shield_debug" parent="skeleton/char/Skeleton3D/BoneAttachment3D" instance=ExtResource("15_tqg4d")]
 transform = Transform3D(0.92577165, 0, -0.37808317, 0.375915, -0.10694082, 0.92046267, -0.040432524, -0.99426544, -0.099002786, 0, 0, 0)
 
-[node name="name_followeee" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D"]
-transform = Transform3D(0.9999849, 0.00013497472, 0.005490385, -3.425777e-05, 0.9998318, -0.01833868, -0.005491942, 0.018338114, 0.9998168, -0.030727733, 1.2134709, 0.025818795)
-bone_name = "head"
-bone_idx = 5
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
 root_motion_track = NodePath("char/Skeleton3D:Root")
 libraries = {
@@ -1278,7 +1245,7 @@ parameters/BlendTree/horace/request = 0
 "parameters/mv/MOVE strafe/6/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/6/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/7/BLOCK/blend_amount" = 0.0
-"parameters/mv/MOVE strafe/7/SET_F[2]/scale" = 1.0
+"parameters/mv/MOVE strafe/7/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/8/BLOCK/blend_amount" = 0.0
 "parameters/mv/MOVE strafe/8/SET_F[1]/scale" = 1.0
 "parameters/mv/MOVE strafe/9/BLOCK/blend_amount" = 0.0
@@ -1317,6 +1284,5 @@ replication_config = SubResource("SceneReplicationConfig_0m668")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 4
 
-[node name="footall_sfx2" type="Node" parent="."]
-process_mode = 4
+[node name="footall_sfx" type="Node" parent="."]
 script = ExtResource("59_becxn")

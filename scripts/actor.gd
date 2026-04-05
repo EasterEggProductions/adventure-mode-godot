@@ -7,10 +7,11 @@ static var ALL_EVER_MADE : Array[Actor] = []
 @export var character : Character
 
 var desired_move = Vector3.ZERO
+var transformed_move_dir = Vector2.ZERO
 var desired_turn = 0.0 # left or right -+ 
 var lock_targ_pos : Vector3 = Vector3.ZERO
 # NOTE - Desired move used to handle everything. But locking on and strafing 
-# 		 involved having the directing you were looking, IE turned towards
+# 		 involved having the direction you were looking, IE turned towards
 #		 and the direction of movement, be separate. 
 
 @export_group("Animation Flags")
@@ -152,6 +153,10 @@ func _physics_process(_delta):
 	apply_animation_params()	
 	_TEMPORARY_fall_death()
 	#movement_sets[current_moveset].move_thrall(self, _delta)
+
+	move_and_slide()
+	if is_multiplayer_authority():
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current)
 	return
 
 
@@ -159,14 +164,15 @@ func _physics_process(_delta):
 
 func apply_animation_params():
 	# NOTE - This is a hack, i'll detail how it works.
-	# all animator paramiters are iterated through,
+	# all animator parameters are iterated through,
 	# their names are checked for certain keys.
 	# Each key implies (ugh) a certain value type
 	# Example, MOVE will be given the vector2 desired move
 	# Others to come. It's awful, I know. 
 
 	# SECTION Our current things, computing them once: 
-	var transformed_move_dir =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	var tmd =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	transformed_move_dir = lerp(transformed_move_dir, tmd, 0.25)
 	for ani in aset_BLOCK:
 		animation_tree.set(ani, 1 if "block" in action_q.keys() else 0)
 	for ani in aset_MOVE:
@@ -188,6 +194,8 @@ func _TEMPORARY_fall_death():
 
 func movement_package_checks():
 	if Input.is_key_pressed(KEY_0):
+		return
+	if is_multiplayer_authority() == false:
 		return
 	# Check to see if we need to move to a new state
 	var state_machine = animation_tree["parameters/playback"]
@@ -214,17 +222,27 @@ func movement_package_checks():
 			current_moveset = x
 			
 			state_machine.travel(movement_sets[current_moveset].name)
+			if is_multiplayer_authority():
+				net_anim_pack_change.rpc(current_moveset)
 			return
 	# Check to see if we need to bail out of our current state
 	if current_moveset != 0 and movement_sets[current_moveset].release_situation_check(self):
 		current_moveset = 0
 		state_machine.travel(movement_sets[current_moveset].name)
+		if is_multiplayer_authority():
+			net_anim_pack_change.rpc(current_moveset)
 		return
 
+@rpc
+func net_anim_pack_change(pack : int):
+	print("Current: %d, Remote: %d" % [current_moveset, pack])
+	if pack != current_moveset:
+		print("Gotta swap them bad boys!")
+		current_moveset = pack
+		animation_tree["parameters/playback"].travel(movement_sets[current_moveset].name)
+
+
 var attackID = 0
-
-
-
 
 func awful_practice_find_parent_actor(node : Node3D):
 	if node is Actor:
@@ -309,6 +327,8 @@ func spell_inc(move : int) -> void:
 
 var damage_attack_id_buffer = []
 func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
+	if !is_multiplayer_authority():
+		return Armament.AttackState.PUSH
 	if invulnerable:
 		return Armament.AttackState.MISS # Dodge
 	var returnable = Armament.AttackState.HIT
@@ -351,7 +371,7 @@ func compile_new_anim_tree():
 		if mvp not in movement_sets:
 			movement_sets.append(mvp)
 	for mvpk in movement_sets:
-		master_tree.add_node(mvpk.name, mvpk.anim_tree, Vector2(0, counter))
+		master_tree.add_node(mvpk.name, mvpk.anim_tree.duplicate(true), Vector2(0, counter))
 
 	var masterstate_transition = AnimationNodeStateMachineTransition.new()
 	masterstate_transition.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_ENABLED
@@ -429,13 +449,13 @@ func action_q_check(action : String, consume=false) -> bool:
 		if consume == true:
 			action_q.erase(action)
 		if is_multiplayer_authority():
-			_action_q_net.rpc(action)
+			_action_q_net.rpc(action, current_moveset)
 		return true
 	return false
 
 @rpc
-func _action_q_net(msg : String):
-	enque_action(msg)
+func _action_q_net(act : String, current_pack : int):
+	enque_action(act)
 # !SECTION - End action_q system
 
 # SECTION - Animation assistance functions 
@@ -515,3 +535,16 @@ func invulnerability_time(time : float):
 	await timer.timeout
 	invulnerable = false
 # !SECTION - Animation helper functions
+
+
+
+@rpc("unreliable")
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health):
+	if is_multiplayer_authority():
+		return
+	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
+	desired_move = d_move
+	rotation = c_rotation
+	position = c_position
+	sprint = c_sprint
+	character.health_current = c_health

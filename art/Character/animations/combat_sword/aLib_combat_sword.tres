@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=38 format=3 uid="uid://cfw145vp451ic"]
+[gd_resource type="AnimationLibrary" load_steps=39 format=3 uid="uid://cfw145vp451ic"]
 
 [ext_resource type="Animation" uid="uid://cguwuuiv343q3" path="res://art/Character/animations/combat_sword/combat_block_shield.tres" id="7_h3ppe"]
 [ext_resource type="Animation" uid="uid://d3v6bkclnlkik" path="res://art/Character/animations/combat_sword/combat_attack_light_01.tres" id="7_uxj2a"]
@@ -37,6 +37,7 @@
 [ext_resource type="Animation" uid="uid://baj5nunaoq8p4" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_01.tres" id="35_be6ol"]
 [ext_resource type="Animation" uid="uid://dpjnwoux34qw" path="res://art/Character/animations/combat_sword/combat_idle_sword_1h.tres" id="36_hhx8c"]
 [ext_resource type="Animation" uid="uid://cindt05ihwa3x" path="res://art/Character/animations/combat_sword/combat_idle_sword_2h.tres" id="37_88gcf"]
+[ext_resource type="Animation" uid="uid://dt5qw1fm85nfl" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_02.tres" id="38_hhx8c"]
 
 [resource]
 _data = {
@@ -46,6 +47,7 @@ _data = {
 &"combat_attack_light_01": ExtResource("7_uxj2a"),
 &"combat_attack_light_02": ExtResource("8_8upsl"),
 &"combat_attack_light_2h_01": ExtResource("35_be6ol"),
+&"combat_attack_light_2h_02": ExtResource("38_hhx8c"),
 &"combat_attack_power_01": ExtResource("34_ct3hd"),
 &"combat_block_shield": ExtResource("7_h3ppe"),
 &"combat_block_shield_begin": ExtResource("32_6w4xf"),

@@ -1,4 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwn7cgkq7jdmx"]
+[gd_scene load_steps=15 format=3 uid="uid://cwn7cgkq7jdmx"]
+
+[ext_resource type="Script" uid="uid://bb0aytx332wm1" path="res://scripts/Utilities/remove_after_delay.gd" id="1_o5c1g"]
 
 [sub_resource type="Gradient" id="Gradient_j4s22"]
 offsets = PackedFloat32Array(0, 0.377143, 1)
@@ -84,3 +86,7 @@ mesh = SubResource("QuadMesh_wxk1f")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 autoplay = true
+
+[node name="RemoveAfterDelay" type="Timer" parent="."]
+wait_time = 20.0
+script = ExtResource("1_o5c1g")

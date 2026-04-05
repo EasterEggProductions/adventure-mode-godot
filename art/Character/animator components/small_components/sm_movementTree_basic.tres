@@ -16,18 +16,18 @@ animation = &"walk_jog_run/turn_left_45s"
 
 [resource]
 resource_name = "move_strafe-n-look"
-graph_offset = Vector2(-435.18292, 69.193344)
+graph_offset = Vector2(-411.26465, -166.1788)
 nodes/output/position = Vector2(410, 130)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_kb435")
-nodes/Animation/position = Vector2(-390, -10)
+nodes/Animation/position = Vector2(-400, 0)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lvj56")
-"nodes/Animation 2/position" = Vector2(-410, 400)
+"nodes/Animation 2/position" = Vector2(-420, 440)
 "nodes/MOVE strafe/node" = ExtResource("1_afje2")
-"nodes/MOVE strafe/position" = Vector2(-360, 180)
+"nodes/MOVE strafe/position" = Vector2(-360, 200)
 "nodes/SET_F[50-01]/node" = SubResource("AnimationNodeTimeScale_kw0pj")
 "nodes/SET_F[50-01]/position" = Vector2(-80, 380)
 "nodes/SET_F[50]/node" = SubResource("AnimationNodeTimeScale_x806i")
-"nodes/SET_F[50]/position" = Vector2(-60, -10)
+"nodes/SET_F[50]/position" = Vector2(-60, 0)
 "nodes/TURN stuff/node" = SubResource("AnimationNodeAdd3_qmuto")
-"nodes/TURN stuff/position" = Vector2(120, 120)
+"nodes/TURN stuff/position" = Vector2(120, 140)
 node_connections = [&"output", 0, &"TURN stuff", &"SET_F[50-01]", 0, &"Animation 2", &"SET_F[50]", 0, &"Animation", &"TURN stuff", 0, &"SET_F[50]", &"TURN stuff", 1, &"MOVE strafe", &"TURN stuff", 2, &"SET_F[50-01]"]

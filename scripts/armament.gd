@@ -16,7 +16,7 @@ var attackID : int # random number to help prevent multi hits
 
 @export var moveset : MovementPackage
 
-enum AttackState {HIT, MISS, BLOCKED}
+enum AttackState {HIT, MISS, BLOCKED, PUSH}
 
 var cur_strike_data
 
@@ -80,6 +80,9 @@ func hurtbox_check() -> void:
 					wielder.killed_something.emit()
 			AttackState.MISS:
 				pass 
+			AttackState.PUSH:
+				spawn_hit_effect(hit_effect, hitbox.get_collision_point(x), hitbox.get_collision_point(x) + hitbox.get_collision_normal(x))
+				pass
 			AttackState.BLOCKED:
 				print("Attack blocked!") 	
 				spawn_hit_effect(block_effect, hitbox.get_collision_point(x), hitbox.get_collision_point(x) + hitbox.get_collision_normal(x))			
@@ -88,7 +91,7 @@ func hurtbox_check() -> void:
 
 func spawn_hit_effect(effect : PackedScene, pos : Vector3, lookAt : Vector3):
 	var nHit = effect.instantiate()
-	get_tree().root.add_child(nHit)
+	get_tree().current_scene.add_child(nHit)
 	nHit.global_position = pos
 	nHit.look_at(lookAt)
 	nHit.emitting = true

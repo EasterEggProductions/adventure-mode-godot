@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7s2nk4i1q7ag"
+path="res://.godot/imported/spawn_walk_in.obj-ea7d1baaca6e3b96ad22db4ad614cb31.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spawn_walk_in.obj-ea7d1baaca6e3b96ad22db4ad614cb31.mesh"]
+
+source_file="res://addons/dungeon_tools_gizmos/meshes/spawn_walk_in.obj"
+dest_files=["res://.godot/imported/spawn_walk_in.obj-ea7d1baaca6e3b96ad22db4ad614cb31.mesh", "res://.godot/imported/spawn_walk_in.obj-ea7d1baaca6e3b96ad22db4ad614cb31.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

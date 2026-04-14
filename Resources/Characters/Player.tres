@@ -24,6 +24,7 @@ resource_name = "Player"
 script = ExtResource("2_p2okw")
 portrait = ExtResource("13_jdhlo")
 given_name = "Player"
+my_inventory = Array[ExtResource("3_i2r5u")]([ExtResource("4_l7lj6"), ExtResource("3_lr5lw")])
 belt_items = Array[ExtResource("3_i2r5u")]([ExtResource("3_lr5lw"), ExtResource("4_l7lj6")])
 hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("5_lr5lw")])
 hand_left_slots = Array[ExtResource("3_i2r5u")]([ExtResource("3_hi2oo")])

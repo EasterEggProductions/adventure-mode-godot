@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene load_steps=8 format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
 [ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="2_kybif"]
+[ext_resource type="Texture2D" uid="uid://cx1a8kinoowmh" path="res://art/textures/icons/icon_skeleton.png" id="3_pv2t1"]
+[ext_resource type="Script" uid="uid://cmllxk4amewlm" path="res://scripts/UI/test_inventory_thing.gd" id="3_wuk5u"]
+[ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_pv2t1"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
 interpolation_mode = 2
@@ -15,7 +18,7 @@ fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
-[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
+[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +28,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rfy8p")
 close_button = NodePath("Button resume")
+focus_button = NodePath("Button resume")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -72,6 +76,7 @@ columns = 2
 [node name="TextureButton" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_kybif")
+texture_focused = ExtResource("3_pv2t1")
 
 [node name="TextureButton2" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
@@ -100,3 +105,8 @@ texture_normal = ExtResource("2_kybif")
 [node name="TextureButton8" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_kybif")
+
+[node name="Test_inventory_thing" type="Node" parent="." node_paths=PackedStringArray("item_button_spot")]
+script = ExtResource("3_wuk5u")
+inspectingChar = ExtResource("4_pv2t1")
+item_button_spot = NodePath("../GridContainer")

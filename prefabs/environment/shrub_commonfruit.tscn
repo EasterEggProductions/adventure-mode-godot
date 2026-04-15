@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyacbq330bbx0"]
+[gd_scene load_steps=8 format=3 uid="uid://dyacbq330bbx0"]
 
 [ext_resource type="PackedScene" uid="uid://bmhs1fv6rtqgy" path="res://art/meshes/shrub.glb" id="1_kvo3s"]
 [ext_resource type="Script" uid="uid://d2lcr3vwhx0p7" path="res://scripts/harvest_spawner.gd" id="2_c1xhp"]
 [ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="2_rcx4b"]
 [ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="3_6mk2d"]
+[ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="4_00fka"]
 [ext_resource type="Material" uid="uid://dlbhrpiy3mtxh" path="res://art/materials/foliage.tres" id="5_u17ng"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykykr"]
@@ -14,6 +15,7 @@ uv1_world_triplanar = true
 [node name="shrub" node_paths=PackedStringArray("spawn_points") instance=ExtResource("1_kvo3s")]
 script = ExtResource("2_c1xhp")
 harvestable = ExtResource("3_6mk2d")
+item_to_harvest = ExtResource("4_00fka")
 spawn_points = [NodePath("hpt"), NodePath("hpt2"), NodePath("hpt3"), NodePath("hpt4")]
 
 [node name="Cone" parent="." index="0"]

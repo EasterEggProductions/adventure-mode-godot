@@ -4,9 +4,11 @@ var playerSockets : Array[PlayerSocket] = []
 
 var player_last_saved_pos : Transform3D
 
+var actor_prefab_path = "prefabs/actor.tscn" #res:// omitted for ResourceLoader
 
 func _ready() -> void:
 	add_player_socket("p1_")
+	ResourceLoader.load_threaded_request(actor_prefab_path)
 
 func add_player_socket(prefix : String):
 	var player = PlayerSocket.new()
@@ -20,14 +22,6 @@ func get_player_one() -> PlayerSocket:
 	return playerSockets[0]
 
 func spawn_player() -> Actor:
-	var new_player : Actor = preload("res://prefabs/actor.tscn").instantiate() 
-	#get_tree().current_scene.add_child(new_player)
-	#new_player.transform = #player_last_saved_pos
+	var new_player : Actor = ResourceLoader.load_threaded_get(actor_prefab_path).instantiate() 
 	new_player.add_to_group("Players")
-	# mainCam
-	#playerSockets[0].ganty_thing.thrall = new_player
-	#playerSockets[0].ganty_thing.cam.target_current = new_player
-	#playerSockets[0].ganty_thing.freeze = false
-	#playerSockets[0].ganty_thing.cam.freeze = false
-	#playerSockets[0].enthrall_new_thrall(new_player)
 	return new_player

@@ -27,6 +27,8 @@ func kill_all_children() :
 		child.queue_free()
 
 func make_item_buttons() :
+	if len(inspectingChar.my_inventory) == 0:
+		return
 	# make new, nicer, kids
 	for item in inspectingChar.my_inventory :
 		var new_button = make_item_button(item)
@@ -52,14 +54,26 @@ func button_press(item : InventoryItem):
 		drop = item.drop_item.instantiate() 
 		drop.item = item
 	else:
-		var tempDroppy : MeshInstance3D = MeshInstance3D.new()
+		drop = Harvestable.new()
+		# Mesh 
+		var mesh_render : MeshInstance3D = MeshInstance3D.new()
 		var nMesh : SphereMesh = SphereMesh.new()
-		nMesh.radius = 0.5
-		nMesh.height = 1
-		tempDroppy.mesh = nMesh
-		drop = tempDroppy
+		nMesh.radius = 0.1
+		nMesh.height = 0.2
+		mesh_render.mesh = nMesh
+		drop.add_child(mesh_render)
+		# Collision 
+		var col_shape : CollisionShape3D = CollisionShape3D.new()
+		var col_sphere : SphereShape3D = SphereShape3D.new()
+		col_sphere.radius = 1
+		col_shape.shape = col_sphere
+		drop.add_child(col_shape)
+		
+		drop.item = item
+		drop.harvest_name = item.resource_name
 	if is_instance_valid(MgrPlayerSocket.get_player_one()):
 		drop.transform = MgrPlayerSocket.get_player_one().thrall.transform
+		drop.position = drop.position + Vector3(0,0.1,0)
 	get_tree().current_scene.add_child(drop)
 	# remove this item from the characters inventory
 	inspectingChar.my_inventory.remove_at(inspectingChar.my_inventory.find(item))

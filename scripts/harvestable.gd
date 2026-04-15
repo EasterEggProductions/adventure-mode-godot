@@ -12,7 +12,8 @@ func my_pickup_logic():
 		return
 	collected = true
 
-	$audio.play()
+	if $audio:
+		$audio.play()
 	emit_signal("picked_up")
 	monitoring = false
 

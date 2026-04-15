@@ -3,6 +3,7 @@ class_name Harvestable
 @export var collect_test = false
 @export var death_effect : PackedScene
 @export var harvest_name = "Fruit"
+@export var item : InventoryItem
 signal picked_up
 var collected = false
 # Called when the node enters the scene tree for the first time.
@@ -33,3 +34,4 @@ func my_pickup_logic():
 	tween.tween_property(self, "scale", Vector3.ZERO, 0.1)
 	tween.tween_property(self, "global_position", Vector3.ZERO, 5)
 	tween.tween_callback(self.queue_free)
+	#MgrPlayerSocket.get_player_one().thrall.character.my_inventory.append(item)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_0orqv"]
 [ext_resource type="Script" uid="uid://37u6qign4ttc" path="res://scenes/MENU_TEST.gd" id="1_4svdq"]
 [ext_resource type="Script" uid="uid://363cvvu4w731" path="res://scripts/UI/menu_goto.gd" id="3_7lig3"]
-[ext_resource type="PackedScene" uid="uid://c08g4uhla3np5" path="res://scenes/title_scene.tscn" id="3_80ljt"]
+[ext_resource type="PackedScene" uid="uid://brjhnn7mf24y" path="res://prefabs/UI/menu_player_inventory.tscn" id="3_80ljt"]
 [ext_resource type="PackedScene" uid="uid://cmfepp5yot35o" path="res://prefabs/UI/menu_online.tscn" id="4_80ljt"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
@@ -61,17 +61,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Return"
 
+[node name="inventory" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Inventory"
+script = ExtResource("3_7lig3")
+menu = ExtResource("3_80ljt")
+parent_menu = NodePath("../..")
+
 [node name="equip" type="Button" parent="buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 disabled = true
 text = "Equipment"
-
-[node name="inventory" type="Button" parent="buttons"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Inventory"
 
 [node name="crafting" type="Button" parent="buttons"]
 layout_mode = 2
@@ -102,7 +104,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Quit to Menu"
 script = ExtResource("1_4svdq")
-scene_to_go_to = ExtResource("3_80ljt")
 
 [node name="Button Quit" type="Button" parent="buttons"]
 layout_mode = 2

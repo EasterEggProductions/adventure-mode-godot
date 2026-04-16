@@ -1275,7 +1275,6 @@ collide_with_bodies = false
 script = ExtResource("51_ly8uj")
 actor = NodePath("..")
 skele = NodePath("../skeleton/char/Skeleton3D")
-garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 process_mode = 1

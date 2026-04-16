@@ -49,6 +49,7 @@ enum HandState {UNARMED, ONE_HAND, TWO_HAND}
 var hand_state : HandState = HandState.UNARMED
 
 @export_group("Dress Up")
+@onready var dup : DresserUpper = $DresserUpper
 # SECTION Outfit
 @export var garments : Array[Garment] # NOTE Resource references
 @export_subgroup("Weapon (debug)") # TODO - replace with weapons in the Character class
@@ -82,21 +83,20 @@ func _enter_tree() -> void:
 		set_multiplayer_authority(id)
 		if id == multiplayer.get_unique_id():
 			add_to_group("local_player")
-		print(get_groups())
 
 func _ready():
 	character = character.duplicate()
 	character.reset()
 	hurtboxes = find_hurtboxes_recursive(self)
+	dup.connect("accessory_changed", _on_accessory_changed)
 	dress_up()
 	compile_new_anim_tree()
 
 	# FIXME - Workaround for offhand item not being unique
-	var narr : Array[InventoryItem] = []
-	for x in character.hand_left_slots:
-		narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
-	character.hand_left_slots = narr
-
+	#var narr : Array[InventoryItem] = []
+	#for x in character.hand_left_slots:
+	#	narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+	#character.hand_left_slots = narr
 
 
 ## Spawn or Respawn setup
@@ -156,7 +156,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	if is_multiplayer_authority():
-		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current)
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, hand_state)
 	return
 
 
@@ -199,16 +199,12 @@ func movement_package_checks():
 		return
 	# Check to see if we need to move to a new state
 	var state_machine = animation_tree["parameters/playback"]
-	#print(state_machine.get_current_node ())
 	for x in range(1, movement_sets.size()):
 		if x == current_moveset:
 			continue
 		if movement_sets[x].transfer_situation_check(self):
 			# Check if is attack moveset and currently equipped
-			print("Heh")
-			print(movement_sets[x].pack_type())
 			if movement_sets[x].pack_type() == "mvpk_combat":
-				print("Movement pack for combat!")
 				hand_state = HandState.ONE_HAND
 			else:
 				hand_state = HandState.UNARMED
@@ -235,9 +231,9 @@ func movement_package_checks():
 
 @rpc
 func net_anim_pack_change(pack : int):
-	print("Current: %d, Remote: %d" % [current_moveset, pack])
+	#print("Current: %d, Remote: %d" % [current_moveset, pack])
 	if pack != current_moveset:
-		print("Gotta swap them bad boys!")
+		#print("Gotta swap them bad boys!")
 		current_moveset = pack
 		animation_tree["parameters/playback"].travel(movement_sets[current_moveset].name)
 
@@ -252,7 +248,6 @@ func awful_practice_find_parent_actor(node : Node3D):
 	
 
 func dress_up():
-	var dup = $DresserUpper as DresserUpper
 	if character.base_skin != null:
 		dup.garment_equip(character.base_skin)
 	else:
@@ -270,6 +265,7 @@ func dress_up():
 	#	l_wep.equip_armament(self, true)
 
 	right_item_inc(0)
+	left_item_inc(0)
 	
 
 ## Moves <move> around the item array, wraps around array length
@@ -281,7 +277,6 @@ func belt_item_inc(move : int) -> void:
 func right_item_inc(move : int) -> void:
 	if len(character.hand_right_slots) == 0:
 		return
-	var dup = $DresserUpper as DresserUpper
 	#unequip thing if thing 
 	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
 	dup.accessory_unequip(accessory)
@@ -290,18 +285,14 @@ func right_item_inc(move : int) -> void:
 	character.hand_r_current = (character.hand_r_current + move) % len(character.hand_right_slots)
 	#equip thing
 	accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
-	accessory.bones[0] = "prop.R" # NOTE - This is a workaround
-	dup.accessory_equip(accessory)
-	r_wep = dup.accessory_item(accessory).get_child(0) as Armament
-	r_wep.equip_armament(self, false)
+	dup.accessory_equip(accessory, "prop.R")
+	
 ## Moves <move> around the item array, wraps around array length
 func left_item_inc(move : int) -> void:
 	if len(character.hand_left_slots) == 0:
 		return
-	var dup = $DresserUpper as DresserUpper
 	#unequip thing if thing 
 	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
-	#accessory = accessory.duplicate()
 	dup.accessory_unequip(accessory)
 	if len(character.hand_left_slots) == 1 and character.hand_l_current == 0:
 		character.hand_l_current = -1
@@ -310,10 +301,7 @@ func left_item_inc(move : int) -> void:
 		character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
 	#equip thing
 	accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
-	accessory.bones[0] = "prop.L" # NOTE - This is a workaround
-	dup.accessory_equip(accessory)
-	l_wep = dup.accessory_item(accessory).get_child(0) as Armament
-	l_wep.equip_armament(self, false)
+	dup.accessory_equip(accessory,"prop.L")
 
 
 
@@ -416,7 +404,7 @@ func compile_new_anim_tree():
 				animation_tree.get(item.name).travel("Start")
 	animation_tree.active = true # set here to stop minor bone movement from showing up over and over again in git
 
-	animation_tree.connect("animation_finished", cb)
+	#animation_tree.connect("animation_finished", cb)
 	
 func cb(msg : String):
 	print("CB MSG: " + msg)
@@ -495,9 +483,12 @@ func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : i
 ## Inital pulling out of item, hide weapons
 func anim_item_start():
 	anim_hide_weapons()
-	var prop = character.get_current_belt().drop_item.instantiate()
-	prop.name = "prop"
-	r_wep.get_parent().add_child(prop)
+	var current_item = character.get_current_belt()
+	if "prop.R" in current_item.extra_resources.keys():
+		dup.accessory_equip(current_item.extra_resources["prop.R"], "prop.R")
+	#var prop = character.get_current_belt().drop_item.instantiate()
+	#prop.name = "prop"
+	#r_wep.get_parent().add_child(prop)
 	pass 
 
 ## Actual use and consumption of item, apply effect
@@ -507,13 +498,10 @@ func anim_item_use():
 
 ## Turn off temporary item, return to weapons
 func anim_item_end():
-	var p =	r_wep.get_parent().find_child("prop")
-	for child in r_wep.get_parent().get_children():
-		print(child)
-		if child.name == "prop":
-			p = child
-	print(p)
-	p.queue_free()
+
+	var current_item = character.get_current_belt()
+	if "prop.R" in current_item.extra_resources.keys():
+		dup.accessory_unequip(current_item.extra_resources["prop.R"], "prop.R")
 	anim_show_weapons()
 	pass
 
@@ -539,7 +527,7 @@ func invulnerability_time(time : float):
 
 
 @rpc("unreliable")
-func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health):
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_hand_state : int):
 	if is_multiplayer_authority():
 		return
 	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
@@ -548,3 +536,21 @@ func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sp
 	position = c_position
 	sprint = c_sprint
 	character.health_current = c_health
+	hand_state = c_hand_state as HandState
+
+
+func _on_accessory_changed():
+	# Accessories changed, this is how weapons are handled n shit, so we need to chiggidy check that shit. 
+	
+	var temp_r = dup.accessory_on_bone("prop.R")
+	if temp_r and temp_r.get_child(0) is Armament:
+		r_wep = temp_r.get_child(0) as Armament
+		r_wep.equip_armament(self, false)
+	else:
+		r_wep = null
+	var temp_l = dup.accessory_on_bone("prop.L")
+	if temp_l and temp_l.get_child(0) is Armament:
+		l_wep = temp_l.get_child(0) as Armament
+		l_wep.equip_armament(self, true)
+	else:
+		l_wep = null

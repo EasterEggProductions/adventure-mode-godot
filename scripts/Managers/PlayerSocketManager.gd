@@ -4,6 +4,8 @@ var playerSockets : Array[PlayerSocket] = []
 
 var player_last_saved_pos : Transform3D
 
+var player_outfit : PackedStringArray
+
 
 func _ready() -> void:
 	add_player_socket("p1_")

@@ -6,7 +6,7 @@ extends Node
 ## The region of the screen where we will create item buttons
 @export var item_button_spot : GridContainer
 
-
+@export var hover_tex : Texture2D
 func _ready(): 
 	if is_instance_valid(MgrPlayerSocket.get_player_one()):
 		inspectingChar = MgrPlayerSocket.get_player_one().thrall.character
@@ -25,26 +25,32 @@ func kill_all_children() :
 	# Remove the children
 	for child in item_button_spot.get_children():
 		child.queue_free()
+		item_button_spot.remove_child(child)
 
 func make_item_buttons() :
 	if len(inspectingChar.my_inventory) == 0:
 		return
 	# make new, nicer, kids
+	var index = 0
 	for item in inspectingChar.my_inventory :
-		var new_button = make_item_button(item)
+		var new_button = make_item_button(item, index)
 		item_button_spot.add_child(new_button)
+		index += 1
+		
 
-	item_button_spot.get_child(1).grab_focus()
+	var bb : TextureButton = item_button_spot.get_child(0) 
+	bb.grab_focus.call_deferred()
 
-func make_item_button(item : InventoryItem) -> TextureButton:
+func make_item_button(item : InventoryItem, index : int) -> TextureButton:
 	var nb = TextureButton.new()
 	nb.texture_normal = item.icon
+	nb.texture_focused = hover_tex
 	nb.stretch_mode = TextureButton.STRETCH_SCALE
 	nb.custom_minimum_size = Vector2(128,128)
-	nb.connect("pressed", button_press.bind(item))
+	nb.connect("pressed", button_press.bind(index).bind(item))
 	return nb
 
-func button_press(item : InventoryItem):
+func button_press(item : InventoryItem, index : int):
 	print("Item button: " + item.resource_name)
 
 	# To drop the item, 
@@ -80,6 +86,11 @@ func button_press(item : InventoryItem):
 	# delete the associated button, OR just re make all buttons for now
 	kill_all_children()
 	make_item_buttons()
+	if item_button_spot.get_child_count() > 0:
+		if index < item_button_spot.get_child_count():
+			item_button_spot.get_child(index).grab_focus.call_deferred()
+		else:
+			item_button_spot.get_child(-1).grab_focus.call_deferred()
 
 func inventory_debug() :
 	print("Inventory:")

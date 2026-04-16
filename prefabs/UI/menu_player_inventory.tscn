@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene load_steps=10 format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
 [ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="2_kybif"]
@@ -18,7 +18,18 @@ fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
-[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
+[sub_resource type="Gradient" id="Gradient_pv2t1"]
+offsets = PackedFloat32Array(0.8625, 0.940625, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6agwg"]
+gradient = SubResource("Gradient_pv2t1")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.53)
+metadata/_snap_enabled = true
+
+[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +39,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rfy8p")
 close_button = NodePath("Button resume")
-focus_button = NodePath("Button resume")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -71,7 +81,7 @@ offset_right = 250.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
+columns = 3
 
 [node name="TextureButton" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
@@ -110,3 +120,4 @@ texture_normal = ExtResource("2_kybif")
 script = ExtResource("3_wuk5u")
 inspectingChar = ExtResource("4_pv2t1")
 item_button_spot = NodePath("../GridContainer")
+hover_tex = SubResource("GradientTexture2D_6agwg")

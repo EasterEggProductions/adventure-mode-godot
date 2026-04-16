@@ -3,17 +3,17 @@ class_name Harvestable
 @export var death_effect : PackedScene
 @export var harvest_name = "Fruit"
 @export var item : InventoryItem
+@export var aud : AudioStreamPlayer
 signal picked_up
 var collected = false
-
 		
 func my_pickup_logic():
 	if collected != false:
 		return
 	collected = true
 
-	if $audio:
-		$audio.play()
+	if aud:
+		aud.play()
 	emit_signal("picked_up")
 	monitoring = false
 

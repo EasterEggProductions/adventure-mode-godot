@@ -61,6 +61,11 @@ func level_start():
 	## Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
 		var data = MgrDungeonState.load_objects(self.name)
+		if data == null: # Ensures the save data exists.
+			data = {}
+		# Load saved time_of_day from dungeon state if it exists.
+		if data != null and data.has("time_of_day"):
+			$DayNightCycle.set_time(data["time_of_day"])
 		for object in dungeon_objects.get_children():
 			if !(object is DungeonObject):
 				push_warning(object.name + " is not a dungeon object.")
@@ -77,7 +82,12 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 
 func save_objects():
 	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
-	MgrDungeonState.save_objects(self.name, data)
+
+	# Pack the current time_of_day into the save data so it persists between scenes.
+	var extra_data = {
+		"time_of_day": $DayNightCycle.time_of_day
+	}
+	MgrDungeonState.save_objects(self.name, data, extra_data)
 
 func remove_player(conn_id : int):
 	print(spawned_players)

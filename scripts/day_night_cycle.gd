@@ -1,13 +1,20 @@
 extends WorldEnvironment
 
+## Length of a full in-game day in seconds.
 @export var day_length: float = 30.0
 
+## If true, time progresses automatically.
+## If false, time must be controlled manually.
 @export var auto_run: bool = true
 
-# I believe this is the only value needed for multiplayer sync. 
+## Normalized time of day (0.0 to 1.0). 
+## 0.0 = midnight, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset. 
 @export_range(0.0, 1.0) var time_of_day: float = 0.0
 
 @onready var sun: DirectionalLight3D = $Sun
+
+## Controls sun intensity over the day using a gradient. 
+@export var lighting: GradientTexture1D
 
 # Emitted whenever time_of_day changes.
 signal time_changed(new_time)
@@ -78,12 +85,19 @@ func resume_cycle():
 # Sun Logic
 
 # Updates the sun's rotation based on normalized time.
-# 0.0 = 0 degrees, 1.0 = 360 degrees.
+# 0.0 = midnight, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset.
 func _update_sun():
-	var angle = time_of_day * 360.0
+	var angle = (time_of_day * 360.0) + 90.0 # Offset by 90 degrees so that 0.0 corresponds to midnight.
 
 	# Sun rotation.
 	sun.rotation_degrees.x = angle
+
+	# Apply lighting values from the gradient.
+	if lighting:
+		var color: Color = lighting.gradient.sample(time_of_day)
+		
+		# Set sun brightness using gradient.
+		sun.light_energy = color.r 
 
 
 # Transition Checks 

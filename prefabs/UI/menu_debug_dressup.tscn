@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8iqaxk01uwub"]
+
+[ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_4i2g0"]
+[ext_resource type="Script" uid="uid://dfqrlhrham2fy" path="res://scripts/UI/dress_up_test_system.gd" id="2_b4snv"]
+[ext_resource type="Script" uid="uid://bkrmq3ev5rr4r" path="res://Dress Up/scripts/DU_outfit_control.gd" id="3_jaa3t"]
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4i2g0")
+close_button = NodePath("Button resume")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30][i]DressUp System[/i][/font_size]"
+autowrap_mode = 0
+
+[node name="Button resume" type="Button" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 923.0
+offset_right = 370.0
+offset_bottom = 981.0
+theme_override_font_sizes/font_size = 36
+text = "resyoom :)"
+
+[node name="DressUp Test System" type="Node" parent="." node_paths=PackedStringArray("outfit_control")]
+script = ExtResource("2_b4snv")
+outfit_control = NodePath("../Outfit_control")
+
+[node name="Outfit_control" type="Control" parent="." node_paths=PackedStringArray("available_area", "worn_area", "dress_up_controller")]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 0
+offset_left = 1369.0
+offset_top = 44.0
+offset_right = 1869.0
+offset_bottom = 44.0
+script = ExtResource("3_jaa3t")
+res_folder = "res://art/Character/clothing/DressUp Resources/"
+available_area = NodePath("HBoxContainer/Available Items")
+worn_area = NodePath("HBoxContainer/Worn Items")
+dress_up_controller = NodePath("")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Outfit_control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Available Items" type="VBoxContainer" parent="Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Outfit_control/HBoxContainer/Available Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Outfit_control/HBoxContainer/Available Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Worn Items" type="VBoxContainer" parent="Outfit_control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Outfit_control/HBoxContainer/Worn Items"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Outfit_control/HBoxContainer/Worn Items/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Worn"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -8,7 +8,7 @@ func pack_type():
 	return "mvpk_combat" # godot does not support getting custom class names 
 
 func transfer_situation_check(thrall : Actor) -> bool:
-	if thrall.r_wep.moveset == self:
+	if thrall.r_wep and thrall.r_wep.moveset == self:
 		return thrall.combat_mode
 	return false
 

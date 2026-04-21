@@ -5,17 +5,18 @@ class_name DresserUpper
 @export var actor : Node3D 
 @export var skele : Skeleton3D
 
-var things_worn # NOTE Actual nodes created
+var things_worn : Dictionary# NOTE Actual nodes created
 
 @export var garments : Array[Garment] # NOTE Resource references
 @export var accessories : Array[Accessory]
 
+signal outfit_changed
+signal garment_changed
+signal accessory_changed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#skele = actor.get_node("skeleton/char/Skeleton3D")
 	things_worn = {}
-	#skele = recursive_search_for_skele(actor)
-	print("Skele: " + skele.name)
 	#var oldgar = garments
 	#garments = []
 	#for garment in oldgar:
@@ -28,79 +29,122 @@ func _process(_delta):
 	pass
 
 
-func recursive_search_for_skele(node : Node) -> Skeleton3D:
-	var returnable = null
-	for child in node.get_children():
-		if child is Skeleton3D:
-			print("Found Skele: " +child.name)
-			skele = child
-
-			return child
-		else:
-			print("Kid?: " +child.name)
-			returnable = recursive_search_for_skele(child)
-	return returnable
-
-
 # SECTION Dress up functions
 
 func garment_equip(gar : Garment):
+	if gar in garments:
+		return
 	var mesh = gar.spawn_garmet()
 	skele.add_child(mesh)
 	mesh.skeleton = skele.get_path()
 	mesh.lod_bias = 10
 	things_worn[gar] = mesh
 	garments.append(gar)
+	if is_multiplayer_authority():
+		garment_change.rpc(gar.resource_path, true)
+	outfit_changed.emit()
+	garment_changed.emit()
 
 func garment_unequip(gar : Garment):
 	if gar in things_worn.keys():
 		var mesh = things_worn[gar]
 		mesh.queue_free()
 	garments.erase(gar)
+	things_worn.erase(gar)
+	if is_multiplayer_authority():
+		garment_change.rpc(gar.resource_path, false)
+	outfit_changed.emit()
+	garment_changed.emit()
 
 func garment_tweak(gar : Garment, property_name : String, v : Variant):
 	if(gar in things_worn):
 		gar.set_garment_property(property_name, v)
 	# else not found, NO FEEDBACK	
+	outfit_changed.emit()
+	garment_changed.emit()
 
-func accessory_equip(acc : Accessory):
-	#var new_acc = acc.spawn_item()
+func accessory_equip(acc : Accessory, different_bone=""):
 	var bone_follow =  acc.spawn_item()
 	skele.add_child(bone_follow)
-	bone_follow.bone_name = acc.bones[0]
+	if different_bone != "":
+		bone_follow.bone_name = different_bone
+	else:
+		bone_follow.bone_name = acc.bones[0]
 	things_worn[acc] = bone_follow #NOTE Maybe not good, child object being the thing and all.
 	accessories.append(acc)
+	if is_multiplayer_authority():
+		accessory_change.rpc(acc.resource_path, true, different_bone)
+	outfit_changed.emit()
+	accessory_changed.emit()
 
-func accessory_unequip(acc : Accessory):
-	print("Removing Accessory " + str(acc))
+func accessory_unequip(acc : Accessory, different_bone=""):
 	if acc in things_worn.keys():
 		var accessory = things_worn[acc]
 		if is_instance_valid(accessory):
 			accessory.queue_free()
 	accessories.erase(acc)
+	things_worn.erase(acc)
+	if is_multiplayer_authority():
+		accessory_change.rpc(acc.resource_path, false, different_bone)
+	outfit_changed.emit()
+	accessory_changed.emit()
+
+@rpc
+func accessory_change(a_path : String, equip : bool, different_bone=""):
+	if a_path == "": 
+		return
+	if equip:
+		accessory_equip(load(a_path), different_bone)
+	else:
+		accessory_unequip(load(a_path), different_bone)
+
+@rpc
+func garment_change(g_path : String, equip : bool):
+	if g_path == "": 
+		return
+	if equip:
+		garment_equip(load(g_path))
+	else:
+		garment_unequip(load(g_path))
 
 func accessory_item(acc : Accessory):
 	# Find item that exists physically, and return it
 	
 	if acc in things_worn:
-		#print("Item found")
 		return things_worn[acc]
 	else:
-		#print("Item not found")
 		return null
 
-func outfit_save():
-	var mes = ""
-	for item in things_worn:
-		mes += item.serialize() + "\n"
+## Returns first accessory on a bone - Currently for getting weapons
+## Returns bone follow node
+func accessory_on_bone(bone : String):
+	for acc in accessories:
+		if acc in things_worn.keys() and things_worn[acc].bone_name == bone:
+			return things_worn[acc]
+
+func outfit_save() -> PackedStringArray:
+	var mes : PackedStringArray = []
+	#for item in things_worn:
+	#	mes += item.serialize() + "\n"
+	for gar in garments:
+		mes.append("G|" + gar.resource_path)
+	for acc in accessories:
+		mes.append("A|" + acc.resource_path)
 	return mes
 	
-func outfit_load(_outfit_data : String):
-	# fail
-	print("LOAD FAILED")
+func outfit_load(outfit_data : PackedStringArray):
+	undress()
+	
+	for item in outfit_data:
+		if item.begins_with("A"):
+			accessory_equip(load(item.substr(2)))
+		else:
+			garment_equip(load(item.substr(2)))
+	
 
 func undress():
-	for item in things_worn:
+	var working_array = things_worn.duplicate()
+	for item in working_array:
 		unequip_item(item)
 
 # SECTION Utility
@@ -131,54 +175,3 @@ func unequip_item(item_removed):
 		accessory_unequip(item_removed)
 	else:
 		garment_unequip(item_removed)
-
-#	
-#	Dress up:
-#	
-#	Milestones from Git 
-#		Garmet replacement - Kick off garmet in slot when equip new garmet
-#		Apperance saving - save somehow, idk. ugh
-#		Garmet recoloring
-#		Performance impact
-#		UI drag and drop
-#	
-#	Dress up
-#		Take skinned mesh, apply to char
-#			need char ref
-#	
-#	garmet - resource 
-#		Skinned mesh (mesh + skin(armature info))
-#		Tags - idk, strings? Everyone loves strings
-#		Bones - specific names of bones for conflicts, NOT bones mesh applies to. 
-#	
-#	item - resrouce 
-#		non skinned mesh 
-#		Tags or something 
-#	
-#		equip(item, 
-#	
-#	
-#	Functionality -
-#		equip garmet 
-#		tweak garmet - how do? What kind of tweaks
-#			blendshapes!
-#			Material properties expose how? 
-#		unequip garmet (specific garmet)
-#	
-#	
-#	
-#		clear_slot(Bone to make sure nothing is on)
-#	
-#		equip item
-#		unequip item
-#		tweak item
-#			blendshapes
-#			material properties? 
-#			Particle effects? Idk... no. This needs to be a whole item on it's own.
-#	
-#		undress() # clear all bones
-#	
-#		save_outfit() - dump out appearance to some format, idk
-#	
-#		load_outfit() - take serialized data and apply it to char
-#	

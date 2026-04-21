@@ -46,6 +46,9 @@ func level_start():
 	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.NEVER)
 	spawned_players.append(new_player)
 	local_player = new_player
+	if MgrPlayerSocket.player_outfit:
+		var dup : DresserUpper = local_player.find_child("DresserUpper")
+		dup.outfit_load(MgrPlayerSocket.player_outfit)
 
 	# find spawn point:
 	if MgrTransition.target_spawn_point != "":

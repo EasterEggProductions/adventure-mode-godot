@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bsewusk8s2hk1"]
+
+[ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="1_tepat"]
+[ext_resource type="Texture2D" uid="uid://grnudycr30bu" path="res://art/textures/noise_turbulent_trans_64.png" id="2_so35t"]
+
+[resource]
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.67451, 0.67451, 0.67451, 1)
+albedo_texture = ExtResource("1_tepat")
+detail_enabled = true
+detail_mask = ExtResource("2_so35t")
+detail_uv_layer = 1
+detail_albedo = ExtResource("1_tepat")
+uv1_scale = Vector3(14, 5.295, 14)
+uv1_world_triplanar = true
+uv2_scale = Vector3(7, 3.27, 7)

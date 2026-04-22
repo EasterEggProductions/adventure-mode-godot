@@ -149,4 +149,5 @@ text = "Minimum Test Three"
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
+[connection signal="body_exited" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_1" to="exit zone mintest_1" method="_start_level_transition"]

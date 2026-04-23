@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=35 format=3 uid="uid://br8w6rt02pge0"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=42 format=3 uid="uid://br8w6rt02pge0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nosnc"]
 animation = &"walk_jog_run/turn_right_45s"
@@ -99,6 +99,16 @@ animation = &"aLib_actions/item_crush"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrcml"]
 animation = &"aLib_actions/item_eat"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2650j"]
+animation = &"sit_lounge_toStand"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6iyk2"]
+animation = &"sit_lounge.tscn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6n3ai"]
+animation = &"sit_lounge_toStand"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ox23e"]
 animation = &"walk_jog_run/idle"
 
@@ -156,6 +166,22 @@ xfade_time = 0.5
 advance_mode = 2
 advance_expression = "sprint == false"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2vgh4"]
+advance_mode = 2
+advance_expression = "action_q_check(\"emote_sit\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0hsq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3362"]
+advance_mode = 2
+advance_expression = "thrall.desired_move.x > 0.1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_edqvn"]
+switch_mode = 2
+advance_mode = 2
+
 [resource]
 states/End/position = Vector2(972, 100)
 "states/MV blendtree/node" = SubResource("AnimationNodeBlendTree_2650j")
@@ -166,7 +192,13 @@ states/aLib_actions_item_crush/node = SubResource("AnimationNodeAnimation_1ahjd"
 states/aLib_actions_item_crush/position = Vector2(469.5, -134)
 states/aLib_actions_item_eat/node = SubResource("AnimationNodeAnimation_jrcml")
 states/aLib_actions_item_eat/position = Vector2(216.5, -134)
+"states/sit down/node" = SubResource("AnimationNodeAnimation_2650j")
+"states/sit down/position" = Vector2(123, 253)
+states/sit_lounge_tscn/node = SubResource("AnimationNodeAnimation_6iyk2")
+states/sit_lounge_tscn/position = Vector2(282, 297)
+"states/stand up/node" = SubResource("AnimationNodeAnimation_6n3ai")
+"states/stand up/position" = Vector2(449, 274)
 states/walk_jog_run_idle/node = SubResource("AnimationNodeAnimation_ox23e")
 states/walk_jog_run_idle/position = Vector2(382, 100)
-transitions = ["Start", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_upayn"), "walk_jog_run_idle", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_6iyk2"), "MV blendtree", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_6n3ai"), "walk_jog_run_idle", "aLib_actions_item_eat", SubResource("AnimationNodeStateMachineTransition_1ahjd"), "aLib_actions_item_eat", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_x2yb8"), "walk_jog_run_idle", "aLib_actions_item_crush", SubResource("AnimationNodeStateMachineTransition_2650j"), "aLib_actions_item_crush", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_urvxg"), "MV blendtree", "Sprint blendtree", SubResource("AnimationNodeStateMachineTransition_471fs"), "Sprint blendtree", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_75a3i")]
-graph_offset = Vector2(-62, 13)
+transitions = ["Start", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_upayn"), "walk_jog_run_idle", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_6iyk2"), "MV blendtree", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_6n3ai"), "walk_jog_run_idle", "aLib_actions_item_eat", SubResource("AnimationNodeStateMachineTransition_1ahjd"), "aLib_actions_item_eat", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_x2yb8"), "walk_jog_run_idle", "aLib_actions_item_crush", SubResource("AnimationNodeStateMachineTransition_2650j"), "aLib_actions_item_crush", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_urvxg"), "MV blendtree", "Sprint blendtree", SubResource("AnimationNodeStateMachineTransition_471fs"), "Sprint blendtree", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_75a3i"), "walk_jog_run_idle", "sit down", SubResource("AnimationNodeStateMachineTransition_2vgh4"), "sit down", "sit_lounge_tscn", SubResource("AnimationNodeStateMachineTransition_b0hsq"), "sit_lounge_tscn", "stand up", SubResource("AnimationNodeStateMachineTransition_a3362"), "stand up", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_edqvn")]
+graph_offset = Vector2(-336, -87)

@@ -4,8 +4,6 @@ extends Node3D
 ## Top level of the gameplay level
 ## Serializes things
 
-@export var spawn_point : Spawnpoint3D
-@export var exit_zone : ExitZone3D
 # parent of all dungeon obejcts
 @export var dungeon_objects: Node3D
 

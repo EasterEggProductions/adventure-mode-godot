@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cht3g4fx0sbtg"]
+
+[ext_resource type="Texture2D" uid="uid://grnudycr30bu" path="res://art/textures/noise_turbulent_trans_64.png" id="1_8y8bc"]
+
+[resource]
+albedo_color = Color(0.48869562, 0.57533866, 0.4611001, 1)
+albedo_texture = ExtResource("1_8y8bc")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_triplanar = true

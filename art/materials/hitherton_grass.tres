@@ -1,0 +1,37 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://b2pqqcchpojm5"]
+
+[ext_resource type="Texture2D" uid="uid://grnudycr30bu" path="res://art/textures/noise_turbulent_trans_64.png" id="1_lro45"]
+
+[sub_resource type="Gradient" id="Gradient_mrndu"]
+colors = PackedColorArray(0.1313037, 0.27932483, 0.08644361, 1, 0.60784316, 0.61960787, 0.02745098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lro45"]
+frequency = 0.0673
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u0a6o"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_lro45")
+color_ramp = SubResource("Gradient_mrndu")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_u0a6o"]
+offsets = PackedFloat32Array(0, 0.94525546)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ltql7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hdk8e"]
+noise = SubResource("FastNoiseLite_ltql7")
+color_ramp = SubResource("Gradient_u0a6o")
+seamless = true
+
+[resource]
+albedo_texture = SubResource("NoiseTexture2D_u0a6o")
+metallic_specular = 0.0
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_hdk8e")
+detail_blend_mode = 3
+detail_uv_layer = 1
+detail_albedo = ExtResource("1_lro45")
+uv1_scale = Vector3(20, 20, 20)
+uv2_scale = Vector3(10, 10, 10)

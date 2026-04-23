@@ -258,7 +258,7 @@ func _on_connected_ok():
 
 	MgrTransition.msg_small("Welcome to world as a guest", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")
-	connection_level[multiplayer.get_unique_id()] = MgrTransition.current_level.resource_path
+	#connection_level[multiplayer.get_unique_id()] = MgrTransition.current_level.resource_path
 	#for child in get_tree().current_scene.get_children():
 	#	print(child.name)
 	#var my_thrall = get_tree().current_scene.find_child(str(multiplayer.get_unique_id()))

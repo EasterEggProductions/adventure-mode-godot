@@ -29,9 +29,9 @@ var footfall_particle
 func _ready():
 	left_aud = AudioStreamPlayer3D.new()
 	right_aud = AudioStreamPlayer3D.new()
-	left_aud.volume_db = -13
+	left_aud.volume_db = -23
 	left_aud.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
-	right_aud.volume_db = -13
+	right_aud.volume_db = -23
 	right_aud.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 	get_tree().current_scene.add_child.call_deferred(left_aud)
 	get_tree().current_scene.add_child.call_deferred(right_aud)

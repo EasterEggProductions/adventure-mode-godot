@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dahprtx5v3udn"
+path="res://.godot/imported/SFX Waterfall.ogg-594596ab1fed3cb64e6a9ac74b22da5d.oggvorbisstr"
+
+[deps]
+
+source_file="res://art/audio/sfx/environment/SFX Waterfall.ogg"
+dest_files=["res://.godot/imported/SFX Waterfall.ogg-594596ab1fed3cb64e6a9ac74b22da5d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

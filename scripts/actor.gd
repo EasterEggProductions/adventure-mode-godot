@@ -90,7 +90,9 @@ func _ready():
 	hurtboxes = find_hurtboxes_recursive(self)
 	dup.connect("accessory_changed", _on_accessory_changed)
 	dress_up()
-	compile_new_anim_tree()
+
+	if len(movement_sets) > 0:
+		compile_new_anim_tree()
 
 	# FIXME - Workaround for offhand item not being unique
 	#var narr : Array[InventoryItem] = []
@@ -143,8 +145,20 @@ func _process(delta):
 		return
 	character.stats_regen(delta)
 
-	movement_package_checks()
-	movement_sets[current_moveset].move_thrall(self, delta)
+	if len(movement_sets) > 0:
+		movement_package_checks()
+		movement_sets[current_moveset].move_thrall(self, delta)
+	else:			
+		var old_vel = velocity
+		# Get the motion delta.
+		velocity = ((animation_tree.get_root_motion_rotation_accumulator().inverse() * get_quaternion()) * animation_tree.get_root_motion_position() / delta) * 1
+
+		# Add the gravity.
+		if not is_on_floor():
+			velocity = old_vel
+		#velocity.y -= gravity * delta
+		quaternion = quaternion * ((animation_tree.get_root_motion_rotation() / delta) * 10)
+		# Actually move thrall
 
 
 func _physics_process(_delta):
@@ -250,7 +264,7 @@ func awful_practice_find_parent_actor(node : Node3D):
 func dress_up():
 	if character.base_skin != null:
 		dup.garment_equip(character.base_skin)
-	else:
+	elif character.under_skeleton != null:
 		dup.garment_equip(character.under_skeleton)
 	for garment in character.outfit:
 		dup.garment_equip(garment)

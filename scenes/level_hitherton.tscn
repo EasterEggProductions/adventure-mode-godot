@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cc4uw46h7kgkt"]
+[gd_scene load_steps=36 format=3 uid="uid://cc4uw46h7kgkt"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bo8anqv43q7kn" path="res://art/meshes/hitherton_buildings.glb" id="17_1g1hm"]
 [ext_resource type="PackedScene" uid="uid://dt7ikkk13put1" path="res://art/meshes/hitherton_terrain.glb" id="18_s1e5c"]
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="19_kvrnu"]
+[ext_resource type="PackedScene" uid="uid://c4ya5aclq0ke1" path="res://prefabs/creatures/slam_spore.tscn" id="20_32o3k"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="20_wtgak"]
+[ext_resource type="PackedScene" uid="uid://yywlxswpodtx" path="res://prefabs/creatures/shield_shroom.tscn" id="21_nubfc"]
 [ext_resource type="PackedScene" uid="uid://dyacbq330bbx0" path="res://prefabs/environment/shrub_commonfruit.tscn" id="21_ypyys"]
 [ext_resource type="PackedScene" uid="uid://cme484l06g14s" path="res://prefabs/environment/tree_foliage.tscn" id="22_nxccc"]
 [ext_resource type="AudioStream" uid="uid://bk681n8wa8oqp" path="res://art/audio/sfx/environment/SFX Running Water.ogg" id="23_rxmjl"]
@@ -239,3 +241,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.672197, 14.604935, 76.1401
 
 [node name="tree_foliage4" parent="env_flora" instance=ExtResource("22_nxccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.56736, 2.1777887, 18.53758)
+
+[node name="slam_spore" parent="." instance=ExtResource("20_32o3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.579792, 0.0014596581, -11.350212)
+
+[node name="shield_shroom" parent="." instance=ExtResource("21_nubfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.01024, -0.6437121, -7.4000983)

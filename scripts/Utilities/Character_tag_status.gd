@@ -1,7 +1,7 @@
 extends Sprite3D
 class_name ActorNametag
 
-@export var target : Node
+@export var target : Actor
 @export var refresh : bool
 @onready var bar_health : ProgressBar = $SubViewport/VBoxContainer/bar_health
 @onready var name_label : Label = $SubViewport/VBoxContainer/nametag

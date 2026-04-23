@@ -2,7 +2,7 @@ extends Node
 
 class_name DresserUpper
 
-@export var actor : Node3D 
+@export var actor : Actor 
 @export var skele : Skeleton3D
 
 var things_worn : Dictionary# NOTE Actual nodes created

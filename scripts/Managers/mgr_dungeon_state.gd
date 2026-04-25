@@ -19,11 +19,15 @@ func load_objects(scene_name: String):
 		return object_data[scene_name]
 	return null
 
-func save_objects(scene_name: String, dungeon_objects: Array) -> void:
+func save_objects(scene_name: String, dungeon_objects: Array, extra_data: Dictionary = {}) -> void:
 	# grab all the object data
 	var all_data = {}
 	for object: DungeonObject in dungeon_objects:
 		all_data[object.name] = object.serialize()
+	
+	# Added extra scene-level data into the save dictionary.
+	for key in extra_data:
+		all_data[key] = extra_data[key]
 	# save it
 	object_data[scene_name] = all_data
 	#print("SAVED: ", all_data)

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3sbp64n85174"]
+
+[ext_resource type="Shader" uid="uid://beyxjdrfud5gd" path="res://art/materials/water_running_shader.tres" id="1_diym7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_diym7")

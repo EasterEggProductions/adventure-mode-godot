@@ -38,11 +38,12 @@ func _process(delta):
 			fade_tweener.tween_property(self, "modulate", Color.WHITE, 0.25)
 		#modulate = Color.WHITE
 
-	if fade_timer <= 0 and is_instance_valid(fade_tweener):
-		fade_tweener.stop()
+	if fade_timer <= 0 and modulate != Color.TRANSPARENT:
+		if is_instance_valid(fade_tweener):
+			fade_tweener.stop()
 		fade_tweener = get_tree().create_tween()
 		fade_tweener.tween_property(self, "modulate", Color.TRANSPARENT, 0.1)
-	else: 
+	else:
 		fade_timer -= delta
 
 	if OS.is_debug_build():

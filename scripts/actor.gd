@@ -443,6 +443,8 @@ func action_q_check(action : String, consume=false) -> bool:
 
 @rpc
 func _action_q_net(act : String, current_pack : int):
+	if current_moveset != current_pack:
+		current_moveset = current_pack
 	enque_action(act)
 # !SECTION - End action_q system
 

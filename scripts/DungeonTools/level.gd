@@ -4,8 +4,6 @@ extends Node3D
 ## Top level of the gameplay level
 ## Serializes things
 
-@export var spawn_point : Spawnpoint3D
-@export var exit_zone : ExitZone3D
 # parent of all dungeon obejcts
 @export var dungeon_objects: Node3D
 
@@ -58,9 +56,19 @@ func level_start():
 	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
 
+	var data = MgrDungeonState.load_objects(self.name)
+	if data == null: # Ensures the save data exists.
+		data = {}
+
+	# Loads saved time_of_day from dungeon state if it exists.
+	if data.has("time_of_day"):
+		print("LOADED time_of_day =", data["time_of_day"])
+		$DayNightCycle.set_time(data["time_of_day"])
+	else:
+		print("NO time_of_day FOUND")
+
 	## Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
-		var data = MgrDungeonState.load_objects(self.name)
 		for object in dungeon_objects.get_children():
 			if !(object is DungeonObject):
 				push_warning(object.name + " is not a dungeon object.")
@@ -76,8 +84,15 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 	print(node.name + ": " + str(data))
 
 func save_objects():
+	print("SAVING time_of_day =", $DayNightCycle.time_of_day)
+	# Pack the current time_of_day into the save data so it persists between scenes.
+	var extra_data = {
+		"time_of_day": $DayNightCycle.time_of_day
+	}
+
 	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
-	MgrDungeonState.save_objects(self.name, data)
+
+	MgrDungeonState.save_objects(self.name, data, extra_data)
 
 func remove_player(conn_id : int):
 	print(spawned_players)

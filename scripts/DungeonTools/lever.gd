@@ -1,4 +1,4 @@
-extends Node3D
+extends DungeonObject
 
 ## Name of animation in the actor to play
 @export var actor_animation_name : String 
@@ -16,8 +16,8 @@ func _on_do_action(actor: Actor) -> void:
 	else:
 		_enyable(actor)
 
-
 func _enyable(actor: Actor):
+	enyabled = true
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
 	actor.anim_hide_weapons()
@@ -28,9 +28,9 @@ func _enyable(actor: Actor):
 	await a_anim.animation_finished
 	actor.anim_show_weapons()
 	actor.animation_tree.active = true
-	enyabled = true
 
 func _disyable(actor: Actor):	
+	enyabled = false
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
 	actor.anim_hide_weapons()
@@ -41,4 +41,15 @@ func _disyable(actor: Actor):
 	await a_anim.animation_finished
 	actor.anim_show_weapons()
 	actor.animation_tree.active = true
-	enyabled = false
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	notify()
+
+func serialize() -> Dictionary:
+	return {"enabled": enyabled}
+	
+func deserialize(state: Dictionary) -> void:
+	enyabled = state["enabled"]
+	if enyabled:
+		anim.play(my_animation_name)
+		anim.seek(anim.get_animation(my_animation_name).length, true)

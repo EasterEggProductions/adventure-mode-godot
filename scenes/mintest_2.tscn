@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mmcbimeh6tmj"]
+[gd_scene load_steps=15 format=3 uid="uid://mmcbimeh6tmj"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_mt1uk"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_8jl22"]
@@ -8,6 +8,8 @@
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="6_3jfx2"]
 [ext_resource type="Material" uid="uid://c0m7fwcm5dywh" path="res://art/Character/clothing/simple_metal.tres" id="6_ob250"]
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="7_8jl22"]
+[ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="8_3jfx2"]
+[ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="8_28th2"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="9_ex7ou"]
 [ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="10_fufvs"]
 
@@ -17,8 +19,9 @@ data = PackedVector3Array(-14.142137, -5, -14.142134, -20, -5, -1.7484556e-06, 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_ele46"]
 size = Vector3(1, 1, 3)
 
-[node name="mintest_2" type="Node3D"]
+[node name="mintest_2" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_mt1uk")
+dungeon_objects = NodePath("Dungeon Objects")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
@@ -80,6 +83,15 @@ material = ExtResource("6_3jfx2")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level_geometry/CSGBox3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ob250")
+
+[node name="Dungeon Objects" type="Node3D" parent="."]
+
+[node name="button_floor" parent="Dungeon Objects" instance=ExtResource("8_28th2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12523031, 0.048714615, 2.764522)
+one_shot = true
+
+[node name="dungeon_lever_floor" parent="." instance=ExtResource("8_3jfx2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.10604715, 0.38417304)
 
 [node name="exit zone mintest_3" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.2453663e-07, 1, 12)

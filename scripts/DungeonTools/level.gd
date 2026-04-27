@@ -4,13 +4,18 @@ extends Node3D
 ## Top level of the gameplay level
 ## Serializes things
 
-# parent of all dungeon obejcts
+## parent node of all local dungeon obejcts
 @export var dungeon_objects: Node3D
+
+@export_category("Spawn room parameters")
+## Determines whether to treat this room as the root.
+@export var is_spawn_room: bool = false
+## Array of all dungeon room scenes, excluding this one. (only needed for spawn room)
+@export var dungeon_rooms: Array[PackedScene]
 
 var spawned_players : Array[Actor] = []
 var local_player : Actor
 
-##
 func level_start():
 	print("level start...")
 	#var entering_player = MgrPlayerSocket.spawn_player()
@@ -55,10 +60,14 @@ func level_start():
 		MgrTransition.target_spawn_point = ""
 	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
-
+	
+	## ---------- Loading the dungeon state ----------
+	# If we just loaded the dungeon for the first time and we're the host, populate the object data.
+	if multiplayer.is_server() and is_spawn_room and MgrDungeonState.object_data.is_empty():
+		print("DATA IS EMPTY, NEED TO FILL")
+	
+	# retrieve the dungeon object data for this room
 	var data = MgrDungeonState.load_objects(self.name)
-	if data == null: # Ensures the save data exists.
-		data = {}
 
 	# Loads saved time_of_day from dungeon state if it exists.
 	if data.has("time_of_day"):
@@ -67,7 +76,7 @@ func level_start():
 	else:
 		print("NO time_of_day FOUND")
 
-	## Initialize all the dungeon objects, and hook up their state update signals
+	# Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
 		for object in dungeon_objects.get_children():
 			if !(object is DungeonObject):
@@ -78,10 +87,12 @@ func level_start():
 				object.deserialize(data[object.name])
 			object.connect("state_update", self._on_object_update)
 
-
-# called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
+# this function is called by dungeon objects to notify a state change
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
-	print(node.name + ": " + str(data))
+	if multiplayer.is_server():
+		MgrDungeonState.server_update_state(self.name, node.name, data) # server calling itself
+	else:
+		MgrDungeonState.client_update_state.rpc(self.name, node.name, data) # client calling server
 
 func save_objects():
 	print("SAVING time_of_day =", $DayNightCycle.time_of_day)
@@ -91,7 +102,6 @@ func save_objects():
 	}
 
 	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
-
 	MgrDungeonState.save_objects(self.name, data, extra_data)
 
 func remove_player(conn_id : int):

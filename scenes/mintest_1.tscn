@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnqlrj65vap60"]
+[gd_scene load_steps=22 format=3 uid="uid://bnqlrj65vap60"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_ele46"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dxgjy"]
+[ext_resource type="PackedScene" uid="uid://mmcbimeh6tmj" path="res://scenes/mintest_2.tscn" id="2_m2lpt"]
+[ext_resource type="PackedScene" uid="uid://xxwv5lo6nds0" path="res://scenes/mintest_3.tscn" id="3_ltcmt"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="3_ne6dc"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="4_jx6oe"]
 [ext_resource type="Material" uid="uid://c1lmf8kes7c51" path="res://art/materials/unified_earth_material.material" id="5_ld3tc"]
@@ -27,6 +29,8 @@ size = Vector3(1, 1, 3)
 [node name="mintest_1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_ele46")
 dungeon_objects = NodePath("Dungeon Objects")
+is_spawn_room = true
+dungeon_rooms = Array[PackedScene]([ExtResource("2_m2lpt"), ExtResource("3_ltcmt")])
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
@@ -88,6 +92,9 @@ material = ExtResource("6_0ic28")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level_geometry/CSGBox3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ne6dc")
+
+[node name="dungeon_lever_floor" parent="." instance=ExtResource("14_m0f1x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 3, -13)
 
 [node name="Dungeon Objects" type="Node3D" parent="."]
 
@@ -173,10 +180,8 @@ to_equip_wep = ExtResource("11_p4uty")
 [node name="ai_attack" type="Node" parent="skele_01"]
 script = ExtResource("13_qufpn")
 
-[node name="dungeon_lever_floor" parent="." instance=ExtResource("14_m0f1x")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 3, -13)
-
 [node name="DayNightCycle" parent="." instance=ExtResource("17_qufpn")]
+time_of_day = 0.464
 
 [connection signal="body_entered" from="exit zone mintest_2" to="exit zone mintest_2" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]

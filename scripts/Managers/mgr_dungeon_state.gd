@@ -48,7 +48,7 @@ func clear_scene_data() -> void:
 ## okay so the server has the ultimate say for dungeon state.
 
 ## two cases:
-## client interacts with object ---> server updates dungeon state ---> client gets state from server
+## client interacts with object ---> server updates dungeon state ---> clients get state from server
 ## server interacts with object ---> client gets state from server
 
 # Called by connected clients to send state updates to host
@@ -61,22 +61,26 @@ func client_update_state(scene_name: String, object_name: String, state: Diction
 	save_object(scene_name, object_name, state)
 	
 	# send out the state update to all clients
-	#server_broadcast_new_state.rpc()
-	
+	server_broadcast_state_change(scene_name, object_name, state)
 	print(">>> Server has recieved client update: ", object_name, ", ", state)
-	
-@rpc("any_peer", "reliable")
-func client_recieve_state_update(object_data: Dictionary) -> void:
-	self.object_data = object_data
+
+# called by the host to send state updates to the clients
+@rpc("authority", "reliable")
+func client_recieve_state_update(scene_name: String, object_name: String, state: Dictionary) -> void:
+	save_object(scene_name, object_name, state)
+	print(">>> Client has recieved server update: ", object_name, ", ", state)
+
+func server_broadcast_state_change(scene_name: String, object_name: String, state: Dictionary):
+	# send out the state update to all clients
+	for peer_id in multiplayer.get_peers():
+		rpc_id(peer_id, "client_recieve_state_update", scene_name, object_name, state)
 
 # called by the host to update its own state
 func server_update_state(scene_name: String, object_name: String, state: Dictionary) -> void:
+	# ensure we are the swerver
+	if !multiplayer.is_server():
+		return
+	
 	save_object(scene_name, object_name, state)
+	server_broadcast_state_change(scene_name, object_name, state)
 	print(">>> Server has updated its own state: ", object_name, ", ", state)
-
-# called by the server on the clients to send the updated state dictionary
-@rpc("authority", "reliable")
-func server_broadcast_new_state() -> void:
-	# notify all the connected peers
-	for peer_id in multiplayer.get_peers():
-		rpc_id(peer_id, "client_recieve_state_update", object_data)

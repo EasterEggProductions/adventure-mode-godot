@@ -93,9 +93,6 @@ material = ExtResource("6_0ic28")
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level_geometry/CSGBox3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ne6dc")
 
-[node name="dungeon_lever_floor" parent="." instance=ExtResource("14_m0f1x")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 3, -13)
-
 [node name="Dungeon Objects" type="Node3D" parent="."]
 
 [node name="button_floor" parent="Dungeon Objects" node_paths=PackedStringArray("connected") instance=ExtResource("9_jx6oe")]
@@ -117,6 +114,9 @@ transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.0
 
 [node name="DungeonDoor" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
 transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -0.99994093, -0.14927983, -0.082744986, 8.974243)
+
+[node name="dungeon_lever_floor" parent="Dungeon Objects" instance=ExtResource("14_m0f1x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 3, -13)
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
@@ -181,7 +181,7 @@ to_equip_wep = ExtResource("11_p4uty")
 script = ExtResource("13_qufpn")
 
 [node name="DayNightCycle" parent="." instance=ExtResource("17_qufpn")]
-time_of_day = 0.464
+time_of_day = 0.386
 
 [connection signal="body_entered" from="exit zone mintest_2" to="exit zone mintest_2" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]

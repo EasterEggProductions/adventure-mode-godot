@@ -89,10 +89,12 @@ func level_start():
 
 # this function is called by dungeon objects to notify a state change
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
+	# NOTE: this function is called whether it's the local or remote player, meaning if the players
+	#	    are in the same level both server_update and client_update will be called, resulting in a double client update
 	if multiplayer.is_server():
 		MgrDungeonState.server_update_state(self.name, node.name, data) # server calling itself
 	else:
-		MgrDungeonState.client_update_state.rpc(self.name, node.name, data) # client calling server
+		MgrDungeonState.client_update_state.rpc_id(1, self.name, node.name, data) # client calling server
 
 func save_objects():
 	print("SAVING time_of_day =", $DayNightCycle.time_of_day)

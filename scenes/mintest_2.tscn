@@ -90,8 +90,8 @@ shape = SubResource("ConcavePolygonShape3D_ob250")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12523031, 0.048714615, 2.764522)
 one_shot = true
 
-[node name="dungeon_lever_floor" parent="." instance=ExtResource("8_3jfx2")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.10604715, 0.38417304)
+[node name="dungeon_lever_floor" parent="Dungeon Objects" instance=ExtResource("8_3jfx2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.10604715, -2.099619)
 
 [node name="exit zone mintest_3" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.2453663e-07, 1, 12)

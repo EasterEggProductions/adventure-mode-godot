@@ -68,7 +68,7 @@ func player_look(delta):
 	global_rotation_degrees.z = 0
 	#recentering here, add some timer so the rebound isn't immediate 
 	if disLook.length() != 0: #some kind of input 
-		camTimer = 0.6
+		camTimer = 12.0
 	else:
 		#subtraction should be proportional to framerate
 		#higher refresh rate would decrement the same as lower
@@ -81,7 +81,7 @@ func player_look(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		#mouse movement will always reset timer
-		camTimer = 0.6
+		camTimer = 12.0
 		var disLook =  event.relative * 0.01
 		look_rotation_vel = disLook * 0.1 * camLookAccell
 		var default_angle = -20

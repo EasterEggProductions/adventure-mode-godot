@@ -4,6 +4,8 @@ class_name Menu
 
 var parent_menu : Menu # Probably a button, but whoever it was needs to accept close_menu
 var child_menu : Menu
+var inEscape = 1
+
 
 ## This button will be back or quit if this is the root menu. 
 @export var close_button : Button 
@@ -11,6 +13,8 @@ var child_menu : Menu
 @export var focus_button : Button
 ## If set the open and close animations will be used
 @export var anim : AnimationPlayer
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,14 +31,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	var backButtonCalled = 0
 	if Input.is_action_just_pressed("ui_cancel"):
 		if is_instance_valid(parent_menu):
 			back_button()
+			backButtonCalled = 1
+	if is_instance_valid(parent_menu) and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if backButtonCalled == 1:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func back_button():
+	print("Back pressed")
 	if is_instance_valid(parent_menu):
 		parent_menu.close_menu()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
 		get_tree().quit()
 
@@ -70,6 +81,8 @@ func focus():
 			if child is Button && child.visible == true && child.disabled == false:
 				child.grab_focus()
 				return
+
+
 
 
 func _anim_open():

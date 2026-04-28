@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnqlrj65vap60"]
+[gd_scene load_steps=25 format=3 uid="uid://bnqlrj65vap60"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_ele46"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dxgjy"]
@@ -31,6 +31,15 @@ affected_properties = Dictionary[String, Variant]({
 "opened": true
 })
 object_name = "DoorThatIsRemotelyOpened"
+metadata/_custom_type_script = "uid://cd2gtneoj43ul"
+
+[sub_resource type="Resource" id="Resource_xn7in"]
+script = ExtResource("11_r4uwo")
+scene_path = "uid://xxwv5lo6nds0"
+affected_properties = Dictionary[String, Variant]({
+"enabled": true
+})
+object_name = "wind_column"
 metadata/_custom_type_script = "uid://cd2gtneoj43ul"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ele46"]
@@ -118,7 +127,7 @@ one_shot = true
 [node name="button_floor3" parent="Dungeon Objects" instance=ExtResource("9_jx6oe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8680382, 0.097430184, -5.829447)
 one_shot = true
-remote_connections = Array[ExtResource("11_r4uwo")]([SubResource("Resource_r4uwo")])
+remote_connections = Array[ExtResource("11_r4uwo")]([SubResource("Resource_r4uwo"), SubResource("Resource_xn7in")])
 
 [node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
 transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)

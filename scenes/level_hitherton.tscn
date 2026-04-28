@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=37 format=3 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -115,6 +115,17 @@ fog_depth_begin = 0.0
 fog_depth_end = 195.1
 volumetric_fog_density = 0.0613
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ducrt"]
+height = 3.508
+radius = 25.661621
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_32o3k"]
+height = 3.508
+radius = 15.274902
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nubfc"]
+size = Vector3(34.649, 3.581, 14.737)
+
 [node name="level_hitherton" type="Node3D"]
 script = ExtResource("1_cw6wx")
 
@@ -163,6 +174,7 @@ _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
 [node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+process_mode = 4
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 114.224045, -7.5580416, -46.085957)
 character = ExtResource("13_6ymps")
 to_equip_wep = ExtResource("14_xb4lh")
@@ -171,6 +183,7 @@ to_equip_wep = ExtResource("14_xb4lh")
 script = ExtResource("15_jiyip")
 
 [node name="skele_02" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+process_mode = 4
 transform = Transform3D(0.9798377, 0, 0.19979548, 0, 1, 0, -0.19979548, 0, 0.9798377, 116.667015, -7.5580416, -52.61131)
 character = ExtResource("13_6ymps")
 to_equip_wep = ExtResource("14_xb4lh")
@@ -185,7 +198,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -
 transform = Transform3D(0.9999812, 0.0034832153, 0.005066635, -0.0035555137, 0.999891, 0.0143312765, -0.005016164, -0.014349022, 0.9998846, 57.48, 0, 11.593)
 
 [node name="hitherton_terrain" parent="." instance=ExtResource("18_s1e5c")]
-transform = Transform3D(0.9999812, 0.0034832153, 0.005066635, -0.0035555137, 0.999891, 0.0143312765, -0.005016164, -0.014349022, 0.9998846, 57.48, 0, 11.593)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.593)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="hitherton_terrain"]
 transform = Transform3D(0.23820971, 0.06805569, 0.9688262, -0.926834, -0.28217113, 0.24770592, 0.29023302, -0.9569472, -0.0041398406, 0, 0, 0)
@@ -254,3 +267,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.672197, 14.604935, 76.1401
 
 [node name="tree_foliage4" parent="env_flora" instance=ExtResource("22_nxccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.56736, 2.1777887, 18.53758)
+
+[node name="water" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.343, -2.21, -7.244)
+shape = SubResource("CylinderShape3D_ducrt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.173, -2.21, -34.027)
+shape = SubResource("CylinderShape3D_32o3k")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="water"]
+transform = Transform3D(0.85865587, 0, -0.51255256, 0, 1, 0, 0.51255256, 0, 0.85865587, 20.618, -2.21, 15.551)
+shape = SubResource("BoxShape3D_nubfc")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="water"]
+transform = Transform3D(0.99902916, 0, 0.044055246, 0, 1, 0, -0.044055246, 0, 0.99902916, 51.319, -2.21, 24.084)
+shape = SubResource("BoxShape3D_nubfc")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="water"]
+transform = Transform3D(0.9629417, 0, 0.26970977, 0, 1, 0, -0.26970977, 0, 0.9629417, 83.67, -2.21, 18.677)
+shape = SubResource("BoxShape3D_nubfc")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="water"]
+transform = Transform3D(0.9919785, 0, 0.12640667, 0, 1, 0, -0.12640667, 0, 0.9919785, 97.274, -2.21, 16.996)
+shape = SubResource("BoxShape3D_nubfc")

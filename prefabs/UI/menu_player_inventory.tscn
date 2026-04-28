@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene load_steps=11 format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
 [ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="2_kybif"]
@@ -28,6 +28,9 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.53)
 metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv2t1"]
+bg_color = Color(0, 0, 0, 0.16862746)
 
 [node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
 layout_mode = 3
@@ -116,8 +119,86 @@ texture_normal = ExtResource("2_kybif")
 layout_mode = 2
 texture_normal = ExtResource("2_kybif")
 
-[node name="Test_inventory_thing" type="Node" parent="." node_paths=PackedStringArray("item_button_spot")]
+[node name="Test_inventory_thing" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
 script = ExtResource("3_wuk5u")
 inspectingChar = ExtResource("4_pv2t1")
 item_button_spot = NodePath("../GridContainer")
 hover_tex = SubResource("GradientTexture2D_6agwg")
+flavor_textbox = NodePath("../InventoryContainerPanel2/RichTextLabel")
+image_box = NodePath("../InventoryContainerPanel2/TextureRect")
+
+[node name="InventoryContainerPanel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 632.0
+offset_top = 232.0
+offset_right = 1185.0
+offset_bottom = 891.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
+
+[node name="InventoryContainerPanel2" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1229.0
+offset_top = 232.0
+offset_right = 1729.0
+offset_bottom = 891.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
+
+[node name="Image_bg" type="Panel" parent="InventoryContainerPanel2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_top = -0.07000351
+offset_right = 323.0
+offset_bottom = 322.93
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainerPanel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.65500003
+anchor_right = 0.062000003
+anchor_bottom = 0.65500003
+offset_top = 34.274994
+offset_right = 438.0
+offset_bottom = 180.275
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+theme_override_font_sizes/bold_italics_font_size = 23
+theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 23
+bbcode_enabled = true
+text = "This is a test!"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="InventoryContainerPanel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_top = -0.07000351
+offset_right = 323.0
+offset_bottom = 322.93
+texture = ExtResource("3_pv2t1")
+
+[node name="Inv_tool_tip" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.771
+anchor_right = 0.335
+anchor_bottom = 0.771
+offset_left = 0.7999878
+offset_top = 0.3199463
+offset_right = 529.8
+offset_bottom = 53.319946
+text = "(A) / [Space] : Drop Item
+ D-Pad / Arrow Keys: Select Item"

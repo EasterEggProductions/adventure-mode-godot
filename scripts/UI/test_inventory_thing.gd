@@ -7,15 +7,61 @@ extends Node
 @export var item_button_spot : GridContainer
 
 @export var hover_tex : Texture2D
+
+@export var flavor_textbox : RichTextLabel
+
+@export var image_box : TextureRect
+
+# A dictionary to test out the item flavor text display
+# Not the most optimal solution, but it works for the time being
+var flavor_texts := {
+	"icon_commonFruit.png": 
+		["Common Fruit", "The common fruit of awesomeness!!!"],
+	"icon_coin.png" : 
+		["Coin","The coin of prosperity!!!"],
+	"ico_sword_debug.png" : 
+		["Sword Debug", "The sword debug of debugginess!!!"],
+	"ico_greatsword_debug.png": 
+		["Great Sword Debug", "The great sword of greatness!!!"],
+	"ico_sword_of_godot.png": 
+		["Sword of Godot", "The sword of godot of awesomeness!!!"],
+	"ico_spear_debug.png": 
+		["Spear Debug", "The sword debug of debugginess!!!"],
+	"icon_axe_questions.png": 
+		["Axe", "The axe of questions!!!"]
+}
+
 func _ready(): 
 	if is_instance_valid(MgrPlayerSocket.get_player_one()):
 		inspectingChar = MgrPlayerSocket.get_player_one().thrall.character
+		flavor_textbox.text = "This is a test."
 
 	kill_all_children()
 	make_item_buttons()
 
 		
 func _process(_delta):
+	# Runs every time a frame is drawn
+	
+	# Go grab the thing that is currently focused
+	var focused = get_viewport().gui_get_focus_owner()
+
+	# Display the image, name, and flavor text of the focused item
+	if focused is TextureButton:
+		var tex = focused.texture_normal
+		if tex:
+			var img_name = tex.resource_path.replace("res://art/textures/icons/", "")
+			flavor_textbox.text = "[b]" + flavor_texts.get(img_name)[0] + "[/b]\n\n" + flavor_texts.get(img_name)[1]
+			image_box.texture = tex
+	# Display this text if the back button is focused
+	elif focused is Button :
+		flavor_textbox.text = "Go back to pause menu."
+		image_box.texture = null
+	# Display a message about empty inventory
+	else:
+		flavor_textbox.text = "Your inventory is empty. :("
+		image_box.texture = null
+
 	# Note, is true while key held down
 	if Input.is_key_pressed(KEY_P):
 		kill_all_children()

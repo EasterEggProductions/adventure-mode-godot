@@ -20,7 +20,6 @@ func _enyable(actor: Actor):
 	enyabled = true
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
-	actor.anim_hide_weapons()
 	anim.play(my_animation_name)
 	actor.animation_tree.active = false
 	var a_anim : AnimationPlayer = actor.animation_tree.get_node(actor.animation_tree.anim_player) 
@@ -28,12 +27,13 @@ func _enyable(actor: Actor):
 	await a_anim.animation_finished
 	actor.anim_show_weapons()
 	actor.animation_tree.active = true
+	actor.animation_one_shot(actor_animation_name)
+	enyabled = true
 
 func _disyable(actor: Actor):	
 	enyabled = false
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
-	actor.anim_hide_weapons()
 	anim.play_backwards(my_animation_name)
 	actor.animation_tree.active = false
 	var a_anim : AnimationPlayer = actor.animation_tree.get_node(actor.animation_tree.anim_player) 
@@ -53,3 +53,5 @@ func deserialize(state: Dictionary) -> void:
 	if enyabled:
 		anim.play(my_animation_name)
 		anim.seek(anim.get_animation(my_animation_name).length, true)
+	# actor.animation_one_shot(actor_animation_name, true, true)
+	# enyabled = false

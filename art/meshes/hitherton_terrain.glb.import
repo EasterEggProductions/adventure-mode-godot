@@ -42,7 +42,7 @@ _subresources={
 "Walk Angle Vis": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://art/materials/hitherton_grass.tres",
-"use_external/path": "uid://b2pqqcchpojm5"
+"use_external/path": "uid://dwi5sixxmkvyc"
 },
 "cliffside": {
 "use_external/enabled": true,
@@ -57,7 +57,12 @@ _subresources={
 "riverbed": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://art/materials/hitherton_sand.tres",
-"use_external/path": "uid://nkcm8gtkd28f"
+"use_external/path": "uid://wsqtihj7c82x"
+},
+"stone brick": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/dungeon_brick.tres",
+"use_external/path": "uid://buoejkkc451sk"
 },
 "water": {
 "use_external/enabled": true,

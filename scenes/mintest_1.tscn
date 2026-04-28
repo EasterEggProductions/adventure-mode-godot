@@ -165,12 +165,14 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 script = ExtResource("11_d6byw")
 
 [node name="spawn_1" type="Node3D" parent="."]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 8.661348, 0.5, 8.742277e-08)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 8.661348, 0, 8.742277e-08)
 script = ExtResource("11_d6byw")
+subtype = 2
 
 [node name="spawn_2" type="Node3D" parent="."]
-transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 9.536743e-07, 0.5, 8.491169)
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 9.536743e-07, 0, 8.491169)
 script = ExtResource("11_d6byw")
+subtype = 2
 
 [node name="level title" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, -4)

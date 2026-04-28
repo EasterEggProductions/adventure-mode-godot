@@ -187,6 +187,8 @@ func _collect_inputs(delta):
 	# SECTION - Camera and lock on stuff
 	if Input.is_action_just_pressed(player_prefix + "look_lock"):
 		var potential_enemies = get_tree().get_nodes_in_group("enemies")
+		if MgrPlayerSocket.player_type == "enemy":
+			potential_enemies = get_tree().get_nodes_in_group("allies")
 		enemies.clear()
 		for enemy in potential_enemies:
 			if enemy is Actor:

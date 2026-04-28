@@ -66,14 +66,13 @@ var hurtboxes
 var alive = true
 
 # SECTION Signals 
-# SECTION for leveling bar
+# for leveling bar
 signal actor_killed(actor_node:Actor)
 signal killed_something
 signal xp_get
 signal item_get(item_name)
 signal attack_hit(actor_hit, attack_id)
 # !SECTION Signals
-# !SECTION
 
 @onready var start_pos = global_position
 
@@ -454,7 +453,7 @@ func _action_q_net(act : String, current_pack : int):
 # To be called by animation keyframes 
 
 # NOTE - This is somewhat undesireable. 
-#        Movement code was supposed to be in the movement package
+#		Movement code was supposed to be in the movement package
 #		 Additionally, lock_targ_pos was added in as a HACK
 func anim_track_look():
 	if lock_targ_pos != Vector3.ZERO:
@@ -526,7 +525,67 @@ func invulnerability_time(time : float):
 	invulnerable = true
 	await timer.timeout
 	invulnerable = false
+
+## Plays an animation once if it is present. 
+## This temporarily disables the animation tree,
+## then resumes it when this animation finishes
+func animation_one_shot(anim_name : String, hide_weapons = true, play_backwards = false):
+	var a_anim : AnimationPlayer = animation_tree.get_node(animation_tree.anim_player) 
+	if a_anim.has_animation(anim_name) == false:
+		return
+	if hide_weapons:
+		anim_hide_weapons()
+	animation_tree.active = false
+	if play_backwards:
+		a_anim.play_backwards(anim_name) 
+	else:
+		a_anim.play(anim_name) 	
+	await a_anim.animation_finished
+	if hide_weapons:
+		anim_show_weapons()
+	animation_tree.active = true
 # !SECTION - Animation helper functions
+
+func multiplayer_despawn():
+	var a_anim : AnimationPlayer = animation_tree.get_node(animation_tree.anim_player) 
+	animation_tree.active = false
+	a_anim.play("spawns_and_deaths/despawn_multiplayer_disconnect") 	
+	await a_anim.animation_finished 
+	visible = false
+	queue_free()
+
+## Plays spawning animation and makes node visible
+## Player calls it I guess
+func multiplayer_spawn():
+	print("Spawn point: " + MgrTransition.target_spawn_point)
+	print("Spawn logic: " + str(get_tree().current_scene))
+	var spawnpoint : Spawnpoint3D = (get_tree().current_scene as Level).find_child(MgrTransition.target_spawn_point)
+	print("Spawn subtp: " + str(spawnpoint.subtype))
+	rpc_mp_spawn.rpc(MgrPlayerSocket.player_type, spawnpoint.subtype) 
+
+@rpc("call_local")
+func rpc_mp_spawn(player_type : String, anim : int):
+	visible = true	
+	if anim == 0:
+		animation_one_shot("spawns_and_deaths/spawn_default")
+	if anim == 1: 
+		if player_type == "ally":
+			animation_one_shot("spawns_and_deaths/spawn_multiplayer_priaseTheSun")
+		else:
+			animation_one_shot("spawns_and_deaths/spawn_multiplayer_invasion")
+	elif anim == 2:
+		animation_one_shot("spawns_and_deaths/spawn_walk_in")
+	if player_type == "main":
+		add_to_group("allies")
+	elif player_type == "ally":
+		dup.set_material_overlay(MgrPlayerSocket.ally_material)
+		add_to_group("allies")
+	elif player_type == "enemy":
+		dup.set_material_overlay(MgrPlayerSocket.enemy_material)
+		add_to_group("enemies")
+		if is_multiplayer_authority() == false:
+			get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.CHANGE)
+	
 
 
 

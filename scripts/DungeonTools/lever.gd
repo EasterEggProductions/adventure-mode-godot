@@ -27,8 +27,6 @@ func _enyable(actor: Actor):
 	await a_anim.animation_finished
 	actor.anim_show_weapons()
 	actor.animation_tree.active = true
-	actor.animation_one_shot(actor_animation_name)
-	enyabled = true
 
 func _disyable(actor: Actor):	
 	enyabled = false
@@ -53,5 +51,3 @@ func deserialize(state: Dictionary) -> void:
 	if enyabled:
 		anim.play(my_animation_name)
 		anim.seek(anim.get_animation(my_animation_name).length, true)
-	# actor.animation_one_shot(actor_animation_name, true, true)
-	# enyabled = false

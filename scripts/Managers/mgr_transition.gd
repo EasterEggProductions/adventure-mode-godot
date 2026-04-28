@@ -10,14 +10,14 @@ var current_level : PackedScene
 @onready var little_msg = $little_msg
 
 func change_scene_to_pack(target: PackedScene):
-	print(target)
+	#print(target)
 	if target == null or is_instance_valid(target) == false:
 		# Default to returning to the main scene
 		current_load_target = ProjectSettings.get("application/run/main_scene")
 		target = load(current_load_target)
 	else:
 		current_load_target = str(target)
-	print(target)
+	#print(target)
 	if transitioning:
 		return
 	transitioning = true

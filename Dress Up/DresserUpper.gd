@@ -10,6 +10,9 @@ var things_worn : Dictionary# NOTE Actual nodes created
 @export var garments : Array[Garment] # NOTE Resource references
 @export var accessories : Array[Accessory]
 
+
+var material_overlay : Material
+
 signal outfit_changed
 signal garment_changed
 signal accessory_changed
@@ -40,6 +43,8 @@ func garment_equip(gar : Garment):
 	mesh.lod_bias = 10
 	things_worn[gar] = mesh
 	garments.append(gar)
+	if material_overlay:
+		mesh.material_overlay = material_overlay
 	if is_multiplayer_authority():
 		garment_change.rpc(gar.resource_path, true)
 	outfit_changed.emit()
@@ -175,3 +180,14 @@ func unequip_item(item_removed):
 		accessory_unequip(item_removed)
 	else:
 		garment_unequip(item_removed)
+
+
+func set_material_overlay(overlay : Material) -> void:
+	material_overlay = overlay
+	for gar in garments:
+		var mesh : MeshInstance3D =  things_worn[gar]
+		mesh.material_overlay = material_overlay
+	## TODO - Accesories
+
+func clear_material_overlay() -> void: 
+	set_material_overlay(null)

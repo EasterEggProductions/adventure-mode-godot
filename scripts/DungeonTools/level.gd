@@ -12,7 +12,7 @@ var local_player : Actor
 
 ##
 func level_start():
-	print("level start...")
+	#print("level start...")
 	#var entering_player = MgrPlayerSocket.spawn_player()
 	#entering_player.global_position = spawn_point.global_position
 
@@ -27,6 +27,17 @@ func level_start():
 		con_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS)
 		add_child(con_player)
 		spawned_players.append(con_player)
+		var player_type = MgrMultiplayer.peer_type[conn]
+		if player_type == "main":
+			con_player.add_to_group("allies")
+		elif player_type == "ally":
+			con_player.dup.set_material_overlay(MgrPlayerSocket.ally_material)
+			con_player.add_to_group("allies")
+		elif player_type == "enemy":
+			con_player.dup.set_material_overlay(MgrPlayerSocket.enemy_material)
+			con_player.add_to_group("enemies")
+			con_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.CHANGE)
+		
 
 	## TODO make a player spawning function or something
 	var new_player : Actor = MgrPlayerSocket.spawn_player()
@@ -52,9 +63,10 @@ func level_start():
 	if MgrTransition.target_spawn_point != "":
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
-		MgrTransition.target_spawn_point = ""
+		#MgrTransition.target_spawn_point = ""
 	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
+	new_player.multiplayer_spawn()
 
 	var data = MgrDungeonState.load_objects(self.name)
 	if data == null: # Ensures the save data exists.
@@ -62,10 +74,11 @@ func level_start():
 
 	# Loads saved time_of_day from dungeon state if it exists.
 	if data.has("time_of_day"):
-		print("LOADED time_of_day =", data["time_of_day"])
+		#print("LOADED time_of_day =", data["time_of_day"])
 		$DayNightCycle.set_time(data["time_of_day"])
 	else:
-		print("NO time_of_day FOUND")
+		#print("NO time_of_day FOUND")
+		pass
 
 	## Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
@@ -81,10 +94,11 @@ func level_start():
 
 # called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
-	print(node.name + ": " + str(data))
+	#print(node.name + ": " + str(data))
+	pass
 
 func save_objects():
-	print("SAVING time_of_day =", $DayNightCycle.time_of_day)
+	#print("SAVING time_of_day =", $DayNightCycle.time_of_day)
 	# Pack the current time_of_day into the save data so it persists between scenes.
 	var extra_data = {
 		"time_of_day": $DayNightCycle.time_of_day
@@ -98,6 +112,6 @@ func remove_player(conn_id : int):
 	print(spawned_players)
 	for guy in spawned_players:
 		if str(conn_id) in guy.name:
-			guy.queue_free()
+			guy.multiplayer_despawn()
 			spawned_players.remove_at(spawned_players.find(guy))
 			return

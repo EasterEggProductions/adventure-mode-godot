@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cc4uw46h7kgkt"]
+[gd_scene load_steps=34 format=3 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -139,9 +139,24 @@ preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_kd2pc")
 draw_pass_1 = SubResource("QuadMesh_drn72")
 
-[node name="spawn_start" type="Node3D" parent="."]
-transform = Transform3D(0.7523344, 0, 0.6587813, 0, 1, 0, -0.6587813, 0, 0.7523344, 31.822083, 1.527345, -25.009289)
+[node name="spawn_start" type="Node3D" parent="." groups=["spawn_points"]]
+transform = Transform3D(0.7523344, 0, 0.6587813, 0, 1, 0, -0.6587813, 0, 0.7523344, 31.822083, 1.3285289, -25.009289)
 script = ExtResource("11_442in")
+
+[node name="spawn_1" type="Node3D" parent="." groups=["spawn_points"]]
+transform = Transform3D(0.004084021, 0, 0.9999916, 0, 1, 0, -0.9999916, 0, 0.004084021, 0.306099, 0.4, 20.990202)
+script = ExtResource("11_442in")
+subtype = 1
+
+[node name="spawn_2" type="Node3D" parent="." groups=["spawn_points"]]
+transform = Transform3D(0.028741684, 0, -0.9995868, 0, 1, 0, 0.9995868, 0, 0.028741684, 6.4497323, 0.4, 20.990202)
+script = ExtResource("11_442in")
+subtype = 1
+
+[node name="spawn_3" type="Node3D" parent="." groups=["spawn_points"]]
+transform = Transform3D(-0.9995868, 0, -0.028741641, 0, 1, 0, 0.028741641, 0, -0.9995868, 9.735, 0.7871599, 49.444)
+script = ExtResource("11_442in")
+subtype = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")

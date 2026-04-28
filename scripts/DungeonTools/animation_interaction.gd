@@ -20,25 +20,13 @@ func _on_do_action(actor: Actor) -> void:
 func _enyable(actor: Actor):
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
-	actor.anim_hide_weapons()
 	anim.play(my_animation_name)
-	actor.animation_tree.active = false
-	var a_anim : AnimationPlayer = actor.animation_tree.get_node(actor.animation_tree.anim_player) 
-	a_anim.play(actor_animation_name) 
-	await a_anim.animation_finished
-	actor.anim_show_weapons()
-	actor.animation_tree.active = true
+	actor.animation_one_shot(actor_animation_name)
 	enyabled = true
 
 func _disyable(actor: Actor):	
 	actor.global_position = global_position
 	actor.global_rotation = global_rotation
-	actor.anim_hide_weapons()
 	anim.play_backwards(my_animation_name)
-	actor.animation_tree.active = false
-	var a_anim : AnimationPlayer = actor.animation_tree.get_node(actor.animation_tree.anim_player) 
-	a_anim.play_backwards(actor_animation_name) 
-	await a_anim.animation_finished
-	actor.anim_show_weapons()
-	actor.animation_tree.active = true
+	actor.animation_one_shot(actor_animation_name, true, true)
 	enyabled = false

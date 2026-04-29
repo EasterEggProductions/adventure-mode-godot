@@ -112,6 +112,19 @@ func garment_change(g_path : String, equip : bool):
 	else:
 		garment_unequip(load(g_path))
 
+@rpc
+func _rpc_sync_outfit_to(the_fit : PackedStringArray):
+	print("%d, %d says to sync that outfit!" % [multiplayer.get_unique_id(), multiplayer.get_remote_sender_id()])
+	print(the_fit)
+	outfit_load(the_fit)
+
+func sync_outfit_to(peer_id : int):
+	# NOTE - short delay to make sure everyone has spawned, this should be improved, perhaps by adding a connected player resource to hold info
+	await get_tree().create_timer(3).timeout 
+	print(str(multiplayer.get_unique_id()) +  ", Sync that outfit!")
+	var the_fit : PackedStringArray = outfit_save()
+	_rpc_sync_outfit_to.rpc_id(peer_id, the_fit)
+
 func accessory_item(acc : Accessory):
 	# Find item that exists physically, and return it
 	

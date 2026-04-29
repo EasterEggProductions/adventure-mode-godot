@@ -322,6 +322,8 @@ func net_change_level(levelname : String, peer_id : int):
 	elif levelname == connection_level[multiplayer.get_unique_id()]:
 		MgrTransition.msg_small("Player %s has joined you in %s" % [str(peer_id), levelname], 7)
 		spawn_me_in_coach(peer_id)
+		# FIXME - There is likely a better way to sync outfits 
+		MgrPlayerSocket.get_player_one().thrall.dup.sync_outfit_to(peer_id)
 	else:
 		MgrTransition.msg_small("Player %s has moved about levels..." % str(peer_id), 7)
 	connection_level[peer_id] = levelname

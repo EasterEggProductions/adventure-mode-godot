@@ -8,6 +8,8 @@ var player_outfit : PackedStringArray
 
 var player_type = "main" #just using strings for debug at this moment, main, ally, enemy are all for now
 
+var actor_prefab_path = "prefabs/actor.tscn" #res:// omitted for ResourceLoader
+
 # here temporarily
 var ally_material : Material = preload("res://art/materials/cooperator.tres")
 var enemy_material : Material = preload("res://art/materials/invader.tres")

@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=3 uid="uid://i0ymtqk4fyg4"]
+
+[ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_gwm44"]
+[ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_l7x1l"]
+[ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="3_pg32f"]
+[ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="4_lda6y"]
+[ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="5_3mm54"]
+[ext_resource type="Material" uid="uid://de3rk5xvxlx37" path="res://art/materials/dungeon_brick.tres" id="5_lda6y"]
+[ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="5_pg32f"]
+[ext_resource type="Texture2D" uid="uid://cs1hklho2muo4" path="res://art/textures/cobble_stone_32.png" id="6_d4t41"]
+[ext_resource type="Texture2D" uid="uid://ciwpf1mxr5vwc" path="res://art/meshes/rooms/example_room_2_wall.png" id="7_tgvva"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbsxr"]
+albedo_texture = ExtResource("6_d4t41")
+uv1_scale = Vector3(17.355, 3.345, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u511p"]
+albedo_texture = ExtResource("7_tgvva")
+uv1_scale = Vector3(0.765, 0.765, 0.765)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="Gradient" id="Gradient_o7ujk"]
+colors = PackedColorArray(0, 0, 0.44705883, 1, 0.051970966, 0.05197096, 0.05197095, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4bus"]
+gradient = SubResource("Gradient_o7ujk")
+fill_from = Vector2(1, 0.5105105)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qf6xv"]
+turbidity = 30.0
+sun_disk_scale = 0.0
+night_sky = SubResource("GradientTexture2D_e4bus")
+
+[sub_resource type="Sky" id="Sky_n5duk"]
+sky_material = SubResource("PhysicalSkyMaterial_qf6xv")
+
+[sub_resource type="Environment" id="Environment_pg32f"]
+background_mode = 2
+sky = SubResource("Sky_n5duk")
+ambient_light_source = 2
+ambient_light_color = Color(0.5878897, 0.7222491, 1, 1)
+ambient_light_sky_contribution = 0.2
+ambient_light_energy = 0.4
+
+[node name="MainRoom" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
+script = ExtResource("1_gwm44")
+dungeon_objects = NodePath("Dungeon objects")
+
+[node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
+script = ExtResource("2_l7x1l")
+cam = NodePath("../Camera")
+freeze = true
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.550423, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.83488595, -0.16637634, 0.52467555, 26.3394, 5.13614, 19.3451)
+script = ExtResource("3_pg32f")
+distance = 2.5
+freeze = true
+
+[node name="play_ui" parent="." instance=ExtResource("4_lda6y")]
+
+[node name="Level geometry" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5962934, 0)
+use_collision = true
+flip_faces = true
+radius = 11.293457
+height = 7.3157654
+material = ExtResource("5_lda6y")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level geometry/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1939735, 0)
+use_collision = true
+flip_faces = true
+radius = 9.959961
+height = 1.3315334
+material = SubResource("StandardMaterial3D_hbsxr")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.126, 0)
+use_collision = true
+radius = 6.9956055
+height = 4.817749
+material = SubResource("StandardMaterial3D_u511p")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.126, 0)
+use_collision = true
+radius = 6.9956055
+height = 4.817749
+material = SubResource("StandardMaterial3D_u511p")
+
+[node name="Dungeon objects" type="Node3D" parent="."]
+
+[node name="spawn_start" type="Node3D" parent="."]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0.86219025, 0.41013497, -0.62294483)
+script = ExtResource("5_pg32f")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
+spawn_path = NodePath("..")
+
+[node name="DayNightCycle" parent="." instance=ExtResource("5_3mm54")]
+environment = SubResource("Environment_pg32f")

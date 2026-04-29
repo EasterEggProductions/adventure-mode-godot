@@ -157,7 +157,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	if is_multiplayer_authority():
-		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, hand_state)
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, character.poise_current, character.poise_regen_timer, hand_state)
 	return
 
 
@@ -217,7 +217,6 @@ func movement_package_checks():
 			#		return
 			#else:
 			current_moveset = x
-			
 			state_machine.travel(movement_sets[current_moveset].name)
 			if is_multiplayer_authority():
 				net_anim_pack_change.rpc(current_moveset)
@@ -446,6 +445,8 @@ func action_q_check(action : String, consume=false) -> bool:
 func _action_q_net(act : String, current_pack : int):
 	if current_moveset != current_pack:
 		current_moveset = current_pack
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel(movement_sets[current_moveset].name)
 	enque_action(act)
 # !SECTION - End action_q system
 
@@ -590,7 +591,7 @@ func rpc_mp_spawn(player_type : String, anim : int):
 
 
 @rpc("unreliable")
-func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_hand_state : int):
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_poise, c_p_regen, c_hand_state : int):
 	if is_multiplayer_authority():
 		return
 	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
@@ -599,6 +600,8 @@ func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sp
 	position = c_position
 	sprint = c_sprint
 	character.health_current = c_health
+	character.poise_current = c_poise
+	character.poise_regen_timer = c_p_regen
 	hand_state = c_hand_state as HandState
 
 

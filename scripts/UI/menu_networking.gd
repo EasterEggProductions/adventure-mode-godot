@@ -18,6 +18,10 @@ func _button_host():
 func _button_connect():
 	MgrMultiplayer.apply_join_code(jc_input.text)
 
+func _button_connect_invade():
+	MgrPlayerSocket.player_type = "enemy" # set to invader type
+	MgrMultiplayer.apply_join_code(jc_input.text)
+
 
 func populate_debug_readout():
 	var message : String = ""

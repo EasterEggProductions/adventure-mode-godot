@@ -183,6 +183,7 @@ max_length = 8
 
 [connection signal="pressed" from="buttons/host" to="ui_networking" method="_button_host"]
 [connection signal="pressed" from="buttons/join friend" to="ui_networking" method="_button_connect"]
+[connection signal="pressed" from="buttons/invasion" to="ui_networking" method="_button_connect_invade"]
 [connection signal="pressed" from="buttons/deb_join" to="ui_networking" method="_on_join_local_button_pressed"]
 [connection signal="pressed" from="buttons/deb_invade" to="ui_networking" method="_on_invade_local_button_pressed"]
 [connection signal="pressed" from="Control2/clipboard button" to="ui_networking" method="_on_clipboard_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Character" load_steps=19 format=3 uid="uid://pyeylu3rn4gk"]
+[gd_resource type="Resource" script_class="Character" load_steps=20 format=3 uid="uid://pyeylu3rn4gk"]
 
 [ext_resource type="Resource" uid="uid://dordbggjqolii" path="res://art/Character/clothing/DressUp Resources/godette_face.tres" id="1_e66sy"]
 [ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://r40l8bmnp7k5" path="res://Resources/Inventory Items/inv_greatsword_01.tres" id="5_lr5lw"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="6_dooa3"]
 [ext_resource type="Resource" uid="uid://cpjfjvsj5dcyk" path="res://Resources/Inventory Items/inv_sword_of_godot.tres" id="6_l7lj6"]
+[ext_resource type="Resource" uid="uid://bcl0k5bycdydn" path="res://Resources/Inventory Items/inv_axe_01.tres" id="9_7fqv6"]
 [ext_resource type="Resource" uid="uid://bedu2jx3ufh5d" path="res://art/Character/clothing/DressUp Resources/godette_backpack.tres" id="10_7fqv6"]
 [ext_resource type="Resource" uid="uid://djoo10w4ak5w4" path="res://art/Character/clothing/DressUp Resources/godette_boots.tres" id="11_gvuh6"]
 [ext_resource type="Resource" uid="uid://chgq7u50cxo5l" path="res://art/Character/clothing/DressUp Resources/godette_gloves.tres" id="12_fe3iw"]
@@ -24,6 +25,7 @@ resource_name = "Player"
 script = ExtResource("2_p2okw")
 portrait = ExtResource("13_jdhlo")
 given_name = "Player"
+my_inventory = Array[ExtResource("3_i2r5u")]([ExtResource("4_l7lj6"), ExtResource("3_lr5lw"), ExtResource("3_hi2oo"), ExtResource("5_lr5lw"), ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("9_7fqv6")])
 belt_items = Array[ExtResource("3_i2r5u")]([ExtResource("3_lr5lw"), ExtResource("4_l7lj6")])
 hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("5_lr5lw")])
 hand_left_slots = Array[ExtResource("3_i2r5u")]([ExtResource("3_hi2oo")])

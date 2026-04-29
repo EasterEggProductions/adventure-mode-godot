@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene load_steps=9 format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
-[ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="2_kybif"]
-[ext_resource type="Texture2D" uid="uid://cx1a8kinoowmh" path="res://art/textures/icons/icon_skeleton.png" id="3_pv2t1"]
-[ext_resource type="Script" uid="uid://cmllxk4amewlm" path="res://scripts/UI/test_inventory_thing.gd" id="3_wuk5u"]
+[ext_resource type="Script" uid="uid://cmllxk4amewlm" path="res://scripts/UI/ui_inventory_control.gd" id="3_wuk5u"]
 [ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_pv2t1"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
@@ -86,40 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="TextureButton" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-texture_focused = ExtResource("3_pv2t1")
-
-[node name="TextureButton2" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton3" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton4" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton5" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton6" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton7" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton8" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="Test_inventory_thing" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
+[node name="ui_inventory_control" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
 script = ExtResource("3_wuk5u")
 inspectingChar = ExtResource("4_pv2t1")
 item_button_spot = NodePath("../GridContainer")
@@ -174,7 +139,6 @@ theme_override_font_sizes/bold_italics_font_size = 23
 theme_override_font_sizes/italics_font_size = 23
 theme_override_font_sizes/mono_font_size = 23
 bbcode_enabled = true
-text = "This is a test!"
 fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="InventoryContainerPanel2"]
@@ -187,7 +151,6 @@ anchor_bottom = 0.106000006
 offset_top = -0.07000351
 offset_right = 323.0
 offset_bottom = 322.93
-texture = ExtResource("3_pv2t1")
 
 [node name="Inv_tool_tip" type="RichTextLabel" parent="."]
 layout_mode = 1

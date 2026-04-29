@@ -9,6 +9,7 @@
 resource_name = "Spear Debug"
 script = ExtResource("1_s4a00")
 icon = ExtResource("2_pvxed")
+description = "The sword debug of debugginess!!!"
 extra_resources = Dictionary[String, Resource]({
 "accessory": ExtResource("2_fdoas"),
 "armament": ExtResource("1_2gjy6")

@@ -9,6 +9,7 @@
 resource_name = "Claymore"
 script = ExtResource("1_3mm8t")
 icon = ExtResource("2_7sfft")
+description = "The great sword of greatness!!!"
 extra_resources = Dictionary[String, Resource]({
 "accessory": ExtResource("2_8mpct"),
 "armament": ExtResource("1_pxr5b")

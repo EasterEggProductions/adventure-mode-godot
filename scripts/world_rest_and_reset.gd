@@ -21,7 +21,9 @@ func rest(thrall : Actor):
 	#print(psock)
 
 	thrall.enque_action("emote_sit")
-	thrall.look_at(thrall.global_position + (thrall.global_position - get_parent().global_position))
+	var look_pos = thrall.global_position + (thrall.global_position - get_parent().global_position)
+	look_pos.y = thrall.global_position.y
+	thrall.look_at(look_pos)
 	reset()
 	player_socket.headsUpDisplay.open_submenu(rest_menu)
 

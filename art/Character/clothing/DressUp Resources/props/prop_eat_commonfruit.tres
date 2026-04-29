@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Accessory" load_steps=3 format=3 uid="uid://cn2ha3p6lr1tk"]
+
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://Dress Up/Resource Definitions/Accessory.gd" id="1_our6s"]
+[ext_resource type="PackedScene" uid="uid://hfbx5ij85oc8" path="res://prefabs/props/common_fruit_yummy.tscn" id="1_pj4iq"]
+
+[resource]
+script = ExtResource("1_our6s")
+accessory = ExtResource("1_pj4iq")
+metadata/_custom_type_script = "uid://coekv5bjwcf8j"

@@ -26,7 +26,7 @@ func do_tree():
 			if "0/WalkSprint" in prop["name"]:
 				get(prop["name"]).travel("Start")
 	#print(get("parameters/playback"))
-	print(message)
+	#print(message)
 
 func recursive_node_debug(node, level) -> String:
 	if is_instance_valid(node) == false:

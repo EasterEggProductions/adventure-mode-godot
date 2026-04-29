@@ -4,17 +4,20 @@ extends Node3D
 ## Top level of the gameplay level
 ## Serializes things
 
-@export var spawn_point : Spawnpoint3D
-@export var exit_zone : ExitZone3D
-# parent of all dungeon obejcts
+## parent node of all local dungeon obejcts
 @export var dungeon_objects: Node3D
+
+@export_category("Spawn room parameters")
+## Determines whether to treat this room as the root.
+@export var is_spawn_room: bool = false
+## Array of all dungeon room scenes, excluding this one. (only needed for spawn room)
+@export var dungeon_rooms: Array[PackedScene]
 
 var spawned_players : Array[Actor] = []
 var local_player : Actor
 
-##
 func level_start():
-	print("level start...")
+	#print("level start...")
 	#var entering_player = MgrPlayerSocket.spawn_player()
 	#entering_player.global_position = spawn_point.global_position
 
@@ -29,6 +32,17 @@ func level_start():
 		con_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS)
 		add_child(con_player)
 		spawned_players.append(con_player)
+		var player_type = MgrMultiplayer.peer_type[conn]
+		if player_type == "main":
+			con_player.add_to_group("allies")
+		elif player_type == "ally":
+			con_player.dup.set_material_overlay(MgrPlayerSocket.ally_material)
+			con_player.add_to_group("allies")
+		elif player_type == "enemy":
+			con_player.dup.set_material_overlay(MgrPlayerSocket.enemy_material)
+			con_player.add_to_group("enemies")
+			con_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.CHANGE)
+		
 
 	## TODO make a player spawning function or something
 	var new_player : Actor = MgrPlayerSocket.spawn_player()
@@ -46,18 +60,38 @@ func level_start():
 	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.NEVER)
 	spawned_players.append(new_player)
 	local_player = new_player
+	if MgrPlayerSocket.player_outfit:
+		var dup : DresserUpper = local_player.find_child("DresserUpper")
+		dup.outfit_load(MgrPlayerSocket.player_outfit)
 
 	# find spawn point:
 	if MgrTransition.target_spawn_point != "":
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
-		MgrTransition.target_spawn_point = ""
+		#MgrTransition.target_spawn_point = ""
 	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
+	
+	## ---------- Loading the dungeon state ----------
+	## If we just loaded the dungeon for the first time and we're the host, populate the object data.
+	#if multiplayer.is_server() and is_spawn_room and MgrDungeonState.object_data.is_empty():
+		#print("DATA IS EMPTY, NEED TO FILL")
+	
+	# retrieve the dungeon object data for this room
+	# NOTE: key is now the scene path, rather than the name of the root note. easier to do remote state changes this way
+	var data = MgrDungeonState.load_objects(self.scene_file_path)
+	new_player.multiplayer_spawn()
 
-	## Initialize all the dungeon objects, and hook up their state update signals
+	# Loads saved time_of_day from dungeon state if it exists.
+	if data.has("time_of_day"):
+		#print("LOADED time_of_day =", data["time_of_day"])
+		$DayNightCycle.set_time(data["time_of_day"])
+	else:
+		#print("NO time_of_day FOUND")
+		pass
+
+	# Initialize all the dungeon objects, and hook up their state update signals
 	if dungeon_objects:
-		var data = MgrDungeonState.load_objects(self.name)
 		for object in dungeon_objects.get_children():
 			if !(object is DungeonObject):
 				push_warning(object.name + " is not a dungeon object.")
@@ -67,19 +101,41 @@ func level_start():
 				object.deserialize(data[object.name])
 			object.connect("state_update", self._on_object_update)
 
-
-# called when a local dungeon object has chnaged state, interact with multiplayer manager somehow
+# All dungeon object connect their state_update signal to this function
+# WARNING: this function is mega ugly bear with me
 func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
-	print(node.name + ": " + str(data))
-
+	# NOTE: this function is called whether it's the local or remote player, meaning if the players
+	#	    are in the same level both server_update and client_update will be called, resulting in a double client update
+	if multiplayer.is_server():
+		MgrDungeonState.server_update_state(self.scene_file_path, node.name, data) # server calling itself
+	else:
+		MgrDungeonState.client_update_state.rpc_id(1, self.scene_file_path, node.name, data) # client calling server
+		
+	# if this dungeon object changes the state of some other object in another scene, apply those
+	for conn: ObjectConnection in node.remote_connections:
+		print(conn.scene_path)
+		if multiplayer.is_server():
+			MgrDungeonState.server_update_state(
+				conn.get_scene_name(), conn.object_name, conn.affected_properties
+			)
+		else:
+			MgrDungeonState.client_update_state.rpc_id(
+				1, conn.get_scene_name(), conn.object_name, conn.affected_properties
+			)
 func save_objects():
+	#print("SAVING time_of_day =", $DayNightCycle.time_of_day)
+	# Pack the current time_of_day into the save data so it persists between scenes.
+	var extra_data = {
+		"time_of_day": $DayNightCycle.time_of_day
+	}
+
 	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
-	MgrDungeonState.save_objects(self.name, data)
+	MgrDungeonState.save_objects(self.scene_file_path, data, extra_data)
 
 func remove_player(conn_id : int):
 	print(spawned_players)
 	for guy in spawned_players:
 		if str(conn_id) in guy.name:
-			guy.queue_free()
+			guy.multiplayer_despawn()
 			spawned_players.remove_at(spawned_players.find(guy))
 			return

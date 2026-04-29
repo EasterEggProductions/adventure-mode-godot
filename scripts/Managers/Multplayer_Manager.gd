@@ -26,6 +26,7 @@ var nop= WebSocketMultiplayerPeer.new()
 
 ## What map each connection is on
 var connection_level : Dictionary[int, String] = {0:""}
+var peer_type : Dictionary[int, String] = {0:"",1:"main"}
 
 # Attempts to find an available port by trying to create a temp ENet server.
 func find_available_port(start_port: int, end_port: int) -> int:
@@ -97,6 +98,7 @@ func _on_upnp_completed():
 	if upnp_thread != null:
 		upnp_thread.wait_to_finish()
 		upnp_thread = null
+
 
 # Called when node is freed or removed, we should externally call this on application quit (currently doesn't run)
 func _exit_tree():
@@ -225,11 +227,12 @@ func add_player_OLD(peer_id):
 
 func add_player(peer_id : int):
 	print("%d:Add player" % multiplayer.get_unique_id())
-	bring_player_in_to_the_game_or_something.rpc_id(peer_id, connection_level, MgrTransition.current_level.resource_path, "spawn_1")
+	bring_player_in_to_the_game_or_something.rpc_id(peer_id, connection_level, peer_type, MgrTransition.current_level.resource_path, "spawn_1")
 
 @rpc
-func bring_player_in_to_the_game_or_something(everyonealreadyhereandwheretheyare : Dictionary, your_start_level : String, your_spawn_point : String):
+func bring_player_in_to_the_game_or_something(everyonealreadyhereandwheretheyare : Dictionary, peer_types : Dictionary, your_start_level : String, your_spawn_point : String):
 	connection_level = everyonealreadyhereandwheretheyare
+	peer_type = peer_types 
 	MgrTransition.level_transition(your_start_level, your_spawn_point)
 
 
@@ -251,18 +254,14 @@ func apply_join_code(jc : String):
 func _on_player_connected(_my_id : int):
 	print(str(multiplayer.get_unique_id()) + " called _on_player_connected: " + str(_my_id))
 
-func _on_player_disconnected():
+func _on_player_disconnected(_my_id : int):
 	print(str(multiplayer.get_unique_id()) + " called _on_player_disconnected")
+	get_tree().current_scene.remove_player(_my_id)
 
 func _on_connected_ok():
-
 	MgrTransition.msg_small("Welcome to world as a guest", 5)
-	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")
-	connection_level[multiplayer.get_unique_id()] = MgrTransition.current_level.resource_path
-	#for child in get_tree().current_scene.get_children():
-	#	print(child.name)
-	#var my_thrall = get_tree().current_scene.find_child(str(multiplayer.get_unique_id()))
-	#print(my_thrall)
+	print(str(multiplayer.get_unique_id()) + " called _on_connected_ok")	
+	inform_server_of_player_type.rpc_id(1, MgrPlayerSocket.player_type)
 
 func _on_connected_fail():
 	MgrTransition.msg_small("Connection Failed", 3)
@@ -272,6 +271,7 @@ func _on_server_disconnected():
 	MgrTransition.msg_small("Connection to this world lost, returning home...", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
 	MgrTransition.target_spawn_point = ''
+	MgrPlayerSocket.player_type = "main"
 	MgrTransition.change_scene_to_pack(preload("res://scenes/title_scene.tscn")) 
 	# did not want to use level_transition, to let it grow to have other functionality
 
@@ -286,6 +286,23 @@ func take_guy(nodename : String, peer_id : int):
 		MgrPlayerSocket.get_player_one().ganty_thing.freeze = false
 		MgrPlayerSocket.get_player_one().ganty_thing.cam.freeze = false
 		MgrPlayerSocket.get_player_one().enthrall_new_thrall(my_thrall)
+
+# Client calls this on the server only
+@rpc("any_peer", "reliable")
+func inform_server_of_player_type(player_type: String) -> void:
+	if not multiplayer.is_server():
+		return
+	var sender_id = multiplayer.get_remote_sender_id()
+	peer_type[sender_id] = player_type
+	print("%d| Server received type '%s' from %d" % [multiplayer.get_unique_id(), player_type, sender_id])
+	# Now broadcast to all clients (including the sender)
+	receive_player_type.rpc(sender_id, player_type)
+
+# Server broadcasts this to all peers
+@rpc("authority", "call_local", "reliable")
+func receive_player_type(peer_id: int, player_type: String) -> void:
+	peer_type[peer_id] = player_type
+	print("%d| SET TYPE OF %d: '%s'" % [multiplayer.get_unique_id(), peer_id, player_type])
 	
 
 func inform_of_level_change(levelname : String):
@@ -330,4 +347,5 @@ func spawn_me_in_coach(connection : int) -> void:
 	print("New guy path: "+ str(new_player.get_path()))
 	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS) # NOTE This function will probably handle enemy player spawning and those need different visibility
 	get_tree().current_scene.spawned_players.append(new_player)
+	new_player.visible = false
 	#take_guy.rpc(bute, connection)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://buw61jj5xaa1f"]
+[gd_scene load_steps=9 format=3 uid="uid://buw61jj5xaa1f"]
 
 [ext_resource type="Script" uid="uid://d1urdaxx0wfn8" path="res://scripts/day_night_cycle.gd" id="1_e4bus"]
 
@@ -20,9 +20,24 @@ sky_material = SubResource("PhysicalSkyMaterial_qf6xv")
 [sub_resource type="Environment" id="Environment_4dyh5"]
 background_mode = 2
 sky = SubResource("Sky_n5duk")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.1333332, 1, 1)
+ambient_light_sky_contribution = 0.2
+ambient_light_energy = 0.1
+
+[sub_resource type="Gradient" id="Gradient_6omy6"]
+offsets = PackedFloat32Array(0.22089553, 0.3432836, 0.5, 0.6925373, 0.8029851)
+colors = PackedColorArray(0, 0, 0, 1, 0.53333336, 0.53333336, 0.53333336, 1, 1, 1, 1, 1, 0.53333336, 0.53333336, 0.53333336, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sn7m8"]
+gradient = SubResource("Gradient_6omy6")
 
 [node name="DayNightCycle" type="WorldEnvironment"]
 environment = SubResource("Environment_4dyh5")
 script = ExtResource("1_e4bus")
+day_length = 3600.0
+time_of_day = 0.5
+lighting = SubResource("GradientTexture1D_sn7m8")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
+shadow_enabled = true

@@ -4,7 +4,14 @@ var playerSockets : Array[PlayerSocket] = []
 
 var player_last_saved_pos : Transform3D
 
-var actor_prefab_path = "prefabs/actor.tscn" #res:// omitted for ResourceLoader
+var player_outfit : PackedStringArray
+
+var player_type = "main" #just using strings for debug at this moment, main, ally, enemy are all for now
+
+# here temporarily
+var ally_material : Material = preload("res://art/materials/cooperator.tres")
+var enemy_material : Material = preload("res://art/materials/invader.tres")
+
 
 func _ready() -> void:
 	add_player_socket("p1_")

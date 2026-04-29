@@ -38,13 +38,16 @@ func _process(delta):
 			fade_tweener.tween_property(self, "modulate", Color.WHITE, 0.25)
 		#modulate = Color.WHITE
 
-	if fade_timer <= 0 and is_instance_valid(fade_tweener):
-		fade_tweener.stop()
+	if fade_timer <= 0 and modulate != Color.TRANSPARENT:
+		if is_instance_valid(fade_tweener):
+			fade_tweener.stop()
 		fade_tweener = get_tree().create_tween()
 		fade_tweener.tween_property(self, "modulate", Color.TRANSPARENT, 0.1)
-	else: 
+	else:
 		fade_timer -= delta
 
+	if OS.is_debug_build():
+		debug_menus()
 
 
 
@@ -59,3 +62,10 @@ func inspect_new_thrall(new_thrall : Actor):
 func focus():
 	player_socket = MgrPlayerSocket.get_player_one()
 	player_socket.cont_state = player_socket.ControlState.FULL
+
+
+## Opens debug menus, add them here
+## NOTE - F5, F7, F8 are the in editor shortcuts and WILL grab the event first
+func debug_menus():
+	if Input.is_key_label_pressed(KEY_F6):
+		open_submenu(load("res://prefabs/UI/menu_debug_dressup.tscn"))

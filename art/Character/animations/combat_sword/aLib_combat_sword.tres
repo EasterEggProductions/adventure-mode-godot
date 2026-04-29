@@ -34,10 +34,10 @@
 [ext_resource type="Animation" uid="uid://cyev484xggyy3" path="res://art/Character/animations/combat_sword/combat_block_shield_begin.tres" id="32_6w4xf"]
 [ext_resource type="Animation" uid="uid://cp3dmx8w0u8tr" path="res://art/Character/animations/combat_sword/combat_block_sword_begin.tres" id="33_h2gs7"]
 [ext_resource type="Animation" uid="uid://bgnsydaea824" path="res://art/Character/animations/combat_sword/combat_attack_power_01.tres" id="34_ct3hd"]
-[ext_resource type="Animation" uid="uid://baj5nunaoq8p4" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_01.tres" id="35_be6ol"]
-[ext_resource type="Animation" uid="uid://dpjnwoux34qw" path="res://art/Character/animations/combat_sword/combat_idle_sword_1h.tres" id="36_hhx8c"]
-[ext_resource type="Animation" uid="uid://cindt05ihwa3x" path="res://art/Character/animations/combat_sword/combat_idle_sword_2h.tres" id="37_88gcf"]
-[ext_resource type="Animation" uid="uid://dt5qw1fm85nfl" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_02.tres" id="38_hhx8c"]
+[ext_resource type="Animation" uid="uid://net4fcuulp1e" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_01.tres" id="35_be6ol"]
+[ext_resource type="Animation" uid="uid://cmavkp2up8teg" path="res://art/Character/animations/combat_sword/combat_idle_sword_1h.tres" id="36_hhx8c"]
+[ext_resource type="Animation" uid="uid://p1ius2wxkpjp" path="res://art/Character/animations/combat_sword/combat_idle_sword_2h.tres" id="37_88gcf"]
+[ext_resource type="Animation" uid="uid://bkakvkwpjrcnu" path="res://art/Character/animations/combat_sword/combat_attack_light_2h_02.tres" id="38_hhx8c"]
 
 [resource]
 _data = {

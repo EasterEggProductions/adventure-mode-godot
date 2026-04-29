@@ -11,10 +11,13 @@ var velocity = Vector3.ZERO
 
 var look_rotation_vel = Vector2.ZERO
 var camLookAccell = 3.14
+var camTimer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MgrPlayerSocket.get_player_one().ganty_thing = self
+	#this should keep mouse within boarders, need to capture escape button so user can interact with menu (to leave) 
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 #also changed _physics_process to process here for jitter fix
@@ -63,12 +66,22 @@ func player_look(delta):
 		#global_rotation_degrees.y = global_rotation_degrees.y #rotate_toward(original_rot_y, global_rotation_degrees.y, 50 * delta)
 		default_angle = -35
 	global_rotation_degrees.z = 0
-	global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * delta
+	#recentering here, add some timer so the rebound isn't immediate 
+	if disLook.length() != 0: #some kind of input 
+		camTimer = 12.0
+	else:
+		#subtraction should be proportional to framerate
+		#higher refresh rate would decrement the same as lower
+		camTimer -= delta
+	if camTimer <= 0:
+		global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * delta
 	
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		#mouse movement will always reset timer
+		camTimer = 12.0
 		var disLook =  event.relative * 0.01
 		look_rotation_vel = disLook * 0.1 * camLookAccell
 		var default_angle = -20
@@ -83,4 +96,11 @@ func _input(event):
 			#global_rotation_degrees.y = global_rotation_degrees.y #rotate_toward(original_rot_y, global_rotation_degrees.y, 50 * delta)
 			default_angle = -35
 		global_rotation_degrees.z = 0
-		global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * 0.1
+		#global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * 0.1
+	#KEY_ESCAPE cant persist because user moves mouse in pause menu
+	#need a global to block MOUSE_MODE_CAPTURED
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#for some reason this is true regardless:

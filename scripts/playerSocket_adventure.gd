@@ -39,10 +39,7 @@ var cont_state = ControlState.FULL
 
 # acreas and interactable things
 
-func _ready():
-	dobox(Vector3i(2,3,5))
-	pass # Replace with function body.
-	
+func _ready():	
 	dot = target_locker.instantiate()
 	get_tree().root.add_child.call_deferred(dot)
 	dot.name = "~dot~"
@@ -190,6 +187,8 @@ func _collect_inputs(delta):
 	# SECTION - Camera and lock on stuff
 	if Input.is_action_just_pressed(player_prefix + "look_lock"):
 		var potential_enemies = get_tree().get_nodes_in_group("enemies")
+		if MgrPlayerSocket.player_type == "enemy":
+			potential_enemies = get_tree().get_nodes_in_group("allies")
 		enemies.clear()
 		for enemy in potential_enemies:
 			if enemy is Actor:
@@ -274,16 +273,6 @@ func find_interactable_objects():
 			else:
 				action_prompt.hide_prompt()
 	return
-
-
-
-
-func dobox(box : Vector3i):
-	for x in range(box.x):
-		for y in range(box.y):
-			for z in range(box.z):
-				print("pos:(", x, ",", y, ",", z, ")")
-
 
 func enthrall_new_thrall(new_thrall : Actor):
 	thrall = new_thrall

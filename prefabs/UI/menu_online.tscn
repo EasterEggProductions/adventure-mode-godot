@@ -85,6 +85,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "resyoom :)"
 
+[node name="HSeparator" type="HSeparator" parent="buttons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="buttons"]
+layout_mode = 2
+text = "Debug"
+horizontal_alignment = 1
+
+[node name="deb_join" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Join Local"
+
+[node name="deb_invade" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = " Invade Local"
+text_overrun_behavior = 1
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -140,15 +159,6 @@ selection_enabled = true
 layout_mode = 2
 text = "Copy"
 
-[node name="invasion2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1443.0
-offset_top = 256.0
-offset_right = 1754.0
-offset_bottom = 314.0
-theme_override_font_sizes/font_size = 36
-text = "DEBUG: Join Local"
-
 [node name="JC Input" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -173,5 +183,6 @@ max_length = 8
 
 [connection signal="pressed" from="buttons/host" to="ui_networking" method="_button_host"]
 [connection signal="pressed" from="buttons/join friend" to="ui_networking" method="_button_connect"]
+[connection signal="pressed" from="buttons/deb_join" to="ui_networking" method="_on_join_local_button_pressed"]
+[connection signal="pressed" from="buttons/deb_invade" to="ui_networking" method="_on_invade_local_button_pressed"]
 [connection signal="pressed" from="Control2/clipboard button" to="ui_networking" method="_on_clipboard_button_pressed"]
-[connection signal="pressed" from="invasion2" to="ui_networking" method="_on_join_local_button_pressed"]

@@ -51,12 +51,12 @@ func _physics_process(delta: float) -> void:
 		if last_jump_distance > max_jump_distance:
 			max_jump_distance = last_jump_distance
 		
-		print(
-			"Height: ", last_jump_height,
-			" (max ", max_jump_height, ") | ",
-			"Dist: ", last_jump_distance,
-			" (max ", max_jump_distance, ")"
-		)
+		#print(
+			#"Height: ", last_jump_height,
+			#" (max ", max_jump_height, ") | ",
+			#"Dist: ", last_jump_distance,
+			#" (max ", max_jump_distance, ")"
+		#)
 	
 	was_on_floor = on_floor
 

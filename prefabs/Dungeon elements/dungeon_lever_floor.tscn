@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b74jkadrhs24g"]
 
 [ext_resource type="PackedScene" uid="uid://dxcewduogisbq" path="res://art/meshes/dungeon_lever_floor.glb" id="1_axs6d"]
-[ext_resource type="Script" uid="uid://ctmpp0b27nxtd" path="res://scripts/DungeonTools/animation_interaction.gd" id="2_ct0ig"]
+[ext_resource type="Script" uid="uid://ctmpp0b27nxtd" path="res://scripts/DungeonTools/lever.gd" id="2_ct0ig"]
 [ext_resource type="Texture2D" uid="uid://bbhniccii5fd5" path="res://art/textures/floor_lever_albedo.png" id="3_ct0ig"]
 [ext_resource type="Script" uid="uid://glp0whcgq1uy" path="res://scripts/ActionArea.gd" id="4_xyw66"]
 
@@ -33,4 +33,5 @@ shape = SubResource("SphereShape3D_av7dv")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 volume_db = -5.0
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="do_action" from="Area3D" to="." method="_on_do_action"]

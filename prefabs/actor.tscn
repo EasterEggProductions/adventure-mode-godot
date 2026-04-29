@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="2_y0m84"]
 [ext_resource type="Script" uid="uid://75g460r007m4" path="res://Modular Mobility/MovementPackage.gd" id="3_kd8s6"]
 [ext_resource type="Resource" uid="uid://dijgug6xnkk83" path="res://Modular Mobility/movesets/mvpk_swim.tres" id="5_1114p"]
+[ext_resource type="Resource" uid="uid://bofc8snsk08ol" path="res://Modular Mobility/movesets/mvpk_glide.tres" id="6_eg6sy"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_5gopm"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
@@ -177,7 +178,7 @@ properties/4/replication_mode = 1
 transform = Transform3D(0.999896, 0.00712085, -0.0125515, -0.0072158, 0.999946, -0.00753587, 0.0124971, 0.00762566, 0.999893, 0, 0, 0)
 script = ExtResource("1_u4ehk")
 character = ExtResource("2_y0m84")
-movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("5_1114p")])
+movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("5_1114p"), ExtResource("6_eg6sy")])
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 
 [node name="travel_shape" type="CollisionShape3D" parent="."]

@@ -41,6 +41,8 @@ var aset_JUMP = []
 @export var movement_sets : Array[MovementPackage] # NOTE - walk_root.tres needs to be put on the child AnimationTree, otherwise there are weird control errors.
 var current_moveset = 0
 
+var wind_columns_inside: Array[WindColumn3D] = []
+
 var combat_mode = false
 var combat_relax_timer = 0
 

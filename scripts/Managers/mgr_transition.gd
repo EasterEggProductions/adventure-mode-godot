@@ -36,7 +36,7 @@ func change_scene_to_pack(target: PackedScene):
 	$AnimationPlayer.play_backwards("transition")
 	#MgrPlayerSocket.spawn_player()
 	await $AnimationPlayer.animation_finished
-	if target_spawn_point != "":
+	if target_spawn_point != "" and get_tree().current_scene.has_method("level_start"):
 		get_tree().current_scene.level_start()
 
 

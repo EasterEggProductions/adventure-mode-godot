@@ -146,7 +146,6 @@ animation = &"jumps_and_falling/jump_standing"
 animation = &"walk_jog_run/land"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_upayn"]
-xfade_time = 1.0
 advance_mode = 2
 
 [sub_resource type="Curve" id="Curve_nosnc"]
@@ -279,4 +278,4 @@ states/walk_jog_run_jump_standing/position = Vector2(382, 276)
 states/walk_jog_run_land/node = SubResource("AnimationNodeAnimation_k7gio")
 states/walk_jog_run_land/position = Vector2(696, 329)
 transitions = ["Start", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_upayn"), "walk_jog_run_idle", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_6iyk2"), "MV blendtree", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_6n3ai"), "walk_jog_run_idle", "aLib_actions_item_eat", SubResource("AnimationNodeStateMachineTransition_1ahjd"), "aLib_actions_item_eat", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_x2yb8"), "walk_jog_run_idle", "aLib_actions_item_crush", SubResource("AnimationNodeStateMachineTransition_2650j"), "aLib_actions_item_crush", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_urvxg"), "MV blendtree", "Sprint blendtree", SubResource("AnimationNodeStateMachineTransition_471fs"), "Sprint blendtree", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_75a3i"), "walk_jog_run_idle", "sit down", SubResource("AnimationNodeStateMachineTransition_2vgh4"), "sit down", "sit_lounge_tscn", SubResource("AnimationNodeStateMachineTransition_b0hsq"), "sit_lounge_tscn", "stand up", SubResource("AnimationNodeStateMachineTransition_a3362"), "stand up", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_edqvn"), "walk_jog_run_idle", "walk_jog_run_jump_standing", SubResource("AnimationNodeStateMachineTransition_k3l40"), "walk_jog_run_jump_standing", "MOVE", SubResource("AnimationNodeStateMachineTransition_ra883"), "walk_jog_run_idle", "MOVE", SubResource("AnimationNodeStateMachineTransition_cb13g"), "MOVE", "walk_jog_run_land", SubResource("AnimationNodeStateMachineTransition_0tvft"), "walk_jog_run_land", "walk_jog_run_idle", SubResource("AnimationNodeStateMachineTransition_o12w4"), "MV blendtree", "MOVE", SubResource("AnimationNodeStateMachineTransition_nosnc"), "MV blendtree", "walk_jog_run_jump_standing", SubResource("AnimationNodeStateMachineTransition_k4lno"), "Sprint blendtree", "MOVE", SubResource("AnimationNodeStateMachineTransition_6nkpm"), "Sprint blendtree", "walk_jog_run_jump_standing", SubResource("AnimationNodeStateMachineTransition_cwjg4")]
-graph_offset = Vector2(-7, 112)
+graph_offset = Vector2(-296, -30)

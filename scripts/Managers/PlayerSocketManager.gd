@@ -8,7 +8,7 @@ var player_outfit : PackedStringArray
 
 var player_type = "main" #just using strings for debug at this moment, main, ally, enemy are all for now
 
-var actor_prefab_path = "prefabs/actor.tscn" #res:// omitted for ResourceLoader
+var actor_prefab = preload("res://prefabs/actor.tscn")
 
 # here temporarily
 var ally_material : Material = preload("res://art/materials/cooperator.tres")
@@ -17,7 +17,6 @@ var enemy_material : Material = preload("res://art/materials/invader.tres")
 
 func _ready() -> void:
 	add_player_socket("p1_")
-	ResourceLoader.load_threaded_request(actor_prefab_path)
 
 func add_player_socket(prefix : String):
 	var player = PlayerSocket.new()
@@ -31,6 +30,6 @@ func get_player_one() -> PlayerSocket:
 	return playerSockets[0]
 
 func spawn_player() -> Actor:
-	var new_player : Actor = ResourceLoader.load_threaded_get(actor_prefab_path).instantiate() 
+	var new_player : Actor = actor_prefab.instantiate() 
 	new_player.add_to_group("Players")
 	return new_player

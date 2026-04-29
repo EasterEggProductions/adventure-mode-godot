@@ -12,7 +12,7 @@
 [ext_resource type="Animation" uid="uid://d3bsi2ks25nmn" path="res://art/Character/animations/walk_jog_run/idle.tres" id="10_fo0e3"]
 [ext_resource type="Animation" uid="uid://xdlgc2jbpk30" path="res://art/Character/animations/turns/turn_left_45s.tres" id="11_wpniw"]
 [ext_resource type="Animation" uid="uid://dvw0x71jfthxb" path="res://art/Character/animations/turns/turn_right_45s.tres" id="12_8b5m3"]
-[ext_resource type="Animation" uid="uid://cvur1ubl4agxd" path="res://art/Character/animations/walk_jog_run/run_fwd_left.tres" id="13_edsst"]
+[ext_resource type="Animation" uid="uid://dxl00lsu381jp" path="res://art/Character/animations/walk_jog_run/run_fwd_left.tres" id="13_edsst"]
 
 [resource]
 _data = {

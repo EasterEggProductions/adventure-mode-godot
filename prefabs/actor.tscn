@@ -1027,7 +1027,7 @@ size = Vector3(1.5, 0.1, 1.5)
 texture_albedo = SubResource("GradientTexture2D_cqh8r")
 
 [node name="water_cast" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 4.36557e-11, -9.31323e-10, -4.65661e-10, 1, 0, 9.31323e-10, 4.65661e-10, 1, -0.00052166, 1.74917, -0.0417378)
+transform = Transform3D(1, 1.0186341e-10, -9.313226e-09, -4.5911293e-09, 1, 0, 9.313226e-09, 4.656613e-09, 1, 0.0031448272, 1.2410786, -0.037908666)
 shape = SubResource("SphereShape3D_kyuof")
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true

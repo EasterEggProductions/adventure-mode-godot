@@ -31,7 +31,13 @@ surface_material_override/1 = ExtResource("4_mwoia")
 [node name="tree_top" parent="." index="2"]
 surface_material_override/0 = ExtResource("4_mwoia")
 
-[node name="blob_shadow" type="Decal" parent="." index="3"]
+[node name="tree_shade" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0786166, 0)
+light_negative = true
+omni_range = 15.0
+omni_attenuation = 10.0
+
+[node name="blob_shadow" type="Decal" parent="." index="4"]
 transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999997, 0, 0, 0)
 size = Vector3(6, 1, 6)
 texture_albedo = SubResource("GradientTexture2D_h3v18")

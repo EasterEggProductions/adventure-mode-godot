@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://dxl00lsu381jp"]
+[gd_resource type="Animation" format=3 uid="uid://dxl00lsu381jp"]
 
 [resource]
 resource_name = "run_fwd_left"

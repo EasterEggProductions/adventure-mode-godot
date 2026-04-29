@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://slg61ptlhcqg"]
+[gd_resource type="Animation" format=3 uid="uid://slg61ptlhcqg"]
 
 [resource]
 resource_name = "combat_idle_greatsword_1h"

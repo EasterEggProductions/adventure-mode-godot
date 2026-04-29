@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=0 format=3 uid="uid://gwxoil7dqoxc"]
+[gd_resource type="Animation" format=3 uid="uid://gwxoil7dqoxc"]
 
 [resource]
 resource_name = "combat_strafe_fwd"

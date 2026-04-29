@@ -91,6 +91,20 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 4
 
+[node name="Inv_tool_tip" type="RichTextLabel" parent="InventoryContainerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.771
+anchor_right = 0.335
+anchor_bottom = 0.771
+offset_left = -173.255
+offset_top = 84.91098
+offset_right = 355.745
+offset_bottom = 137.91098
+text = "(A) / [Space] : Drop Item
+ D-Pad / Arrow Keys: Select Item"
+
 [node name="ui_inventory_control" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
 script = ExtResource("3_wuk5u")
 inspectingChar = ExtResource("4_pv2t1")
@@ -149,17 +163,3 @@ anchor_bottom = 0.106000006
 offset_top = -0.07000351
 offset_right = 323.0
 offset_bottom = 322.93
-
-[node name="Inv_tool_tip" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.335
-anchor_top = 0.771
-anchor_right = 0.335
-anchor_bottom = 0.771
-offset_left = 0.7999878
-offset_top = 0.3199463
-offset_right = 529.8
-offset_bottom = 53.319946
-text = "(A) / [Space] : Drop Item
- D-Pad / Arrow Keys: Select Item"

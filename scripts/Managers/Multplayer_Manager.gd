@@ -278,7 +278,7 @@ func _on_server_disconnected():
 	MgrTransition.msg_small("Connection to this world lost, returning home...", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
 	MgrTransition.target_spawn_point = ''
-	MgrPlayerSocket.player_type = "main"
+	MgrPlayerSocket.player_type = "main" # reset player type for their home
 	MgrTransition.change_scene_to_pack(preload("res://scenes/title_scene.tscn")) 
 	# did not want to use level_transition, to let it grow to have other functionality
 

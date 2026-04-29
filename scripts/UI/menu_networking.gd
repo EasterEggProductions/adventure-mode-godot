@@ -17,6 +17,7 @@ func _button_host():
 
 
 func _button_connect():
+	MgrPlayerSocket.player_type = "ally" # set to coop type
 	MgrMultiplayer.apply_join_code(jc_input.text)
 
 func _button_connect_invade():

@@ -41,6 +41,6 @@ func move_camera_vertical(delta):
 
 func zoom_camera(zoom_input):
 	var n_fov = clamp(fov - (zoom_input * zoom_speed), 10, 70)
-	print(n_fov)
+	#print(n_fov)
 	fov = n_fov
 #	global_transform.origin.z = clamp(current_camera_height - zoom_input * zoom_speed, camera_height_bounds.x, camera_height_bounds.y)

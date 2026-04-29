@@ -29,7 +29,7 @@ func change_scene_to_pack(target: PackedScene):
 	get_tree().change_scene_to_packed(target)
 	#MgrMultiplayerS.map_loadUpdate("ready", current_load_target)
 	#await MgrMultiplayerS.party_ready
-	print("resume")
+	#print("resume")
 	transitioning = false
 	get_tree().paused = false
 	current_level = target

@@ -557,10 +557,10 @@ func multiplayer_despawn():
 ## Plays spawning animation and makes node visible
 ## Player calls it I guess
 func multiplayer_spawn():
-	print("Spawn point: " + MgrTransition.target_spawn_point)
-	print("Spawn logic: " + str(get_tree().current_scene))
+	#print("Spawn point: " + MgrTransition.target_spawn_point)
+	#print("Spawn logic: " + str(get_tree().current_scene))
 	var spawnpoint : Spawnpoint3D = (get_tree().current_scene as Level).find_child(MgrTransition.target_spawn_point)
-	print("Spawn subtp: " + str(spawnpoint.subtype))
+	#print("Spawn subtp: " + str(spawnpoint.subtype))
 	rpc_mp_spawn.rpc(MgrPlayerSocket.player_type, spawnpoint.subtype) 
 
 @rpc("call_local")

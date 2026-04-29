@@ -18,7 +18,6 @@ func _ready() -> void:
 
 
 func boop():
-	print("Button Boop!")
 	if quit:
 		get_tree().quit()
 	elif spawn == "":

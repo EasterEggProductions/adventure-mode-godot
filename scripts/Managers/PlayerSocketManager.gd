@@ -30,6 +30,8 @@ func get_player_one() -> PlayerSocket:
 	return playerSockets[0]
 
 func spawn_player() -> Actor:
+	#print("A player actor was requested for " + str(multiplayer.get_unique_id()))
+	#print_stack()
 	var new_player : Actor = actor_prefab.instantiate() 
 	new_player.add_to_group("Players")
 	return new_player

@@ -32,6 +32,6 @@ func reset():
 	reset_sfx.play()
 
 func get_back_up():
-	print("Get back up")
+	#print("Get back up")
 	player_socket.cont_state = player_socket.ControlState.FULL
 	player_socket = null

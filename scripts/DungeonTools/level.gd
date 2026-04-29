@@ -113,7 +113,7 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 		
 	# if this dungeon object changes the state of some other object in another scene, apply those
 	for conn: ObjectConnection in node.remote_connections:
-		print(conn.scene_path)
+		#print(conn.scene_path)
 		if multiplayer.is_server():
 			MgrDungeonState.server_update_state(
 				conn.get_scene_name(), conn.object_name, conn.affected_properties

@@ -27,11 +27,12 @@ script = ExtResource("1_6u6vu")
 close_button = NodePath("buttons/Button resume")
 focus_button = NodePath("buttons/host")
 
-[node name="ui_networking" type="Node" parent="." node_paths=PackedStringArray("debout", "join_code_out", "jc_input")]
+[node name="ui_networking" type="Node" parent="." node_paths=PackedStringArray("debout", "join_code_out_WAN", "join_code_out_LAN", "jc_input")]
 script = ExtResource("2_bgubu")
 debout = NodePath("../Control/RichTextLabel")
-join_code_out = NodePath("../Control2/Join Code")
-jc_input = NodePath("../JC Input/Join Code")
+join_code_out_WAN = NodePath("../Control2/Join Code WAN")
+join_code_out_LAN = NodePath("../Control3/Join Code LAN")
+jc_input = NodePath("../JC Input/Join Code input")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -140,6 +141,37 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -239.0
+offset_top = -134.0
+offset_right = 239.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(5.28, 0)
+alignment = 1
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 2
+text = "WAN: "
+
+[node name="Join Code WAN" type="RichTextLabel" parent="Control2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 2
+text = "What the fuck is going on"
+selection_enabled = true
+
+[node name="clipboard button" type="Button" parent="Control2"]
+layout_mode = 2
+text = "Copy"
+
+[node name="Control3" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -239.0
 offset_top = -77.0
 offset_right = 239.0
 offset_bottom = -37.0
@@ -148,14 +180,18 @@ grow_vertical = 0
 pivot_offset = Vector2(5.28, 0)
 alignment = 1
 
-[node name="Join Code" type="RichTextLabel" parent="Control2"]
+[node name="Label" type="Label" parent="Control3"]
+layout_mode = 2
+text = "LAN:"
+
+[node name="Join Code LAN" type="RichTextLabel" parent="Control3"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 2
 text = "What the fuck is going on"
 selection_enabled = true
 
-[node name="clipboard button" type="Button" parent="Control2"]
+[node name="clipboard button" type="Button" parent="Control3"]
 layout_mode = 2
 text = "Copy"
 
@@ -175,7 +211,7 @@ grow_vertical = 0
 pivot_offset = Vector2(5.28, 0)
 alignment = 1
 
-[node name="Join Code" type="LineEdit" parent="JC Input"]
+[node name="Join Code input" type="LineEdit" parent="JC Input"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 placeholder_text = "Join Code ex YCBN34"
@@ -187,3 +223,4 @@ max_length = 8
 [connection signal="pressed" from="buttons/deb_join" to="ui_networking" method="_on_join_local_button_pressed"]
 [connection signal="pressed" from="buttons/deb_invade" to="ui_networking" method="_on_invade_local_button_pressed"]
 [connection signal="pressed" from="Control2/clipboard button" to="ui_networking" method="_on_clipboard_button_pressed"]
+[connection signal="pressed" from="Control3/clipboard button" to="ui_networking" method="_on_clipboard_button_pressed_LAN"]

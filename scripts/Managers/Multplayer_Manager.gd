@@ -244,6 +244,13 @@ func get_join_code() -> String:
 	else:
 		return "generating join code..."
 
+func get_join_code_lan() -> String:
+	for ip in IP.get_local_addresses():
+		if "192." in ip or "10." in ip:
+			return JoinCode.ip_to_code(ip, PORT)
+	return "Join Code Failure"
+
+
 func apply_join_code(jc : String):
 	var dat = JoinCode.code_to_ip(jc)
 	SRV_IP = dat[0]

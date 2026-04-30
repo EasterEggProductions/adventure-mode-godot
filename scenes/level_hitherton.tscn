@@ -1,13 +1,9 @@
-[gd_scene load_steps=96 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=94 format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
-[ext_resource type="Script" uid="uid://75g460r007m4" path="res://Modular Mobility/MovementPackage.gd" id="8_bxehf"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="9_3i6og"]
-[ext_resource type="Resource" uid="uid://ba3i5roa0cxxe" path="res://Modular Mobility/movesets/mvpk_walk.tres" id="9_gmklc"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="10_jfgrq"]
-[ext_resource type="Resource" uid="uid://dijgug6xnkk83" path="res://Modular Mobility/movesets/mvpk_swim.tres" id="10_odvq8"]
-[ext_resource type="Resource" uid="uid://bofc8snsk08ol" path="res://Modular Mobility/movesets/mvpk_glide.tres" id="11_8vst7"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="11_442in"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="12_5uxwe"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="13_6ymps"]
@@ -29,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://bk681n8wa8oqp" path="res://art/audio/sfx/environment/SFX Running Water.ogg" id="23_rxmjl"]
 [ext_resource type="AudioStream" uid="uid://dh7xpqxpbunhw" path="res://art/audio/sfx/environment/SFX Calm Water.ogg" id="24_qqvql"]
 [ext_resource type="AudioStream" uid="uid://dahprtx5v3udn" path="res://art/audio/sfx/environment/SFX Waterfall.ogg" id="25_6v3hn"]
+[ext_resource type="PackedScene" uid="uid://c4ya5aclq0ke1" path="res://prefabs/creatures/slam_spore.tscn" id="26_gkbqt"]
 
 [sub_resource type="Gradient" id="Gradient_ltcmt"]
 offsets = PackedFloat32Array(0, 0.511848, 1)
@@ -759,7 +756,6 @@ spawn_path = NodePath("..")
 [node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 114.224045, -6.9936004, -46.085957)
 character = ExtResource("13_6ymps")
-movement_sets = Array[ExtResource("8_bxehf")]([ExtResource("9_gmklc"), ExtResource("10_odvq8"), ExtResource("11_8vst7")])
 to_equip_wep = ExtResource("14_xb4lh")
 
 [node name="ai_attack" type="Node" parent="skele_01"]
@@ -768,7 +764,6 @@ script = ExtResource("15_jiyip")
 [node name="skele_02" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(0.9798377, 0, 0.19979548, 0, 1, 0, -0.19979548, 0, 0.9798377, 116.667015, -6.9936004, -52.61131)
 character = ExtResource("13_6ymps")
-movement_sets = Array[ExtResource("8_bxehf")]([ExtResource("9_gmklc"), ExtResource("10_odvq8"), ExtResource("11_8vst7")])
 to_equip_wep = ExtResource("14_xb4lh")
 
 [node name="ai_attack" type="Node" parent="skele_02"]
@@ -1323,5 +1318,11 @@ shape = SubResource("BoxShape3D_nubfc")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="water"]
 transform = Transform3D(0.9919785, 0, 0.12640667, 0, 1, 0, -0.12640667, 0, 0.9919785, 97.274, -2.21, 16.996)
 shape = SubResource("BoxShape3D_nubfc")
+
+[node name="shield_shroom" parent="." groups=["enemies"] instance=ExtResource("21_nubfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3450832, -0.027355254, 14.456949)
+
+[node name="slam_spore" parent="." instance=ExtResource("26_gkbqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.459774, 0.3889203, 35.178223)
 
 [connection signal="body_entered" from="hitherton_terrain/Door of Trials/Area3D" to="hitherton_terrain/Door of Trials" method="trigger_animation"]

@@ -175,21 +175,22 @@ viewport_path = NodePath("SubViewport")
 character = SubResource("Resource_cx7ke")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/rotation = Quaternion(4.3178388e-17, -5.8619642e-09, -0.03814797, 0.9992721)
-bones/2/rotation = Quaternion(1.7371322e-16, 1.7572638e-08, 0.114356965, 0.9934398)
-bones/3/rotation = Quaternion(4.774262e-16, -5.8619656e-09, -0.03814798, 0.9992721)
-bones/4/rotation = Quaternion(3.857681e-16, -5.861964e-09, -0.03814798, 0.9992721)
-bones/5/rotation = Quaternion(3.4561906e-16, -5.8619647e-09, -0.03814797, 0.9992721)
-bones/6/rotation = Quaternion(2.3691572e-16, -5.861964e-09, -0.03814798, 0.9992721)
+bones/1/rotation = Quaternion(0, 5.8621534e-09, 0.037298877, 0.9993042)
+bones/2/rotation = Quaternion(1.1172421e-16, -1.7577703e-08, -0.11184013, 0.99372625)
+bones/3/rotation = Quaternion(3.784348e-16, 5.8621548e-09, 0.037298884, 0.9993042)
+bones/4/rotation = Quaternion(3.2635592e-16, 5.862153e-09, 0.037298884, 0.9993042)
+bones/5/rotation = Quaternion(3.0552425e-16, 5.8621534e-09, 0.037298873, 0.9993042)
+bones/6/rotation = Quaternion(2.9163577e-16, 5.8621534e-09, 0.037298873, 0.9993042)
 bones/7/rotation = Quaternion(0, -2.0816682e-17, 0, 1)
 
 [node name="slam_spore" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_n2h4u")
 
 [node name="hurt_boxes" type="Node3D" parent="Armature/Skeleton3D" index="1"]
+visible = false
 
 [node name="hb_0" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="0"]
-transform = Transform3D(0.99708945, 0.076240405, -1.1715395e-08, -0.076240405, 0.99708945, 4.47244e-10, 1.1715395e-08, 4.4724416e-10, 1, 0, 0, 0)
+transform = Transform3D(0.9972176, -0.074545845, 1.1716149e-08, 0.074545845, 0.9972176, 4.3730347e-10, -1.1716149e-08, 4.3730347e-10, 1, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 1
 use_external_skeleton = true
@@ -208,7 +209,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_1" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="1"]
-transform = Transform3D(0.98833334, -0.15230584, 2.3404114e-08, 0.15230584, 0.98833334, 1.7927408e-09, -2.3404116e-08, 1.7927579e-09, 1, 0.057180304, 0.7478171, 3.3543313e-10)
+transform = Transform3D(0.9888406, 0.14897749, -2.3414593e-08, -0.14897749, 0.9888406, 1.7539004e-09, 2.3414591e-08, 1.7539192e-09, 1, -0.055909384, 0.7479132, 3.279776e-10)
 bone_name = "Bone.002"
 bone_idx = 2
 use_external_skeleton = true
@@ -227,7 +228,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_2" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="2"]
-transform = Transform3D(0.99706864, -0.0765116, 1.1757278e-08, 0.0765116, 0.99706864, 4.504429e-10, -1.1757279e-08, 4.5044554e-10, 1, 6.561354e-05, 1.118442, 1.0077174e-09)
+transform = Transform3D(0.9971949, 0.074848995, -1.1764039e-08, -0.074848995, 0.9971949, 4.4088044e-10, 1.1764037e-08, 4.4088266e-10, 1, -4.2825937e-05, 1.1187284, 9.856973e-10)
 bone_name = "Bone.004"
 bone_idx = 3
 use_external_skeleton = true
@@ -246,7 +247,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_3" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="3"]
-transform = Transform3D(0.9999999, -0.000271976, 4.20064e-11, 0.000271976, 0.9999999, 1.1685097e-14, -4.20064e-11, -4.440892e-16, 1, -0.028626237, 1.4923428, 1.1766345e-09)
+transform = Transform3D(1, 0.0003039837, -4.8023807e-11, -0.0003039837, 1, 1.4710455e-14, 4.802292e-11, -8.326673e-17, 1, 0.028025547, 1.4926765, 1.1510283e-09)
 bone_name = "Bone.001"
 bone_idx = 4
 use_external_skeleton = true
@@ -265,7 +266,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_4" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="4"]
-transform = Transform3D(0.99711007, 0.07596921, -1.1673509e-08, -0.07596921, 0.99711007, 4.4406875e-10, 1.1673512e-08, 4.440418e-10, 1, -0.028728228, 1.8673427, 1.1766343e-09)
+transform = Transform3D(0.99724025, -0.0742427, 1.1668258e-08, 0.0742427, 0.99724025, 4.3375603e-10, -1.1668259e-08, 4.3372406e-10, 1, 0.02813954, 1.8676765, 1.1510283e-09)
 bone_name = "Bone.005"
 bone_idx = 5
 use_external_skeleton = true
@@ -284,7 +285,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_5" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="5"]
-transform = Transform3D(0.988416, 0.1517682, -2.3321071e-08, -0.1517682, 0.988416, 1.7800292e-09, 2.3321075e-08, 1.7799874e-09, 1, -0.00023977458, 2.241259, 1.34315e-09)
+transform = Transform3D(0.98893106, -0.14837624, 2.3319608e-08, 0.14837624, 0.98893106, 1.7396906e-09, -2.3319611e-08, 1.7396415e-09, 1, 0.000298528, 2.2416415, 1.3136748e-09)
 bone_name = "Bone.003"
 bone_idx = 6
 use_external_skeleton = true
@@ -303,7 +304,7 @@ shape = SubResource("CapsuleShape3D_0pses")
 mesh = SubResource("CapsuleMesh_cx7ke")
 
 [node name="hb_6" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="6"]
-transform = Transform3D(0.988416, 0.1517682, -2.3321071e-08, -0.1517682, 0.988416, 1.7800292e-09, 2.3321075e-08, 1.7799874e-09, 1, 0.056673296, 2.611915, 2.0106454e-09)
+transform = Transform3D(0.98893106, -0.14837624, 2.3319608e-08, 0.14837624, 0.98893106, 1.7396906e-09, -2.3319611e-08, 1.7396415e-09, 1, -0.055342562, 2.6124907, 1.9660404e-09)
 bone_name = "Bone.006"
 bone_idx = 7
 use_external_skeleton = true

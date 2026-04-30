@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://halxbe2ym648"]
+
+[ext_resource type="Script" uid="uid://bvcuam380q3y3" path="res://prefabs/environment/wind_column.gd" id="1_nvucu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u511p"]
+height = 6.5019836
+radius = 2.3266602
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nipfs"]
+emission_shape_offset = Vector3(0, 0.43, 0)
+emission_shape_scale = Vector3(1.5, 0.075, 1.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.03
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nipfs"]
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_byb5r"]
+lightmap_size_hint = Vector2i(2, 2)
+material = SubResource("StandardMaterial3D_nipfs")
+size = Vector2(0.03, 0.15)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_xwx8h"]
+offsets = PackedFloat32Array(0, 0.48175183, 1)
+colors = PackedColorArray(1, 0.78758, 0.31268167, 1, 0.5769595, 0.4473257, 3.85046e-07, 1, 1, 0.78758, 0.31268167, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qfg3v"]
+seed = 4700
+frequency = 0.0693
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fojmm"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_qfg3v")
+color_ramp = SubResource("Gradient_xwx8h")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_gv0wx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xa4ba"]
+gradient = SubResource("Gradient_gv0wx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6758"]
+albedo_texture = SubResource("NoiseTexture2D_fojmm")
+metallic_specular = 0.0
+detail_enabled = true
+detail_mask = SubResource("GradientTexture1D_xa4ba")
+detail_blend_mode = 3
+detail_uv_layer = 1
+detail_albedo = SubResource("NoiseTexture2D_fojmm")
+uv1_scale = Vector3(0.58, 0.58, 0.58)
+uv2_scale = Vector3(9, 9, 9)
+
+[node name="wind_column" type="Node3D"]
+script = ExtResource("1_nvucu")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1409802, 0)
+shape = SubResource("CylinderShape3D_u511p")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_nipfs")
+draw_pass_1 = SubResource("PlaneMesh_byb5r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037966132, 0)
+radius = 1.8583984
+height = 0.35461426
+material = SubResource("StandardMaterial3D_i6758")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196782, 0)
+radius = 1.7358398
+height = 0.13824463
+material = SubResource("StandardMaterial3D_i6758")

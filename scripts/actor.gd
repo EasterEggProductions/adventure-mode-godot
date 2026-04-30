@@ -470,7 +470,9 @@ func _action_q_net(act : String, _remaining_duration : int):
 #		 Additionally, lock_targ_pos was added in as a HACK
 func anim_track_look():
 	if lock_targ_pos != Vector3.ZERO:
-		look_at(global_position + (global_position - lock_targ_pos))
+		var evened_look_pos = lock_targ_pos
+		evened_look_pos.y = global_position.y
+		look_at(global_position + (global_position - evened_look_pos))
 	elif desired_move.length_squared() > 0.05:# != Vector3.ZERO:
 		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))

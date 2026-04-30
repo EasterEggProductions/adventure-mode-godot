@@ -6,11 +6,14 @@ class_name WindColumn3D
 @export var enabled: bool = false
 
 @onready var _wind_area = $Area3D
+@onready var _particles = $GPUParticles3D
 
 func _ready():
 	_wind_area.body_entered.connect(_on_body_entered)
 	_wind_area.body_exited.connect(_on_body_exited)
 	_wind_area.tree_exiting.connect(_on_tree_exiting)
+	if enabled:
+		_particles.emitting = true
 
 func _on_body_entered(body: Node3D):
 	if body is Actor and enabled:
@@ -30,3 +33,5 @@ func serialize() -> Dictionary:
 	
 func deserialize(state: Dictionary) -> void:
 	self.enabled = state["enabled"]
+	if enabled:
+		_particles.emitting = true

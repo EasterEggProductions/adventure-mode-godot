@@ -1,0 +1,175 @@
+[gd_scene load_steps=27 format=3 uid="uid://duhlcd52l4ace"]
+
+[ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_tnvqn"]
+[ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_c4y71"]
+[ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="3_dx2sf"]
+[ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="4_3cjyw"]
+[ext_resource type="Material" uid="uid://dplp5hej1ntqd" path="res://scenes/2025 capstone demos/spring_dungeon/dungeon_walls.tres" id="5_bovvm"]
+[ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="6_o34hs"]
+[ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="7_dx2sf"]
+[ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="8_3cjyw"]
+[ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="9_3cjyw"]
+[ext_resource type="Script" uid="uid://cd2gtneoj43ul" path="res://scripts/DungeonTools/object_connection.gd" id="10_o34hs"]
+[ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="11_mp2rj"]
+[ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="12_g4ogd"]
+[ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="13_bovvm"]
+[ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="14_bdewb"]
+[ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="15_7e137"]
+
+[sub_resource type="Gradient" id="Gradient_m3ovi"]
+offsets = PackedFloat32Array(0, 0.50364965, 0.5839416, 1)
+colors = PackedColorArray(0.235783, 0.47, 0.1645, 1, 0.08858325, 0.06117814, 9.024516e-09, 1, 0.07450981, 0.14901961, 0.07450981, 1, 0.43529412, 0.61960787, 0.02745098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nufo7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ad83"]
+noise = SubResource("FastNoiseLite_nufo7")
+color_ramp = SubResource("Gradient_m3ovi")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o34hs"]
+albedo_texture = SubResource("NoiseTexture2D_2ad83")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.149, 0.149, 0.149)
+uv1_triplanar = true
+
+[sub_resource type="Resource" id="Resource_mp2rj"]
+script = ExtResource("10_o34hs")
+scene_path = "uid://i0ymtqk4fyg4"
+affected_properties = Dictionary[String, Variant]({
+"enabled": true
+})
+object_name = "wind_column"
+metadata/_custom_type_script = "uid://cd2gtneoj43ul"
+
+[sub_resource type="Gradient" id="Gradient_mp2rj"]
+colors = PackedColorArray(0, 0, 0.44705883, 1, 0.051970966, 0.05197096, 0.05197095, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4bus"]
+gradient = SubResource("Gradient_mp2rj")
+fill_from = Vector2(1, 0.5105105)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_mr4er"]
+turbidity = 30.0
+sun_disk_scale = 0.0
+night_sky = SubResource("GradientTexture2D_e4bus")
+
+[sub_resource type="Sky" id="Sky_n5duk"]
+sky_material = SubResource("PhysicalSkyMaterial_mr4er")
+
+[sub_resource type="Environment" id="Environment_8co0k"]
+background_mode = 2
+sky = SubResource("Sky_n5duk")
+ambient_light_source = 2
+ambient_light_color = Color(0.7815733, 0.8540362, 0.99999744, 1)
+ambient_light_sky_contribution = 0.2
+ambient_light_energy = 0.3
+fog_enabled = true
+fog_light_energy = 0.6
+fog_density = 0.012
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o34hs"]
+size = Vector3(6.412842, 2.8988037, 2.510498)
+
+[node name="PuzzleRoom1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
+script = ExtResource("1_tnvqn")
+dungeon_objects = NodePath("Dungeon Objects")
+
+[node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)
+script = ExtResource("2_c4y71")
+cam = NodePath("../Camera")
+freeze = true
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.550423, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.83488595, -0.16637634, 0.52467555, 26.3394, 5.13614, 19.3451)
+script = ExtResource("3_dx2sf")
+distance = 2.5
+freeze = true
+
+[node name="play_ui" parent="." instance=ExtResource("4_3cjyw")]
+
+[node name="Level geometry" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4123297, 0)
+use_collision = true
+flip_faces = true
+radius = 11.771973
+height = 6.947838
+material = ExtResource("5_bovvm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level geometry/CSGCylinder3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.36532903, -1.9298697, 14.813814)
+flip_faces = true
+size = Vector3(7.464512, 3.155, 2.455)
+material = ExtResource("5_bovvm")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level geometry/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0334797, 0)
+use_collision = true
+flip_faces = true
+radius = 8.84668
+height = 1.545896
+material = ExtResource("5_bovvm")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13122249, -7.6941395)
+use_collision = true
+radius = 4.4975586
+height = 0.4987793
+material = SubResource("StandardMaterial3D_o34hs")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level geometry/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12562573, 0)
+radius = 4.338379
+height = 0.4987793
+material = SubResource("StandardMaterial3D_o34hs")
+
+[node name="Dungeon Objects" type="Node3D" parent="."]
+
+[node name="dungeon_lever_floor" parent="Dungeon Objects" instance=ExtResource("9_3cjyw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.04061985, 0.34448904, -7.283773)
+enable_remote_state_changes = true
+remote_connections = Array[ExtResource("10_o34hs")]([SubResource("Resource_mp2rj")])
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
+spawn_path = NodePath("..")
+
+[node name="DayNightCycle" parent="." instance=ExtResource("6_o34hs")]
+environment = SubResource("Environment_8co0k")
+time_of_day = 0.529
+
+[node name="exit_main_room" type="Area3D" parent="."]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48182964, 0.92363024, 11.981589)
+script = ExtResource("7_dx2sf")
+scene_to_go_to = "uid://i0ymtqk4fyg4"
+spawn_point = "spawn_door1"
+metadata/_custom_type_script = "uid://c372qrudhege5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="exit_main_room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7063856, 0.7218628, 0.018676417)
+shape = SubResource("BoxShape3D_o34hs")
+
+[node name="Spawnpoint3D" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 10.481943)
+script = ExtResource("8_3cjyw")
+subtype = 2
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
+
+[node name="Torch" parent="." instance=ExtResource("11_mp2rj")]
+transform = Transform3D(0.9688344, 0.24770927, 0, -0.23717187, 0.9276208, -0.28856394, -0.07147996, 0.27957067, 0.95746064, 2.823616, 0.36003494, -4.8405743)
+
+[node name="Torch2" parent="." instance=ExtResource("11_mp2rj")]
+transform = Transform3D(0.9690157, -0.24699901, 0, 0.23645698, 0.92765766, -0.28903177, 0.07139056, 0.28007632, 0.9573195, -2.824, 0.36, -4.841)
+
+[node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("12_g4ogd")]
+transform = Transform3D(0.9998526, 0, -0.0171732, 0, 1, 0, 0.0171732, 0, 0.9998526, 0.23945189, 0.20753077, -0.5962677)
+character = ExtResource("13_bovvm")
+to_equip_wep = ExtResource("14_bdewb")
+
+[node name="ai_attack" type="Node" parent="skele_01"]
+script = ExtResource("15_7e137")
+
+[connection signal="body_entered" from="exit_main_room" to="exit_main_room" method="_start_level_transition"]

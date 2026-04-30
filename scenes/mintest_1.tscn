@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="10_m0f1x"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="11_d6byw"]
 [ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="11_p4uty"]
-[ext_resource type="Script" uid="uid://cd2gtneoj43ul" path="res://scripts/DungeonTools/object_connection.gd" id="11_r4uwo"]
+[ext_resource type="Script" path="res://scripts/DungeonTools/object_connection.gd" id="11_r4uwo"]
 [ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="13_qufpn"]
 [ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="14_m0f1x"]
 [ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="17_qufpn"]
@@ -43,7 +43,7 @@ object_name = "wind_column"
 metadata/_custom_type_script = "uid://cd2gtneoj43ul"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ele46"]
-size = Vector3(1, 1, 3)
+size = Vector3(4, 1, 3)
 
 [node name="mintest_1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_ele46")
@@ -130,27 +130,27 @@ one_shot = true
 remote_connections = Array[ExtResource("11_r4uwo")]([SubResource("Resource_r4uwo"), SubResource("Resource_xn7in")])
 
 [node name="DoorToNowhereAtAllYup" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
-transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, -0.11429658, 0.044694543)
+transform = Transform3D(0.033975095, 0, -0.99942267, 0, 1, 0, 0.99942267, 0, 0.033975095, 9.1301365, 6.8857036, 0.044694543)
 
 [node name="DungeonDoor" parent="Dungeon Objects" instance=ExtResource("9_ld3tc")]
-transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -0.99994093, -0.14927983, -0.082744986, 8.974243)
+transform = Transform3D(-0.99994093, 0, -0.010873258, 0, 1, 0, 0.010873258, 0, -0.99994093, -0.14927983, 6.917255, 8.974243)
 
 [node name="dungeon_lever_floor" parent="Dungeon Objects" instance=ExtResource("14_m0f1x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 3, -13)
 
 [node name="exit zone mintest_2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 0)
 script = ExtResource("7_dxgjy")
 scene_to_go_to = "uid://mmcbimeh6tmj"
 spawn_point = "spawn_2"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit zone mintest_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
 shape = SubResource("BoxShape3D_ele46")
 
 [node name="exit zone mintest_3" type="Area3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7484555e-07, 1, 12)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7484555e-07, 1, 13)
 script = ExtResource("7_dxgjy")
 scene_to_go_to = "res://scenes/mintest_3.tscn"
 spawn_point = "spawn_1"
@@ -195,6 +195,7 @@ _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
 [node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("9_lu6gv")]
+process_mode = 4
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 4.606803, 0.207531, 4.7386885)
 character = ExtResource("10_m0f1x")
 to_equip_wep = ExtResource("11_p4uty")

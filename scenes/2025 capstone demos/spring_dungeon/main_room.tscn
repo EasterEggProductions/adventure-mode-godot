@@ -375,15 +375,20 @@ transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4
 script = ExtResource("5_pg32f")
 subtype = 2
 
+[node name="spawn_backdoor" type="Node3D" parent="."]
+transform = Transform3D(1.3113416e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.3113416e-07, -13.5734215, 7.364629, 0.03982961)
+script = ExtResource("5_pg32f")
+subtype = 2
+
 [node name="exit_puzzleroom1" type="Area3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -8.086117, 1.0743349, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -14.086117, 1.0743349, 0)
 script = ExtResource("13_nipfs")
 scene_to_go_to = "uid://duhlcd52l4ace"
 spawn_point = "Spawnpoint3D"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit_puzzleroom1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7063856, 0.7218628, 0.018676417)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.2936144, 0.7218628, 0.018676415)
 shape = SubResource("BoxShape3D_5a4sn")
 
 [node name="exit_puzzleroom2" type="Area3D" parent="."]
@@ -398,14 +403,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7063856, 0.7218628, 0.0186
 shape = SubResource("BoxShape3D_5a4sn")
 
 [node name="exit_to_overworld" type="Area3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -15.076193, 7.8952074, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -21.076193, 7.8952074, 0)
 script = ExtResource("13_nipfs")
 scene_to_go_to = "uid://dggufgxa3ipbp"
 spawn_point = "spawn_dungeon_back"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit_to_overworld"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7063856, 0.7218628, 0.018676417)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.2936153, 0.7218628, 0.018676415)
 shape = SubResource("BoxShape3D_5a4sn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

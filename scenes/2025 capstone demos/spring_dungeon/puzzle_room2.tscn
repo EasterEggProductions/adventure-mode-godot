@@ -42,7 +42,6 @@ freeze = true
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, -2.262668e-08, 0.9659258, 0.25881904, 8.444392e-08, 0.25881904, -0.9659258, 0, 7, -11)
-fov = 37.849285
 script = ExtResource("3_kji0d")
 distance = 2.5
 freeze = true
@@ -96,14 +95,14 @@ _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
 [node name="exit_main_room" type="Area3D" parent="."]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48182964, 0.92363024, 11.981589)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48182964, 0.92363024, 17.98159)
 script = ExtResource("9_agaw3")
 scene_to_go_to = "uid://i0ymtqk4fyg4"
 spawn_point = "spawn_door2"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exit_main_room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7063856, 0.7218628, 0.018676417)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.2936153, 0.7218628, 0.018676639)
 shape = SubResource("BoxShape3D_o34hs")
 
 [node name="Spawnpoint3D" type="Node3D" parent="."]

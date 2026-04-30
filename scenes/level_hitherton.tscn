@@ -1,7 +1,9 @@
-[gd_scene load_steps=92 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=95 format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
+[ext_resource type="Environment" uid="uid://c5vgp5xgbfy74" path="res://scenes/default_env.tres" id="3_gmklc"]
+[ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="6_bxehf"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="9_3i6og"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="10_jfgrq"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="11_442in"]
@@ -94,6 +96,9 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_drn72"]
 material = SubResource("StandardMaterial3D_l0cmi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmklc"]
+size = Vector3(16.533447, 2.8988037, 11.803711)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ducrt"]
 radius = 7.876246
@@ -678,6 +683,10 @@ size = Vector3(34.649, 3.581, 14.737)
 [node name="level_hitherton" type="Node3D"]
 script = ExtResource("1_cw6wx")
 
+[node name="DayNightCycle" parent="." instance=ExtResource("19_cw6wx")]
+environment = ExtResource("3_gmklc")
+sun_orbit_rotation = 270.0
+
 [node name="play_ui" parent="." instance=ExtResource("2_bxehf")]
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
@@ -704,6 +713,10 @@ transform = Transform3D(0.7523344, 0, 0.6587813, 0, 1, 0, -0.6587813, 0, 0.75233
 script = ExtResource("11_442in")
 
 [node name="spawn_start" type="Node3D" parent="." groups=["spawn_points"]]
+transform = Transform3D(0.8802289, 0, -0.4745493, 0, 1, 0, 0.4745493, 0, 0.8802289, -37.56866, 22.232626, 35.251217)
+script = ExtResource("11_442in")
+
+[node name="spawn_start2" type="Node3D" parent="." groups=["spawn_points"]]
 transform = Transform3D(-0.96806014, 0, -0.25071785, 0, 1, 0, 0.25071785, 0, -0.96806014, 4.803407, 0.39678812, 24.277277)
 script = ExtResource("11_442in")
 
@@ -737,6 +750,28 @@ metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
+
+[node name="dungeon_entrance" type="Area3D" parent="."]
+transform = Transform3D(0.15462428, 0, 0.9879732, 0, 1, 0, -0.9879732, 0, 0.15462428, -52.216618, 23.156256, 74.37781)
+script = ExtResource("6_bxehf")
+scene_to_go_to = "uid://i0ymtqk4fyg4"
+spawn_point = "spawn_start"
+metadata/_custom_type_script = "uid://c372qrudhege5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance"]
+transform = Transform3D(0.99999994, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, 0.99999994, 8.353912, 0.7218628, 0.018661499)
+shape = SubResource("BoxShape3D_gmklc")
+
+[node name="dungeon_entrance2" type="Area3D" parent="."]
+transform = Transform3D(0.98330563, 0, 0.18196084, 0, 1, 0, -0.18196084, 0, 0.98330563, 74.630135, 17.012138, 74.332954)
+script = ExtResource("6_bxehf")
+scene_to_go_to = "uid://i0ymtqk4fyg4"
+spawn_point = "spawn_backdoor"
+metadata/_custom_type_script = "uid://c372qrudhege5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance2"]
+transform = Transform3D(0.99999994, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, 0.99999994, 8.353912, 0.7218628, 0.018661499)
+shape = SubResource("BoxShape3D_gmklc")
 
 [node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 114.224045, -6.9936004, -46.085957)
@@ -844,9 +879,6 @@ transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.
 
 [node name="Door of Trials3" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
-
-[node name="DayNightCycle" parent="hitherton_terrain" instance=ExtResource("19_cw6wx")]
-sun_orbit_rotation = 270.0
 
 [node name="hitherton_causway" type="Node3D" parent="."]
 transform = Transform3D(-0.9534437, 0, 0.3015712, 0, 1, 0, -0.3015712, 0, -0.9534437, 12.205844, -2.927093, -13.460553)
@@ -1306,4 +1338,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3450832, -0.027355254, 14.4
 [node name="slam_spore" parent="." instance=ExtResource("26_gkbqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.459774, 0.3889203, 35.178223)
 
+[connection signal="body_entered" from="dungeon_entrance" to="dungeon_entrance" method="_start_level_transition"]
+[connection signal="body_entered" from="dungeon_entrance2" to="dungeon_entrance2" method="_start_level_transition"]
 [connection signal="body_entered" from="hitherton_terrain/Door of Trials/Area3D" to="hitherton_terrain/Door of Trials" method="trigger_animation"]

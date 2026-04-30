@@ -25,6 +25,18 @@ func _start_level_transition(body : Node3D):
 		_level_scene.save_objects() # NOTE: too much indirection maybe replace with signal
 		# then do the transition
 		MgrTransition.level_transition(scene_to_go_to, spawn_point)
+		# try for a simple walk away effect 
+		var thrall = MgrPlayerSocket.get_player_one().thrall
+		MgrPlayerSocket.get_player_one().cont_state = PlayerSocket.ControlState.NONE
+		var dir = global_position - thrall.global_position
+		dir.y = 0
+		dir = dir.normalized()
+		thrall.handle_movement(dir)
+		var gantry : Node3D = MgrPlayerSocket.get_player_one().ganty_thing
+		gantry.freeze = true
+		var tweeny = get_tree().create_tween()
+		tweeny.tween_property(gantry, "global_position", Vector3.ZERO, 5)
+		# Looks good, player walks off, camera pulls out and pans up, nice... so long as zero, wait, that would lead them back... home!
 
 func start_delay():
 	await get_tree().create_timer(2).timeout

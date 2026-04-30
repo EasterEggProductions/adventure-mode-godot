@@ -24,7 +24,7 @@ func transfer_situation_check(thrall : Actor) -> bool:
 
 func release_situation_check(thrall : Actor) -> bool:	
 	if Input.is_action_just_pressed("p1_crouch"):
-		print("first exti")
+		#print("first exti")
 		thrall.look_at(thrall.global_position - (thrall.global_basis.z * Vector3(1,0,1)))
 		return true
 	if thrall.animation_tree.get("parameters/climb/conditions/ledge_vault_exit")  == true:
@@ -43,7 +43,7 @@ func release_situation_check(thrall : Actor) -> bool:
 	#print(result)
 	if "collider" in last_col_result.keys():
 		return false
-	print("final exit")
+	#print("final exit")
 	thrall.look_at(thrall.global_position - (thrall.global_basis.z * Vector3(1,0,1)))
 	return true
 
@@ -82,7 +82,7 @@ func ledge_vault_check(thrall : Actor):
 	#query.collide_with_areas = true
 	#print(str(origin) + " ~ " + str(end))
 	var col_result = space_state.intersect_ray(query)
-	print("collider" in col_result.keys())
+	#print("collider" in col_result.keys())
 	if "collider" in col_result.keys():
 		# If we do, do exit
 		thrall.animation_tree.set("parameters/climb/conditions/ledge_vault_exit", true) 

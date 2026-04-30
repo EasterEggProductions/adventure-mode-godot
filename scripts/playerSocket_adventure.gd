@@ -195,7 +195,7 @@ func _collect_inputs(delta):
 				enemies.append(enemy)
 		look_lock = !look_lock
 		if look_lock:
-			print("look lock")
+			#print("look lock")
 			# FIXME - thrall logic in socket
 			thrall.combat_mode = true
 			thrall.combat_relax_timer = 3.0
@@ -220,8 +220,8 @@ func _collect_inputs(delta):
 				look_lock = false
 				ganty_thing.look_at(thrall.global_position + (thrall.global_basis.z * 50))
 
-		else:
-			print("look unlock")
+		#else:
+			#print("look unlock")
 
 
 @export var action_prompt : Control
@@ -281,14 +281,14 @@ func enthrall_new_thrall(new_thrall : Actor):
 
 func input_hand_switching():
 	if Input.is_action_just_pressed(player_prefix + "attack_light"):
-		print("Toggle right hand")
+		#print("Toggle right hand")
 		if thrall.hand_state == Actor.HandState.ONE_HAND:
 			thrall.hand_state = Actor.HandState.TWO_HAND
 		else:
 			thrall.hand_state = Actor.HandState.ONE_HAND
 	elif Input.is_action_just_pressed(player_prefix + "block"):
 		thrall.hand_state = Actor.HandState.UNARMED # hack for a test
-		print("Toggle left hand")
+		#print("Toggle left hand")
 
 
 func target_lock(delta : float, go_dir : Vector3):

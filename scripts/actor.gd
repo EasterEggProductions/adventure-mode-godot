@@ -91,7 +91,9 @@ func _ready():
 	hurtboxes = find_hurtboxes_recursive(self)
 	dup.connect("accessory_changed", _on_accessory_changed)
 	dress_up()
-	compile_new_anim_tree()
+
+	if len(movement_sets) > 0:
+		compile_new_anim_tree()
 
 	# FIXME - Workaround for offhand item not being unique
 	#var narr : Array[InventoryItem] = []
@@ -144,8 +146,20 @@ func _process(delta):
 		return
 	character.stats_regen(delta)
 
-	movement_package_checks()
-	movement_sets[current_moveset].move_thrall(self, delta)
+	if len(movement_sets) > 0:
+		movement_package_checks()
+		movement_sets[current_moveset].move_thrall(self, delta)
+	else:			
+		var old_vel = velocity
+		# Get the motion delta.
+		velocity = ((animation_tree.get_root_motion_rotation_accumulator().inverse() * get_quaternion()) * animation_tree.get_root_motion_position() / delta) * 1
+
+		# Add the gravity.
+		if not is_on_floor():
+			velocity = old_vel
+		#velocity.y -= gravity * delta
+		quaternion = quaternion * ((animation_tree.get_root_motion_rotation() / delta) * 10)
+		# Actually move thrall
 
 
 func _physics_process(_delta):
@@ -157,7 +171,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	if is_multiplayer_authority():
-		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, hand_state)
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, hand_state, current_moveset)
 	return
 
 
@@ -251,7 +265,7 @@ func awful_practice_find_parent_actor(node : Node3D):
 func dress_up():
 	if character.base_skin != null:
 		dup.garment_equip(character.base_skin)
-	else:
+	elif character.under_skeleton != null:
 		dup.garment_equip(character.under_skeleton)
 	for garment in character.outfit:
 		dup.garment_equip(garment)
@@ -334,6 +348,8 @@ func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
 			character.health_current -= damage
 		character.poise_current -= 5
 		if character.poise_current <= 0:
+			if "poise_break" not in action_q.keys():
+				enque_action("poise_break", 1500) # stop double falling
 			character.poise_regen_timer = 0.5
 		else:
 			character.poise_regen_timer = character.poise_regen_delay
@@ -414,11 +430,11 @@ func cb(msg : String):
 # NOTE - Action queue system. Things are put on and have a short 
 # buffer time after which they are knocked off. I am not sure if this
 # is a good approach, but I'm trying it out
-const ACTION_Q_BUFFER_TIME = 200.0 #milliseconds
-var action_q = {}
+const ACTION_Q_BUFFER_TIME = 33 #milliseconds, about 2 frames at 60
+var action_q : Dictionary[String, int] = {}
 
-func enque_action(action : String):
-	action_q[action] = Time.get_ticks_msec() + (ACTION_Q_BUFFER_TIME)
+func enque_action(action : String, duration : int = ACTION_Q_BUFFER_TIME):
+	action_q[action] = Time.get_ticks_msec() + (duration)
 	if "attack" in action:
 		combat_mode = true
 		combat_relax_timer = 5.0
@@ -435,17 +451,15 @@ func action_q_check(action : String, consume=false) -> bool:
 	if action_q.size() == 0:
 		return false
 	if action in action_q.keys():
+		if is_multiplayer_authority():
+			_action_q_net.rpc(action, (action_q[action]) - Time.get_ticks_msec())
 		if consume == true:
 			action_q.erase(action)
-		if is_multiplayer_authority():
-			_action_q_net.rpc(action, current_moveset)
 		return true
 	return false
 
 @rpc
-func _action_q_net(act : String, current_pack : int):
-	if current_moveset != current_pack:
-		current_moveset = current_pack
+func _action_q_net(act : String, _remaining_duration : int):
 	enque_action(act)
 # !SECTION - End action_q system
 
@@ -557,10 +571,10 @@ func multiplayer_despawn():
 ## Plays spawning animation and makes node visible
 ## Player calls it I guess
 func multiplayer_spawn():
-	print("Spawn point: " + MgrTransition.target_spawn_point)
-	print("Spawn logic: " + str(get_tree().current_scene))
+	#print("Spawn point: " + MgrTransition.target_spawn_point)
+	#print("Spawn logic: " + str(get_tree().current_scene))
 	var spawnpoint : Spawnpoint3D = (get_tree().current_scene as Level).find_child(MgrTransition.target_spawn_point)
-	print("Spawn subtp: " + str(spawnpoint.subtype))
+	#print("Spawn subtp: " + str(spawnpoint.subtype))
 	rpc_mp_spawn.rpc(MgrPlayerSocket.player_type, spawnpoint.subtype) 
 
 @rpc("call_local")
@@ -590,7 +604,7 @@ func rpc_mp_spawn(player_type : String, anim : int):
 
 
 @rpc("unreliable")
-func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_hand_state : int):
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_hand_state : int, c_mvpk):
 	if is_multiplayer_authority():
 		return
 	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
@@ -600,6 +614,10 @@ func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sp
 	sprint = c_sprint
 	character.health_current = c_health
 	hand_state = c_hand_state as HandState
+	if c_mvpk != current_moveset:
+		current_moveset = c_mvpk
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel(movement_sets[current_moveset].name)
 
 
 func _on_accessory_changed():

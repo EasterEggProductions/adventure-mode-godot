@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene load_steps=9 format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
-[ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="2_kybif"]
+[ext_resource type="Script" path="res://scripts/UI/ui_inventory_control.gd" id="3_wuk5u"]
+[ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_pv2t1"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
 interpolation_mode = 2
@@ -13,6 +14,20 @@ gradient = SubResource("Gradient_81d6m")
 fill = 1
 fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv2t1"]
+bg_color = Color(0, 0, 0, 0.16862746)
+
+[sub_resource type="Gradient" id="Gradient_pv2t1"]
+offsets = PackedFloat32Array(0.8625, 0.940625, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6agwg"]
+gradient = SubResource("Gradient_pv2t1")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.53)
 metadata/_snap_enabled = true
 
 [node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
@@ -54,49 +69,97 @@ offset_bottom = 981.0
 theme_override_font_sizes/font_size = 36
 text = "resyoom :)"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="InventoryContainerPanel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 632.0
+offset_top = 232.0
+offset_right = 1185.0
+offset_bottom = 891.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
+
+[node name="GridContainer" type="GridContainer" parent="InventoryContainerPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -270.0
-offset_right = 250.0
-offset_bottom = 270.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
+columns = 4
 
-[node name="TextureButton" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="Inv_tool_tip" type="RichTextLabel" parent="InventoryContainerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.771
+anchor_right = 0.335
+anchor_bottom = 0.771
+offset_left = -173.255
+offset_top = 84.91098
+offset_right = 355.745
+offset_bottom = 137.91098
+text = "(A) / [Space] : Drop Item
+ D-Pad / Arrow Keys: Select Item"
 
-[node name="TextureButton2" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="ui_inventory_control" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
+script = ExtResource("3_wuk5u")
+inspectingChar = ExtResource("4_pv2t1")
+item_button_spot = NodePath("../InventoryContainerPanel/GridContainer")
+hover_tex = SubResource("GradientTexture2D_6agwg")
+flavor_textbox = NodePath("../InventoryContainerPanel2/RichTextLabel")
+image_box = NodePath("../InventoryContainerPanel2/TextureRect")
 
-[node name="TextureButton3" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="InventoryContainerPanel2" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1229.0
+offset_top = 232.0
+offset_right = 1729.0
+offset_bottom = 891.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
 
-[node name="TextureButton4" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="Image_bg" type="Panel" parent="InventoryContainerPanel2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_top = -0.07000351
+offset_right = 323.0
+offset_bottom = 322.93
+theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
 
-[node name="TextureButton5" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainerPanel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.65500003
+anchor_right = 0.062000003
+anchor_bottom = 0.65500003
+offset_top = 34.274994
+offset_right = 438.0
+offset_bottom = 180.275
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+theme_override_font_sizes/bold_italics_font_size = 23
+theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 23
+bbcode_enabled = true
+fit_content = true
 
-[node name="TextureButton6" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton7" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
-
-[node name="TextureButton8" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_kybif")
+[node name="TextureRect" type="TextureRect" parent="InventoryContainerPanel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_top = -0.07000351
+offset_right = 323.0
+offset_bottom = 322.93

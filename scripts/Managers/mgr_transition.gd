@@ -29,14 +29,14 @@ func change_scene_to_pack(target: PackedScene):
 	get_tree().change_scene_to_packed(target)
 	#MgrMultiplayerS.map_loadUpdate("ready", current_load_target)
 	#await MgrMultiplayerS.party_ready
-	print("resume")
+	#print("resume")
 	transitioning = false
 	get_tree().paused = false
 	current_level = target
 	$AnimationPlayer.play_backwards("transition")
 	#MgrPlayerSocket.spawn_player()
 	await $AnimationPlayer.animation_finished
-	if target_spawn_point != "":
+	if target_spawn_point != "" and get_tree().current_scene.has_method("level_start"):
 		get_tree().current_scene.level_start()
 
 

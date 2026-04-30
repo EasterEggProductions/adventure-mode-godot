@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="7_qmjli"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="14_xdqt8"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="17_1y1j1"]
-[ext_resource type="Script" path="res://scripts/DungeonTools/spawnpoint.gd" id="22_adb74"]
+[ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="22_adb74"]
 [ext_resource type="AudioStream" uid="uid://hxog1lltd7d4" path="res://art/audio/506911__nox_sound__ambiance_wind_forest_moderate_loop_stereo.wav" id="23_w8mif"]
 [ext_resource type="PackedScene" uid="uid://bldcnjo1gthob" path="res://prefabs/Dungeon elements/elevator_platform.tscn" id="24_s5s5f"]
 [ext_resource type="PackedScene" uid="uid://dyacbq330bbx0" path="res://prefabs/environment/shrub_commonfruit.tscn" id="25_ou45n"]

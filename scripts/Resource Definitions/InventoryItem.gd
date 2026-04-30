@@ -1,8 +1,9 @@
 extends Resource
 class_name InventoryItem
 
-## Display of this item in inventory
+## Display of this item in inventory, and descriptions
 @export var icon : Texture2D 
+@export_multiline var description : String
 
 ## Item instanced on drop and given reference to this resource for pickup
 @export var drop_item : PackedScene

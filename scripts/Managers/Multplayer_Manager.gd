@@ -181,7 +181,6 @@ func _start_local_only():
 	#new_player.name = "Thrall Local Player"
 	#add_child(new_player)
 	print("New player: Local only")
-	print("We is us!")
 	MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
 	cam_gant.thrall = new_player
 	cam_gant.cam.target_current = new_player
@@ -189,7 +188,6 @@ func _start_local_only():
 	cam_gant.cam.freeze = false
 	#new_player.visible = true
 	#new_player.process_mode = Node.PROCESS_MODE_INHERIT
-	print("Iz noed? " + str(new_player.find_child("DresserUpper")))
 	outfit_control.dress_up_controller = new_player.find_child("DresserUpper")
 
 func add_player_OLD(peer_id):
@@ -201,7 +199,6 @@ func add_player_OLD(peer_id):
 		get_tree().current_scene.add_child(new_player)
 		new_player.name = "PLAYER|" + str(peer_id)
 		#new_player.transform = MgrPlayerSocket.player_last_saved_pos
-		print("We is us!")
 		MgrPlayerSocket.get_player_one().enthrall_new_thrall(new_player)
 		#cam_gant.thrall = new_player
 		#cam_gant.cam.target_current = new_player
@@ -244,6 +241,13 @@ func get_join_code() -> String:
 	else:
 		return "generating join code..."
 
+func get_join_code_lan() -> String:
+	for ip in IP.get_local_addresses():
+		if "192." in ip or "10." in ip:
+			return JoinCode.ip_to_code(ip, PORT)
+	return "Join Code Failure"
+
+
 func apply_join_code(jc : String):
 	var dat = JoinCode.code_to_ip(jc)
 	SRV_IP = dat[0]
@@ -271,14 +275,13 @@ func _on_server_disconnected():
 	MgrTransition.msg_small("Connection to this world lost, returning home...", 5)
 	print(str(multiplayer.get_unique_id()) + " called _on_server_disconnected")
 	MgrTransition.target_spawn_point = ''
-	MgrPlayerSocket.player_type = "main"
+	MgrPlayerSocket.player_type = "main" # reset player type for their home
 	MgrTransition.change_scene_to_pack(preload("res://scenes/title_scene.tscn")) 
 	# did not want to use level_transition, to let it grow to have other functionality
 
 @rpc
 func take_guy(nodename : String, peer_id : int):
 	var my_thrall = get_tree().current_scene.find_child(nodename, false, false)
-	print("This my guy? " + str(my_thrall))
 	#my_thrall.set_multiplayer_authority(peer_id)
 	if multiplayer.get_unique_id() == peer_id:
 		MgrPlayerSocket.get_player_one().ganty_thing.thrall = my_thrall
@@ -322,6 +325,8 @@ func net_change_level(levelname : String, peer_id : int):
 	elif levelname == connection_level[multiplayer.get_unique_id()]:
 		MgrTransition.msg_small("Player %s has joined you in %s" % [str(peer_id), levelname], 7)
 		spawn_me_in_coach(peer_id)
+		# FIXME - There is likely a better way to sync outfits 
+		MgrPlayerSocket.get_player_one().thrall.dup.sync_outfit_to(peer_id)
 	else:
 		MgrTransition.msg_small("Player %s has moved about levels..." % str(peer_id), 7)
 	connection_level[peer_id] = levelname
@@ -344,7 +349,7 @@ func spawn_me_in_coach(connection : int) -> void:
 	#new_player.set_multiplayer_authority(connection)
 	get_tree().current_scene.add_child(new_player)
 	##await get_tree().create_timer(10).timeout
-	print("New guy path: "+ str(new_player.get_path()))
+	#print("New guy path: "+ str(new_player.get_path()))
 	new_player.get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.ALWAYS) # NOTE This function will probably handle enemy player spawning and those need different visibility
 	get_tree().current_scene.spawned_players.append(new_player)
 	new_player.visible = false

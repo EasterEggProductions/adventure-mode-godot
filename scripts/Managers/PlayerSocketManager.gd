@@ -8,6 +8,8 @@ var player_outfit : PackedStringArray
 
 var player_type = "main" #just using strings for debug at this moment, main, ally, enemy are all for now
 
+var actor_prefab = preload("res://prefabs/actor.tscn")
+
 # here temporarily
 var ally_material : Material = preload("res://art/materials/cooperator.tres")
 var enemy_material : Material = preload("res://art/materials/invader.tres")
@@ -28,14 +30,8 @@ func get_player_one() -> PlayerSocket:
 	return playerSockets[0]
 
 func spawn_player() -> Actor:
-	var new_player : Actor = preload("res://prefabs/actor.tscn").instantiate() 
-	#get_tree().current_scene.add_child(new_player)
-	#new_player.transform = #player_last_saved_pos
+	#print("A player actor was requested for " + str(multiplayer.get_unique_id()))
+	#print_stack()
+	var new_player : Actor = actor_prefab.instantiate() 
 	new_player.add_to_group("Players")
-	# mainCam
-	#playerSockets[0].ganty_thing.thrall = new_player
-	#playerSockets[0].ganty_thing.cam.target_current = new_player
-	#playerSockets[0].ganty_thing.freeze = false
-	#playerSockets[0].ganty_thing.cam.freeze = false
-	#playerSockets[0].enthrall_new_thrall(new_player)
 	return new_player

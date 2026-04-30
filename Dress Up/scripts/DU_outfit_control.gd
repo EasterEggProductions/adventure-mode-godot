@@ -54,10 +54,10 @@ func load_resource_dir():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+				#print("Found directory: " + file_name)
 				pass
 			else:
-				print("Found file: " + file_name)
+				#print("Found file: " + file_name)
 				#modules.append(load("res://Play_Resources/Modules/" + file_name))
 				if '.tres.remap' in file_name: # <---- NEW
 					file_name = file_name.trim_suffix('.remap') # <---- NEW

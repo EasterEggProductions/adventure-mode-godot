@@ -1,0 +1,134 @@
+[gd_scene load_steps=25 format=3 uid="uid://yywlxswpodtx"]
+
+[ext_resource type="PackedScene" uid="uid://7qeaysinvv41" path="res://art/meshes/shield_shroom.glb" id="1_0qx46"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="2_otdtt"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_gihjj"]
+[ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="4_2kudy"]
+[ext_resource type="PackedScene" uid="uid://bqengtjtjsi85" path="res://prefabs/actor_nametag.tscn" id="5_uy46e"]
+[ext_resource type="Script" uid="uid://cendvqu343aqi" path="res://Dress Up/DresserUpper.gd" id="6_0iwx3"]
+
+[sub_resource type="Resource" id="Resource_vghn6"]
+script = ExtResource("4_2kudy")
+given_name = "Shield Shroom"
+metadata/_custom_type_script = "uid://bp3abug86ikl6"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hccwq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_25hbr"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_olmsm"]
+animation = &"shroom_awake_idle"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6ffn"]
+animation = &"shroom_hide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xudwl"]
+animation = &"shroom_sleep"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lh6li"]
+animation = &"shroom_sleep"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xaigs"]
+animation = &"shroom_sleep"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wfn2"]
+animation = &"shroom_wake"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gycqa"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5kgy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ahfxk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l4kt6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qu046"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3epdu"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ctqua"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ic6ak"]
+states/shroom_awake_idle/node = SubResource("AnimationNodeAnimation_olmsm")
+states/shroom_awake_idle/position = Vector2(709, 100)
+states/shroom_hide/node = SubResource("AnimationNodeAnimation_d6ffn")
+states/shroom_hide/position = Vector2(500, 173)
+states/shroom_sleep/node = SubResource("AnimationNodeAnimation_xaigs")
+states/shroom_sleep/position = Vector2(331, 49)
+"states/shroom_sleep 2/node" = SubResource("AnimationNodeAnimation_xudwl")
+"states/shroom_sleep 2/position" = Vector2(242, -70)
+"states/shroom_sleep 3/node" = SubResource("AnimationNodeAnimation_lh6li")
+"states/shroom_sleep 3/position" = Vector2(356, -144)
+states/shroom_wake/node = SubResource("AnimationNodeAnimation_3wfn2")
+states/shroom_wake/position = Vector2(566, 21)
+transitions = ["Start", "shroom_sleep", SubResource("AnimationNodeStateMachineTransition_gycqa"), "shroom_wake", "shroom_awake_idle", SubResource("AnimationNodeStateMachineTransition_o5kgy"), "shroom_awake_idle", "shroom_hide", SubResource("AnimationNodeStateMachineTransition_ahfxk"), "shroom_hide", "shroom_sleep", SubResource("AnimationNodeStateMachineTransition_l4kt6"), "shroom_sleep 2", "shroom_sleep 3", SubResource("AnimationNodeStateMachineTransition_qu046"), "shroom_sleep 3", "shroom_wake", SubResource("AnimationNodeStateMachineTransition_3epdu"), "shroom_sleep", "shroom_sleep 2", SubResource("AnimationNodeStateMachineTransition_ctqua")]
+graph_offset = Vector2(56, -15)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0qx46"]
+
+[node name="shield_shroom" instance=ExtResource("1_0qx46")]
+character = SubResource("Resource_vghn6")
+
+[node name="Skeleton3D" parent="shroom" index="0"]
+bones/2/rotation = Quaternion(0, 0.014245872, 0, 0.99989855)
+bones/4/position = Vector3(0.09666849, 0.124884844, 0.2400855)
+bones/4/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/5/position = Vector3(2.4423567e-08, 0.23547219, -0.10243987)
+bones/5/rotation = Quaternion(-0.24007012, -2.7711712e-15, -5.7237177e-08, 0.9707556)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_hccwq")
+
+[node name="actor_nametag" parent="." index="3" node_paths=PackedStringArray("target") instance=ExtResource("5_uy46e")]
+transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, -0.0074883047, 1.0475999, -0.05084676)
+texture = SubResource("ViewportTexture_25hbr")
+target = NodePath("..")
+
+[node name="DresserUpper" type="Node" parent="." index="4" node_paths=PackedStringArray("actor", "skele")]
+script = ExtResource("6_0iwx3")
+actor = NodePath("..")
+skele = NodePath("../shroom/Skeleton3D")
+metadata/_custom_type_script = "uid://cendvqu343aqi"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="5"]
+root_motion_track = NodePath("shroom/Skeleton3D:root")
+tree_root = SubResource("AnimationNodeStateMachine_ic6ak")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="7"]
+replication_config = SubResource("SceneReplicationConfig_0qx46")

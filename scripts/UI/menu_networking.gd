@@ -1,7 +1,8 @@
 extends Node
 
 @export var debout : RichTextLabel
-@export var join_code_out : RichTextLabel
+@export var join_code_out_WAN : RichTextLabel
+@export var join_code_out_LAN : RichTextLabel
 
 @export var jc_input : LineEdit
 
@@ -16,6 +17,11 @@ func _button_host():
 
 
 func _button_connect():
+	MgrPlayerSocket.player_type = "ally" # set to coop type
+	MgrMultiplayer.apply_join_code(jc_input.text)
+
+func _button_connect_invade():
+	MgrPlayerSocket.player_type = "enemy" # set to invader type
 	MgrMultiplayer.apply_join_code(jc_input.text)
 
 
@@ -38,10 +44,14 @@ func populate_debug_readout():
 
 	debout.text = message
 
-	join_code_out.text = MgrMultiplayer.get_join_code()
+	join_code_out_WAN.text = MgrMultiplayer.get_join_code()
+	join_code_out_LAN.text = MgrMultiplayer.get_join_code_lan()
 
 func _on_clipboard_button_pressed() -> void:
 	DisplayServer.clipboard_set(MgrMultiplayer.get_join_code())
+
+func _on_clipboard_button_pressed_LAN() -> void:
+	DisplayServer.clipboard_set(MgrMultiplayer.get_join_code_lan())
 
 func _on_join_local_button_pressed() -> void:
 	#join local r something

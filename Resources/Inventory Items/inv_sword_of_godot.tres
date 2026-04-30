@@ -9,6 +9,7 @@
 resource_name = "Sword of Godot"
 script = ExtResource("4_hnymu")
 icon = ExtResource("3_lasy2")
+description = "The sword of godot of awesomeness!!!"
 extra_resources = Dictionary[String, Resource]({
 "accessory": ExtResource("1_sah4e"),
 "armament": ExtResource("2_sah4e")

@@ -1,0 +1,353 @@
+[gd_scene load_steps=44 format=3 uid="uid://c4ya5aclq0ke1"]
+
+[ext_resource type="PackedScene" uid="uid://7f3k2o366f08" path="res://art/meshes/slam_spore.glb" id="1_oercj"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="2_arwmu"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_t7j12"]
+[ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="4_bk4hg"]
+[ext_resource type="PackedScene" uid="uid://bqengtjtjsi85" path="res://prefabs/actor_nametag.tscn" id="5_0pses"]
+[ext_resource type="Script" uid="uid://cendvqu343aqi" path="res://Dress Up/DresserUpper.gd" id="6_t7j12"]
+[ext_resource type="Script" uid="uid://dhr3t2c8jkn7k" path="res://scripts/AI/ai_fight.gd" id="7_bk4hg"]
+
+[sub_resource type="Resource" id="Resource_cx7ke"]
+script = ExtResource("4_bk4hg")
+given_name = "Smashley"
+health_max = 5.0
+health_current = 5.0
+metadata/_custom_type_script = "uid://bp3abug86ikl6"
+
+[sub_resource type="Gradient" id="Gradient_wm6yj"]
+offsets = PackedFloat32Array(0.013201321, 0.04290429, 0.26732674, 0.34983498, 0.5478548, 0.6006601)
+colors = PackedColorArray(0.1833334, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0.8209636, 0.0013083863, 0.9252929, 1, 0.95228666, 0.03271272, 0.04063692, 1, 0.319, 0.46689996, 0.58, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cm1f0"]
+gradient = SubResource("Gradient_wm6yj")
+fill = 1
+fill_from = Vector2(0.31196582, 0.5854701)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2h4u"]
+albedo_texture = SubResource("GradientTexture2D_cm1f0")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0pses"]
+radius = 0.203062
+height = 0.642133
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en2o0"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.282353, 0, 0.517647, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cx7ke"]
+material = SubResource("StandardMaterial3D_en2o0")
+radius = 0.203
+height = 0.642
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_arwmu"]
+height = 1.5859375
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t7j12"]
+animation = &"spore_attack_slam"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bk4hg"]
+animation = &"spore_attack_sweep"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pses"]
+animation = &"spore_combat_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cx7ke"]
+animation = &"spore_die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j13b6"]
+animation = &"spore_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mb447"]
+animation = &"spore_spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iywgt"]
+animation = &"spore_turn_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nx0vp"]
+animation = &"spore_turn_R"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iywgt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nx0vp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qw4c"]
+advance_mode = 2
+advance_expression = "combat_mode"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wv0ea"]
+advance_mode = 2
+advance_expression = "!combat_mode"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dcrp3"]
+advance_mode = 2
+advance_expression = "action_q_check(\"attack_heavy\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1w14s"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mbf5s"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_12yyh"]
+advance_mode = 2
+advance_expression = "action_q_check(\"attack_light\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pavdc"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "alive == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2uqm"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "alive == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gauyn"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "alive == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dl8nl"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "alive == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wxtmo"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_li6ha"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "desired_turn > 0.1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2n5vg"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "desired_turn < -0.1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tsf8l"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6fg2c"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_li6ha"]
+states/Start/position = Vector2(67, 124)
+states/spore_attack_slam/node = SubResource("AnimationNodeAnimation_t7j12")
+states/spore_attack_slam/position = Vector2(359, -224)
+states/spore_attack_sweep/node = SubResource("AnimationNodeAnimation_bk4hg")
+states/spore_attack_sweep/position = Vector2(744, -224)
+states/spore_combat_idle/node = SubResource("AnimationNodeAnimation_0pses")
+states/spore_combat_idle/position = Vector2(517, -56)
+states/spore_die/node = SubResource("AnimationNodeAnimation_cx7ke")
+states/spore_die/position = Vector2(792, 8)
+states/spore_idle/node = SubResource("AnimationNodeAnimation_j13b6")
+states/spore_idle/position = Vector2(517, 68)
+states/spore_spawn/node = SubResource("AnimationNodeAnimation_mb447")
+states/spore_spawn/position = Vector2(255, 57)
+states/spore_turn_L/node = SubResource("AnimationNodeAnimation_iywgt")
+states/spore_turn_L/position = Vector2(217, -145)
+states/spore_turn_R/node = SubResource("AnimationNodeAnimation_nx0vp")
+states/spore_turn_R/position = Vector2(217, -40)
+transitions = ["Start", "spore_spawn", SubResource("AnimationNodeStateMachineTransition_iywgt"), "spore_spawn", "spore_idle", SubResource("AnimationNodeStateMachineTransition_nx0vp"), "spore_idle", "spore_combat_idle", SubResource("AnimationNodeStateMachineTransition_3qw4c"), "spore_combat_idle", "spore_idle", SubResource("AnimationNodeStateMachineTransition_wv0ea"), "spore_combat_idle", "spore_attack_slam", SubResource("AnimationNodeStateMachineTransition_dcrp3"), "spore_attack_sweep", "spore_combat_idle", SubResource("AnimationNodeStateMachineTransition_1w14s"), "spore_attack_slam", "spore_combat_idle", SubResource("AnimationNodeStateMachineTransition_mbf5s"), "spore_combat_idle", "spore_attack_sweep", SubResource("AnimationNodeStateMachineTransition_12yyh"), "spore_idle", "spore_die", SubResource("AnimationNodeStateMachineTransition_pavdc"), "spore_combat_idle", "spore_die", SubResource("AnimationNodeStateMachineTransition_p2uqm"), "spore_attack_slam", "spore_die", SubResource("AnimationNodeStateMachineTransition_gauyn"), "spore_attack_sweep", "spore_die", SubResource("AnimationNodeStateMachineTransition_dl8nl"), "spore_die", "End", SubResource("AnimationNodeStateMachineTransition_wxtmo"), "spore_combat_idle", "spore_turn_R", SubResource("AnimationNodeStateMachineTransition_li6ha"), "spore_combat_idle", "spore_turn_L", SubResource("AnimationNodeStateMachineTransition_2n5vg"), "spore_turn_L", "spore_combat_idle", SubResource("AnimationNodeStateMachineTransition_tsf8l"), "spore_turn_R", "spore_combat_idle", SubResource("AnimationNodeStateMachineTransition_6fg2c")]
+graph_offset = Vector2(-159, -273)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oercj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j13b6"]
+viewport_path = NodePath("SubViewport")
+
+[node name="slam_spore" groups=["enemies"] instance=ExtResource("1_oercj")]
+character = SubResource("Resource_cx7ke")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0, 5.8621534e-09, 0.037298877, 0.9993042)
+bones/2/rotation = Quaternion(1.1172421e-16, -1.7577703e-08, -0.11184013, 0.99372625)
+bones/3/rotation = Quaternion(3.784348e-16, 5.8621548e-09, 0.037298884, 0.9993042)
+bones/4/rotation = Quaternion(3.2635592e-16, 5.862153e-09, 0.037298884, 0.9993042)
+bones/5/rotation = Quaternion(3.0552425e-16, 5.8621534e-09, 0.037298873, 0.9993042)
+bones/6/rotation = Quaternion(2.9163577e-16, 5.8621534e-09, 0.037298873, 0.9993042)
+bones/7/rotation = Quaternion(0, -2.0816682e-17, 0, 1)
+
+[node name="slam_spore" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_n2h4u")
+
+[node name="hurt_boxes" type="Node3D" parent="Armature/Skeleton3D" index="1"]
+visible = false
+
+[node name="hb_0" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="0"]
+transform = Transform3D(0.9972176, -0.074545845, 1.1716149e-08, 0.074545845, 0.9972176, 4.3730347e-10, -1.1716149e-08, 4.3730347e-10, 1, 0, 0, 0)
+bone_name = "Bone"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.313226e-10, 0.6068922, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_0/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_0/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_1" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="1"]
+transform = Transform3D(0.9888406, 0.14897749, -2.3414593e-08, -0.14897749, 0.9888406, 1.7539004e-09, 2.3414591e-08, 1.7539192e-09, 1, -0.055909384, 0.7479132, 3.279776e-10)
+bone_name = "Bone.002"
+bone_idx = 2
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_1/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_1/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_2" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="2"]
+transform = Transform3D(0.9971949, 0.074848995, -1.1764039e-08, -0.074848995, 0.9971949, 4.4088044e-10, 1.1764037e-08, 4.4088266e-10, 1, -4.2825937e-05, 1.1187284, 9.856973e-10)
+bone_name = "Bone.004"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_2/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_2/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_3" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="3"]
+transform = Transform3D(1, 0.0003039837, -4.8023807e-11, -0.0003039837, 1, 1.4710455e-14, 4.802292e-11, -8.326673e-17, 1, 0.028025547, 1.4926765, 1.1510283e-09)
+bone_name = "Bone.001"
+bone_idx = 4
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_3/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_3/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_4" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="4"]
+transform = Transform3D(0.99724025, -0.0742427, 1.1668258e-08, 0.0742427, 0.99724025, 4.3375603e-10, -1.1668259e-08, 4.3372406e-10, 1, 0.02813954, 1.8676765, 1.1510283e-09)
+bone_name = "Bone.005"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_4/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_4/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_5" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="5"]
+transform = Transform3D(0.98893106, -0.14837624, 2.3319608e-08, 0.14837624, 0.98893106, 1.7396906e-09, -2.3319611e-08, 1.7396415e-09, 1, 0.000298528, 2.2416415, 1.3136748e-09)
+bone_name = "Bone.003"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_5/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_5/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="hb_6" type="BoneAttachment3D" parent="Armature/Skeleton3D/hurt_boxes" index="6"]
+transform = Transform3D(0.98893106, -0.14837624, 2.3319608e-08, 0.14837624, 0.98893106, 1.7396906e-09, -2.3319611e-08, 1.7396415e-09, 1, -0.055342562, 2.6124907, 1.9660404e-09)
+bone_name = "Bone.006"
+bone_idx = 7
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="hurtbox_torso" type="Area3D" parent="Armature/Skeleton3D/hurt_boxes/hb_6" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/hurt_boxes/hb_6/hurtbox_torso" index="0"]
+transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0pses")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/hurt_boxes/hb_6/hurtbox_torso" index="1"]
+mesh = SubResource("CapsuleMesh_cx7ke")
+
+[node name="AnimationPlayer" parent="." index="1"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79296875, 0)
+shape = SubResource("CapsuleShape3D_arwmu")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+tree_root = SubResource("AnimationNodeStateMachine_li6ha")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="4"]
+replication_config = SubResource("SceneReplicationConfig_oercj")
+
+[node name="actor_nametag" parent="." index="5" node_paths=PackedStringArray("target") instance=ExtResource("5_0pses")]
+transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, 0, 2.5394094, 0)
+texture = SubResource("ViewportTexture_j13b6")
+target = NodePath("..")
+
+[node name="DresserUpper" type="Node" parent="." index="6" node_paths=PackedStringArray("actor", "skele")]
+script = ExtResource("6_t7j12")
+actor = NodePath("..")
+skele = NodePath("../Armature/Skeleton3D")
+metadata/_custom_type_script = "uid://cendvqu343aqi"
+
+[node name="AI_fight" type="Node" parent="." index="7"]
+script = ExtResource("7_bk4hg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://duhlcd52l4ace"]
+[gd_scene load_steps=27 format=3 uid="uid://duhlcd52l4ace"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_tnvqn"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_c4y71"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="7_dx2sf"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="8_3cjyw"]
 [ext_resource type="PackedScene" uid="uid://b74jkadrhs24g" path="res://prefabs/Dungeon elements/dungeon_lever_floor.tscn" id="9_3cjyw"]
-[ext_resource type="Script" path="res://scripts/DungeonTools/object_connection.gd" id="10_o34hs"]
+[ext_resource type="Script" uid="uid://cd2gtneoj43ul" path="res://scripts/DungeonTools/object_connection.gd" id="10_o34hs"]
 [ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="11_mp2rj"]
 [ext_resource type="PackedScene" uid="uid://chwqjvpft7wxd" path="res://prefabs/actor.tscn" id="12_g4ogd"]
 [ext_resource type="Resource" uid="uid://bsmrpavn0sy6d" path="res://Resources/Characters/Skeleton.tres" id="13_bovvm"]
@@ -31,6 +31,23 @@ seamless = true
 albedo_texture = SubResource("NoiseTexture2D_2ad83")
 metallic_specular = 0.0
 uv1_scale = Vector3(0.149, 0.149, 0.149)
+uv1_triplanar = true
+
+[sub_resource type="Gradient" id="Gradient_g4ogd"]
+offsets = PackedFloat32Array(0, 0.50364965, 0.5839416, 1)
+colors = PackedColorArray(0.235783, 0.47, 0.1645, 1, 0.08858325, 0.06117814, 9.024516e-09, 1, 0.07450981, 0.14901961, 0.07450981, 1, 0.43529412, 0.61960787, 0.02745098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bovvm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bdewb"]
+noise = SubResource("FastNoiseLite_bovvm")
+color_ramp = SubResource("Gradient_g4ogd")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7e137"]
+albedo_texture = SubResource("NoiseTexture2D_bdewb")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.174, 0.174, 0.174)
 uv1_triplanar = true
 
 [sub_resource type="Resource" id="Resource_mp2rj"]
@@ -106,6 +123,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12562573, 0)
 radius = 4.338379
 height = 0.4987793
 material = SubResource("StandardMaterial3D_o34hs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level geometry"]
+transform = Transform3D(1, 0, 0, 0, 0.9261012, -0.37727514, 0, 0.37727514, 0.9261012, 0, -0.0150925815, -3.1734772)
+use_collision = true
+size = Vector3(1, 0.35327148, 1)
+material = SubResource("StandardMaterial3D_7e137")
 
 [node name="Dungeon Objects" type="Node3D" parent="."]
 

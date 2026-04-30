@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=92 format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dwou0xwx1bbmp" path="res://art/audio/sfx/stone_door_grind.ogg" id="17_t8jou"]
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="18_gkbqt"]
 [ext_resource type="PackedScene" uid="uid://dt7ikkk13put1" path="res://art/meshes/hitherton_terrain.glb" id="18_s1e5c"]
+[ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="19_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="19_kvrnu"]
 [ext_resource type="Material" uid="uid://cqj8ocw1g8t0f" path="res://art/materials/giant_causway.tres" id="20_t8jou"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="20_wtgak"]
@@ -93,34 +94,6 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_drn72"]
 material = SubResource("StandardMaterial3D_l0cmi")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qufpn"]
-ground_bottom_color = Color(0.517647, 0.552941, 0.607843, 1)
-
-[sub_resource type="Sky" id="Sky_m2lpt"]
-sky_material = SubResource("ProceduralSkyMaterial_qufpn")
-
-[sub_resource type="Environment" id="Environment_ltcmt"]
-background_mode = 2
-sky = SubResource("Sky_m2lpt")
-ambient_light_source = 3
-ambient_light_color = Color(0.588235, 0.721569, 1, 1)
-tonemap_white = 2.1
-ssao_enabled = true
-ssao_radius = 3.23
-ssao_intensity = 3.56
-ssao_power = 1.21838
-ssao_detail = 1.62
-fog_enabled = true
-fog_mode = 1
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_height = -6.15
-fog_height_density = 0.5
-fog_depth_curve = 2.1435447
-fog_depth_begin = 0.0
-fog_depth_end = 195.1
-volumetric_fog_density = 0.0613
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ducrt"]
 radius = 7.876246
@@ -778,13 +751,6 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.
 [node name="hitherton_terrain" parent="." instance=ExtResource("18_s1e5c")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.593)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="hitherton_terrain"]
-transform = Transform3D(0.23820971, 0.06805569, 0.9688262, -0.926834, -0.28217113, 0.24770592, 0.29023302, -0.9569472, -0.0041398406, 0, 0, 0)
-light_color = Color(1, 0.940078, 0.839877, 1)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="hitherton_terrain"]
-environment = SubResource("Environment_ltcmt")
-
 [node name="campfire" parent="hitherton_terrain" instance=ExtResource("19_kvrnu")]
 transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40847, -8.345196, -50.471825)
 
@@ -866,6 +832,9 @@ transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.
 
 [node name="Door of Trials3" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
+
+[node name="DayNightCycle" parent="hitherton_terrain" instance=ExtResource("19_cw6wx")]
+sun_orbit_rotation = 270.0
 
 [node name="hitherton_causway" type="Node3D" parent="."]
 transform = Transform3D(-0.9534437, 0, 0.3015712, 0, 1, 0, -0.3015712, 0, -0.9534437, 12.205844, -2.927093, -13.460553)

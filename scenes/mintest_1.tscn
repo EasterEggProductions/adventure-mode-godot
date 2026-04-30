@@ -203,7 +203,6 @@ to_equip_wep = ExtResource("11_p4uty")
 script = ExtResource("13_qufpn")
 
 [node name="DayNightCycle" parent="." instance=ExtResource("17_qufpn")]
-time_of_day = 0.386
 
 [connection signal="body_entered" from="exit zone mintest_2" to="exit zone mintest_2" method="_start_level_transition"]
 [connection signal="body_entered" from="exit zone mintest_3" to="exit zone mintest_3" method="_start_level_transition"]

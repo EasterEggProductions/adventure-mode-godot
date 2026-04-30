@@ -14,10 +14,10 @@ func _ready() -> void:
 			button.connect("on_triggered", Callable(self._on_button_triggered))
 		
 func _on_button_triggered(button_node: DungeonButton):
-	if button_node.name == buttons[0].name:
+	if !buttons.is_empty() && button_node.name == buttons[0].name:
 		buttons.pop_front()
 	
-	if buttons.is_empty():
+	if buttons.is_empty() && !sequence_finished:
 		print(">>> Button sequence finished! notified.")
 		sequence_finished = true
 		notify()

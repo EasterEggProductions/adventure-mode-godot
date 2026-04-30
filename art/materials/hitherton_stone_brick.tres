@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnf6ffarfya3p"]
 
-[ext_resource type="Texture2D" uid="uid://ciwpf1mxr5vwc" path="res://art/meshes/rooms/example_room_2_wall.png" id="1_tcapc"]
+[ext_resource type="Texture2D" uid="uid://cs1hklho2muo4" path="res://art/textures/cobble_stone_32.png" id="1_tcapc"]
 
 [resource]
+albedo_color = Color(2.521, 2.238443, 2.1041338, 1)
 albedo_texture = ExtResource("1_tcapc")
-uv1_scale = Vector3(0.19, 0.19, 0.19)
-uv1_triplanar = true
+metallic_specular = 0.0
 uv1_world_triplanar = true

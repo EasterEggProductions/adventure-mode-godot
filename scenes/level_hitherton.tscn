@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=95 format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -29,7 +29,6 @@
 [ext_resource type="AudioStream" uid="uid://bk681n8wa8oqp" path="res://art/audio/sfx/environment/SFX Running Water.ogg" id="23_rxmjl"]
 [ext_resource type="AudioStream" uid="uid://dh7xpqxpbunhw" path="res://art/audio/sfx/environment/SFX Calm Water.ogg" id="24_qqvql"]
 [ext_resource type="AudioStream" uid="uid://dahprtx5v3udn" path="res://art/audio/sfx/environment/SFX Waterfall.ogg" id="25_6v3hn"]
-[ext_resource type="PackedScene" uid="uid://c4ya5aclq0ke1" path="res://prefabs/creatures/slam_spore.tscn" id="26_gkbqt"]
 
 [sub_resource type="Gradient" id="Gradient_ltcmt"]
 offsets = PackedFloat32Array(0, 0.511848, 1)
@@ -715,11 +714,7 @@ transform = Transform3D(0.7523344, 0, 0.6587813, 0, 1, 0, -0.6587813, 0, 0.75233
 script = ExtResource("11_442in")
 
 [node name="spawn_start" type="Node3D" parent="." groups=["spawn_points"]]
-transform = Transform3D(0.8802289, 0, -0.4745493, 0, 1, 0, 0.4745493, 0, 0.8802289, -37.56866, 22.232626, 35.251217)
-script = ExtResource("11_442in")
-
-[node name="spawn_start2" type="Node3D" parent="." groups=["spawn_points"]]
-transform = Transform3D(-0.96806014, 0, -0.25071785, 0, 1, 0, 0.25071785, 0, -0.96806014, 4.803407, 0.39678812, 24.277277)
+transform = Transform3D(-0.96806014, 0, -0.25071785, 0, 1, 0, 0.25071785, 0, -0.96806014, 3.6027308, 0.39678812, 24.277277)
 script = ExtResource("11_442in")
 
 [node name="spawn_1" type="Node3D" parent="." groups=["spawn_points"]]
@@ -733,7 +728,7 @@ script = ExtResource("11_442in")
 subtype = 1
 
 [node name="spawn_3" type="Node3D" parent="." groups=["spawn_points"]]
-transform = Transform3D(-0.9995868, 0, -0.028741641, 0, 1, 0, 0.028741641, 0, -0.9995868, 9.735, 0.7871599, 49.444)
+transform = Transform3D(-0.70841366, 0, 0.7057973, 0, 1, 0, -0.7057973, 0, -0.70841366, 5.9753256, 0.7871597, 49.086235)
 script = ExtResource("11_442in")
 subtype = 1
 
@@ -880,6 +875,91 @@ draw_pass_1 = SubResource("QuadMesh_f8iix")
 transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.45994985, -0.0067039826, 0.03759448, 0.0065923864, 0.45841375, -86.58677, 0.06859965, -3.8776174)
 
 [node name="Door of Trials3" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
+transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
+
+[node name="hitherton_terrain2" parent="." instance=ExtResource("18_s1e5c")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.46848, 0.04137516, 11.594625)
+
+[node name="campfire" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40847, -8.345196, -50.471825)
+
+[node name="campfire2" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555142, -0.0050161625, 0.0034832142, 0.999891, -0.014349017, 0.005066634, 0.0143312765, 0.99988437, -53.9099, 0.17641641, 9.013904)
+
+[node name="campfire3" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, -101.821365, 22.3104, 33.652325)
+
+[node name="Door of Trials" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
+transform = Transform3D(0.99200654, -0.0035555137, -0.12613596, 0.0017190397, 0.999891, -0.014665334, 0.12617442, 0.0143312765, 0.99190456, -107.19795, 22.248772, 46.027584)
+required_switches = 0
+open_anim_name = "door_open"
+
+[node name="Area3D" type="Area3D" parent="hitherton_terrain2/Door of Trials"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials/Area3D"]
+transform = Transform3D(1, -1.1641532e-10, 0, 1.1641532e-10, 1, 0, -2.9802322e-08, 1.8626451e-09, 1, 3.4783669, -0.19704628, -13.026867)
+shape = SubResource("SphereShape3D_ducrt")
+
+[node name="Door of Trials-Exit" type="Node3D" parent="hitherton_terrain2"]
+transform = Transform3D(0.14946637, 0, -0.9887669, 0, 1.0000001, 0, 0.9887669, 0, 0.14946637, 33.32795, 15.945872, 60.898384)
+script = ExtResource("15_5qxy3")
+required_switches = 0
+open_anim_name = "door_open"
+
+[node name="Door of Trials_R" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+material_override = ExtResource("16_1jhap")
+mesh = SubResource("ArrayMesh_vtkfx")
+skeleton = NodePath("")
+
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_R"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_R/AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jso1h")
+
+[node name="Door of Trials Topper" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
+material_override = ExtResource("16_1jhap")
+mesh = SubResource("ArrayMesh_rv6to")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials Topper"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials Topper/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_eq8ae")
+
+[node name="Door of Trials_L" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+material_override = ExtResource("16_1jhap")
+mesh = SubResource("ArrayMesh_71rci")
+skeleton = NodePath("")
+
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_L/AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0hwc8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hitherton_terrain2/Door of Trials-Exit"]
+libraries = {
+&"": SubResource("AnimationLibrary_ph2jk")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hitherton_terrain2/Door of Trials-Exit"]
+stream = ExtResource("17_t8jou")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="hitherton_terrain2/Door of Trials-Exit"]
+material_override = SubResource("StandardMaterial3D_brs6k")
+emitting = false
+amount = 128
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.83
+process_material = SubResource("ParticleProcessMaterial_fb6mu")
+draw_pass_1 = SubResource("QuadMesh_f8iix")
+
+[node name="Door of Trials2" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
+transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.45994985, -0.0067039826, 0.03759448, 0.0065923864, 0.45841375, -86.58677, 0.06859965, -3.8776174)
+
+[node name="Door of Trials3" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
 
 [node name="hitherton_causway" type="Node3D" parent="."]
@@ -1337,9 +1417,13 @@ shape = SubResource("BoxShape3D_nubfc")
 [node name="shield_shroom" parent="." groups=["enemies"] instance=ExtResource("21_nubfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3450832, -0.027355254, 14.456949)
 
-[node name="slam_spore" parent="." instance=ExtResource("26_gkbqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.459774, 0.3889203, 35.178223)
+[node name="shrub" parent="." instance=ExtResource("21_ypyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.56677, 0.051975578, 40.207863)
+
+[node name="shrub2" parent="." instance=ExtResource("21_ypyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.381754, 0.10814467, 36.180794)
 
 [connection signal="body_entered" from="dungeon_entrance" to="dungeon_entrance" method="_start_level_transition"]
 [connection signal="body_entered" from="dungeon_entrance2" to="dungeon_entrance2" method="_start_level_transition"]
 [connection signal="body_entered" from="hitherton_terrain/Door of Trials/Area3D" to="hitherton_terrain/Door of Trials" method="trigger_animation"]
+[connection signal="body_entered" from="hitherton_terrain2/Door of Trials/Area3D" to="hitherton_terrain2/Door of Trials" method="trigger_animation"]

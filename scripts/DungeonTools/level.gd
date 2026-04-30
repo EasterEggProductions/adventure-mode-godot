@@ -74,6 +74,9 @@ func level_start():
 	# find spawn point:
 	if MgrTransition.target_spawn_point != "":
 		print(MgrTransition.target_spawn_point)
+		## FIXME - Hack for indader spawns 
+		if MgrPlayerSocket.player_type == "enemy":
+			MgrTransition.target_spawn_point = "spawn_3"
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
 		var psock = MgrPlayerSocket.get_player_one()

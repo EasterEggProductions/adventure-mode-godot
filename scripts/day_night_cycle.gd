@@ -11,6 +11,10 @@ extends WorldEnvironment
 ## 0.0 = midnight, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset. 
 @export_range(0.0, 1.0) var time_of_day: float = 0.0
 
+## Rotates the sun's orbit path around the world.
+## Useful for aligning sunrise/sunset with the level layout. 
+@export_range(0.0, 360.0, 1.0, "degrees") var sun_orbit_rotation: float = 0.0
+
 @onready var sun: DirectionalLight3D = $Sun
 
 ## Controls sun intensity over the day using a gradient. 
@@ -89,8 +93,11 @@ func resume_cycle():
 func _update_sun():
 	var angle = (time_of_day * 360.0) + 90.0 # Offset by 90 degrees so that 0.0 corresponds to midnight.
 
-	# Sun rotation.
+	# Vertical movement (controls day/night progression).
 	sun.rotation_degrees.x = angle
+
+	# Horizontal orbit offset (controls sunrise/sunset direction).
+	sun.rotation_degrees.y = sun_orbit_rotation
 
 	# Apply lighting values from the gradient.
 	if lighting:

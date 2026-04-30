@@ -26,6 +26,9 @@ var dot : Node3D # Lock on reticle
 var dodge_sprint_threshold = 0.2
 var ds_timer = 0.0
 
+## Timer for holding down left or right to put away weapon 
+var left_right_scheathe_timer = 0 # Going to default to 1 second right now  ¯\_(ツ)_/¯
+
 # variables for z targeting
 var look_lock = false
 
@@ -168,21 +171,36 @@ func _collect_inputs(delta):
 			thrall.enque_action("attack_art")
 	
 
+
 	
 	if Input.is_action_just_released(player_prefix + "item_belt_next"):
-		thrall.belt_item_inc(1)
+		if left_right_scheathe_timer < 1:
+			thrall.belt_item_inc(1)
+		else:
+			left_right_scheathe_timer = 0
 	if Input.is_action_just_released(player_prefix + "item_right_next"):
-		thrall.right_item_inc(1)
+		if left_right_scheathe_timer < 1:
+			thrall.right_item_inc(1)
+		else:
+			left_right_scheathe_timer = 0
 	if Input.is_action_just_released(player_prefix + "item_left_next"):
-	#	if len(thrall.character.hand_left_slots) == 1 and thrall.character.hand_l_current == 0:
-	#		thrall.character.hand_l_current = -1 # Using negative number for kinda faux unequip hand
-	#		print("one item, unequipping")
-	#	else:
-	#		print("incriment item")
-	#		thrall.character.hand_l_current = 0
-		thrall.left_item_inc(1)
+		if left_right_scheathe_timer < 1:
+			thrall.left_item_inc(1)
+		else:
+			left_right_scheathe_timer = 0
 	if Input.is_action_just_released(player_prefix + "item_spell_next"):
-		thrall.spell_inc(1)
+		if left_right_scheathe_timer < 1:
+			thrall.spell_inc(1)
+		else:
+			left_right_scheathe_timer = 0
+	#left_right_scheathe_timer
+	if Input.is_action_pressed(player_prefix + "item_belt_next") or  Input.is_action_pressed(player_prefix + "item_right_next") or  Input.is_action_pressed(player_prefix + "item_left_next") or  Input.is_action_pressed(player_prefix + "item_spell_next"):
+		left_right_scheathe_timer += delta
+		if left_right_scheathe_timer > 1:
+			thrall.combat_mode = false
+			thrall.combat_relax_timer = 0
+	else:
+		left_right_scheathe_timer = 0
 
 	# SECTION - Camera and lock on stuff
 	if Input.is_action_just_pressed(player_prefix + "look_lock"):

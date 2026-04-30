@@ -10,6 +10,8 @@ extends Node
 # example: object_data["some_scene_name"]["some_object_name"]["the_property_i_want"]
 var object_data: Dictionary = {}
 
+#signal network_state_changed(scene_name: String, object_name: String, data: Dictionary)
+
 func register_dungeon(scene_names: Array):
 	for scene_name in scene_names:
 		object_data[scene_name] = {}
@@ -68,6 +70,7 @@ func client_update_state(scene_name: String, object_name: String, state: Diction
 @rpc("authority", "reliable")
 func client_recieve_state_update(scene_name: String, object_name: String, state: Dictionary) -> void:
 	save_object(scene_name, object_name, state)
+	#emit_signal("network_state_changed", scene_name, object_name, state)
 	print(">>> Client has recieved server update: ", object_name, ", ", state)
 
 func server_broadcast_state_change(scene_name: String, object_name: String, state: Dictionary):

@@ -66,6 +66,7 @@ func level_start():
 
 	# find spawn point:
 	if MgrTransition.target_spawn_point != "":
+		print(MgrTransition.target_spawn_point)
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
 		#MgrTransition.target_spawn_point = ""
@@ -76,7 +77,10 @@ func level_start():
 	## If we just loaded the dungeon for the first time and we're the host, populate the object data.
 	#if multiplayer.is_server() and is_spawn_room and MgrDungeonState.object_data.is_empty():
 		#print("DATA IS EMPTY, NEED TO FILL")
-	
+		
+	# link up the level to the manager so we can get live network state changes
+	#MgrDungeonState.connect("network_state_changed", Callable(self.on_network_state_changed))
+	#
 	# retrieve the dungeon object data for this room
 	# NOTE: key is now the scene path, rather than the name of the root note. easier to do remote state changes this way
 	var data = MgrDungeonState.load_objects(self.scene_file_path)
@@ -113,7 +117,6 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 		
 	# if this dungeon object changes the state of some other object in another scene, apply those
 	for conn: ObjectConnection in node.remote_connections:
-		print(conn.scene_path)
 		if multiplayer.is_server():
 			MgrDungeonState.server_update_state(
 				conn.get_scene_name(), conn.object_name, conn.affected_properties
@@ -122,6 +125,16 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 			MgrDungeonState.client_update_state.rpc_id(
 				1, conn.get_scene_name(), conn.object_name, conn.affected_properties
 			)
+			
+#func on_network_state_changed(scene_name: String, object_name: String, state: Dictionary):
+	## If this state change isn't for the currently loaded scene, we don't need to deserialize it.
+	#if self.scene_file_path != scene_name:
+		#return
+		#
+	#var node: DungeonObject = dungeon_objects.find_child(object_name)
+	#print("NETWORK >>> ", object_name, state)
+	#node.deserialize(state)
+
 func save_objects():
 	#print("SAVING time_of_day =", $DayNightCycle.time_of_day)
 	# Pack the current time_of_day into the save data so it persists between scenes.

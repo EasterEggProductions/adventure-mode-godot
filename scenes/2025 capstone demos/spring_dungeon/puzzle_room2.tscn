@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfvr6w18g8mn1"]
+[gd_scene load_steps=15 format=3 uid="uid://dfvr6w18g8mn1"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_wsvn7"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dstrq"]
@@ -7,10 +7,10 @@
 [ext_resource type="Material" uid="uid://dplp5hej1ntqd" path="res://scenes/2025 capstone demos/spring_dungeon/dungeon_walls.tres" id="5_co2j7"]
 [ext_resource type="Script" uid="uid://drvm7irdp6fqx" path="res://scripts/DungeonTools/button_sequence.gd" id="6_7xui0"]
 [ext_resource type="PackedScene" uid="uid://c3w2vh510huih" path="res://prefabs/Dungeon elements/button_floor.tscn" id="7_2erlh"]
-[ext_resource type="Script" uid="uid://cd2gtneoj43ul" path="res://scripts/DungeonTools/object_connection.gd" id="7_pm6gw"]
-[ext_resource type="PackedScene" uid="uid://buw61jj5xaa1f" path="res://prefabs/environment/day_night_cycle.tscn" id="8_h7y46"]
+[ext_resource type="Script" path="res://scripts/DungeonTools/object_connection.gd" id="7_pm6gw"]
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="9_agaw3"]
 [ext_resource type="Script" uid="uid://2xf5iayrr1sk" path="res://scripts/DungeonTools/spawnpoint.gd" id="10_qaudx"]
+[ext_resource type="PackedScene" uid="uid://bj33ialtobmts" path="res://prefabs/Dungeon elements/torch.tscn" id="11_2erlh"]
 
 [sub_resource type="Resource" id="Resource_2erlh"]
 script = ExtResource("7_pm6gw")
@@ -21,34 +21,14 @@ affected_properties = Dictionary[String, Variant]({
 object_name = "wind_column2"
 metadata/_custom_type_script = "uid://cd2gtneoj43ul"
 
-[sub_resource type="Gradient" id="Gradient_mp2rj"]
-colors = PackedColorArray(0, 0, 0.44705883, 1, 0.051970966, 0.05197096, 0.05197095, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4bus"]
-gradient = SubResource("Gradient_mp2rj")
-fill_from = Vector2(1, 0.5105105)
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_mr4er"]
-turbidity = 30.0
-sun_disk_scale = 0.0
-night_sky = SubResource("GradientTexture2D_e4bus")
-
-[sub_resource type="Sky" id="Sky_n5duk"]
-sky_material = SubResource("PhysicalSkyMaterial_mr4er")
-
-[sub_resource type="Environment" id="Environment_8co0k"]
-background_mode = 2
-sky = SubResource("Sky_n5duk")
-ambient_light_source = 2
-ambient_light_color = Color(0.7815733, 0.8540362, 0.99999744, 1)
-ambient_light_sky_contribution = 0.2
-ambient_light_energy = 0.3
-fog_enabled = true
-fog_light_energy = 0.6
-fog_density = 0.012
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_o34hs"]
 size = Vector3(6.412842, 2.8988037, 2.510498)
+
+[sub_resource type="Environment" id="Environment_q185v"]
+ambient_light_source = 2
+ambient_light_color = Color(0.35365918, 0.36121297, 0.533781, 1)
+ambient_light_energy = 0.19
+sdfgi_read_sky_light = false
 
 [node name="PuzzleRoom1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_wsvn7")
@@ -61,7 +41,8 @@ cam = NodePath("../Camera")
 freeze = true
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.550423, -0.25236094, 0.795832, 0, 0.9532224, 0.30227, -0.83488595, -0.16637634, 0.52467555, 26.3394, 5.13614, 19.3451)
+transform = Transform3D(-1, 0, -8.742278e-08, -2.262668e-08, 0.9659258, 0.25881904, 8.444392e-08, 0.25881904, -0.9659258, 0, 7, -11)
+fov = 37.849285
 script = ExtResource("3_kji0d")
 distance = 2.5
 freeze = true
@@ -114,10 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4621503, -0.0068797097, -1.
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
-[node name="DayNightCycle" parent="." instance=ExtResource("8_h7y46")]
-environment = SubResource("Environment_8co0k")
-time_of_day = 0.529
-
 [node name="exit_main_room" type="Area3D" parent="."]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48182964, 0.92363024, 11.981589)
 script = ExtResource("9_agaw3")
@@ -134,5 +111,70 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("10_qaudx")
 subtype = 2
 metadata/_custom_type_script = "uid://2xf5iayrr1sk"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q185v")
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="Torch" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(0.86329865, 0.5046934, 0, -0.5046934, 0.86329865, 0, 0, 0, 1, -11.52531, 3.4440503, -0.009873614)
+
+[node name="Torch2" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(0.8633956, -0.5045276, 0, 0.5045276, 0.8633956, 0, 0, 0, 1, 11.525, 3.4439998, -0.01)
+
+[node name="Torch3" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(-0.43169782, 0.25226384, -0.8660254, 0.5045276, 0.8633956, 0, 0.74772245, -0.4369337, -0.50000006, -2.9534903, 1.9438534, 10)
+
+[node name="Torch4" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(0.43169776, -0.25226378, -0.8660254, 0.5045276, 0.8633956, 0, 0.7477225, -0.43693373, 0.5, 3.0465097, 1.9438534, 10)
+
+[node name="Torch7" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(0.5463206, -0.118260644, -0.8291853, -0.23717189, 0.92762095, -0.28856394, 0.8032953, 0.3543079, 0.4787303, 6.823616, 0.36003494, -6.8405743)
+
+[node name="Torch8" parent="lights" instance=ExtResource("11_2erlh")]
+transform = Transform3D(0.54633385, 0.11905372, 0.82906306, 0.23645698, 0.92765766, -0.28903177, -0.803497, 0.35394558, 0.47865972, -6.824, 0.36, -6.841)
+
+[node name="ceiling main lights" type="Node3D" parent="lights"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lights/ceiling main lights"]
+transform = Transform3D(1, 0, 0, 0, 0.08715567, 0.9961947, 0, -0.9961947, 0.08715567, 0, 10.444, 0)
+light_color = Color(0.638671, 0.8286834, 1, 1)
+light_energy = 9.545
+spot_range = 47.917
+spot_attenuation = 0.44
+spot_angle = 34.25
+spot_angle_attenuation = 8.574123
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="lights/ceiling main lights"]
+transform = Transform3D(0.83397603, -0.5451728, -0.085267514, 0.17026187, 0.10725223, 0.9795447, -0.52487594, -0.8314347, 0.18226793, -5, 10.444, 6.505085)
+light_color = Color(0.638671, 0.8286834, 1, 1)
+light_energy = 9.545
+spot_range = 47.917
+spot_attenuation = 0.44
+spot_angle = 34.25
+spot_angle_attenuation = 25.99197
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="lights/ceiling main lights"]
+transform = Transform3D(0.8633956, -0.4873363, 0.13058135, -0.08761031, 0.11006856, 0.99005526, -0.49686274, -0.86624956, 0.05233702, 5, 10.444, 6.505085)
+light_color = Color(0.638671, 0.8286834, 1, 1)
+light_energy = 9.545
+spot_range = 47.917
+spot_attenuation = 0.44
+spot_angle = 34.25
+spot_angle_attenuation = 25.99197
+
+[node name="Transition Door effects" type="Node3D" parent="lights"]
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="lights/Transition Door effects"]
+transform = Transform3D(-1, 2.1855694e-08, -8.156656e-08, -9.137472e-09, 0.932248, 0.36181983, 8.394809e-08, 0.36181983, -0.932248, 0, 2.783, 10.958474)
+light_color = Color(0.33479998, 0.57722, 0.62, 1)
+light_energy = 7.11
+light_negative = true
+light_bake_mode = 0
+spot_range = 8.855
+spot_attenuation = -8.9
+spot_angle = 56.85
+spot_angle_attenuation = 69347.96
 
 [connection signal="body_entered" from="exit_main_room" to="exit_main_room" method="_start_level_transition"]

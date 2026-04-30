@@ -722,6 +722,18 @@ transform = Transform3D(-0.9995868, 0, -0.028741641, 0, 1, 0, 0.028741641, 0, -0
 script = ExtResource("11_442in")
 subtype = 1
 
+[node name="spawn_dungeon_front" type="Node3D" parent="."]
+transform = Transform3D(-0.99376035, 0, 0.111538425, 0, 1.0000001, 0, -0.111538425, 0, -0.99376035, -49.57275, 22.317049, 55.613823)
+script = ExtResource("11_442in")
+subtype = 2
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
+
+[node name="spawn_dungeon_back" type="Node3D" parent="."]
+transform = Transform3D(-0.14946629, 0, 0.988767, 0, 1.0000001, 0, -0.988767, 0, -0.14946629, 93.46194, 16.450521, 72.1256)
+script = ExtResource("11_442in")
+subtype = 2
+metadata/_custom_type_script = "uid://2xf5iayrr1sk"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
@@ -749,7 +761,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.593)
 
 [node name="hitherton_terrain" parent="." instance=ExtResource("18_s1e5c")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.593)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.46848, 0.04137516, 11.594625)
 
 [node name="campfire" parent="hitherton_terrain" instance=ExtResource("19_kvrnu")]
 transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40847, -8.345196, -50.471825)

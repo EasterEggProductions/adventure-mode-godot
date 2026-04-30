@@ -138,9 +138,9 @@ func _on_object_update(node: DungeonObject, data: Dictionary) -> void:
 func save_objects():
 	#print("SAVING time_of_day =", $DayNightCycle.time_of_day)
 	# Pack the current time_of_day into the save data so it persists between scenes.
-	var extra_data = {
-		"time_of_day": $DayNightCycle.time_of_day
-	}
+	var extra_data = {}
+	if is_instance_valid($DayNightCycle):
+		extra_data["time_of_day"] = $DayNightCycle.time_of_day
 
 	var data = [] if dungeon_objects == null else dungeon_objects.get_children()
 	MgrDungeonState.save_objects(self.scene_file_path, data, extra_data)

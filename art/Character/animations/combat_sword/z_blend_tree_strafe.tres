@@ -40,7 +40,7 @@ transitions = ["Start", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateM
 graph_offset = Vector2(-96, -116)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jhl7d"]
-graph_offset = Vector2(-730.038, -116.51401)
+graph_offset = Vector2(-773.038, -116.51401)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_d6nw5")
 nodes/Animation/position = Vector2(-420, 280)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_23htk")

@@ -27,11 +27,11 @@ func release_situation_check(thrall : Actor) -> bool:
 func move_thrall(thrall : Actor, delta : float):
 	var old_vel = thrall.velocity
 	# Get the motion delta.
-	thrall.velocity = ((thrall.animation_tree.get_root_motion_rotation_accumulator().inverse() * thrall.get_quaternion()) * thrall.animation_tree.get_root_motion_position() / delta) 
-	#print(thrall.velocity.y)
+	var motion_delta = ((thrall.animation_tree.get_root_motion_rotation_accumulator().inverse() * thrall.get_quaternion()) * thrall.animation_tree.get_root_motion_position() / delta) * 1
+	thrall.velocity = motion_delta
 	# Add the gravity.
 	if not thrall.is_on_floor():# && thrall.desired_move.y < 0.1:
-		thrall.velocity = old_vel
+		thrall.velocity = old_vel + (motion_delta * delta)
 	thrall.velocity.y -= gravity * delta
 	thrall.quaternion = thrall.quaternion * ((thrall.animation_tree.get_root_motion_rotation() / delta) * 10)
 	# Actually move thrall

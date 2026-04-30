@@ -40,7 +40,7 @@ transitions = ["Start", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateM
 graph_offset = Vector2(-96, -116)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jhl7d"]
-graph_offset = Vector2(-487.03802, -110.51401)
+graph_offset = Vector2(-730.038, -116.51401)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_d6nw5")
 nodes/Animation/position = Vector2(-420, 280)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_23htk")
@@ -168,7 +168,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_tg26n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_10bw5"]
-graph_offset = Vector2(-133.5, 35.5)
+graph_offset = Vector2(-81.5, 179.5)
 nodes/output/position = Vector2(820, 360)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_2ru5q")
 nodes/Animation/position = Vector2(346.06, 251.68)

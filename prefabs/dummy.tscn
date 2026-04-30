@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="62_l812m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ke2ik"]
+radius = 0.45
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u7hh"]
 resource_name = "skeleton_mat"
@@ -498,7 +499,6 @@ to_equip_wep = ExtResource("13_b5opq")
 
 [node name="travel_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_ke2ik")
 
 [node name="skeleton" type="Node3D" parent="."]
@@ -1367,6 +1367,7 @@ root_motion_track = NodePath("char/Skeleton3D:Root")
 tree_root = ExtResource("26_e2stm")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../skeleton/AnimationPlayer")
+"parameters/Attack Tree/airborne/AnimationNodeBlendSpace2D/blend_position" = Vector2(0, 0)
 "parameters/Attack Tree/standing/Movement/MOVE strafe/blend_position" = Vector2(-0.0024937391, 0.006134987)
 "parameters/Attack Tree/standing/Movement/MOVE strafe/0/BLOCK/blend_amount" = 0.0
 "parameters/Attack Tree/standing/Movement/MOVE strafe/0/SET_F[1]/scale" = 1.0
@@ -1402,13 +1403,12 @@ root_motion_track = NodePath("char/Skeleton3D:Root")
 tree_root = ExtResource("27_e2stm")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../skeleton/AnimationPlayer")
-parameters/MOVE/blend_position = Vector2(0, 0.004484296)
+"parameters/MOVE airborne/blend_position" = Vector2(0, 0.004484296)
 "parameters/MV blendtree/TURN/add_amount" = 0.0
 "parameters/MV blendtree/SET_F[15)/scale" = 1.0
 "parameters/MV blendtree/SET_F[15]b/scale" = 1.0
-"parameters/MV blendtree/MOVE/blend_position" = Vector2(-0.0009852052, 0)
+"parameters/MV blendtree/MOVE/blend_position" = Vector2(-0.0030487776, 0.025316477)
 "parameters/MV blendtree/SET_F[1]/scale" = 1.0
-"parameters/Sprint blendtree/TURNasd/add_amount" = 0.07000000000000006
 
 [node name="AnimationTree3" type="AnimationTree" parent="."]
 active = false
@@ -1417,6 +1417,7 @@ root_motion_track = NodePath("char/Skeleton3D:Root")
 tree_root = ExtResource("29_u7mm4")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../skeleton/AnimationPlayer")
+"parameters/Attack Tree/airborne/MOVE/blend_position" = Vector2(0, 0)
 "parameters/Attack Tree/standing/Movement/MOVE strafe/blend_position" = Vector2(0, 0)
 "parameters/Attack Tree/standing/Movement/MOVE strafe/0/BLOCK/blend_amount" = 0.0
 "parameters/Attack Tree/standing/Movement/MOVE strafe/0/SET_F[1]/scale" = 1.0

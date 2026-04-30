@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://chwqjvpft7wxd"]
+[gd_scene load_steps=54 format=3 uid="uid://chwqjvpft7wxd"]
 
 [ext_resource type="Script" uid="uid://dfgob8wlfeeqm" path="res://scripts/actor.gd" id="1_u4ehk"]
 [ext_resource type="Resource" uid="uid://ba3i5roa0cxxe" path="res://Modular Mobility/movesets/mvpk_walk.tres" id="2_4jbd7"]

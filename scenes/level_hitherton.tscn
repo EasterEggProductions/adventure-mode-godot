@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cabwsn82igehw" path="res://prefabs/environment/campfire.tscn" id="19_kvrnu"]
 [ext_resource type="Material" uid="uid://cqj8ocw1g8t0f" path="res://art/materials/giant_causway.tres" id="20_t8jou"]
 [ext_resource type="PackedScene" uid="uid://vwkcbj8sdfmp" path="res://prefabs/Dungeon elements/door_of_trials.tscn" id="20_wtgak"]
+[ext_resource type="PackedScene" uid="uid://yywlxswpodtx" path="res://prefabs/creatures/shield_shroom.tscn" id="21_nubfc"]
 [ext_resource type="PackedScene" uid="uid://dyacbq330bbx0" path="res://prefabs/environment/shrub_commonfruit.tscn" id="21_ypyys"]
 [ext_resource type="PackedScene" uid="uid://cme484l06g14s" path="res://prefabs/environment/tree_foliage.tscn" id="22_nxccc"]
 [ext_resource type="AudioStream" uid="uid://bk681n8wa8oqp" path="res://art/audio/sfx/environment/SFX Running Water.ogg" id="23_rxmjl"]

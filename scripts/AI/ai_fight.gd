@@ -27,8 +27,8 @@ func _ready():
 	start_pos = thrall.global_position
 	goTo = find_somewhere_to_go()
 	thrall.hand_state = Actor.HandState.TWO_HAND
-	thrall.enque_action("attack_light")
-	move_fix()
+	#thrall.enque_action("attack_light")
+	#move_fix()
 
 func move_fix():
 	await get_tree().create_timer(2).timeout
@@ -63,6 +63,7 @@ func _process(delta):
 		var go_d = (goTo - thrall.global_position).normalized()
 		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_d).x,-( thrall.global_basis.inverse() * -go_d).z)
 		thrall.desired_turn = transformed_move_dir.x
+		thrall.combat_mode = false
 
 		
 	var go_dir = goTo - thrall.global_position

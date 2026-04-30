@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6qqdexjwmt6f"
+path="res://.godot/imported/BGM Town Loop.ogg-c0d6d5df08acdcde5851cc9bca3376f5.oggvorbisstr"
+
+[deps]
+
+source_file="res://art/audio/music/BGM Town Loop.ogg"
+dest_files=["res://.godot/imported/BGM Town Loop.ogg-c0d6d5df08acdcde5851cc9bca3376f5.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -8,7 +8,7 @@ var player_outfit : PackedStringArray
 
 var player_type = "main" #just using strings for debug at this moment, main, ally, enemy are all for now
 
-var actor_prefab = preload("res://prefabs/actor.tscn")
+var actor_prefab : PackedScene
 
 # here temporarily
 var ally_material : Material = preload("res://art/materials/cooperator.tres")
@@ -17,6 +17,7 @@ var enemy_material : Material = preload("res://art/materials/invader.tres")
 
 func _ready() -> void:
 	add_player_socket("p1_")
+	actor_prefab = load("res://prefabs/actor.tscn")
 
 func add_player_socket(prefix : String):
 	var player = PlayerSocket.new()

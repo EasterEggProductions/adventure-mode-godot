@@ -35,7 +35,9 @@ func _start_level_transition(body : Node3D):
 		var gantry : Node3D = MgrPlayerSocket.get_player_one().ganty_thing
 		gantry.freeze = true
 		var tweeny = get_tree().create_tween()
-		tweeny.tween_property(gantry, "global_position", Vector3.ZERO, 5)
+		var dir_away = (gantry.global_position - global_position).normalized()
+		
+		tweeny.tween_property(gantry, "global_position", gantry.global_position + (dir_away * 5), 5)
 		# Looks good, player walks off, camera pulls out and pans up, nice... so long as zero, wait, that would lead them back... home!
 
 func start_delay():

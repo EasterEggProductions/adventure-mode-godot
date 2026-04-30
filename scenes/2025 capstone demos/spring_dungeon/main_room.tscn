@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=4 uid="uid://i0ymtqk4fyg4"]
+[gd_scene load_steps=29 format=4 uid="uid://i0ymtqk4fyg4"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_gwm44"]
+[ext_resource type="AudioStream" uid="uid://dosgwmhhjx17l" path="res://art/audio/music/BGM Dungeon Loop.ogg" id="2_5a4sn"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_l7x1l"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="3_pg32f"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="4_lda6y"]
@@ -187,6 +188,7 @@ sdfgi_read_sky_light = false
 [node name="MainRoom" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_gwm44")
 dungeon_objects = NodePath("Dungeon objects")
+level_music = ExtResource("2_5a4sn")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)

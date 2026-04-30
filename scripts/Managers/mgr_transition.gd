@@ -9,6 +9,9 @@ var current_level : PackedScene
 @onready var big_msg = $big_msg
 @onready var little_msg = $little_msg
 
+@onready var aud : AudioStreamPlayer = $aud
+
+
 func change_scene_to_pack(target: PackedScene):
 	#print(target)
 	if target == null or is_instance_valid(target) == false:
@@ -33,12 +36,30 @@ func change_scene_to_pack(target: PackedScene):
 	transitioning = false
 	get_tree().paused = false
 	current_level = target
-	$AnimationPlayer.play_backwards("transition")
-	#MgrPlayerSocket.spawn_player()
-	await $AnimationPlayer.animation_finished
+	await get_tree().create_timer(1).timeout # some kind of delay was required for some reason
 	if target_spawn_point != "" and get_tree().current_scene.has_method("level_start"):
-		get_tree().current_scene.level_start()
+		var level : Level = get_tree().current_scene 
+		level.level_start()
+		print("Waiting for start to complete")
+		#await level.level_started
+		print("Start has completed")
+		$AnimationPlayer.play_backwards("transition")
+		await $AnimationPlayer.animation_finished
+	else:
+		$AnimationPlayer.play_backwards("transition")
+		await $AnimationPlayer.animation_finished
+		
 
+## TODO Replace with FAM and level moods/themes
+func request_song(song : AudioStream):
+	if aud.stream == song:
+		return
+	var tween = get_tree().create_tween()
+	tween.tween_property(aud, "volume_linear", 0, 0.1)
+	aud.stop()
+	aud.stream = song
+	aud.play()
+	tween.tween_property(aud, "volume_linear", 1, 0.5)
 
 func you_died():
 	# play game over sound

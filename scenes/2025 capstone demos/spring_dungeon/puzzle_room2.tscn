@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfvr6w18g8mn1"]
+[gd_scene load_steps=16 format=3 uid="uid://dfvr6w18g8mn1"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_wsvn7"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="2_dstrq"]
+[ext_resource type="AudioStream" uid="uid://dosgwmhhjx17l" path="res://art/audio/music/BGM Dungeon Loop.ogg" id="2_q185v"]
 [ext_resource type="Script" uid="uid://dl7ctkny7x4m7" path="res://scripts/camera_control.gd" id="3_kji0d"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="4_qf1dr"]
 [ext_resource type="Material" uid="uid://dplp5hej1ntqd" path="res://scenes/2025 capstone demos/spring_dungeon/dungeon_walls.tres" id="5_co2j7"]
@@ -33,6 +34,7 @@ sdfgi_read_sky_light = false
 [node name="PuzzleRoom1" type="Node3D" node_paths=PackedStringArray("dungeon_objects")]
 script = ExtResource("1_wsvn7")
 dungeon_objects = NodePath("Dungeon Objects")
+level_music = ExtResource("2_q185v")
 
 [node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.887815, 0, 0.4602, 0, 1, 0, -0.4602, 0, 0.887815, 0, 0, 0)

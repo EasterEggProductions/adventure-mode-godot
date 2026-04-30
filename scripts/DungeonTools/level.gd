@@ -16,7 +16,14 @@ extends Node3D
 var spawned_players : Array[Actor] = []
 var local_player : Actor
 
+## Music that will play when the level is loading. 
+## TODO - Replace with FAM and moods/themes
+@export var level_music : AudioStream 
+
+signal level_started
+
 func level_start():
+	MgrTransition.request_song(level_music)
 	#print("level start...")
 	#var entering_player = MgrPlayerSocket.spawn_player()
 	#entering_player.global_position = spawn_point.global_position
@@ -69,6 +76,10 @@ func level_start():
 		print(MgrTransition.target_spawn_point)
 		var spawn = find_child(MgrTransition.target_spawn_point)
 		new_player.global_transform = spawn.global_transform
+		var psock = MgrPlayerSocket.get_player_one()
+		#psock.ganty_thing.freeze = true
+		psock.ganty_thing.global_position = new_player.global_position + (new_player.global_basis.z * 10) + Vector3(0,5,0)
+		psock.ganty_thing.look_at(new_player.global_position)
 		#MgrTransition.target_spawn_point = ""
 	else:
 		new_player.global_transform = MgrPlayerSocket.player_last_saved_pos
@@ -104,6 +115,8 @@ func level_start():
 			if data != null && data.has(object.name):
 				object.deserialize(data[object.name])
 			object.connect("state_update", self._on_object_update)
+	print("Level has finished starting")
+	level_started.emit() # does not work for some reason
 
 # All dungeon object connect their state_update signal to this function
 # WARNING: this function is mega ugly bear with me

@@ -1,7 +1,8 @@
-[gd_scene load_steps=95 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene load_steps=96 format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
+[ext_resource type="AudioStream" uid="uid://6qqdexjwmt6f" path="res://art/audio/music/BGM Town Loop.ogg" id="2_odvq8"]
 [ext_resource type="Environment" uid="uid://c5vgp5xgbfy74" path="res://scenes/default_env.tres" id="3_gmklc"]
 [ext_resource type="Script" uid="uid://c372qrudhege5" path="res://scripts/DungeonTools/exit_zone.gd" id="6_bxehf"]
 [ext_resource type="Script" uid="uid://cslsp74o38xr8" path="res://scripts/cam_gantry_playerFollow.gd" id="9_3i6og"]
@@ -682,6 +683,7 @@ size = Vector3(34.649, 3.581, 14.737)
 
 [node name="level_hitherton" type="Node3D"]
 script = ExtResource("1_cw6wx")
+level_music = ExtResource("2_odvq8")
 
 [node name="DayNightCycle" parent="." instance=ExtResource("19_cw6wx")]
 environment = ExtResource("3_gmklc")

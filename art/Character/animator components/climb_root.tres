@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=3 uid="uid://b05s2yvv1ups3"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://b05s2yvv1ups3"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dej7"]
 animation = &"animationLib_climb/climb_idle"

@@ -139,8 +139,11 @@ func _process(delta):
 		animation_tree.active = false
 		$skeleton/AnimationPlayer.play("death")
 		emit_signal("actor_killed", self) # NOTE: added for dungeon tools demo
-		#await get_tree().create_timer(5).timeout
+		if name == "PLAYER|1":
+			await get_tree().create_timer(5).timeout
+			MgrTransition.level_transition(MgrTransition.current_level.resource_path, "spawn_start")
 		#spawn()
+		
 		
 	if character.alive == false:
 		return
@@ -344,9 +347,11 @@ func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
 			character.stamina_current -= damage
 			enque_action("blocked_attack")
 			returnable = Armament.AttackState.BLOCKED
+			if character.stamina_current <= 0:
+				character.poise_current += character.stamina_current
 		else:
 			character.health_current -= damage
-		character.poise_current -= 5
+			character.poise_current -= 5
 		if character.poise_current <= 0:
 			if "poise_break" not in action_q.keys():
 				enque_action("poise_break", 1500) # stop double falling

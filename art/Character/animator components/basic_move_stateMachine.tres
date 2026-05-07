@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=76 format=3 uid="uid://br8w6rt02pge0"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://br8w6rt02pge0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_edqvn"]
 animation = &"jumps_and_falling/airborne"
@@ -200,7 +200,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3362"]
 advance_mode = 2
-advance_expression = "thrall.desired_move.x > 0.1"
+advance_expression = "desired_move.length() >= 0.5"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ra883"]
 switch_mode = 2
@@ -308,6 +308,7 @@ advance_mode = 2
 advance_expression = "action_q_check(\"emote_sit\")"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2650j"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6iyk2"]
@@ -372,4 +373,4 @@ states/sit_lounge_tscn/position = Vector2(559, -222)
 "states/stand up/node" = SubResource("AnimationNodeAnimation_6n3ai")
 "states/stand up/position" = Vector2(675, -148)
 transitions = ["sit down", "sit_lounge_tscn", SubResource("AnimationNodeStateMachineTransition_b0hsq"), "sit_lounge_tscn", "stand up", SubResource("AnimationNodeStateMachineTransition_a3362"), "jump standing", "MOVE airborne", SubResource("AnimationNodeStateMachineTransition_ra883"), "MOVE airborne", "land", SubResource("AnimationNodeStateMachineTransition_0tvft"), "MV blendtree", "MOVE airborne", SubResource("AnimationNodeStateMachineTransition_nosnc"), "MV blendtree", "jump standing", SubResource("AnimationNodeStateMachineTransition_k4lno"), "land", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_ox23e"), "land", "jump standing", SubResource("AnimationNodeStateMachineTransition_7l3uj"), "MV blendtree", "backstep", SubResource("AnimationNodeStateMachineTransition_u1pev"), "MV blendtree", "dodge_1", SubResource("AnimationNodeStateMachineTransition_fop4d"), "dodge_1", "dodge_2", SubResource("AnimationNodeStateMachineTransition_dsjoy"), "dodge_2", "dodge_1", SubResource("AnimationNodeStateMachineTransition_hrun3"), "dodge_2", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_pevin"), "dodge_1", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_n5j4m"), "backstep", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_i68o2"), "Start", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_6nkpm"), "MV blendtree", "aLib_actions_item_eat", SubResource("AnimationNodeStateMachineTransition_cwjg4"), "aLib_actions_item_eat", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_upayn"), "MV blendtree", "aLib_actions_item_crush", SubResource("AnimationNodeStateMachineTransition_jrcml"), "aLib_actions_item_crush", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_1ahjd"), "MV blendtree", "sit down", SubResource("AnimationNodeStateMachineTransition_x2yb8"), "stand up", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_2650j"), "MV blendtree", "poisebreak", SubResource("AnimationNodeStateMachineTransition_6iyk2"), "poisebreak", "pb_idle", SubResource("AnimationNodeStateMachineTransition_6n3ai"), "pb_idle", "pb_stand", SubResource("AnimationNodeStateMachineTransition_urvxg"), "pb_stand", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_2vgh4"), "MV blendtree", "aLib_actions_item_drink", SubResource("AnimationNodeStateMachineTransition_471fs"), "aLib_actions_item_drink", "MV blendtree", SubResource("AnimationNodeStateMachineTransition_edqvn")]
-graph_offset = Vector2(-43, -60)
+graph_offset = Vector2(153, -347)

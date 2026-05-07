@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=3 uid="uid://10yh2iq5uoji"]
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://10yh2iq5uoji"]
 
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://ciqye8mtt71tr" path="res://art/Character/animations/combat_sword/z_blend_tree_strafe.tres" id="1_afje2"]
 

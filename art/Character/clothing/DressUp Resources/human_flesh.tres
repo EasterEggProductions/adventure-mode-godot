@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Garment" load_steps=10 format=4 uid="uid://2g2xi3iipiu3"]
+[gd_resource type="Resource" script_class="Garment" format=4 uid="uid://2g2xi3iipiu3"]
 
 [ext_resource type="Texture2D" uid="uid://by4iie7eubiki" path="res://art/Character/clothing/manny_quinn_skin_mq_body.png" id="1_j7j0w"]
 [ext_resource type="Texture2D" uid="uid://cld1whnpcp4um" path="res://art/Character/clothing/manny_quinn_skin_mq_face.png" id="2_jcg8x"]

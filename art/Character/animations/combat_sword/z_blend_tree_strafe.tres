@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendSpace2D" load_steps=63 format=3 uid="uid://ciqye8mtt71tr"]
+[gd_resource type="AnimationNodeBlendSpace2D" format=3 uid="uid://ciqye8mtt71tr"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_23htk"]
 animation = &"walk_jog_run/jog_fwd"

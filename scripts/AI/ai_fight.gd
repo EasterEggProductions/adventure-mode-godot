@@ -15,7 +15,7 @@ var timer = 0.0
 enum ATT_STATE {IDLE, RETREATING, ATTACKING, DODGING}
 var state = ATT_STATE.IDLE
 
-var start_pos
+var start_pos : Transform3D
 
 @export var action = false
 var dist
@@ -24,11 +24,14 @@ var dist
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_pos = thrall.global_position
+	start_pos = thrall.global_transform
 	goTo = find_somewhere_to_go()
 	thrall.hand_state = Actor.HandState.TWO_HAND
 	#thrall.enque_action("attack_light")
 	#move_fix()
+	if get_tree().current_scene.has_signal("level_reset"):
+		print("connecting to level reset signal")
+		get_tree().current_scene.level_reset.connect(self._on_level_reset)
 
 func move_fix():
 	await get_tree().create_timer(2).timeout
@@ -58,7 +61,7 @@ func _process(delta):
 	elif dist <= dist_see:
 		in_spot_range(delta)
 	elif timer <= 0:
-		goTo = start_pos
+		goTo = start_pos.origin
 		goTo.y = thrall.global_position.y
 		var go_d = (goTo - thrall.global_position).normalized()
 		var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * -go_d).x,-( thrall.global_basis.inverse() * -go_d).z)
@@ -89,7 +92,7 @@ func patrol(delta):
 
 
 func find_somewhere_to_go() -> Vector3:
-	return start_pos + Vector3(randf_range(-5, 5), 0, randf_range(-5, 5))
+	return start_pos.origin + Vector3(randf_range(-5, 5), 0, randf_range(-5, 5))
 
 
 func in_spot_range(_delta):
@@ -199,3 +202,11 @@ func create_arrow_mesh() -> ArrayMesh:
 	#arrow_mesh.surface_transform(1, cone_transform)
 
 	return arrow_mesh
+
+func _on_level_reset():
+	print(name + " reset with level reset.")
+	thrall.character.reset()
+	thrall.global_transform = start_pos
+	thrall.animation_tree.active = false 
+	thrall.animation_tree.active = true
+	

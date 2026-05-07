@@ -21,6 +21,7 @@ var local_player : Actor
 @export var level_music : AudioStream 
 
 signal level_started
+signal level_reset
 
 func level_start():
 	MgrTransition.request_song(level_music)
@@ -120,6 +121,15 @@ func level_start():
 			object.connect("state_update", self._on_object_update)
 	print("Level has finished starting")
 	level_started.emit() # does not work for some reason
+	await get_tree().create_timer(1).timeout
+	MgrTransition.msg_big(name, 3)
+
+## Rest at fire, respawn enemies, pass time, etc. 
+func reset_level_now():
+	print("Whooosh, reset sound! And respawn enemies n shit.")
+	level_reset.emit()
+	MgrPlayerSocket.get_player_one().thrall.character.reset()
+	pass
 
 # All dungeon object connect their state_update signal to this function
 # WARNING: this function is mega ugly bear with me

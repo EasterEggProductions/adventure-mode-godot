@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=158 format=3 uid="uid://dxputd8clfanr"]
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://dxputd8clfanr"]
 
 [ext_resource type="AnimationNodeBlendTree" uid="uid://10yh2iq5uoji" path="res://art/Character/animator components/small_components/sm_movementTree_basic.tres" id="2_lfsq2"]
 [ext_resource type="Curve" uid="uid://brijpnu58w121" path="res://art/Character/animator components/small_components/curve_minorOvershoot.tres" id="3_b2n5l"]

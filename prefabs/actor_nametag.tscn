@@ -23,7 +23,7 @@ bg_color = Color(1, 0, 0, 1)
 
 [node name="actor_nametag" type="Sprite3D"]
 editor_description = "Used to display name tags and progress bars above the player's head just below their name tag. For now, there's a player name and health bar that will display in-game."
-transform = Transform3D(0.9999709, -0.007139466, 0.0024772442, 0.007010944, 0.99879795, 0.04849698, -0.0028204238, -0.048478086, 0.99881977, 0, 0, 0)
+transform = Transform3D(0.99999946, 0, 0, 0, 0.9999992, 0, 0, 0, 0.99999946, 0, 0, 0)
 offset = Vector2(0, 10)
 pixel_size = 0.0015
 billboard = 1

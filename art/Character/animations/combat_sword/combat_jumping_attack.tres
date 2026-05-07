@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=2 format=3 uid="uid://byh8ta138gw6r"]
+[gd_resource type="Animation" format=3 uid="uid://byh8ta138gw6r"]
 
 [ext_resource type="AudioStream" uid="uid://cvjwuss1xv0n1" path="res://art/audio/sfx/swing_02.ogg" id="1_8s44l"]
 
@@ -182,7 +182,7 @@ tracks/24/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.3, {}, 0],
+"args": [5.0, {}, 0],
 "method": &"anim_hurtbox_activate"
 }]
 }
@@ -201,3 +201,15 @@ tracks/25/keys = {
 "times": PackedFloat32Array(0.3)
 }
 tracks/25/use_blend = true
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("..:prop_R_hurtbox")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0.06666667, 0.33333334, 0.36666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}

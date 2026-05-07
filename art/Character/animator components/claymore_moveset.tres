@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=161 format=3 uid="uid://umh8dohivb2b"]
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://umh8dohivb2b"]
 
 [ext_resource type="Curve" uid="uid://brijpnu58w121" path="res://art/Character/animator components/small_components/curve_minorOvershoot.tres" id="1_ms4qb"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://10yh2iq5uoji" path="res://art/Character/animator components/small_components/sm_movementTree_basic.tres" id="2_bqpes"]
@@ -809,7 +809,6 @@ graph_offset = Vector2(-628, -341)
 
 [resource]
 resource_name = "claymore moveset"
-graph_offset = Vector2(108.188385, 134.56445)
 nodes/output/position = Vector2(560, 250)
 "nodes/Attack Tree/node" = SubResource("AnimationNodeStateMachine_1wdgk")
 "nodes/Attack Tree/position" = Vector2(300, 240)

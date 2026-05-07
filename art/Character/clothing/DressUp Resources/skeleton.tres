@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Garment" load_steps=8 format=4 uid="uid://duxy5hujhcahp"]
+[gd_resource type="Resource" script_class="Garment" format=4 uid="uid://duxy5hujhcahp"]
 
 [ext_resource type="Texture2D" uid="uid://cl2g7xqkb6amj" path="res://art/Character/skeleton_SkeletonA.png" id="1_0nvq6"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="1_d8e1w"]

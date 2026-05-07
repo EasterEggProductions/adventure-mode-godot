@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=45 format=3 uid="uid://coym3jr0vat8x"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://coym3jr0vat8x"]
 
 [ext_resource type="AnimationNodeBlendTree" uid="uid://10yh2iq5uoji" path="res://art/Character/animator components/small_components/sm_movementTree_basic.tres" id="1_5ey4x"]
 

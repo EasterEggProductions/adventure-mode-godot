@@ -786,6 +786,14 @@ to_equip_wep = ExtResource("14_xb4lh")
 [node name="ai_attack" type="Node" parent="skele_02"]
 script = ExtResource("15_jiyip")
 
+[node name="skele_03" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+transform = Transform3D(0.9798377, 0, 0.19979548, 0, 1, 0, -0.19979548, 0, 0.9798377, -16.42767, 0.070426464, 24.373064)
+character = ExtResource("13_6ymps")
+to_equip_wep = ExtResource("14_xb4lh")
+
+[node name="ai_attack" type="Node" parent="skele_03"]
+script = ExtResource("15_jiyip")
+
 [node name="dungeon_lever_floor" parent="." instance=ExtResource("16_wjp5u")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -81.41567, -13)
 

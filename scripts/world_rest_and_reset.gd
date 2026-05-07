@@ -30,6 +30,7 @@ func rest(thrall : Actor):
 func reset():
 	reset_particles.emitting = true
 	reset_sfx.play()
+	get_tree().current_scene.reset_level_now()
 
 func get_back_up():
 	#print("Get back up")

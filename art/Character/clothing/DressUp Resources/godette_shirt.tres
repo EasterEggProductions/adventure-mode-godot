@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Garment" load_steps=6 format=4 uid="uid://di0i8hhb3ylu4"]
+[gd_resource type="Resource" script_class="Garment" format=4 uid="uid://di0i8hhb3ylu4"]
 
 [ext_resource type="Texture2D" uid="uid://bfjr2s7ja1xjy" path="res://art/Character/clothing/Godette/godette_godette_shirt.png" id="1_ua51e"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="3_ott8p"]

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=17 format=3 uid="uid://cf7bwupncf1cj"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://cf7bwupncf1cj"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_73mwi"]
 animation = &"glider/glide_idle"

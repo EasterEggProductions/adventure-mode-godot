@@ -1,4 +1,6 @@
-# adventure-mode-godot
+<img width="1006" height="504" alt="amode_title" src="https://github.com/user-attachments/assets/8056a8e5-e60d-47eb-be24-473fdc97eb25" />
+
+# Adventure Mode
 
 Adventure Mode is a 3D third-person template for the Godot engine that combines the basic movement and exploration mechanics, as well as the foundational combat experiences of a wide variety of games:
 
@@ -8,30 +10,42 @@ Adventure Mode is a 3D third-person template for the Godot engine that combines 
 - Not *Bloodborne* (I hate *Bloodborne*. Just go play *Devil May Cry*.)
 - **Elden Ring**
 
-Play a [demo here](https://www.eastereggproductions.com/games/browser/adventure_mode_godot/). It may take up to a minute to load. A controller is recommended, as there is currently no mouse look implimented. 
+Play a [demo here](https://www.eastereggproductions.com/games/browser/adventure_mode_godot/). It may take up to a minute to load. A controller is recommended. 
 
+This project currently targets Godot Engine 4.6, and will continue to upgrade to the latest engine release when possible. 
 ---
 
 ## Key Features
 - **Movement and Exploration**:
   - Moving and jumping in 3D space with a variety of modes: walking, running, jumping, climbing, swimming, and flying.
-<img src="https://github.com/user-attachments/assets/e5728c0c-11ca-41be-a485-e06e5fef4a73" width="200" title="Walking"/>
-<img src="https://github.com/user-attachments/assets/42dc540b-029a-4359-9870-614d4ab3aa6c" width="200" title="Climbing"/>
-<img src="https://github.com/user-attachments/assets/2150d6fc-59a6-4311-9915-90707c1020b8" width="200" title="Swimming"/>
+<img alt="amode_walk" src="https://github.com/user-attachments/assets/92630654-81d3-4d3b-8124-83d8aa5258cc"  width="200" title="Walking"/>
+<img alt="amode_climb" src="https://github.com/user-attachments/assets/f569bca4-879f-406e-a273-efb67699ba41" width="200" title="Climbing"/>
+<img alt="amode_swim" src="https://github.com/user-attachments/assets/eb5938eb-dc8b-42c4-8202-6c5d984406f1" width="200" title="Swimming"/>
 
 - **Combat**:
-  - Basic melee and ranged attacks determined by data, such as equipped weapons or stats.
-<img src="https://github.com/user-attachments/assets/08a60027-7dfa-4de5-80be-21dd89a164dd" width="200" title="Combat"/>
+  - Basic melee attacks with movement sets and combos determined by data, such as equipped weapons.
+<img alt="amode_PVE" src="https://github.com/user-attachments/assets/5ac6dd59-9841-4a2c-8b19-0b288ad13895" width="200" title="Combat"/>
+
+- **Multiplayer**:
+  - Includes a system that attempts to utilize UPNP to ease online play, and provides join codes.
+<img alt="amode_joincode" src="https://github.com/user-attachments/assets/d3f96725-237a-4de3-a05a-d8e205fe87eb" width="200" title="Multiplayer"/>
+
+  - Cooperative players joining a game in progress.
+<img alt="amode_coop" src="https://github.com/user-attachments/assets/9244a556-b3f8-4794-996d-ee93f9948a92"  width="200" title="Coop"/>
+
+  - Invasions and PVP combat.
+<img alt="amode_invasions" src="https://github.com/user-attachments/assets/c95b9416-48cf-4239-b9bf-a9baa9003461"  width="200" title="Invaders"/>
+<img alt="amode_PVP" src="https://github.com/user-attachments/assets/97672650-93a6-4731-be1b-422b3d899fa1"  width="200" title="Melee"/>
 
 - **Item Management**:
-  - Usage of items such as potions (both consumable and reusable).
-- **Multiplayer**:
-  - Includes a foundational multiplayer setup.
+  - Usage of items such as potions (both consumable and reusable) is under construction.
+  - But a robust system called DressUp manages player visual state, allowing it to sync for all players.
+<img width="800" alt="amode_DressUp" src="https://github.com/user-attachments/assets/cd78f1d0-c547-476b-8eb3-c6f03dee3e95"  title="Dress Up is fun"/>
+
 
 ### Excluded Features
 Some systems are intentionally omitted or left as basic templates to be customized by end developers:
-- Inventory management systems.
-- Character building (stats and leveling up).
+
 - Terrain generation (e.g., voxels, heightmaps).
 - Advanced graphics.
 - Scalable netcode solutions.
@@ -39,9 +53,11 @@ Some systems are intentionally omitted or left as basic templates to be customiz
 ---
 
 ## Goals
-- Implement basic walking and running mechanics.
+- Implement extensible movement mechanics.
 - Extend to additional movement modes, such as parkour, climbing, swimming, and flying.
 - Provide a functional, basic combat system.
+- Build a foundation upon which others may easily modify and create new games.
+- Improve the ease by which new enemies, items, and animations can be added to the systems.
 
 ---
 
@@ -72,6 +88,7 @@ Contributions to this project are welcome and encouraged! To contribute:
 
 ### Guidelines
 - Ensure your contributions align with the goals of the project.
+- Assure any art assets fit the established aesthetic.
 - Follow coding standards and include documentation for any new features.
 - Test your changes thoroughly before submitting.
 
@@ -81,7 +98,7 @@ Thanks for helping improve Adventure Mode!
 
 ## Licenses
 - **MIT License**: Applies to the software code in this repository. See the LICENSE file for full terms.
-- **CC-BY 4.0 License**: Applies to art assets, including 3D models, animations, and written materials. See the LICENSE file for full terms.
+- **CC-BY 4.0 License**: Applies to art assets, including 3D models, animations, written materials, music, and sound effects. See the LICENSE file for full terms.
 
 ---
 

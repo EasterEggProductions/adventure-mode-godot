@@ -14,8 +14,8 @@ var created_buttons = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_resource_dir()
-	make_garmet_buttons()
-	pass # Replace with function body.
+	if dress_up_controller:
+		make_garment_buttons()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func make_garmet_buttons():
+func make_garment_buttons():
 	clear_buttons()
 	for garment in all_garments:
 		var new_butt = Button.new()
@@ -54,10 +54,10 @@ func load_resource_dir():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+				#print("Found directory: " + file_name)
 				pass
 			else:
-				print("Found file: " + file_name)
+				#print("Found file: " + file_name)
 				#modules.append(load("res://Play_Resources/Modules/" + file_name))
 				if '.tres.remap' in file_name: # <---- NEW
 					file_name = file_name.trim_suffix('.remap') # <---- NEW
@@ -79,7 +79,8 @@ func _garment_equip(gar):
 		dress_up_controller.accessory_equip(gar)
 	else:
 		dress_up_controller.garment_equip(gar)
-	make_garmet_buttons()
+	make_garment_buttons()
+	MgrPlayerSocket.player_outfit = dress_up_controller.outfit_save()
 	pass 
 
 func _garment_unequip(gar):
@@ -87,5 +88,6 @@ func _garment_unequip(gar):
 		dress_up_controller.accessory_unequip(gar)
 	else:
 		dress_up_controller.garment_unequip(gar)
-	make_garmet_buttons()
+	make_garment_buttons()
+	MgrPlayerSocket.player_outfit = dress_up_controller.outfit_save()
 	pass 

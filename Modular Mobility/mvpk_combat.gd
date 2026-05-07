@@ -1,16 +1,14 @@
 extends MovementPackage
-
 # A class to hold a specific moveset
 class_name mvpk_combat
 
-var LDT = 0.1 # last delta time, some error or something, idk
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func pack_type():
 	return "mvpk_combat" # godot does not support getting custom class names 
 
 func transfer_situation_check(thrall : Actor) -> bool:
-	if thrall.r_wep.moveset == self:
+	if thrall.r_wep and thrall.r_wep.moveset == self:
 		return thrall.combat_mode
 	return false
 
@@ -29,12 +27,11 @@ func release_situation_check(thrall : Actor) -> bool:
 func move_thrall(thrall : Actor, delta : float):
 	var old_vel = thrall.velocity
 	# Get the motion delta.
-	thrall.velocity = ((thrall.animation_tree.get_root_motion_rotation_accumulator().inverse() * thrall.get_quaternion()) * thrall.animation_tree.get_root_motion_position() / delta) 
-
+	var motion_delta = ((thrall.animation_tree.get_root_motion_rotation_accumulator().inverse() * thrall.get_quaternion()) * thrall.animation_tree.get_root_motion_position() / delta) * 1
+	thrall.velocity = motion_delta
 	# Add the gravity.
 	if not thrall.is_on_floor():# && thrall.desired_move.y < 0.1:
-		thrall.velocity = old_vel
+		thrall.velocity = old_vel + (motion_delta * delta)
 	thrall.velocity.y -= gravity * delta
 	thrall.quaternion = thrall.quaternion * ((thrall.animation_tree.get_root_motion_rotation() / delta) * 10)
 	# Actually move thrall
-	thrall.move_and_slide()

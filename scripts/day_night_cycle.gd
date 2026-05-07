@@ -1,0 +1,119 @@
+extends WorldEnvironment
+
+## Length of a full in-game day in seconds.
+@export var day_length: float = 30.0
+
+## If true, time progresses automatically.
+## If false, time must be controlled manually.
+@export var auto_run: bool = true
+
+## Normalized time of day (0.0 to 1.0). 
+## 0.0 = midnight, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset. 
+@export_range(0.0, 1.0) var time_of_day: float = 0.0
+
+## Rotates the sun's orbit path around the world.
+## Useful for aligning sunrise/sunset with the level layout. 
+@export_range(0.0, 360.0, 1.0, "degrees") var sun_orbit_rotation: float = 0.0
+
+@onready var sun: DirectionalLight3D = $Sun
+
+## Controls sun intensity over the day using a gradient. 
+@export var lighting: GradientTexture1D
+
+# Emitted whenever time_of_day changes.
+signal time_changed(new_time)
+
+# Emitted when crossing the sunrise threshold.
+signal sunrise
+
+# Emitted when crossing the sunset threshold.
+signal sunset
+
+# Stores previous frame time to detect transitions.
+var _last_time: float = 0.0
+
+# Initializes the sun's position when the node enters the scene tree. 
+func _ready():
+	_update_sun()
+
+# Advances the day/night cycle every frame if the automatic time progression is enabled.
+func _process(delta):
+	if not auto_run:
+		return
+
+	_advance_time(delta)
+
+
+# Time Control Functions
+
+func _advance_time(delta: float):
+	# Stores previous time for the transition detection.
+	_last_time = time_of_day
+
+	# Converts the real seconds into the normalized time progression.
+	# delta / day_length determines fraction of full day passed.
+	time_of_day += delta / day_length
+
+	# Wraps the value between 0.0 and 1.0.
+	time_of_day = fmod(time_of_day, 1.0)
+ 
+	_check_transitions()
+
+	# Updates the sun position to match the new time. 
+	_update_sun()
+	emit_signal("time_changed", time_of_day)
+
+# Manually sets time of day (testing/cutscene use).
+func set_time(value: float):
+	_last_time = time_of_day
+
+	# Clamp to the valid normalized range.
+	time_of_day = clamp(value, 0.0, 1.0)
+
+	_update_sun()
+	emit_signal("time_changed", time_of_day)
+
+# Changes how long a full day lasts.
+func set_day_length(seconds: float):
+	day_length = max(1.0, seconds)
+
+# Stops automatic time progression.
+func pause_cycle():
+	auto_run = false
+
+# Resumes automatic time progression.
+func resume_cycle():
+	auto_run = true
+
+
+# Sun Logic
+
+# Updates the sun's rotation based on normalized time.
+# 0.0 = midnight, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset.
+func _update_sun():
+	var angle = (time_of_day * 360.0) + 90.0 # Offset by 90 degrees so that 0.0 corresponds to midnight.
+
+	# Vertical movement (controls day/night progression).
+	sun.rotation_degrees.x = angle
+
+	# Horizontal orbit offset (controls sunrise/sunset direction).
+	sun.rotation_degrees.y = sun_orbit_rotation
+
+	# Apply lighting values from the gradient.
+	if lighting:
+		var color: Color = lighting.gradient.sample(time_of_day)
+		
+		# Set sun brightness using gradient.
+		sun.light_energy = color.r 
+
+
+# Transition Checks 
+
+func _check_transitions():
+	# Sunrise threshold.
+	if _last_time < 0.25 and time_of_day >= 0.25:
+		emit_signal("sunrise")
+
+	# Sunset threshold.
+	if _last_time < 0.75 and time_of_day >= 0.75:
+		emit_signal("sunset")

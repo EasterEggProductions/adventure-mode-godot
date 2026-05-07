@@ -50,9 +50,10 @@ albedo_color = Color(0, 0.909804, 0.0666667, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_xsnh5"]
 radius = 1.0
 
-[node name="common_fruit" type="Area3D"]
+[node name="common_fruit" type="Area3D" node_paths=PackedStringArray("aud")]
 script = ExtResource("1_rwb4i")
 harvest_name = "Common Fruit"
+aud = NodePath("audio")
 
 [node name="Icosphere_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0049278, 0.056931, 0.0559873, 0.00984023, -0.0552333, 0.0570303, 0.0792394, 0.0103995, -0.00360044, 0, 0, 0)

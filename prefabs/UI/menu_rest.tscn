@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2x0akl6hgm86"]
+
+[ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_3lk2r"]
+[ext_resource type="Script" uid="uid://363cvvu4w731" path="res://scripts/UI/menu_goto.gd" id="2_nmgsa"]
+[ext_resource type="PackedScene" uid="uid://4kj61dulvwn" path="res://prefabs/UI/menu_player_equip.tscn" id="3_52mw4"]
+[ext_resource type="PackedScene" uid="uid://brjhnn7mf24y" path="res://prefabs/UI/menu_player_inventory.tscn" id="4_7jlu5"]
+[ext_resource type="PackedScene" uid="uid://bkb6o233ueod1" path="res://prefabs/UI/menu_crafting.tscn" id="5_xra8p"]
+[ext_resource type="PackedScene" uid="uid://cmfepp5yot35o" path="res://prefabs/UI/menu_online.tscn" id="6_4xtmr"]
+
+[sub_resource type="Gradient" id="Gradient_81d6m"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.103896, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ujdn"]
+gradient = SubResource("Gradient_81d6m")
+fill = 1
+fill_from = Vector2(1, 0.6)
+fill_to = Vector2(0.1, 0.1)
+metadata/_snap_enabled = true
+
+[node name="menu_rest" type="Control" node_paths=PackedStringArray("close_button", "focus_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_3lk2r")
+close_button = NodePath("buttons/Button resume")
+focus_button = NodePath("buttons/equip")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5ujdn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 343.0
+offset_bottom = 155.0
+bbcode_enabled = true
+text = "[font_size=30]Adventure Mode[/font_size]"
+autowrap_mode = 0
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 113.875
+offset_top = 227.51
+offset_right = 397.875
+offset_bottom = 657.51
+
+[node name="equip" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Equipment"
+script = ExtResource("2_nmgsa")
+menu = ExtResource("3_52mw4")
+parent_menu = NodePath("../..")
+
+[node name="inventory" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Inventory"
+script = ExtResource("2_nmgsa")
+menu = ExtResource("4_7jlu5")
+parent_menu = NodePath("../..")
+
+[node name="crafting" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Crafting"
+script = ExtResource("2_nmgsa")
+menu = ExtResource("5_xra8p")
+parent_menu = NodePath("../..")
+
+[node name="online" type="Button" parent="buttons" node_paths=PackedStringArray("parent_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Online"
+script = ExtResource("2_nmgsa")
+menu = ExtResource("6_4xtmr")
+parent_menu = NodePath("../..")
+
+[node name="Ascetic" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Bonfire Ascetic"
+
+[node name="Button resume" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "resyoom :)"

@@ -2,13 +2,16 @@ extends CharacterBody3D
 
 class_name Actor
 
+static var ALL_EVER_MADE : Array[Actor] = []
+
 @export var character : Character
 
 var desired_move = Vector3.ZERO
+var transformed_move_dir = Vector2.ZERO
 var desired_turn = 0.0 # left or right -+ 
 var lock_targ_pos : Vector3 = Vector3.ZERO
 # NOTE - Desired move used to handle everything. But locking on and strafing 
-# 		 involved having the directing you were looking, IE turned towards
+# 		 involved having the direction you were looking, IE turned towards
 #		 and the direction of movement, be separate. 
 
 @export_group("Animation Flags")
@@ -38,6 +41,8 @@ var aset_JUMP = []
 @export var movement_sets : Array[MovementPackage] # NOTE - walk_root.tres needs to be put on the child AnimationTree, otherwise there are weird control errors.
 var current_moveset = 0
 
+var wind_columns_inside: Array[WindColumn3D] = []
+
 var combat_mode = false
 var combat_relax_timer = 0
 
@@ -46,6 +51,7 @@ enum HandState {UNARMED, ONE_HAND, TWO_HAND}
 var hand_state : HandState = HandState.UNARMED
 
 @export_group("Dress Up")
+@onready var dup : DresserUpper = $DresserUpper
 # SECTION Outfit
 @export var garments : Array[Garment] # NOTE Resource references
 @export_subgroup("Weapon (debug)") # TODO - replace with weapons in the Character class
@@ -60,47 +66,40 @@ var hurtboxes
 var alive = true
 
 # SECTION Signals 
-# SECTION for leveling bar
+# for leveling bar
+signal actor_killed(actor_node:Actor)
 signal killed_something
 signal xp_get
 signal item_get(item_name)
 signal attack_hit(actor_hit, attack_id)
 # !SECTION Signals
-# !SECTION
 
 @onready var start_pos = global_position
 
 func _enter_tree() -> void:
-	if name != "1" && multiplayer.get_unique_id() > 1:
-		set_multiplayer_authority(str(name).to_int())
-		get_parent().get_parent().find_child("Player Sockets").find_child("p1_psock_adventure").enthrall_new_thrall(self)
-		var cam_gant = get_parent().get_parent().find_child("cam_gantry_playerFollow")
-		cam_gant.thrall = self
-		cam_gant.cam.target_current = self
-		cam_gant.freeze = false
-		cam_gant.cam.freeze = false
-		var netman = get_parent()
-		netman.outfit_control.dress_up_controller = self.find_child("DresserUpper")
-
-	# TODO - Remove this hack, better grouping required
-	if "skele" in name:
-		add_to_group("enemies")
-	else:
-		add_to_group("players")
+	ALL_EVER_MADE.append(self)
+	$MultiplayerSynchronizer.add_visibility_filter(MgrMultiplayer.visibility_filter)
+	if name.begins_with("PLAYER|"):
+		var id = int(name.split("|")[1])
+		set_multiplayer_authority(id)
+		if id == multiplayer.get_unique_id():
+			add_to_group("local_player")
 
 func _ready():
 	character = character.duplicate()
 	character.reset()
 	hurtboxes = find_hurtboxes_recursive(self)
+	dup.connect("accessory_changed", _on_accessory_changed)
 	dress_up()
-	compile_new_anim_tree()
+
+	if len(movement_sets) > 0:
+		compile_new_anim_tree()
 
 	# FIXME - Workaround for offhand item not being unique
-	var narr : Array[InventoryItem] = []
-	for x in character.hand_left_slots:
-		narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
-	character.hand_left_slots = narr
-
+	#var narr : Array[InventoryItem] = []
+	#for x in character.hand_left_slots:
+	#	narr.append(x.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+	#character.hand_left_slots = narr
 
 
 ## Spawn or Respawn setup
@@ -139,16 +138,28 @@ func _process(delta):
 		character.alive = false
 		animation_tree.active = false
 		$skeleton/AnimationPlayer.play("death")
-		await get_tree().create_timer(5).timeout
-		spawn()
+		emit_signal("actor_killed", self) # NOTE: added for dungeon tools demo
+		#await get_tree().create_timer(5).timeout
+		#spawn()
+		
 	if character.alive == false:
 		return
 	character.stats_regen(delta)
-	
 
+	if len(movement_sets) > 0:
+		movement_package_checks()
+		movement_sets[current_moveset].move_thrall(self, delta)
+	else:			
+		var old_vel = velocity
+		# Get the motion delta.
+		velocity = ((animation_tree.get_root_motion_rotation_accumulator().inverse() * get_quaternion()) * animation_tree.get_root_motion_position() / delta) * 1
 
-	movement_package_checks()
-	movement_sets[current_moveset].move_thrall(self, delta)
+		# Add the gravity.
+		if not is_on_floor():
+			velocity = old_vel
+		#velocity.y -= gravity * delta
+		quaternion = quaternion * ((animation_tree.get_root_motion_rotation() / delta) * 10)
+		# Actually move thrall
 
 
 func _physics_process(_delta):
@@ -156,6 +167,11 @@ func _physics_process(_delta):
 		return	
 	apply_animation_params()	
 	_TEMPORARY_fall_death()
+	#movement_sets[current_moveset].move_thrall(self, _delta)
+
+	move_and_slide()
+	if is_multiplayer_authority():
+		net_sync.rpc(desired_move, rotation, position, sprint, character.health_current, hand_state, current_moveset)
 	return
 
 
@@ -163,14 +179,15 @@ func _physics_process(_delta):
 
 func apply_animation_params():
 	# NOTE - This is a hack, i'll detail how it works.
-	# all animator paramiters are iterated through,
+	# all animator parameters are iterated through,
 	# their names are checked for certain keys.
 	# Each key implies (ugh) a certain value type
 	# Example, MOVE will be given the vector2 desired move
 	# Others to come. It's awful, I know. 
 
 	# SECTION Our current things, computing them once: 
-	var transformed_move_dir =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	var tmd =  Vector2(( global_basis.inverse() * -desired_move).x,-( global_basis.inverse() * -desired_move).z)
+	transformed_move_dir = lerp(transformed_move_dir, tmd, 0.25)
 	for ani in aset_BLOCK:
 		animation_tree.set(ani, 1 if "block" in action_q.keys() else 0)
 	for ani in aset_MOVE:
@@ -193,18 +210,16 @@ func _TEMPORARY_fall_death():
 func movement_package_checks():
 	if Input.is_key_pressed(KEY_0):
 		return
+	if is_multiplayer_authority() == false:
+		return
 	# Check to see if we need to move to a new state
 	var state_machine = animation_tree["parameters/playback"]
-	#print(state_machine.get_current_node ())
 	for x in range(1, movement_sets.size()):
 		if x == current_moveset:
 			continue
 		if movement_sets[x].transfer_situation_check(self):
 			# Check if is attack moveset and currently equipped
-			print("Heh")
-			print(movement_sets[x].pack_type())
 			if movement_sets[x].pack_type() == "mvpk_combat":
-				print("Movement pack for combat!")
 				hand_state = HandState.ONE_HAND
 			else:
 				hand_state = HandState.UNARMED
@@ -218,17 +233,27 @@ func movement_package_checks():
 			current_moveset = x
 			
 			state_machine.travel(movement_sets[current_moveset].name)
+			if is_multiplayer_authority():
+				net_anim_pack_change.rpc(current_moveset)
 			return
 	# Check to see if we need to bail out of our current state
 	if current_moveset != 0 and movement_sets[current_moveset].release_situation_check(self):
 		current_moveset = 0
 		state_machine.travel(movement_sets[current_moveset].name)
+		if is_multiplayer_authority():
+			net_anim_pack_change.rpc(current_moveset)
 		return
 
+@rpc
+func net_anim_pack_change(pack : int):
+	#print("Current: %d, Remote: %d" % [current_moveset, pack])
+	if pack != current_moveset:
+		#print("Gotta swap them bad boys!")
+		current_moveset = pack
+		animation_tree["parameters/playback"].travel(movement_sets[current_moveset].name)
+
+
 var attackID = 0
-
-
-
 
 func awful_practice_find_parent_actor(node : Node3D):
 	if node is Actor:
@@ -238,10 +263,9 @@ func awful_practice_find_parent_actor(node : Node3D):
 	
 
 func dress_up():
-	var dup = $DresserUpper as DresserUpper
 	if character.base_skin != null:
 		dup.garment_equip(character.base_skin)
-	else:
+	elif character.under_skeleton != null:
 		dup.garment_equip(character.under_skeleton)
 	for garment in character.outfit:
 		dup.garment_equip(garment)
@@ -256,6 +280,7 @@ func dress_up():
 	#	l_wep.equip_armament(self, true)
 
 	right_item_inc(0)
+	left_item_inc(0)
 	
 
 ## Moves <move> around the item array, wraps around array length
@@ -267,7 +292,6 @@ func belt_item_inc(move : int) -> void:
 func right_item_inc(move : int) -> void:
 	if len(character.hand_right_slots) == 0:
 		return
-	var dup = $DresserUpper as DresserUpper
 	#unequip thing if thing 
 	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
 	dup.accessory_unequip(accessory)
@@ -276,18 +300,14 @@ func right_item_inc(move : int) -> void:
 	character.hand_r_current = (character.hand_r_current + move) % len(character.hand_right_slots)
 	#equip thing
 	accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
-	accessory.bones[0] = "prop.R" # NOTE - This is a workaround
-	dup.accessory_equip(accessory)
-	r_wep = dup.accessory_item(accessory).get_child(0) as Armament
-	r_wep.equip_armament(self, false)
+	dup.accessory_equip(accessory, "prop.R")
+	
 ## Moves <move> around the item array, wraps around array length
 func left_item_inc(move : int) -> void:
 	if len(character.hand_left_slots) == 0:
 		return
-	var dup = $DresserUpper as DresserUpper
 	#unequip thing if thing 
 	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
-	#accessory = accessory.duplicate()
 	dup.accessory_unequip(accessory)
 	if len(character.hand_left_slots) == 1 and character.hand_l_current == 0:
 		character.hand_l_current = -1
@@ -296,10 +316,7 @@ func left_item_inc(move : int) -> void:
 		character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
 	#equip thing
 	accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
-	accessory.bones[0] = "prop.L" # NOTE - This is a workaround
-	dup.accessory_equip(accessory)
-	l_wep = dup.accessory_item(accessory).get_child(0) as Armament
-	l_wep.equip_armament(self, false)
+	dup.accessory_equip(accessory,"prop.L")
 
 
 
@@ -313,6 +330,8 @@ func spell_inc(move : int) -> void:
 
 var damage_attack_id_buffer = []
 func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
+	if !is_multiplayer_authority():
+		return Armament.AttackState.PUSH
 	if invulnerable:
 		return Armament.AttackState.MISS # Dodge
 	var returnable = Armament.AttackState.HIT
@@ -329,6 +348,8 @@ func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
 			character.health_current -= damage
 		character.poise_current -= 5
 		if character.poise_current <= 0:
+			if "poise_break" not in action_q.keys():
+				enque_action("poise_break", 1500) # stop double falling
 			character.poise_regen_timer = 0.5
 		else:
 			character.poise_regen_timer = character.poise_regen_delay
@@ -355,7 +376,7 @@ func compile_new_anim_tree():
 		if mvp not in movement_sets:
 			movement_sets.append(mvp)
 	for mvpk in movement_sets:
-		master_tree.add_node(mvpk.name, mvpk.anim_tree, Vector2(0, counter))
+		master_tree.add_node(mvpk.name, mvpk.anim_tree.duplicate(true), Vector2(0, counter))
 
 	var masterstate_transition = AnimationNodeStateMachineTransition.new()
 	masterstate_transition.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_ENABLED
@@ -396,12 +417,11 @@ func compile_new_anim_tree():
 		# There is some error in nexted AnimationStateMachines automatically playing
 		# So here we manually call the problem child and start it.
 		# TODO - Make more generic, or find the cause of the error in starting
-		if item.name.contains("0/WalkSprint/playback"):
+		if item.name.contains("WalkSprint/playback"):
 				animation_tree.get(item.name).travel("Start")
 	animation_tree.active = true # set here to stop minor bone movement from showing up over and over again in git
 
-	animation_tree.connect("animation_finished", cb)
-	
+	#animation_tree.connect("animation_finished", cb)
 func cb(msg : String):
 	print("CB MSG: " + msg)
 
@@ -409,11 +429,11 @@ func cb(msg : String):
 # NOTE - Action queue system. Things are put on and have a short 
 # buffer time after which they are knocked off. I am not sure if this
 # is a good approach, but I'm trying it out
-const ACTION_Q_BUFFER_TIME = 50.0 #milliseconds
-var action_q = {}
+const ACTION_Q_BUFFER_TIME = 33 #milliseconds, about 2 frames at 60
+var action_q : Dictionary[String, int] = {}
 
-func enque_action(action : String):
-	action_q[action] = Time.get_ticks_msec() + (ACTION_Q_BUFFER_TIME)
+func enque_action(action : String, duration : int = ACTION_Q_BUFFER_TIME):
+	action_q[action] = Time.get_ticks_msec() + (duration)
 	if "attack" in action:
 		combat_mode = true
 		combat_relax_timer = 5.0
@@ -430,31 +450,37 @@ func action_q_check(action : String, consume=false) -> bool:
 	if action_q.size() == 0:
 		return false
 	if action in action_q.keys():
+		if is_multiplayer_authority():
+			_action_q_net.rpc(action, (action_q[action]) - Time.get_ticks_msec())
 		if consume == true:
 			action_q.erase(action)
-		_action_q_net.rpc(action)
 		return true
 	return false
 
 @rpc
-func _action_q_net(msg : String):
-	enque_action(msg)
+func _action_q_net(act : String, _remaining_duration : int):
+	enque_action(act)
 # !SECTION - End action_q system
 
 # SECTION - Animation assistance functions 
 # To be called by animation keyframes 
 
 # NOTE - This is somewhat undesireable. 
-#        Movement code was supposed to be in the movement package
+#		Movement code was supposed to be in the movement package
 #		 Additionally, lock_targ_pos was added in as a HACK
 func anim_track_look():
 	if lock_targ_pos != Vector3.ZERO:
-		look_at(global_position + (global_position - lock_targ_pos))
-	else:
+		var evened_look_pos = lock_targ_pos
+		evened_look_pos.y = global_position.y
+		look_at(global_position + (global_position - evened_look_pos))
+	elif desired_move.length_squared() > 0.05:# != Vector3.ZERO:
 		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 
 func anim_track_move():
+	if global_position == desired_move:
+		return
+	if desired_move.length_squared() > 0.05:
 		look_at(global_position - desired_move)
 	#look_at(global_position + (global_position - lock_targ_pos))
 	
@@ -474,13 +500,13 @@ func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : i
 
 ## Inital pulling out of item, hide weapons
 func anim_item_start():
-	if is_instance_valid(l_wep):
-		l_wep.visible = false
-	if is_instance_valid(r_wep):
-		r_wep.visible = false
-	var prop = character.get_current_belt().drop_item.instantiate()
-	prop.name = "prop"
-	r_wep.get_parent().add_child(prop)
+	anim_hide_weapons()
+	var current_item = character.get_current_belt()
+	if "prop.R" in current_item.extra_resources.keys():
+		dup.accessory_equip(current_item.extra_resources["prop.R"], "prop.R")
+	#var prop = character.get_current_belt().drop_item.instantiate()
+	#prop.name = "prop"
+	#r_wep.get_parent().add_child(prop)
 	pass 
 
 ## Actual use and consumption of item, apply effect
@@ -490,22 +516,123 @@ func anim_item_use():
 
 ## Turn off temporary item, return to weapons
 func anim_item_end():
-	var p =	r_wep.get_parent().find_child("prop")
-	for child in r_wep.get_parent().get_children():
-		print(child)
-		if child.name == "prop":
-			p = child
-	print(p)
-	p.queue_free()
+
+	var current_item = character.get_current_belt()
+	if "prop.R" in current_item.extra_resources.keys():
+		dup.accessory_unequip(current_item.extra_resources["prop.R"], "prop.R")
+	anim_show_weapons()
+	pass
+
+func anim_hide_weapons():
+	if is_instance_valid(l_wep):
+		l_wep.visible = false
+	if is_instance_valid(r_wep):
+		r_wep.visible = false
+
+func anim_show_weapons():	
 	if is_instance_valid(l_wep):
 		l_wep.visible = true
 	if is_instance_valid(r_wep):
 		r_wep.visible = true
-	pass
 
 func invulnerability_time(time : float):
 	var timer = get_tree().create_timer(time)
 	invulnerable = true
 	await timer.timeout
 	invulnerable = false
+
+## Plays an animation once if it is present. 
+## This temporarily disables the animation tree,
+## then resumes it when this animation finishes
+func animation_one_shot(anim_name : String, hide_weapons = true, play_backwards = false):
+	var a_anim : AnimationPlayer = animation_tree.get_node(animation_tree.anim_player) 
+	if a_anim.has_animation(anim_name) == false:
+		return
+	if hide_weapons:
+		anim_hide_weapons()
+	animation_tree.active = false
+	if play_backwards:
+		a_anim.play_backwards(anim_name) 
+	else:
+		a_anim.play(anim_name) 	
+	await a_anim.animation_finished
+	if hide_weapons:
+		anim_show_weapons()
+	animation_tree.active = true
 # !SECTION - Animation helper functions
+
+func multiplayer_despawn():
+	var a_anim : AnimationPlayer = animation_tree.get_node(animation_tree.anim_player) 
+	animation_tree.active = false
+	a_anim.play("spawns_and_deaths/despawn_multiplayer_disconnect") 	
+	await a_anim.animation_finished 
+	visible = false
+	queue_free()
+
+## Plays spawning animation and makes node visible
+## Player calls it I guess
+func multiplayer_spawn():
+	#print("Spawn point: " + MgrTransition.target_spawn_point)
+	#print("Spawn logic: " + str(get_tree().current_scene))
+	var spawnpoint : Spawnpoint3D = (get_tree().current_scene as Level).find_child(MgrTransition.target_spawn_point)
+	#print("Spawn subtp: " + str(spawnpoint.subtype))
+	rpc_mp_spawn.rpc(MgrPlayerSocket.player_type, spawnpoint.subtype) 
+
+@rpc("call_local")
+func rpc_mp_spawn(player_type : String, anim : int):
+	visible = true	
+	if anim == 0:
+		animation_one_shot("spawns_and_deaths/spawn_default")
+	if anim == 1: 
+		if player_type == "ally":
+			animation_one_shot("spawns_and_deaths/spawn_multiplayer_priaseTheSun")
+		else:
+			animation_one_shot("spawns_and_deaths/spawn_multiplayer_invasion")
+	elif anim == 2:
+		animation_one_shot("spawns_and_deaths/spawn_walk_in")
+	if player_type == "main":
+		add_to_group("allies")
+	elif player_type == "ally":
+		dup.set_material_overlay(MgrPlayerSocket.ally_material)
+		add_to_group("allies")
+	elif player_type == "enemy":
+		dup.set_material_overlay(MgrPlayerSocket.enemy_material)
+		add_to_group("enemies")
+		if is_multiplayer_authority() == false:
+			get_node("actor_nametag").set_nametag_visibility(ActorNametag.VisState.CHANGE)
+	
+
+
+
+@rpc("unreliable")
+func net_sync(d_move : Vector3, c_rotation : Vector3, c_position : Vector3, c_sprint : bool, c_health, c_hand_state : int, c_mvpk):
+	if is_multiplayer_authority():
+		return
+	#print(str(multiplayer.get_unique_id()) + "| Update for " + str(multiplayer.get_remote_sender_id()) +" for " + name)
+	desired_move = d_move
+	rotation = c_rotation
+	position = c_position
+	sprint = c_sprint
+	character.health_current = c_health
+	hand_state = c_hand_state as HandState
+	if c_mvpk != current_moveset:
+		current_moveset = c_mvpk
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel(movement_sets[current_moveset].name)
+
+
+func _on_accessory_changed():
+	# Accessories changed, this is how weapons are handled n shit, so we need to chiggidy check that shit. 
+	
+	var temp_r = dup.accessory_on_bone("prop.R")
+	if temp_r and temp_r.get_child(0) is Armament:
+		r_wep = temp_r.get_child(0) as Armament
+		r_wep.equip_armament(self, false)
+	else:
+		r_wep = null
+	var temp_l = dup.accessory_on_bone("prop.L")
+	if temp_l and temp_l.get_child(0) is Armament:
+		l_wep = temp_l.get_child(0) as Armament
+		l_wep.equip_armament(self, true)
+	else:
+		l_wep = null

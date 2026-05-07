@@ -8,7 +8,7 @@ class_name MovementPackage
 @export var anim_library : AnimationLibrary
 
 
-func pack_type():
+func pack_type() -> String:
 	return "default" # godot does not support getting custom class names 
 
 func apply():

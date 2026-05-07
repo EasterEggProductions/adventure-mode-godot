@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5t6q7ypm1hip"]
+[gd_scene load_steps=8 format=3 uid="uid://b5t6q7ypm1hip"]
 
 [ext_resource type="Script" uid="uid://b0uw58gsfgee0" path="res://scripts/Managers/mgr_transition.gd" id="1"]
 
@@ -41,6 +41,11 @@ _data = {
 
 [sub_resource type="Theme" id="Theme_mnpj3"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mnpj3"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6s8l"]
+
 [node name="mgr_transition" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1")
@@ -58,22 +63,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_wef06")
 }
 speed_scale = 0.5
-
-[node name="DUST" type="RichTextLabel" parent="."]
-visible = false
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font_size=200][center]Dust[/center][/font_size]"
-fit_content = true
-visible_characters = 0
-visible_characters_behavior = 1
-visible_ratio = 0.0
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 visible = false
@@ -97,5 +86,43 @@ text = "Continue"
 [node name="But_Main" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="big_msg" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -11.5
+offset_right = 63.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_mnpj3")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="little_msg" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = 209.0
+offset_right = 253.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_s6s8l")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="aud" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Buttons/Button" to="." method="reload_last_save"]

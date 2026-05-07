@@ -9,6 +9,7 @@
 resource_name = "Axe"
 script = ExtResource("1_vykq8")
 icon = ExtResource("2_oxewd")
+description = "The axe of questions!!!"
 extra_resources = Dictionary[String, Resource]({
 "accessory": ExtResource("2_xno5c"),
 "armament": ExtResource("1_v1jqi")

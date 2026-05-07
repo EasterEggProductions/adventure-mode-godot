@@ -8,7 +8,7 @@ var action_name = "Take"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	MgrPlayerSocket.get_player_one().action_prompt = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

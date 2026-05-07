@@ -1,0 +1,75 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dt7ikkk13put1"
+path="res://.godot/imported/hitherton_terrain.glb-0c3ccca873790527a0b257f350c6ce5d.scn"
+
+[deps]
+
+source_file="res://art/meshes/hitherton_terrain.glb"
+dest_files=["res://.godot/imported/hitherton_terrain.glb-0c3ccca873790527a0b257f350c6ce5d.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Walk Angle Vis": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/hitherton_grass.tres",
+"use_external/path": "uid://b2pqqcchpojm5"
+},
+"cliffside": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/hitherton_cliffside.tres",
+"use_external/path": "uid://bsewusk8s2hk1"
+},
+"far view land": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/hitherton_cliffside.tres",
+"use_external/path": "uid://bsewusk8s2hk1"
+},
+"riverbed": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/hitherton_sand.tres",
+"use_external/path": "uid://wsqtihj7c82x"
+},
+"stone brick": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/dungeon_brick.tres",
+"use_external/path": "uid://buoejkkc451sk"
+},
+"water": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/materials/water_running.tres",
+"use_external/path": "uid://d3sbp64n85174"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

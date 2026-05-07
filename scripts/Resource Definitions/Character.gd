@@ -141,3 +141,5 @@ func get_current_spell() -> InventoryItem:
 # TODO - Change this so the inventory is one array of all items. 
 # TODO - Then make the various slot arrays merely reference the items
 # Though perhaps this is not the approach for outfits in the future, as items worn aren't considred to be in the inventory... hmm
+
+# NOTE - The hand_x_current state of -1 is there representing an empty hand

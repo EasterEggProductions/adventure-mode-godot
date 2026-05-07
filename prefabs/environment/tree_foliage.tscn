@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cme484l06g14s"]
+[gd_scene load_steps=7 format=3 uid="uid://cme484l06g14s"]
 
 [ext_resource type="PackedScene" uid="uid://cn7wdk07ed863" path="res://art/meshes/tree.glb" id="1_4jcbf"]
 [ext_resource type="Script" uid="uid://c6qfkw76ikas2" path="res://scripts/tree.gd" id="2_rt06q"]
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="3_qheo7"]
 [ext_resource type="Material" uid="uid://c1fi1h0g276op" path="res://art/materials/foliage_tree.tres" id="4_mwoia"]
+
+[sub_resource type="Gradient" id="Gradient_4n850"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.17663044, 0.4918478, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.7490196, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h3v18"]
+gradient = SubResource("Gradient_4n850")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
 
 [node name="tree_foliage" instance=ExtResource("1_4jcbf")]
 script = ExtResource("2_rt06q")
@@ -18,3 +30,14 @@ surface_material_override/1 = ExtResource("4_mwoia")
 
 [node name="tree_top" parent="." index="2"]
 surface_material_override/0 = ExtResource("4_mwoia")
+
+[node name="tree_shade" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0786166, 0)
+light_negative = true
+omni_range = 15.0
+omni_attenuation = 10.0
+
+[node name="blob_shadow" type="Decal" parent="." index="4"]
+transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999997, 0, 0, 0)
+size = Vector3(6, 1, 6)
+texture_albedo = SubResource("GradientTexture2D_h3v18")

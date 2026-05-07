@@ -22,6 +22,9 @@ buses/default_bus_layout="res://art/audio/default_bus_layout.tres"
 [autoload]
 
 MgrTransition="*res://scripts/Managers/mgr_transition.tscn"
+MgrPlayerSocket="*res://scripts/Managers/PlayerSocketManager.gd"
+MgrMultiplayer="*res://scripts/Managers/Multplayer_Manager.gd"
+MgrDungeonState="*res://scripts/Managers/mgr_dungeon_state.gd"
 
 [display]
 
@@ -32,6 +35,10 @@ window/size/initial_position=Vector2i(1920, 0)
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dungeon_tools_gizmos/plugin.cfg")
 
 [file_customization]
 

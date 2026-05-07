@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqxi7q25mnc50"]
+[gd_scene load_steps=12 format=3 uid="uid://cqxi7q25mnc50"]
 
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="1_w5ihn"]
 [ext_resource type="AudioStream" uid="uid://cmghgljomtesv" path="res://art/audio/sfx/bone_rattle.ogg" id="2_23hie"]
+[ext_resource type="Script" uid="uid://bb0aytx332wm1" path="res://scripts/Utilities/remove_after_delay.gd" id="3_2csx1"]
 
 [sub_resource type="Gradient" id="Gradient_np46a"]
 offsets = PackedFloat32Array(0, 0.128472, 0.475694, 1)
@@ -71,3 +72,7 @@ autoplay = true
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -0.303217)
 visible = false
 mesh = SubResource("CylinderMesh_vk1r8")
+
+[node name="RemoveAfterDelay" type="Timer" parent="."]
+wait_time = 3.0
+script = ExtResource("3_2csx1")

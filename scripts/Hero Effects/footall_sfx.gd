@@ -23,26 +23,26 @@ var sounds = [
 
 var randSoundQue = []
 
-var footfall_partifle
+var footfall_particle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	left_aud = AudioStreamPlayer3D.new()
 	right_aud = AudioStreamPlayer3D.new()
-	left_aud.volume_db = -13
+	left_aud.volume_db = -23
 	left_aud.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
-	right_aud.volume_db = -13
+	right_aud.volume_db = -23
 	right_aud.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
-	get_tree().root.add_child.call_deferred(left_aud)
-	get_tree().root.add_child.call_deferred(right_aud)
+	get_tree().current_scene.add_child.call_deferred(left_aud)
+	get_tree().current_scene.add_child.call_deferred(right_aud)
 	for kid in get_parent().get_node("skeleton/char/Skeleton3D").get_children():
 		pass
 		#print(kid)
 	setup_footfall(get_parent().get_node("skeleton/char/Skeleton3D"))
 
 	randSoundQue.append_array(sounds)
-	footfall_partifle = preload("res://prefabs/Hero Effects/footfall_particle.tscn").instantiate()
-	get_tree().root.add_child.call_deferred(footfall_partifle)
+	footfall_particle = preload("res://prefabs/Hero Effects/footfall_particle.tscn").instantiate()
+	get_tree().current_scene.add_child.call_deferred(footfall_particle)
 
 
 
@@ -117,11 +117,11 @@ func footSound(aud : AudioStreamPlayer3D):
 		randSoundQue.append(n_sound)
 
 func footfallParticle(pos : Vector3):
-	footfall_partifle.global_position = pos
-	footfall_partifle.emit_particle(footfall_partifle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
-	footfall_partifle.emit_particle(footfall_partifle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
-	footfall_partifle.emit_particle(footfall_partifle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
-	footfall_partifle.emit_particle(footfall_partifle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
+	footfall_particle.global_position = pos
+	footfall_particle.emit_particle(footfall_particle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
+	footfall_particle.emit_particle(footfall_particle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
+	footfall_particle.emit_particle(footfall_particle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
+	footfall_particle.emit_particle(footfall_particle.transform, Vector3.UP, Color.WHITE, Color.WHITE, 0)
 
 func makeDebugDot(pos : Vector3):
 		#debug

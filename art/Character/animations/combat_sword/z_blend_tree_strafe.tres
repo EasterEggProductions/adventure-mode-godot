@@ -17,11 +17,6 @@ animation = &"walk_jog_run/jog_fwd"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fmi3v"]
 animation = &"walk_jog_run/run_fwd"
-use_custom_timeline = true
-timeline_length = 2.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l2vn5"]
 advance_mode = 2
@@ -42,21 +37,21 @@ states/walk_jog_run_jog_fwd/position = Vector2(404, 60.5)
 states/walk_jog_run_run_fwd/node = SubResource("AnimationNodeAnimation_fmi3v")
 states/walk_jog_run_run_fwd/position = Vector2(404, 215)
 transitions = ["Start", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateMachineTransition_l2vn5"), "walk_jog_run_jog_fwd", "walk_jog_run_run_fwd", SubResource("AnimationNodeStateMachineTransition_uygdu"), "walk_jog_run_run_fwd", "walk_jog_run_jog_fwd", SubResource("AnimationNodeStateMachineTransition_wf7fu")]
-graph_offset = Vector2(-13, -39)
+graph_offset = Vector2(-96, -116)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jhl7d"]
-graph_offset = Vector2(-562.038, -25.514008)
+graph_offset = Vector2(-773.038, -116.51401)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_d6nw5")
 nodes/Animation/position = Vector2(-420, 280)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_23htk")
-"nodes/Animation 2/position" = Vector2(-480, 120)
+"nodes/Animation 2/position" = Vector2(-780, 100)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_2qmsw")
 nodes/BLOCK/position = Vector2(20, 140)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_dv2rj")
-"nodes/SET_F[2]/position" = Vector2(-153.488, 92.4686)
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_dv2rj")
+"nodes/SET_F[1]/position" = Vector2(-153.488, 92.4686)
 nodes/WalkSprint/node = SubResource("AnimationNodeStateMachine_f8whk")
 nodes/WalkSprint/position = Vector2(-420, -60)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation", &"SET_F[2]", 0, &"WalkSprint"]
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation", &"SET_F[1]", 0, &"WalkSprint"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tjjhh"]
 animation = &"aLib_combat_sword/combat_block_shield"
@@ -67,7 +62,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_nvbd6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h8cpt"]
-graph_offset = Vector2(-428.61, -61.336723)
+graph_offset = Vector2(-377.61, -59.336723)
 nodes/output/position = Vector2(320, 120)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_6qkea")
 nodes/Animation/position = Vector2(-279.51, -49.61)
@@ -98,9 +93,9 @@ nodes/Animation/position = Vector2(-350, 80)
 "nodes/Animation 2/position" = Vector2(-320, 260)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_33e4v")
 nodes/BLOCK/position = Vector2(100, 120)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_jydpo")
-"nodes/SET_F[2]/position" = Vector2(-30, -20)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_jydpo")
+"nodes/SET_F[1]/position" = Vector2(-30, -20)
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sppsf"]
 animation = &"aLib_combat_sword/combat_block_sword"
@@ -122,9 +117,9 @@ nodes/Animation/position = Vector2(-565.07, -112.53)
 "nodes/Animation 2/position" = Vector2(-515.46, 61.71)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_4v6xj")
 nodes/BLOCK/position = Vector2(40, 60)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_5622u")
-"nodes/SET_F[2]/position" = Vector2(-124.85, -141.9)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_5622u")
+"nodes/SET_F[1]/position" = Vector2(-124.85, -141.9)
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5g4dq"]
 animation = &"aLib_combat_sword/combat_block_shield"
@@ -173,7 +168,7 @@ animation = &"aLib_combat_sword/combat_idle_greatsword_2h"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_tg26n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_10bw5"]
-graph_offset = Vector2(-133.5, 35.5)
+graph_offset = Vector2(-81.5, 179.5)
 nodes/output/position = Vector2(820, 360)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_2ru5q")
 nodes/Animation/position = Vector2(346.06, 251.68)
@@ -196,7 +191,7 @@ filters = ["char/Skeleton3D:chest", "char/Skeleton3D:forearm.L", "char/Skeleton3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_vylit"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4m5pw"]
-graph_offset = Vector2(-210, 18)
+graph_offset = Vector2(-306, 4)
 nodes/output/position = Vector2(680, 280)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_cuvn5")
 nodes/Animation/position = Vector2(-340, 90)
@@ -204,9 +199,9 @@ nodes/Animation/position = Vector2(-340, 90)
 "nodes/Animation 2/position" = Vector2(-240, 340)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_chapx")
 nodes/BLOCK/position = Vector2(248.05, 244.42)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_vylit")
-"nodes/SET_F[2]/position" = Vector2(40, 90)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_vylit")
+"nodes/SET_F[1]/position" = Vector2(40, 90)
+node_connections = [&"output", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_neuaq"]
 animation = &"aLib_combat_sword/combat_block_sword"
@@ -229,9 +224,9 @@ nodes/Animation/position = Vector2(160, 260)
 "nodes/Animation 2/position" = Vector2(40, 460)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_2unev")
 nodes/BLOCK/position = Vector2(740, 360)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_6umsd")
-"nodes/SET_F[2]/position" = Vector2(600, 240)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_6umsd")
+"nodes/SET_F[1]/position" = Vector2(600, 240)
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f137m"]
 animation = &"aLib_combat_sword/combat_block_sword"
@@ -246,7 +241,7 @@ filters = ["char/Skeleton3D:chest", "char/Skeleton3D:forearm.L", "char/Skeleton3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ccyxd"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sgmam"]
-graph_offset = Vector2(-142.793, 47.444)
+graph_offset = Vector2(23.394226, 131.6066)
 nodes/output/position = Vector2(960, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_j28jb")
 nodes/Animation/position = Vector2(90, 240)
@@ -254,9 +249,9 @@ nodes/Animation/position = Vector2(90, 240)
 "nodes/Animation 2/position" = Vector2(193.6, 451.33)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_xprk3")
 nodes/BLOCK/position = Vector2(620, 340)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_ccyxd")
-"nodes/SET_F[2]/position" = Vector2(542.85, 140.25)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_ccyxd")
+"nodes/SET_F[1]/position" = Vector2(542.85, 140.25)
+node_connections = [&"output", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aptcy"]
 animation = &"aLib_combat_sword/combat_block_sword"
@@ -271,17 +266,17 @@ filters = ["char/Skeleton3D:chest", "char/Skeleton3D:forearm.L", "char/Skeleton3
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wgy6k"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ga76k"]
-graph_offset = Vector2(-4.5, 10)
+graph_offset = Vector2(47.5, 11)
 nodes/output/position = Vector2(800, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_awq2f")
-nodes/Animation/position = Vector2(140.36, 194.81)
+nodes/Animation/position = Vector2(120, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_aptcy")
-"nodes/Animation 2/position" = Vector2(146.41, 347.27)
+"nodes/Animation 2/position" = Vector2(120, 340)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_c50i4")
-nodes/BLOCK/position = Vector2(548.13, 225.06)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_wgy6k")
-"nodes/SET_F[2]/position" = Vector2(460, 70)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+nodes/BLOCK/position = Vector2(620, 220)
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_wgy6k")
+"nodes/SET_F[1]/position" = Vector2(460, 70)
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jo3qt"]
 animation = &"aLib_combat_sword/combat_block_sword"
@@ -303,9 +298,9 @@ nodes/Animation/position = Vector2(160, 220)
 "nodes/Animation 2/position" = Vector2(180, 460)
 nodes/BLOCK/node = SubResource("AnimationNodeBlend2_x64b3")
 nodes/BLOCK/position = Vector2(618.31, 384.78)
-"nodes/SET_F[2]/node" = SubResource("AnimationNodeTimeScale_j1xnu")
-"nodes/SET_F[2]/position" = Vector2(500, 220)
-node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[2]", &"BLOCK", 1, &"Animation 2", &"SET_F[2]", 0, &"Animation"]
+"nodes/SET_F[1]/node" = SubResource("AnimationNodeTimeScale_j1xnu")
+"nodes/SET_F[1]/position" = Vector2(500, 220)
+node_connections = [&"output", 0, &"BLOCK", &"BLOCK", 0, &"SET_F[1]", &"BLOCK", 1, &"Animation 2", &"SET_F[1]", 0, &"Animation"]
 
 [resource]
 blend_point_0/node = SubResource("AnimationNodeBlendTree_jhl7d")

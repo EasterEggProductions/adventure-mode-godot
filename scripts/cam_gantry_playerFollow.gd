@@ -11,15 +11,17 @@ var velocity = Vector3.ZERO
 
 var look_rotation_vel = Vector2.ZERO
 var camLookAccell = 3.14
+var camTimer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	MgrPlayerSocket.get_player_one().ganty_thing = self
+	#this should keep mouse within boarders, need to capture escape button so user can interact with menu (to leave) 
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+#also changed _physics_process to process here for jitter fix
+func _process(delta: float) -> void:
 	if thrall == null:
 		return
 	var desired_pos = thrall.global_position
@@ -30,15 +32,9 @@ func _physics_process(delta: float) -> void:
 		return
 	if velocity.length() > 10:
 		velocity = velocity.normalized() * 10
-		# NOTE - This is a hack, the velocity equation had a good feel too it, but went off the rails into the NaNosphere after a certain distance
-	#global_position = lerp(global_position, desired_pos, 0.01)
 	global_position += velocity * delta * 2#* (desired_pos - global_position).length()
-	#global_position = desired_pos #velocity * delta * (desired_pos - global_position).length()
-	#if Input.is_action_just_pressed("p1_look_lock"):
-	#	look_at(thrall.global_position + (thrall.global_basis.z * 10))
-	#cam.look_at(thrall.global_position + (Vector3.UP * 1.8))
 	player_look(delta)
-	
+
 
 func ray_cam_pos():
 	# Phys ray
@@ -60,7 +56,7 @@ func player_look(delta):
 	look_rotation_vel = disLook * delta * camLookAccell
 	var default_angle = -20
 	if cam.target_curr == Vector3.ZERO: # NOTE - No target
-		rotate(global_basis.x, look_rotation_vel.y)
+		rotate(global_basis.x.normalized(), look_rotation_vel.y)
 		rotate_y(-look_rotation_vel.x)
 		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -60,20)
 	else:
@@ -70,17 +66,27 @@ func player_look(delta):
 		#global_rotation_degrees.y = global_rotation_degrees.y #rotate_toward(original_rot_y, global_rotation_degrees.y, 50 * delta)
 		default_angle = -35
 	global_rotation_degrees.z = 0
-	global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * delta
+	#recentering here, add some timer so the rebound isn't immediate 
+	if disLook.length() != 0: #some kind of input 
+		camTimer = 12.0
+	else:
+		#subtraction should be proportional to framerate
+		#higher refresh rate would decrement the same as lower
+		camTimer -= delta
+	if camTimer <= 0:
+		global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * delta
 	
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		#mouse movement will always reset timer
+		camTimer = 12.0
 		var disLook =  event.relative * 0.01
 		look_rotation_vel = disLook * 0.1 * camLookAccell
 		var default_angle = -20
 		if cam.target_curr == Vector3.ZERO: # NOTE - No target
-			rotate(global_basis.x, look_rotation_vel.y)
+			rotate(global_basis.x.normalized(), look_rotation_vel.y)
 			rotate_y(-look_rotation_vel.x)
 			global_rotation_degrees.x = clamp(global_rotation_degrees.x, -60,20)
 		else:
@@ -90,4 +96,11 @@ func _input(event):
 			#global_rotation_degrees.y = global_rotation_degrees.y #rotate_toward(original_rot_y, global_rotation_degrees.y, 50 * delta)
 			default_angle = -35
 		global_rotation_degrees.z = 0
-		global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * 0.1
+		#global_rotation_degrees.x += (default_angle-global_rotation_degrees.x) * 0.9 * 0.1
+	#KEY_ESCAPE cant persist because user moves mouse in pause menu
+	#need a global to block MOUSE_MODE_CAPTURED
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#for some reason this is true regardless:

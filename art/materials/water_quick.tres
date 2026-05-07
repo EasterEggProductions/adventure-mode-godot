@@ -61,21 +61,21 @@ frequency = 0.075
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dh1qs"]
-seamless = true
-color_ramp = SubResource("Gradient_pr7c6")
 noise = SubResource("FastNoiseLite_4bqai")
+color_ramp = SubResource("Gradient_pr7c6")
+seamless = true
 
 [resource]
 render_priority = 0
 shader = SubResource("Shader_ocrmr")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_dh1qs")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = SubResource("NoiseTexture2D_dh1qs")

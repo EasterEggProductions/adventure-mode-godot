@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dayoldxf0ult2"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://dayoldxf0ult2"]
 
 [ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="1_r8wfu"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_rvft0"]
+[ext_resource type="Resource" uid="uid://cn2ha3p6lr1tk" path="res://art/Character/clothing/DressUp Resources/props/prop_eat_commonfruit.tres" id="2_ersrp"]
 [ext_resource type="Texture2D" uid="uid://vog6jseecl06" path="res://art/textures/icons/icon_commonFruit.png" id="2_w5cum"]
 
 [resource]
 resource_name = "Common Fruit"
 script = ExtResource("1_rvft0")
 icon = ExtResource("2_w5cum")
+description = "The common fruit of awesomeness!!!"
 drop_item = ExtResource("1_r8wfu")
+extra_resources = Dictionary[String, Resource]({
+"prop.R": ExtResource("2_ersrp")
+})
 use_action = "item_eat"

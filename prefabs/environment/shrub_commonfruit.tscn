@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyacbq330bbx0"]
+[gd_scene load_steps=8 format=3 uid="uid://dyacbq330bbx0"]
 
 [ext_resource type="PackedScene" uid="uid://bmhs1fv6rtqgy" path="res://art/meshes/shrub.glb" id="1_kvo3s"]
 [ext_resource type="Script" uid="uid://d2lcr3vwhx0p7" path="res://scripts/harvest_spawner.gd" id="2_c1xhp"]
 [ext_resource type="Texture2D" uid="uid://c4p13tgjxjesy" path="res://art/textures/noise_turbulent_32.png" id="2_rcx4b"]
 [ext_resource type="PackedScene" uid="uid://b1y6mww4o2p0g" path="res://prefabs/environment/common_fruit.tscn" id="3_6mk2d"]
+[ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="4_00fka"]
 [ext_resource type="Material" uid="uid://dlbhrpiy3mtxh" path="res://art/materials/foliage.tres" id="5_u17ng"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykykr"]
@@ -11,9 +12,22 @@ albedo_texture = ExtResource("2_rcx4b")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="Gradient" id="Gradient_s27kv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.17663044, 0.4918478, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.7490196, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s27kv"]
+gradient = SubResource("Gradient_s27kv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
 [node name="shrub" node_paths=PackedStringArray("spawn_points") instance=ExtResource("1_kvo3s")]
 script = ExtResource("2_c1xhp")
 harvestable = ExtResource("3_6mk2d")
+item_to_harvest = ExtResource("4_00fka")
 spawn_points = [NodePath("hpt"), NodePath("hpt2"), NodePath("hpt3"), NodePath("hpt4")]
 
 [node name="Cone" parent="." index="0"]
@@ -31,3 +45,8 @@ transform = Transform3D(1, 0, 0, 0, 0.96076, 0.277382, 0, -0.277382, 0.96076, -0
 
 [node name="hpt4" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103812, 1.52782, 0)
+
+[node name="blob_shadow" type="Decal" parent="." index="5"]
+transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999997, 0, 0, 0)
+size = Vector3(1.5, 0.3, 1.5)
+texture_albedo = SubResource("GradientTexture2D_s27kv")

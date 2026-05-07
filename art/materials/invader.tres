@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://lbmfa4yjjidg"]
+
+[ext_resource type="Shader" uid="uid://d0ip5e16xigiy" path="res://art/shaders/black_and_rimColor.tres" id="1_5vnm1"]
+
+[sub_resource type="Gradient" id="Gradient_5vnm1"]
+offsets = PackedFloat32Array(0, 0.21523179, 0.83774835)
+colors = PackedColorArray(0, 0, 0, 0.84705883, 0, 0, 0, 0.8784314, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjid4"]
+gradient = SubResource("Gradient_5vnm1")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5vnm1")
+shader_parameter/edge_mult = 0.745
+shader_parameter/edge_add = 0.185
+shader_parameter/Color_Gradient = SubResource("GradientTexture1D_wjid4")

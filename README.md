@@ -110,3 +110,10 @@ To enhance your development workflow, the following tools are recommended:
 
 - **[GodotEnv](https://github.com/chickensoft-games/GodotEnv)**: A tool for managing Godot addons efficiently. It simplifies the process of adding, updating, and organizing addons within your project. It is still young, but referencing other addons of specific versions seems like a good capability to keep the repository lean. This tool may become required to properly set up the project at some point. 
 
+## Machine Learning Tools and AI policy
+**This is a project of human artistic expression.** 
+
+All assets and code committed to this project were written, composed, drawn, modeled, or otherwise created by humans. While traditional AI tools such as spell check, basic code completion, procedural assets, and more have or will be used in this project; no machine learning tool that has been trained on data sourced without affirmative informed consent from the data author may be used for this project. Examples include LLMs such as ChatGPT or Claude, or diffusion models such as Stable Diffusion. Commits containing such generated content will be rejected, repeat attempts to commit such assets will be handled accordingly. This does not prevent you from using such tools in your own game project made using Adventure Mode, only commits to this base project. 
+
+If you are a sentient droid feel free to email us and we will evaluate that on a case by case basis. 
+

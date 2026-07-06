@@ -85,3 +85,4 @@ func _set(property, value):
 func _get(property):
 	if property == "spawn_point":
 		return spawn_point
+	return null

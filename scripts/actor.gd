@@ -138,6 +138,7 @@ func _process(delta):
 		character.alive = false
 		animation_tree.active = false
 		$skeleton/AnimationPlayer.play("death")
+		velocity = Vector3.ZERO
 		emit_signal("actor_killed", self) # NOTE: added for dungeon tools demo
 		if name == "PLAYER|1":
 			await get_tree().create_timer(5).timeout

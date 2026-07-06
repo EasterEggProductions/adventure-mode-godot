@@ -51,22 +51,31 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1shei"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ho5n8")
 blend_point_0/pos = Vector2(0, 0.1)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_yke7h")
 blend_point_1/pos = Vector2(-0.1, 0)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_y2r6l")
 blend_point_2/pos = Vector2(0.1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_eoafw")
 blend_point_3/pos = Vector2(0, -0.1)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_qfr7e")
 blend_point_4/pos = Vector2(0, 1)
+blend_point_4/name = &"4"
 blend_point_5/node = SubResource("AnimationNodeAnimation_x0fmr")
 blend_point_5/pos = Vector2(-0.3, 0.8)
+blend_point_5/name = &"5"
 blend_point_6/node = SubResource("AnimationNodeAnimation_chpav")
 blend_point_6/pos = Vector2(0.3, 0.8)
+blend_point_6/name = &"6"
 blend_point_7/node = SubResource("AnimationNodeBlendTree_558dj")
 blend_point_7/pos = Vector2(-1, 0)
+blend_point_7/name = &"7"
 blend_point_8/node = SubResource("AnimationNodeBlendTree_jkmd4")
 blend_point_8/pos = Vector2(1, 0)
+blend_point_8/name = &"8"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cubx1"]
 animation = &"combat_sword/combat_attack_r-l"

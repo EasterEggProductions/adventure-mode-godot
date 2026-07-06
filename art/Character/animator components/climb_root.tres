@@ -70,22 +70,31 @@ animation = &"animationLib_climb/climb_right"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jsf0a"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_0dej7")
 blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeBlendTree_igc1y")
 blend_point_1/pos = Vector2(-0.7, 0)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeBlendTree_npr4y")
 blend_point_2/pos = Vector2(0, -0.7)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeBlendTree_ld2ey")
 blend_point_3/pos = Vector2(0.7, 0)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeBlendTree_6yp1x")
 blend_point_4/pos = Vector2(0, 0.7)
+blend_point_4/name = &"4"
 blend_point_5/node = SubResource("AnimationNodeAnimation_w2asr")
 blend_point_5/pos = Vector2(-1, 0)
+blend_point_5/name = &"5"
 blend_point_6/node = SubResource("AnimationNodeAnimation_cpvc4")
 blend_point_6/pos = Vector2(0, 1)
+blend_point_6/name = &"6"
 blend_point_7/node = SubResource("AnimationNodeAnimation_edh4p")
 blend_point_7/pos = Vector2(0, -1)
+blend_point_7/name = &"7"
 blend_point_8/node = SubResource("AnimationNodeAnimation_ieoax")
 blend_point_8/pos = Vector2(1, 0)
+blend_point_8/name = &"8"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bexe2"]
 animation = &"animationLib_climb/climb_ledgeVault"

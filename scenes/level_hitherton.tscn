@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://dggufgxa3ipbp"]
+[gd_scene format=4 uid="uid://dggufgxa3ipbp"]
 
 [ext_resource type="Script" uid="uid://cutqa8lkvj28f" path="res://scripts/DungeonTools/level.gd" id="1_cw6wx"]
 [ext_resource type="PackedScene" uid="uid://cex8u2k47frlg" path="res://prefabs/UI/play_ui.tscn" id="2_bxehf"]
@@ -680,28 +680,28 @@ radius = 15.274902
 [sub_resource type="BoxShape3D" id="BoxShape3D_nubfc"]
 size = Vector3(34.649, 3.581, 14.737)
 
-[node name="level_hitherton" type="Node3D"]
+[node name="level_hitherton" type="Node3D" unique_id=912597687]
 script = ExtResource("1_cw6wx")
 level_music = ExtResource("2_odvq8")
 
-[node name="DayNightCycle" parent="." instance=ExtResource("19_cw6wx")]
+[node name="DayNightCycle" parent="." unique_id=1282010103 instance=ExtResource("19_cw6wx")]
 environment = ExtResource("3_gmklc")
 sun_orbit_rotation = 270.0
 
-[node name="play_ui" parent="." instance=ExtResource("2_bxehf")]
+[node name="play_ui" parent="." unique_id=989262212 instance=ExtResource("2_bxehf")]
 
-[node name="cam_gantry_playerFollow" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+[node name="cam_gantry_playerFollow" type="Node3D" parent="." unique_id=486584548 node_paths=PackedStringArray("cam")]
 transform = Transform3D(0.88781494, 0, 0.4602001, 0, 1, 0, -0.4602001, 0, 0.88781494, 31.542486, 1.4517183, -24.402319)
 script = ExtResource("9_3i6og")
 cam = NodePath("../Camera")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." unique_id=1719100960]
 transform = Transform3D(0.550423, -0.25236094, 0.7958319, 0, 0.9532224, 0.30226997, -0.83488595, -0.16637635, 0.5246755, 119.37253, -5.8766665, -45.34904)
 script = ExtResource("10_jfgrq")
 distance = 2.5
 freeze = true
 
-[node name="effect_dustMotes" type="GPUParticles3D" parent="Camera"]
+[node name="effect_dustMotes" type="GPUParticles3D" parent="Camera" unique_id=816810973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, -4.17512)
 amount = 64
 lifetime = 15.0
@@ -709,167 +709,166 @@ preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_kd2pc")
 draw_pass_1 = SubResource("QuadMesh_drn72")
 
-[node name="spawn_start-disable" type="Node3D" parent="." groups=["spawn_points"]]
+[node name="spawn_start-disable" type="Node3D" parent="." unique_id=1505921554 groups=["spawn_points"]]
 transform = Transform3D(0.7523344, 0, 0.6587813, 0, 1, 0, -0.6587813, 0, 0.7523344, 31.822083, 1.3285289, -25.009289)
 script = ExtResource("11_442in")
 
-[node name="spawn_start" type="Node3D" parent="." groups=["spawn_points"]]
+[node name="spawn_start" type="Node3D" parent="." unique_id=815753850 groups=["spawn_points"]]
 transform = Transform3D(-0.96806014, 0, -0.25071785, 0, 1, 0, 0.25071785, 0, -0.96806014, 3.6027308, 0.39678812, 24.277277)
 script = ExtResource("11_442in")
 
-[node name="spawn_1" type="Node3D" parent="." groups=["spawn_points"]]
+[node name="spawn_1" type="Node3D" parent="." unique_id=1641001232 groups=["spawn_points"]]
 transform = Transform3D(0.004084021, 0, 0.9999916, 0, 1, 0, -0.9999916, 0, 0.004084021, 0.306099, 0.4, 20.990202)
 script = ExtResource("11_442in")
 subtype = 1
 
-[node name="spawn_2" type="Node3D" parent="." groups=["spawn_points"]]
+[node name="spawn_2" type="Node3D" parent="." unique_id=1846868431 groups=["spawn_points"]]
 transform = Transform3D(0.028741684, 0, -0.9995868, 0, 1, 0, 0.9995868, 0, 0.028741684, 6.4497323, 0.4, 20.990202)
 script = ExtResource("11_442in")
 subtype = 1
 
-[node name="spawn_3" type="Node3D" parent="." groups=["spawn_points"]]
+[node name="spawn_3" type="Node3D" parent="." unique_id=1389747946 groups=["spawn_points"]]
 transform = Transform3D(-0.70841366, 0, 0.7057973, 0, 1, 0, -0.7057973, 0, -0.70841366, 5.9753256, 0.7871597, 49.086235)
 script = ExtResource("11_442in")
 subtype = 1
 
-[node name="spawn_dungeon_front" type="Node3D" parent="."]
+[node name="spawn_dungeon_front" type="Node3D" parent="." unique_id=996280025]
 transform = Transform3D(-0.99376035, 0, 0.111538425, 0, 1.0000001, 0, -0.111538425, 0, -0.99376035, -49.57275, 22.317049, 55.613823)
 script = ExtResource("11_442in")
 subtype = 2
 metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
-[node name="spawn_dungeon_back" type="Node3D" parent="."]
+[node name="spawn_dungeon_back" type="Node3D" parent="." unique_id=909286085]
 transform = Transform3D(-0.14946629, 0, 0.988767, 0, 1.0000001, 0, -0.988767, 0, -0.14946629, 93.46194, 16.450521, 72.1256)
 script = ExtResource("11_442in")
 subtype = 2
 metadata/_custom_type_script = "uid://2xf5iayrr1sk"
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1290814288]
 _spawnable_scenes = PackedStringArray("uid://chwqjvpft7wxd")
 spawn_path = NodePath("..")
 
-[node name="dungeon_entrance" type="Area3D" parent="."]
+[node name="dungeon_entrance" type="Area3D" parent="." unique_id=1853129464]
 transform = Transform3D(0.15462428, 0, 0.9879732, 0, 1, 0, -0.9879732, 0, 0.15462428, -52.216618, 23.156256, 74.37781)
 script = ExtResource("6_bxehf")
 scene_to_go_to = "uid://i0ymtqk4fyg4"
 spawn_point = "spawn_start"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance" unique_id=2040355705]
 transform = Transform3D(0.99999994, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, 0.99999994, 8.353912, 0.7218628, 0.018661499)
 shape = SubResource("BoxShape3D_gmklc")
 
-[node name="dungeon_entrance2" type="Area3D" parent="."]
+[node name="dungeon_entrance2" type="Area3D" parent="." unique_id=1259760902]
 transform = Transform3D(0.98330563, 0, 0.18196084, 0, 1, 0, -0.18196084, 0, 0.98330563, 74.630135, 17.012138, 74.332954)
 script = ExtResource("6_bxehf")
 scene_to_go_to = "uid://i0ymtqk4fyg4"
 spawn_point = "spawn_backdoor"
 metadata/_custom_type_script = "uid://c372qrudhege5"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dungeon_entrance2" unique_id=1132457027]
 transform = Transform3D(0.99999994, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, 0.99999994, 8.353912, 0.7218628, 0.018661499)
 shape = SubResource("BoxShape3D_gmklc")
 
-[node name="skele_01" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+[node name="skele_01" parent="." unique_id=612896013 groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 114.224045, -6.9936004, -46.085957)
 character = ExtResource("13_6ymps")
 to_equip_wep = ExtResource("14_xb4lh")
 
-[node name="ai_attack" type="Node" parent="skele_01"]
+[node name="ai_attack" type="Node" parent="skele_01" unique_id=1279511142]
 script = ExtResource("15_jiyip")
 
-[node name="skele_02" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+[node name="skele_02" parent="." unique_id=13374711 groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(0.9798377, 0, 0.19979548, 0, 1, 0, -0.19979548, 0, 0.9798377, 116.667015, -6.9936004, -52.61131)
 character = ExtResource("13_6ymps")
 to_equip_wep = ExtResource("14_xb4lh")
 
-[node name="ai_attack" type="Node" parent="skele_02"]
+[node name="ai_attack" type="Node" parent="skele_02" unique_id=398042720]
 script = ExtResource("15_jiyip")
 
-[node name="skele_03" parent="." groups=["enemies"] instance=ExtResource("12_5uxwe")]
+[node name="skele_03" parent="." unique_id=1372785788 groups=["enemies"] instance=ExtResource("12_5uxwe")]
 transform = Transform3D(0.9798377, 0, 0.19979548, 0, 1, 0, -0.19979548, 0, 0.9798377, -16.42767, 0.070426464, 24.373064)
 character = ExtResource("13_6ymps")
 to_equip_wep = ExtResource("14_xb4lh")
 
-[node name="ai_attack" type="Node" parent="skele_03"]
+[node name="ai_attack" type="Node" parent="skele_03" unique_id=128157659]
+process_mode = 4
 script = ExtResource("15_jiyip")
 
-[node name="dungeon_lever_floor" parent="." instance=ExtResource("16_wjp5u")]
+[node name="dungeon_lever_floor" parent="." unique_id=1875798061 instance=ExtResource("16_wjp5u")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -81.41567, -13)
 
-[node name="hitherton_buildings" parent="." instance=ExtResource("17_1g1hm")]
+[node name="hitherton_buildings" parent="." unique_id=1533715229 instance=ExtResource("17_1g1hm")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.48, 0, 11.593)
 
-[node name="hitherton_terrain" parent="." instance=ExtResource("18_s1e5c")]
+[node name="hitherton_terrain" parent="." unique_id=1193192668 instance=ExtResource("18_s1e5c")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.46848, 0.04137516, 11.594625)
 
-[node name="campfire" parent="hitherton_terrain" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40847, -8.345196, -50.471825)
+[node name="campfire" parent="hitherton_terrain" unique_id=548259002 instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40846, -8.273234, -50.471825)
 
-[node name="campfire2" parent="hitherton_terrain" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555142, -0.0050161625, 0.0034832142, 0.999891, -0.014349017, 0.005066634, 0.0143312765, 0.99988437, -53.9099, 0.17641641, 9.013904)
+[node name="campfire2" parent="hitherton_terrain" unique_id=1898337045 instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555142, -0.0050161625, 0.0034832142, 0.999891, -0.014349017, 0.005066634, 0.0143312765, 0.99988437, -53.91, 0, 9.014)
 
-[node name="campfire3" parent="hitherton_terrain" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, -101.821365, 22.3104, 33.652325)
+[node name="campfire3" parent="hitherton_terrain" unique_id=398542087 instance=ExtResource("19_kvrnu")]
+transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, -101.821365, 22.186577, 33.65233)
 
-[node name="Door of Trials" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
+[node name="Door of Trials" parent="hitherton_terrain" unique_id=281110153 instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.99200654, -0.0035555137, -0.12613596, 0.0017190397, 0.999891, -0.014665334, 0.12617442, 0.0143312765, 0.99190456, -107.19795, 22.248772, 46.027584)
 required_switches = 0
 open_anim_name = "door_open"
 
-[node name="Area3D" type="Area3D" parent="hitherton_terrain/Door of Trials"]
+[node name="Area3D" type="Area3D" parent="hitherton_terrain/Door of Trials" unique_id=1437070973]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials/Area3D" unique_id=107145355]
 transform = Transform3D(1, -1.1641532e-10, 0, 1.1641532e-10, 1, 0, -2.9802322e-08, 1.8626451e-09, 1, 3.4783669, -0.19704628, -13.026867)
 shape = SubResource("SphereShape3D_ducrt")
 
-[node name="Door of Trials-Exit" type="Node3D" parent="hitherton_terrain"]
+[node name="Door of Trials-Exit" type="Node3D" parent="hitherton_terrain" unique_id=1283398963]
 transform = Transform3D(0.14946637, 0, -0.9887669, 0, 1.0000001, 0, 0.9887669, 0, 0.14946637, 33.32795, 15.945872, 60.898384)
 script = ExtResource("15_5qxy3")
 required_switches = 0
 open_anim_name = "door_open"
 
-[node name="Door of Trials_R" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit"]
+[node name="Door of Trials_R" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit" unique_id=231079468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 material_override = ExtResource("16_1jhap")
 mesh = SubResource("ArrayMesh_vtkfx")
 skeleton = NodePath("")
 
-[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_R"]
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_R" unique_id=1492901853]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_R/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_R/AnimatableBody3D" unique_id=1235757786]
 shape = SubResource("ConvexPolygonShape3D_jso1h")
 
-[node name="Door of Trials Topper" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit"]
+[node name="Door of Trials Topper" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit" unique_id=1839943803]
 material_override = ExtResource("16_1jhap")
 mesh = SubResource("ArrayMesh_rv6to")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials Topper"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials Topper" unique_id=1948365260]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials Topper/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials Topper/StaticBody3D" unique_id=383700524]
 shape = SubResource("ConcavePolygonShape3D_eq8ae")
 
-[node name="Door of Trials_L" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit"]
+[node name="Door of Trials_L" type="MeshInstance3D" parent="hitherton_terrain/Door of Trials-Exit" unique_id=1098360218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 material_override = ExtResource("16_1jhap")
 mesh = SubResource("ArrayMesh_71rci")
 skeleton = NodePath("")
 
-[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_L"]
+[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_L" unique_id=560777957]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_L/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain/Door of Trials-Exit/Door of Trials_L/AnimatableBody3D" unique_id=1926612473]
 shape = SubResource("ConvexPolygonShape3D_0hwc8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="hitherton_terrain/Door of Trials-Exit"]
-libraries = {
-&"": SubResource("AnimationLibrary_ph2jk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hitherton_terrain/Door of Trials-Exit" unique_id=2036198605]
+libraries/ = SubResource("AnimationLibrary_ph2jk")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hitherton_terrain/Door of Trials-Exit"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hitherton_terrain/Door of Trials-Exit" unique_id=1224808646]
 stream = ExtResource("17_t8jou")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="hitherton_terrain/Door of Trials-Exit"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="hitherton_terrain/Door of Trials-Exit" unique_id=752469103]
 material_override = SubResource("StandardMaterial3D_brs6k")
 emitting = false
 amount = 128
@@ -879,504 +878,419 @@ explosiveness = 0.83
 process_material = SubResource("ParticleProcessMaterial_fb6mu")
 draw_pass_1 = SubResource("QuadMesh_f8iix")
 
-[node name="Door of Trials2" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
+[node name="Door of Trials2" parent="hitherton_terrain" unique_id=137169427 instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.45994985, -0.0067039826, 0.03759448, 0.0065923864, 0.45841375, -86.58677, 0.06859965, -3.8776174)
 
-[node name="Door of Trials3" parent="hitherton_terrain" instance=ExtResource("20_wtgak")]
+[node name="Door of Trials3" parent="hitherton_terrain" unique_id=281598451 instance=ExtResource("20_wtgak")]
 transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
 
-[node name="hitherton_terrain2" parent="." instance=ExtResource("18_s1e5c")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 57.46848, 0.04137516, 11.594625)
-
-[node name="campfire" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, 81.40847, -8.345196, -50.471825)
-
-[node name="campfire2" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555142, -0.0050161625, 0.0034832142, 0.999891, -0.014349017, 0.005066634, 0.0143312765, 0.99988437, -53.9099, 0.17641641, 9.013904)
-
-[node name="campfire3" parent="hitherton_terrain2" instance=ExtResource("19_kvrnu")]
-transform = Transform3D(0.999981, -0.0035555144, -0.0050161625, 0.003483214, 0.999891, -0.014349016, 0.005066634, 0.0143312765, 0.99988437, -101.821365, 22.3104, 33.652325)
-
-[node name="Door of Trials" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
-transform = Transform3D(0.99200654, -0.0035555137, -0.12613596, 0.0017190397, 0.999891, -0.014665334, 0.12617442, 0.0143312765, 0.99190456, -107.19795, 22.248772, 46.027584)
-required_switches = 0
-open_anim_name = "door_open"
-
-[node name="Area3D" type="Area3D" parent="hitherton_terrain2/Door of Trials"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials/Area3D"]
-transform = Transform3D(1, -1.1641532e-10, 0, 1.1641532e-10, 1, 0, -2.9802322e-08, 1.8626451e-09, 1, 3.4783669, -0.19704628, -13.026867)
-shape = SubResource("SphereShape3D_ducrt")
-
-[node name="Door of Trials-Exit" type="Node3D" parent="hitherton_terrain2"]
-transform = Transform3D(0.14946637, 0, -0.9887669, 0, 1.0000001, 0, 0.9887669, 0, 0.14946637, 33.32795, 15.945872, 60.898384)
-script = ExtResource("15_5qxy3")
-required_switches = 0
-open_anim_name = "door_open"
-
-[node name="Door of Trials_R" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-material_override = ExtResource("16_1jhap")
-mesh = SubResource("ArrayMesh_vtkfx")
-skeleton = NodePath("")
-
-[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_R"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_R/AnimatableBody3D"]
-shape = SubResource("ConvexPolygonShape3D_jso1h")
-
-[node name="Door of Trials Topper" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
-material_override = ExtResource("16_1jhap")
-mesh = SubResource("ArrayMesh_rv6to")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials Topper"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials Topper/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_eq8ae")
-
-[node name="Door of Trials_L" type="MeshInstance3D" parent="hitherton_terrain2/Door of Trials-Exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-material_override = ExtResource("16_1jhap")
-mesh = SubResource("ArrayMesh_71rci")
-skeleton = NodePath("")
-
-[node name="AnimatableBody3D" type="CharacterBody3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_L"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_terrain2/Door of Trials-Exit/Door of Trials_L/AnimatableBody3D"]
-shape = SubResource("ConvexPolygonShape3D_0hwc8")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="hitherton_terrain2/Door of Trials-Exit"]
-libraries = {
-&"": SubResource("AnimationLibrary_ph2jk")
-}
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hitherton_terrain2/Door of Trials-Exit"]
-stream = ExtResource("17_t8jou")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="hitherton_terrain2/Door of Trials-Exit"]
-material_override = SubResource("StandardMaterial3D_brs6k")
-emitting = false
-amount = 128
-lifetime = 3.0
-one_shot = true
-explosiveness = 0.83
-process_material = SubResource("ParticleProcessMaterial_fb6mu")
-draw_pass_1 = SubResource("QuadMesh_f8iix")
-
-[node name="Door of Trials2" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
-transform = Transform3D(0.4584599, -0.0016355364, -0.037574735, 0.0010914031, 0.45994985, -0.0067039826, 0.03759448, 0.0065923864, 0.45841375, -86.58677, 0.06859965, -3.8776174)
-
-[node name="Door of Trials3" parent="hitherton_terrain2" instance=ExtResource("20_wtgak")]
-transform = Transform3D(0.50809747, -0.003555514, 0.8612921, 0.014149945, 0.999891, -0.0042197374, -0.8611831, 0.0143312765, 0.5080924, 50.476936, -6.977137, -65.277405)
-
-[node name="hitherton_causway" type="Node3D" parent="."]
+[node name="hitherton_causway" type="Node3D" parent="." unique_id=770710135]
 transform = Transform3D(-0.9534437, 0, 0.3015712, 0, 1, 0, -0.3015712, 0, -0.9534437, 12.205844, -2.927093, -13.460553)
 
-[node name="step_1" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_1" type="MeshInstance3D" parent="hitherton_causway" unique_id=2042228700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41293478, 0)
 mesh = SubResource("ArrayMesh_2ctyq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_1" unique_id=427748127]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_1/StaticBody3D" unique_id=542793374]
 shape = SubResource("ConcavePolygonShape3D_83niu")
 
-[node name="step_2" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_2" type="MeshInstance3D" parent="hitherton_causway" unique_id=1615202732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07868159, -3.1424131, -5.0886455)
 mesh = SubResource("ArrayMesh_maqme")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_2" unique_id=1523109277]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_2/StaticBody3D" unique_id=1164162927]
 shape = SubResource("ConcavePolygonShape3D_dqj5i")
 
-[node name="step_3" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_3" type="MeshInstance3D" parent="hitherton_causway" unique_id=401715346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.2841053, -3)
 mesh = SubResource("ArrayMesh_d6e6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_3" unique_id=382862879]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_3/StaticBody3D" unique_id=2021898256]
 shape = SubResource("ConcavePolygonShape3D_12kfi")
 
-[node name="step_4" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_4" type="MeshInstance3D" parent="hitherton_causway" unique_id=506733491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162256, -1.4627271, -0.48123145)
 mesh = SubResource("ArrayMesh_t86ua")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_4" unique_id=2040876309]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_4/StaticBody3D" unique_id=463237998]
 shape = SubResource("ConcavePolygonShape3D_fy1dj")
 
-[node name="step_5" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_5" type="MeshInstance3D" parent="hitherton_causway" unique_id=1266708200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.743, -4.7775054, -3.034)
 mesh = SubResource("ArrayMesh_b0p0c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_5"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_5" unique_id=1095172765]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_5/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_5/StaticBody3D" unique_id=1087358317]
 shape = SubResource("ConcavePolygonShape3D_a5l1w")
 
-[node name="step_6" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_6" type="MeshInstance3D" parent="hitherton_causway" unique_id=1858535962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1762867, -7.6781945, -2.4504356)
 mesh = SubResource("ArrayMesh_uemec")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_6"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_6" unique_id=1979103861]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_6/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_6/StaticBody3D" unique_id=2118451850]
 shape = SubResource("ConcavePolygonShape3D_ifq2n")
 
-[node name="step_7" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_7" type="MeshInstance3D" parent="hitherton_causway" unique_id=1594549452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1.2290521, 1)
 mesh = SubResource("ArrayMesh_vak44")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_7"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_7" unique_id=285272389]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_7/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_7/StaticBody3D" unique_id=1167305756]
 shape = SubResource("ConcavePolygonShape3D_hmed2")
 
-[node name="step_8" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_8" type="MeshInstance3D" parent="hitherton_causway" unique_id=747777657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.9946933, 5)
 mesh = SubResource("ArrayMesh_q1jxg")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_8"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_8" unique_id=469204873]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_8/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_8/StaticBody3D" unique_id=1302031579]
 shape = SubResource("ConcavePolygonShape3D_hcrnx")
 
-[node name="step_9" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_9" type="MeshInstance3D" parent="hitherton_causway" unique_id=1979307687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.8949733, 8)
 mesh = SubResource("ArrayMesh_t335l")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_9"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_9" unique_id=156751726]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_9/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_9/StaticBody3D" unique_id=727317865]
 shape = SubResource("ConcavePolygonShape3D_o51jq")
 
-[node name="step_10" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_10" type="MeshInstance3D" parent="hitherton_causway" unique_id=1809471615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.867326, -0.8949733, 9)
 mesh = SubResource("ArrayMesh_t335l")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_10"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_10" unique_id=1591928253]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_10/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_10/StaticBody3D" unique_id=1959483240]
 shape = SubResource("ConcavePolygonShape3D_o51jq")
 
-[node name="step_11" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_11" type="MeshInstance3D" parent="hitherton_causway" unique_id=572960073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.867326, 1.2211013, 8)
 mesh = SubResource("ArrayMesh_d6e6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_11"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_11" unique_id=810751520]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_11/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_11/StaticBody3D" unique_id=1735724470]
 shape = SubResource("ConcavePolygonShape3D_12kfi")
 
-[node name="step_12" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_12" type="MeshInstance3D" parent="hitherton_causway" unique_id=804836369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8673258, 0.41293478, 13)
 mesh = SubResource("ArrayMesh_2ctyq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_12"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_12" unique_id=2067436235]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_12/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_12/StaticBody3D" unique_id=689873086]
 shape = SubResource("ConcavePolygonShape3D_83niu")
 
-[node name="step_13" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_13" type="MeshInstance3D" parent="hitherton_causway" unique_id=1344344998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0486164, 3.9946933, 8.566853)
 mesh = SubResource("ArrayMesh_q1jxg")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_13"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_13" unique_id=996145702]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_13/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_13/StaticBody3D" unique_id=1910946150]
 shape = SubResource("ConcavePolygonShape3D_hcrnx")
 
-[node name="step_14" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_14" type="MeshInstance3D" parent="hitherton_causway" unique_id=1986554710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.908607, -1.2290521, 1.8879175)
 mesh = SubResource("ArrayMesh_vak44")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_14"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_14" unique_id=745724937]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_14/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_14/StaticBody3D" unique_id=480648266]
 shape = SubResource("ConcavePolygonShape3D_hmed2")
 
-[node name="step_15" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_15" type="MeshInstance3D" parent="hitherton_causway" unique_id=1490583018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1479225, 2.0864825, 3.0593576)
 mesh = SubResource("ArrayMesh_uemec")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_15"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_15" unique_id=909774261]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_15/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_15/StaticBody3D" unique_id=398348128]
 shape = SubResource("ConcavePolygonShape3D_ifq2n")
 
-[node name="step_16" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_16" type="MeshInstance3D" parent="hitherton_causway" unique_id=2073736252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5306273, -0.15026331, 6.4576035)
 mesh = SubResource("ArrayMesh_b0p0c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_16"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_16" unique_id=541029954]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_16/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_16/StaticBody3D" unique_id=519269847]
 shape = SubResource("ConcavePolygonShape3D_a5l1w")
 
-[node name="step_17" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_17" type="MeshInstance3D" parent="hitherton_causway" unique_id=2060873083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.63944, -2.5324888, 3.541987)
 mesh = SubResource("ArrayMesh_t86ua")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_17"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_17" unique_id=672592187]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_17/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_17/StaticBody3D" unique_id=691706296]
 shape = SubResource("ConcavePolygonShape3D_fy1dj")
 
-[node name="step_18" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_18" type="MeshInstance3D" parent="hitherton_causway" unique_id=2069683731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.612137, -2.9084291, 5.9036217)
 mesh = SubResource("ArrayMesh_maqme")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_18"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_18" unique_id=957665314]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_18/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_18/StaticBody3D" unique_id=215575795]
 shape = SubResource("ConcavePolygonShape3D_dqj5i")
 
-[node name="step_19" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_19" type="MeshInstance3D" parent="hitherton_causway" unique_id=76049643]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5389035, -6.5119205, -6.4311132)
 mesh = SubResource("ArrayMesh_q1jxg")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_19"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_19" unique_id=106561973]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_19/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_19/StaticBody3D" unique_id=1991805247]
 shape = SubResource("ConcavePolygonShape3D_hcrnx")
 
-[node name="step_20" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_20" type="MeshInstance3D" parent="hitherton_causway" unique_id=896547496]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5273433, -6.310346, -6.453266)
 mesh = SubResource("ArrayMesh_vak44")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_20"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_20" unique_id=1711825021]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_20/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_20/StaticBody3D" unique_id=1511768782]
 shape = SubResource("ConcavePolygonShape3D_hmed2")
 
-[node name="step_21" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_21" type="MeshInstance3D" parent="hitherton_causway" unique_id=680932318]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5440475, -6.6016126, -6.4212556)
 mesh = SubResource("ArrayMesh_uemec")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_21"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_21" unique_id=1278564581]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_21/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_21/StaticBody3D" unique_id=541338492]
 shape = SubResource("ConcavePolygonShape3D_ifq2n")
 
-[node name="step_22" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_22" type="MeshInstance3D" parent="hitherton_causway" unique_id=1154605855]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5364875, -6.4697905, -6.4357433)
 mesh = SubResource("ArrayMesh_b0p0c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_22"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_22" unique_id=495635481]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_22/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_22/StaticBody3D" unique_id=381162366]
 shape = SubResource("ConcavePolygonShape3D_a5l1w")
 
-[node name="step_23" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_23" type="MeshInstance3D" parent="hitherton_causway" unique_id=1551087475]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5160328, -6.1131287, -6.4749403)
 mesh = SubResource("ArrayMesh_t86ua")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_23"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_23" unique_id=1564893217]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_23/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_23/StaticBody3D" unique_id=524470653]
 shape = SubResource("ConcavePolygonShape3D_fy1dj")
 
-[node name="step_24" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_24" type="MeshInstance3D" parent="hitherton_causway" unique_id=1322657091]
 transform = Transform3D(0.9992672, 0.038278338, -0.00069078803, -0.03797361, 0.99328524, 0.10928173, 0.0048694257, -0.10917538, 0.99401104, -1.5115647, -6.0352197, -6.483503)
 mesh = SubResource("ArrayMesh_maqme")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_24"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_24" unique_id=927955053]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_24/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_24/StaticBody3D" unique_id=1385502033]
 shape = SubResource("ConcavePolygonShape3D_dqj5i")
 
-[node name="step_25" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_25" type="MeshInstance3D" parent="hitherton_causway" unique_id=1260250395]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5273433, -6.310346, -6.453266)
 mesh = SubResource("ArrayMesh_2ctyq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_25"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_25" unique_id=1818207147]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_25/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_25/StaticBody3D" unique_id=1683098889]
 shape = SubResource("ConcavePolygonShape3D_83niu")
 
-[node name="step_26" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_26" type="MeshInstance3D" parent="hitherton_causway" unique_id=1810497204]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5349207, -6.4424715, -6.4387455)
 mesh = SubResource("ArrayMesh_d6e6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_26"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_26" unique_id=1513368404]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_26/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_26/StaticBody3D" unique_id=383692997]
 shape = SubResource("ConcavePolygonShape3D_12kfi")
 
-[node name="step_27" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_27" type="MeshInstance3D" parent="hitherton_causway" unique_id=1148685734]
 transform = Transform3D(0.9983792, 0.056914482, -0.00069078803, -0.05649822, 0.99240386, 0.109281726, 0.0069054067, -0.10906553, 0.99401104, -1.5403986, -6.5379877, -6.4282484)
 mesh = SubResource("ArrayMesh_t335l")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_27"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_27" unique_id=1726821786]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_27/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_27/StaticBody3D" unique_id=13730895]
 shape = SubResource("ConcavePolygonShape3D_o51jq")
 
-[node name="step_28" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_28" type="MeshInstance3D" parent="hitherton_causway" unique_id=1530127314]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -100.28553, 2.6902604, 15.895575)
 mesh = SubResource("ArrayMesh_q1jxg")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_28"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_28" unique_id=1006219152]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_28/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_28/StaticBody3D" unique_id=2105485678]
 shape = SubResource("ConcavePolygonShape3D_hcrnx")
 
-[node name="step_29" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_29" type="MeshInstance3D" parent="hitherton_causway" unique_id=1725648454]
 transform = Transform3D(0.33454716, -0.089504406, 0.93811905, 0, 0.99547946, 0.09497707, -0.9423791, -0.03177431, 0.33303487, -97.89137, -2.3865027, 16.745512)
 mesh = SubResource("ArrayMesh_vak44")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_29"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_29" unique_id=427170146]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_29/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_29/StaticBody3D" unique_id=2145941820]
 shape = SubResource("ConcavePolygonShape3D_hmed2")
 
-[node name="step_30" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_30" type="MeshInstance3D" parent="hitherton_causway" unique_id=532236955]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -88.7932, 0.78204966, 10.425087)
 mesh = SubResource("ArrayMesh_uemec")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_30"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_30" unique_id=1435658571]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_30/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_30/StaticBody3D" unique_id=936836515]
 shape = SubResource("ConcavePolygonShape3D_ifq2n")
 
-[node name="step_31" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_31" type="MeshInstance3D" parent="hitherton_causway" unique_id=367067359]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -109.525536, 4.545304, 3.0650501)
 mesh = SubResource("ArrayMesh_b0p0c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_31"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_31" unique_id=257813855]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_31/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_31/StaticBody3D" unique_id=1982036023]
 shape = SubResource("ConcavePolygonShape3D_a5l1w")
 
-[node name="step_32" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_32" type="MeshInstance3D" parent="hitherton_causway" unique_id=1675026184]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -94.917786, -3.8369217, 12.978683)
 mesh = SubResource("ArrayMesh_t86ua")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_32"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_32" unique_id=1160465592]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_32/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_32/StaticBody3D" unique_id=1110743858]
 shape = SubResource("ConcavePolygonShape3D_fy1dj")
 
-[node name="step_33" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_33" type="MeshInstance3D" parent="hitherton_causway" unique_id=1532193756]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -96.270966, -4.212862, 4.5870266)
 mesh = SubResource("ArrayMesh_maqme")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_33"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_33" unique_id=2037718490]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_33/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_33/StaticBody3D" unique_id=300744603]
 shape = SubResource("ConcavePolygonShape3D_dqj5i")
 
-[node name="step_34" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_34" type="MeshInstance3D" parent="hitherton_causway" unique_id=2026554658]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -100.20985, -3.8509564, 0.025911331)
 mesh = SubResource("ArrayMesh_2ctyq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_34"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_34" unique_id=291416522]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_34/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_34/StaticBody3D" unique_id=1996442761]
 shape = SubResource("ConcavePolygonShape3D_83niu")
 
-[node name="step_35" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_35" type="MeshInstance3D" parent="hitherton_causway" unique_id=1845257317]
 transform = Transform3D(0.3275998, -0.06782476, 0.9423791, 0.20273603, 0.97923344, 0, -0.9228091, 0.1910542, 0.33454716, -107.908966, -2.8030772, 5.385948)
 mesh = SubResource("ArrayMesh_d6e6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_35"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_35" unique_id=1844645371]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_35/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_35/StaticBody3D" unique_id=97774346]
 shape = SubResource("ConcavePolygonShape3D_12kfi")
 
-[node name="step_36" type="MeshInstance3D" parent="hitherton_causway"]
+[node name="step_36" type="MeshInstance3D" parent="hitherton_causway" unique_id=380769907]
 transform = Transform3D(0.33454716, 0, 0.9423791, 0, 1, 0, -0.9423791, 0, 0.33454716, -99.95098, -2.1994061, 14.953196)
 mesh = SubResource("ArrayMesh_t335l")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_36"]
+[node name="StaticBody3D" type="StaticBody3D" parent="hitherton_causway/step_36" unique_id=887131510]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_36/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitherton_causway/step_36/StaticBody3D" unique_id=88254638]
 shape = SubResource("ConcavePolygonShape3D_o51jq")
 
-[node name="environmental_sounds" type="Node" parent="."]
+[node name="environmental_sounds" type="Node" parent="." unique_id=1823169915]
 
-[node name="SfxRunningWater" type="AudioStreamPlayer3D" parent="environmental_sounds"]
+[node name="SfxRunningWater" type="AudioStreamPlayer3D" parent="environmental_sounds" unique_id=1232869805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.862762, 1.736445, 24.060337)
 stream = ExtResource("23_rxmjl")
 volume_db = 10.0
 autoplay = true
 
-[node name="SfxCalmWater" type="AudioStreamPlayer3D" parent="environmental_sounds"]
+[node name="SfxCalmWater" type="AudioStreamPlayer3D" parent="environmental_sounds" unique_id=790755449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5138063, -2.6470723, -11.328325)
 stream = ExtResource("24_qqvql")
 volume_db = 10.0
 autoplay = true
 
-[node name="SfxWaterfall" type="AudioStreamPlayer3D" parent="environmental_sounds"]
+[node name="SfxWaterfall" type="AudioStreamPlayer3D" parent="environmental_sounds" unique_id=824483118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.384033, 6.631119, -2.7071695)
 stream = ExtResource("25_6v3hn")
 volume_db = 10.0
 autoplay = true
 
-[node name="SfxWaterfall2" type="AudioStreamPlayer3D" parent="environmental_sounds"]
+[node name="SfxWaterfall2" type="AudioStreamPlayer3D" parent="environmental_sounds" unique_id=1316099733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.34808, -3.7982762, 12.627895)
 stream = ExtResource("25_6v3hn")
 volume_db = 10.0
 autoplay = true
 
-[node name="env_flora" type="Node" parent="."]
+[node name="env_flora" type="Node" parent="." unique_id=49848132]
 
-[node name="shrub" parent="env_flora" instance=ExtResource("21_ypyys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.12257, 8.759496, 66.59888)
+[node name="shrub" parent="env_flora" unique_id=36561652 instance=ExtResource("21_ypyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.12257, 8.12777, 66.59888)
 
-[node name="tree_foliage" parent="env_flora" instance=ExtResource("22_nxccc")]
+[node name="tree_foliage" parent="env_flora" unique_id=1683037667 instance=ExtResource("22_nxccc")]
 transform = Transform3D(0.7685739, 0, -0.63976103, 0, 1, 0, 0.63976103, 0, 0.7685739, 31.125227, -0.013471007, 52.05732)
 
-[node name="tree_foliage2" parent="env_flora" instance=ExtResource("22_nxccc")]
+[node name="tree_foliage2" parent="env_flora" unique_id=1829952212 instance=ExtResource("22_nxccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.710379, 21.842783, 33.337074)
 
-[node name="tree_foliage3" parent="env_flora" instance=ExtResource("22_nxccc")]
+[node name="tree_foliage3" parent="env_flora" unique_id=1449718499 instance=ExtResource("22_nxccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.672197, 13.243381, 76.140175)
 
-[node name="tree_foliage4" parent="env_flora" instance=ExtResource("22_nxccc")]
+[node name="tree_foliage4" parent="env_flora" unique_id=436078658 instance=ExtResource("22_nxccc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.56736, 2.6752286, 18.53758)
 
-[node name="hallway_darkness" type="OmniLight3D" parent="."]
+[node name="hallway_darkness" type="OmniLight3D" parent="." unique_id=1301481056]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.452896, 19.849232, 75.05804)
 light_energy = 7.08
 light_size = 1.0
@@ -1386,7 +1300,7 @@ light_bake_mode = 1
 omni_range = 15.0
 omni_attenuation = 1.849
 
-[node name="hallway_darkness2" type="OmniLight3D" parent="."]
+[node name="hallway_darkness2" type="OmniLight3D" parent="." unique_id=683162699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.676453, 25.598297, 70.06035)
 light_energy = 7.08
 light_size = 1.0
@@ -1396,42 +1310,41 @@ light_bake_mode = 1
 omni_range = 15.0
 omni_attenuation = 1.849
 
-[node name="water" type="Area3D" parent="."]
+[node name="water" type="Area3D" parent="." unique_id=2050937028]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water" unique_id=111289037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.343, -2.21, -7.244)
 shape = SubResource("CylinderShape3D_ducrt")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="water" unique_id=1710752545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.173, -2.21, -34.027)
 shape = SubResource("CylinderShape3D_32o3k")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="water" unique_id=211457519]
 transform = Transform3D(0.85865587, 0, -0.51255256, 0, 1, 0, 0.51255256, 0, 0.85865587, 20.618, -2.21, 15.551)
 shape = SubResource("BoxShape3D_nubfc")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="water" unique_id=1706543172]
 transform = Transform3D(0.99902916, 0, 0.044055246, 0, 1, 0, -0.044055246, 0, 0.99902916, 51.319, -2.21, 24.084)
 shape = SubResource("BoxShape3D_nubfc")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="water" unique_id=751033642]
 transform = Transform3D(0.9629417, 0, 0.26970977, 0, 1, 0, -0.26970977, 0, 0.9629417, 83.67, -2.21, 18.677)
 shape = SubResource("BoxShape3D_nubfc")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="water"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="water" unique_id=571965244]
 transform = Transform3D(0.9919785, 0, 0.12640667, 0, 1, 0, -0.12640667, 0, 0.9919785, 97.274, -2.21, 16.996)
 shape = SubResource("BoxShape3D_nubfc")
 
-[node name="shield_shroom" parent="." groups=["enemies"] instance=ExtResource("21_nubfc")]
+[node name="shield_shroom" parent="." unique_id=1851984881 groups=["enemies"] instance=ExtResource("21_nubfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3450832, -0.027355254, 14.456949)
 
-[node name="shrub" parent="." instance=ExtResource("21_ypyys")]
+[node name="shrub" parent="." unique_id=915192538 instance=ExtResource("21_ypyys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.56677, 0.051975578, 40.207863)
 
-[node name="shrub2" parent="." instance=ExtResource("21_ypyys")]
+[node name="shrub2" parent="." unique_id=487999311 instance=ExtResource("21_ypyys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.381754, 0.10814467, 36.180794)
 
 [connection signal="body_entered" from="dungeon_entrance" to="dungeon_entrance" method="_start_level_transition"]
 [connection signal="body_entered" from="dungeon_entrance2" to="dungeon_entrance2" method="_start_level_transition"]
 [connection signal="body_entered" from="hitherton_terrain/Door of Trials/Area3D" to="hitherton_terrain/Door of Trials" method="trigger_animation"]
-[connection signal="body_entered" from="hitherton_terrain2/Door of Trials/Area3D" to="hitherton_terrain2/Door of Trials" method="trigger_animation"]

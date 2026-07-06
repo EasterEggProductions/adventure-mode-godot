@@ -1,0 +1,24 @@
+// Godot addons configuration file for use with the GodotEnv tool.
+// See https://github.com/chickensoft-games/GodotEnv for more info.
+// -------------------------------------------------------------------- //
+// Note: this is a JSONC file, so you can use comments!
+// If using Rider, see https://youtrack.jetbrains.com/issue/RIDER-41716
+// for any issues with JSONC.
+// -------------------------------------------------------------------- //
+{
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "addons": {
+	"EEP_Console": { 
+	  "url": "https://github.com/EasterEggProductions/godot-eep-game-console",
+	  "subfolder": "addons/EEP_Console"
+	},
+	"EEP_FeatherAudioManager": { 
+	  "url": "https://github.com/EasterEggProductions/godot-eep-game-console",
+	  "subfolder": "addons/EEP_FeatherAudioManager"
+	},
+	"EEP_DressUp": { 
+	  "url": "https://github.com/EasterEggProductions/godot-dress-up",
+	  "subfolder": "addons/EEP_DressUp"
+	}
+  }
+}

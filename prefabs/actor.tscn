@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://chwqjvpft7wxd"]
+[gd_scene format=4 uid="uid://chwqjvpft7wxd"]
 
 [ext_resource type="Script" uid="uid://dfgob8wlfeeqm" path="res://scripts/actor.gd" id="1_u4ehk"]
 [ext_resource type="Resource" uid="uid://ba3i5roa0cxxe" path="res://Modular Mobility/movesets/mvpk_walk.tres" id="2_4jbd7"]
@@ -6,11 +6,15 @@
 [ext_resource type="Script" uid="uid://75g460r007m4" path="res://Modular Mobility/MovementPackage.gd" id="3_kd8s6"]
 [ext_resource type="Resource" uid="uid://dijgug6xnkk83" path="res://Modular Mobility/movesets/mvpk_swim.tres" id="5_1114p"]
 [ext_resource type="Resource" uid="uid://bofc8snsk08ol" path="res://Modular Mobility/movesets/mvpk_glide.tres" id="6_eg6sy"]
+[ext_resource type="Resource" uid="uid://casoj2le5m3x1" path="res://Modular Mobility/movesets/mvpk_climb.tres" id="7_4lc2t"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="7_5gopm"]
-[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="9_y5qxm"]
+[ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://addons/EEP_DressUp/Resource Definitions/Garment.gd" id="9_y5qxm"]
+[ext_resource type="Shader" uid="uid://dwyw5lswcag8s" path="res://art/shaders/test_clothing_displacement.tres" id="11_eatmq"]
 [ext_resource type="AnimationLibrary" uid="uid://iuuxa6ncl6g0" path="res://art/Character/animations/swim/aLib_swim.tres" id="11_f0n1c"]
+[ext_resource type="Texture2D" uid="uid://b8owmvccbj6eo" path="res://art/Character/clothing/manny_quinn_hairstyles_mq_hair.png" id="12_02bdd"]
 [ext_resource type="PackedScene" uid="uid://bqengtjtjsi85" path="res://prefabs/actor_nametag.tscn" id="12_eg6sy"]
 [ext_resource type="AnimationLibrary" uid="uid://cfw145vp451ic" path="res://art/Character/animations/combat_sword/aLib_combat_sword.tres" id="12_kfhu3"]
+[ext_resource type="Script" uid="uid://1rqtuts5cvaa" path="res://scripts/bouncymeshbouncer.gd" id="12_tqg4d"]
 [ext_resource type="Animation" uid="uid://ccetyxge74ro7" path="res://art/Character/animations/idles/sit_lounge_toStand.tres" id="15_7tqai"]
 [ext_resource type="Animation" uid="uid://bc0d4grfnjxcs" path="res://art/Character/animations/death.tres" id="16_7p0qy"]
 [ext_resource type="Animation" uid="uid://c05okihnbe7uo" path="res://art/Character/animations/t-pose.tres" id="19_8um01"]
@@ -23,7 +27,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://bpwef0cra4iw2" path="res://art/Character/animations/glider/aLib_glider.tres" id="26_484dv"]
 [ext_resource type="Script" uid="uid://yrhxrvphg2ud" path="res://scripts/DebugTools/animation_tree_debugger.gd" id="26_k6o3x"]
 [ext_resource type="AnimationLibrary" uid="uid://xojch5gcvv1r" path="res://art/Character/animations/walk_jog_run/aLib_wjr.tres" id="27_gdtpd"]
-[ext_resource type="Script" uid="uid://cendvqu343aqi" path="res://Dress Up/DresserUpper.gd" id="51_ly8uj"]
+[ext_resource type="Script" uid="uid://cendvqu343aqi" path="res://addons/EEP_DressUp/DresserUpper.gd" id="51_ly8uj"]
 [ext_resource type="Script" uid="uid://c3roujydj1omy" path="res://scripts/Hero Effects/footall_sfx.gd" id="59_becxn"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://coym3jr0vat8x" path="res://art/Character/animator components/walk_root.tres" id="60_n8fbs"]
 
@@ -31,7 +35,7 @@
 radius = 0.45
 height = 1.8
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tqg4d"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_eg6sy"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xwqgb"]
@@ -116,6 +120,58 @@ material = SubResource("StandardMaterial3D_en2o0")
 radius = 0.064
 height = 0.163
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8whn"]
+render_priority = 0
+shader = ExtResource("11_eatmq")
+shader_parameter/off_vec = Vector3(0, 0, 0)
+shader_parameter/noise_strength = 1.0
+shader_parameter/FloatParameter = 1.0
+shader_parameter/albedo = ExtResource("12_02bdd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va33a"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tqg4d"]
+resource_name = "cape_soft_body_test_Plane_003"
+_surfaces = [{
+"aabb": AABB(-0.31951603, 1.065713, -0.2792517, 0.6350546, 0.45565212, 0.3121971),
+"attribute_data": PackedByteArray("UVFR/wAAgD+MYZs+/////wAAQD8AAAAA2tra/wAAgD/A5Es9bm5u/wAAAACYYZs+/////////z4AAAAA////////fz4AAAAA4uLi/wAAAACg5Es9Ghoa////fz88bD4/Nzc3/wAAgD+idgs/Ghoa/wAAAAA4bD4/Ojo6/wAAAACkdgs/AAAA/wAAAD8AAIA/BwcH/wAAAAAI1Fc/BgYG/wAAgD8M1Fc/AAAA/wAAAADwLGQ/AAAA/wAAgD/yLGQ/AAAA/wAAAADZhXA/AAAA/wTMMz4AAIA/AAAA/wAAAAAAAIA/AAAA/04cVj8AAIA/AAAA/wAAgD/ZhXA/AgIC/wAAgD8AAIA/e3t7/wAAQD+gA2U+IyMj/wAAQD+4dTg/cHBw/////z6gA2U+AAAA/yBUfT4N1Fc/QUFB/wAAQD+gtvE+QEBA/////z6gtvE+HR0d/wAAAD+4dTg/AgIC/8q6QD8H1Fc/AAAA/4IwRj/wLGQ/AAAA/5JOAD8AHWA/Hh4e/wAAgD64dTg/Q0ND////fz6gtvE+g4OD////fz6gA2U+AAAA/6+Gaj7zLGQ/AAAA/0knAD9sUWg/AAAA/z65Vz7ZhXA/AAAA/wAAAD/ZhXA/AAAA/zmmSz/ZhXA/"),
+"bone_aabbs": [AABB(0, 0, 0, -1, -1, -1), AABB(0, 0, 0, -1, -1, -1), AABB(0, 0, 0, -1, -1, -1), AABB(-0.31951603, 1.065713, -0.2792517, 0.6350546, 0.45565212, 0.3121971), AABB(-1.7987485e-18, 1.4995112, -0.13020563, 1e-05, 0.021863937, 0.019288272)],
+"format": 34359745567,
+"index_count": 168,
+"index_data": PackedByteArray("FgACAAAAFgABAAIAGgAWAAAAGgAAAAgAGAABABYAGAAEAAEAGwAWABoAGwAYABYAFwAaAAgAFwAIAAcADQAXAAcAHAAaABcAHAAbABoADQAdABcAHQAcABcADQAeAB0ADQAPAB4AHQAfABwAIAAbABwAHwAgABwAIAAhABsAIQAYABsACQAhACAAIQAiABgACQAKACEACgAiACEAIgAEABgACgADACIAIgAFAAQAAwAFACIAAwAGAAUAGQAJACAAHwAZACAAGQAMAAkAGQAOAAwAGQAjAA4AHwAjABkAIwAQAA4AHwAkACMAHQAkAB8AIwAlABAAJAAlACMAJQASABAAHQAeACQAJQARABIAJgARACUAJAAmACUAHgAmACQAJgALABEAHgAnACYAJwALACYADwAnAB4AJwATAAsADwAUACcAFAATACcAFAAVABMA"),
+"lods": [0.058327604, PackedByteArray("FgACAAAAFgABAAIAFwAWAAAAFwAAAAgAGAABABYAGAAWABcAGAAEAAEAFwAIAAcADQAXAAcAAwAEABgAAwAFAAQAAwAGAAUACQADABgACQAYABcACgADAAkADQAZABcAGQAJABcAGQAMAAkAGQAOAAwADQAPABkAGQAQAA4AGQARABAAEQASABAAGQALABEADwALABkADwATAAsAFAATAA8AFAAVABMA"), 0.17554742, PackedByteArray("AAABAAIAAwABAAAAAwAEAAEAAwAFAAQAAwAGAAUAAwAAAAcABwAAAAgACQADAAcACgADAAkACwAJAAcACwAMAAkADQALAAcACwAOAAwADQAPAAsACwAQAA4ACwARABAAEQASABAADwATAAsAFAATAA8AFAAVABMA")],
+"material": SubResource("StandardMaterial3D_va33a"),
+"primitive": 3,
+"skin_data": PackedByteArray("AwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAAEAAMAAAAAAOqYFGcAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAEAAAAAADYpiZZAAAAAAMAAAAAAAAA//8AAAAAAAAEAAMAAAAAAEGEvXsAAAAAAwAAAAAAAAD//wAAAAAAAA=="),
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("p1mMPjz0mz/WGwy+Pi5HPklpiD+DdG2+RI6hPqZbjT/Z8xK+wmOOvrzWmz8hjgu+nHiCIZuJiD8U+o6+Pi5HvklpiD+DdG2+m5ejvrk7jT9XxBK+x7lMPiDKtT/h+vK9TNpxPk7wqj88zQa+n+JMvuTItT8o1vC9tb10vn3cqj+e8wW+AAAAABi8wj/iLeO9UHovvhjpuz+E2829UHovPqDpuz9oWdC9gJQjvrbfvD/ID429gJQjPjHgvD9UAI+9sK4XvlPWvT8WiBi9WdXEvUBqwD9Hxxq9sK4Xvhrxuj/A8QY90BXMPd4KwD9yDge9sK4XPsLWvT+CThu9sK4XPhrxuj/A8QY9hFgoPtzHlz+reFa+I1rVPUI8tD/CIiu+nHiCIeB9lz+GbXm+hA+xvQ4PvT8rYgu+y4IJPnAmpz/YfD++nHiCISZypj/m5lS+T1YVo3jxtD/owDW+/zSxPSENvT+eZQu+1D+yPQwvvz+F4eK9ZrmEouAjvT/pUgu+I1rVvUI8tD/CIiu+y4IJvnAmpz/YfD++hFgovtzHlz+reFa+tk2wvaRIvz9eUuW9ZrkEovzvvz+gVAW+6YuvvTmCwT9m4LO9AAAAABi8wj+urP69qEqzPfdQwT/O9669G+wF2VzQXb4S6mrhPtcYwlTrpNcKzh7B9xOG2Uf/89Z25P//r//Mv+sVseH8/7WtqBQ52DP3q6Qj4nXh4dakwHDq9tzi1PK+Fh484bP9idTKFSrdsPzB1XqAA/ER//3F1jQ35Iz1RdfDytnkJNLau31G2N7J7C/dRLjF3xnFfrcxWTjWtORW41tlSdTM5Wrna2F3z9fhp+aSmv3T8LScshmm29a3tI2zKJ66z4qqiLFb6vriNtx1wK7gt+tW4w6+s+T//57/wr+pMiDv2vzIr5Xpg+bh4Mq/keX//2j+oMCn2///i/lOwtvMce9B5EO/M8Pw52jUwLvyzNb/tfqCwW8fk+vR/UCxjxam5uX/kLCrFUXjEf0O0sI72+cS+LrV3cd//+z9VMDcUrPkvvC229KqbP/C/Oy7/KuC5N7F4Lg=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ph4yf"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eg6sy"]
+resource_name = "cape_soft_body_test2_Plane_005"
+_surfaces = [{
+"aabb": AABB(-0.31951603, 0.62476134, -0.38269922, 0.6350546, 0.8966038, 0.41564462),
+"attribute_data": PackedByteArray("4uLi/wAAQD8AAAAA4uLi/wAAgD/A5Es9x8fH/wAAgD9Q1+c9NjY2/wAAgD8k3jQ+U1NT/wAAgD+MYZs+Nzc3/wAAgD9oJ9k+/////////z4AAAAAKioq/wAAgD9v8SQ/NDQ0/wAAgD+idgs/BwcH/wAAAAAI1Fc/BgYG/wAAgD8M1Fc/Ghoa////fz88bD4/AAAA/wAAgD/yLGQ/AAAA/wAAAD8AAIA/AAAA/04cVj8AAIA/AAAA/wAAgD/ZhXA/AgIC/wAAgD8AAIA/AAAA/wTMMz4AAIA/AAAA/wAAAADwLGQ/AAAA/wAAAADZhXA/AAAA/wAAAAAAAIA/Ghoa/wAAAAA4bD4/KSkp/wAAAABu8SQ/Ojo6/wAAAACkdgs/SkpK/wAAAABwJ9k+MjIy/wAAAACYYZs+4uLi////fz4AAAAAR0dH/wAAAAAs3jQ+x8fH/wAAAABQ1+c94uLi/wAAAACg5Es9oqKi/wAAQD+gA+U9Ly8v/wAAQD84HLI+cHBw/////z6gA2U+ZmZm////fz6gA2U+JiYm/wAAQD+EqBg/Gxsb/wAAAD+4dTg/AAAA/5JOAD8AHWA/Ly8v////fz6gtvE+x8fH/wAAQD+gA2U9x8fH/////z6gA2U9qamp/////z6gA+U9Z2dn/wAAQD+gA2U+x8fH////fz6gA2U9pKSk////fz6gA+U9RERE////fz44HLI+PT09/////z44HLI+Kysr/////z6gtvE+KCgo/wAAQD+gtvE+KCgo/wAAgD6EqBg/JiYm/wAAAD+EqBg/Hh4e/wAAgD64dTg/Gxsb/wAAQD+4dTg/AwMD/8q6QD8H1Fc/AAAA/yBUfT4N1Fc/AAAA/6+Gaj7zLGQ/AAAA/0knAD9sUWg/AAAA/z65Vz7ZhXA/AAAA/wAAAD/ZhXA/AAAA/4IwRj/wLGQ/AAAA/zmmSz/ZhXA/"),
+"bone_aabbs": [AABB(0, 0, 0, -1, -1, -1), AABB(0, 0, 0, -1, -1, -1), AABB(0, 0, 0, -1, -1, -1), AABB(-0.31951603, 0.62476134, -0.38269922, 0.6350546, 0.8966038, 0.41564462), AABB(-1.7987485e-18, 1.4992752, -0.15870649, 1e-05, 0.022099972, 0.047789127)],
+"format": 34359745567,
+"index_count": 264,
+"index_data": PackedByteArray("JgABAAIAJgAAAAEAHgAmAAIAHgACAAMAJwAAACYAJwAGAAAAKAAmAB4AKAAnACYAKQAeAAMAKQADAAQAIAAoAB4AIAAeACkAKgAGACcAKgAaAAYAHAAaACoAHAAdABoAGwAcACoAKwAqACcAGwAqACsAKwAnACgAGQAbACsAIQArACgAGQArACEAIQAoACAAGAAZACEAGAAhACwALAAhACAAFwAYACwALAAgAC0AFwAsACUAJQAsAC0ALQAgACkAFgAXACUALQApAB8AHwApAAQAHwAEAAUALgAtAB8AJQAtAC4ALwAfAAUALgAfAC8ALwAFAAgAFgAlADAAMAAlAC4AFQAWADAAMQAuAC8AMAAuADEAIgAvAAgAMQAvACIAIgAIAAcAMgAwADEAFQAwADIAIwAxACIAMgAxACMAMwAiAAcAIwAiADMAMwAHAAsACgAzAAsANAAjADMACgA0ADMAJAAyACMANAAkACMANQAVADIAJAA1ADIANQAJABUANQASAAkANQA2ABIAJAA2ADUANgATABIANAA3ACQAJAA3ADYANgA4ABMANwA4ADYAOAAUABMAOAARABQAOQARADgANwA5ADgAOQANABEANAA6ADcAOgA5ADcACgA6ADQACgAMADoAOgA7ADkAOwANADkADAA7ADoAOwAOAA0ADAAPADsADwAOADsADwAQAA4A"),
+"lods": [0.06590586, PackedByteArray("AAABAAIAHgAAAAIAHgACAAMABgAAAB4AHgADAAQAHwAeAAQAHwAEAAUAIAAGAB4AIAAeAB8AIQAGACAAIgAfAAUAIgAFAAgAIgAIAAcAIgAHAAsACgAiAAsAIwAgAB8AIwAfACIACgAkACIAJAAjACIACgAMACQAJAAJACMACQAVACMADAANACQADAAOAA0ADwAOAAwADwAQAA4AJAANABEAJAARAAkACQARABIAEQATABIAEQAUABMAFQAlACMAJQAgACMAFQAWACUAFgAXACUAJQAhACAAFwAhACUAFwAYACEAGAAZACEAGQAaACEAIQAaAAYAGQAbABoAGwAcABoAHAAdABoA"), 0.45475435, PackedByteArray("AAABAAIAAAACAAMAAAADAAQABQAAAAQABgAAAAUABwAFAAgACQAFAAcACQAGAAUACgAHAAsACgAJAAcACgAMAAkADAANAAkADAAOAA0ADwAOAAwADwAQAA4ACQANABEACQARABIAEQATABIAEQAUABMAFQAGAAkAFQAWAAYAFgAXAAYAFwAYAAYAGAAZAAYAGQAaAAYAGQAbABoAGwAcABoAHAAdABoA")],
+"material": SubResource("StandardMaterial3D_ph4yf"),
+"primitive": 3,
+"skin_data": PackedByteArray("AwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAQAAwAAAAAA6pgUZwAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAAAwAAAAAAAAD//wAAAAAAAAMABAAAAAAA2KYmWQAAAAADAAAAAAAAAP//AAAAAAAABAADAAAAAABBhL17AAAAAAMAAAAAAAAA//8AAAAAAAADAAAAAAAAAP//AAAAAAAA"),
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("Pi5HPjjsTT+rK5O+RI6hPgrOhT+95zW+HUGcPhZSiT8cujG+9vOWPiLWjD98jC2+p1mMPjvekz86MSW+ZqOCPnjznT+yeBu+t6aYIlzwHz8n8cO+CkpfPmOWrj/NngW+TNpxPrYIqD8qwBG+UHovvhjpuz+E2829UHovPqDpuz9oWdC9x7lMPhAktT/h+vK9gJQjPjHgvD9UAI+9AAAAABi8wj/iLeO90BXMPd4KwD9yDge9sK4XPsLWvT+CThu9sK4XPhrxuj/A8QY9WdXEvUBqwD9Hxxq9gJQjvrbfvD/ID429sK4XvlPWvT8WiBi9sK4Xvhrxuj/A8QY9n+JMvqsotT8o1vC9KtBgvtSjrj+aoAS+tb10vv4eqD8f1hC+TmGEvgglnj+ooRq+wmOOvhErlD8ybSS+Pi5HvjjsTT+rK5O+rv2YvngqjT988iy+pEqeviyqiT8gNTG+m5ejvuAphj/FdzW+YcM3Psy8Xz8YSYq+qO0YPoJohz8lBm2+t6aYIolLUT8c+ai+hFgovmCNcT+EZoG+3C/0Pc0Toj8CMUG+T1YVo/YtrT8xhVa+ZrmEolV8vD89gii+y4IJvlQKlj9CP1e+0Hg/PoLUVj9iuo6+t6aYIidHLD8kM72+t6aYIvKdOD8idba+hFgoPmCNcT+EZoG+0Hg/voLUVj9iuo6+YcM3vsy8Xz8YSYq+qO0YvoJohz8lBm2+t6aYIl64dT/kbpm+t6aYIpoSjT+r5Im+y4IJPlQKlj9CP1e+3C/0vc0Toj8CMUG+6AUSokggnT9EJ3W+I1rVvUYdrj/CIiu+I1rVPUYdrj/CIiu+/zSxPRalvD+eZQu+hA+xvWqnvD8rYgu+tk2wvaRIvz9eUuW9ZrkEokDovz/0gyK+6YuvvTmCwT9m4LO9AAAAABi8wj+urP691D+yPQwvvz+F4eK9qEqzPfdQwT/O9669Heg36+mxgdmG6AvnRaWD3o3oaucMpkDemegp6POnj92W7Djjha2Q2vjtJeLQszbXrOP//9T+c8AZ6O/np79n0cPpUecrufbU+C+b5bX5UtWZz07mn9YGwIXlhOaUwwHObLkJ4LrFvrd6gAPxEf/9xZKa/dPwtJyyGabb1re0jbMonrrPiqqIsVtlSdTM5WrnVkUU34btC90xWTjWtORW42thd8/X4afmoBon5svo/aMlGO/nXdfWnGkWiOdr0VWaLxKl4pLMy5eRE+HjQMdEleYXXeuBzMKYehfB6HbDbpOFFw3o1cLfkosXtOdOwn2SVei26WGvSdrS7arjirZG1gvl///u/DTBTxXO5y7OQJnB6YbmKsN4z23i///j9x3DVtb1/5D5JcLAExHl/drMnkforOnurfjaquP//7j+fsCf4///QP6twLnqhOcVsgbZwBcD6iPKHZe0FwjqQ8u3l0IS+uPP1Pyb9+j//178e8Hk5///5PoRwlns3eQivDvTXRaQ5k7hsKHG5f//N/gWw6MYa+VT62aldeeP5WjOmMhY137lLNW2wUooM+Ww9YCm9zxN4wT5NtpTwsf/FPZ2wi5XEeQ18Gvd9553/136asAIwpXjmswBu+Gn7uNmxAi4")
+}]
+blend_shape_mode = 0
+
 [sub_resource type="Animation" id="Animation_d1d6e"]
 resource_name = "EMPTY"
 
@@ -174,28 +230,28 @@ properties/4/path = NodePath(".:name")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="actor" type="CharacterBody3D"]
+[node name="actor" type="CharacterBody3D" unique_id=1741489139]
 transform = Transform3D(0.999896, 0.00712085, -0.0125515, -0.0072158, 0.999946, -0.00753587, 0.0124971, 0.00762566, 0.999893, 0, 0, 0)
 script = ExtResource("1_u4ehk")
 character = ExtResource("2_y0m84")
-movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("5_1114p"), ExtResource("6_eg6sy")])
+movement_sets = Array[ExtResource("3_kd8s6")]([ExtResource("2_4jbd7"), ExtResource("5_1114p"), ExtResource("6_eg6sy"), ExtResource("7_4lc2t")])
 garments = Array[ExtResource("9_y5qxm")]([ExtResource("7_5gopm")])
 
-[node name="travel_shape" type="CollisionShape3D" parent="."]
+[node name="travel_shape" type="CollisionShape3D" parent="." unique_id=539750523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_ke2ik")
 
-[node name="actor_nametag" parent="." node_paths=PackedStringArray("target") instance=ExtResource("12_eg6sy")]
+[node name="actor_nametag" parent="." unique_id=1822614452 node_paths=PackedStringArray("target") instance=ExtResource("12_eg6sy")]
 transform = Transform3D(0.99994123, -0.0072706942, 0.00796757, 0.0070272298, 0.999519, 0.03017157, -0.008183122, -0.030113928, 0.9995124, -0.036441498, 2.1253297, 0.015423419)
-texture = SubResource("ViewportTexture_tqg4d")
+texture = SubResource("ViewportTexture_eg6sy")
 target = NodePath("..")
 
-[node name="skeleton" type="Node3D" parent="."]
+[node name="skeleton" type="Node3D" parent="." unique_id=983849468]
 transform = Transform3D(1, 4.36557e-11, -9.31323e-10, -4.65661e-10, 1, 0, 9.31323e-10, 4.65661e-10, 1, 0, 0, 0)
 
-[node name="char" type="Node3D" parent="skeleton"]
+[node name="char" type="Node3D" parent="skeleton" unique_id=95801453]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="skeleton/char"]
+[node name="Skeleton3D" type="Skeleton3D" parent="skeleton/char" unique_id=269007537]
 bones/0/name = "Root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, -2.0067e-07, 0, 2.0067e-07, 1, 0, 0, 0)
@@ -638,343 +694,372 @@ bones/62/position = Vector3(3.47242e-08, 0.11632, 1.66594e-08)
 bones/62/rotation = Quaternion(-5.7689054e-08, 0.9612483, -0.27568412, -8.7470227e-07)
 bones/62/scale = Vector3(1, 1.0000005, 0.99999964)
 
-[node name="hurt_boxes" type="Node3D" parent="skeleton/char/Skeleton3D"]
+[node name="hurt_boxes" type="Node3D" parent="skeleton/char/Skeleton3D" unique_id=1371680674]
 visible = false
 
-[node name="head" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="head" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1575697470]
 transform = Transform3D(1, 3.0559022e-10, -9.313226e-10, -4.5838533e-10, 1.0000006, 8.046627e-07, 9.313226e-10, -8.046627e-07, 1.0000006, -1.6007107e-10, 1.6031705, -0.024824414)
 bone_name = "head"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_head" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head"]
+[node name="hurtbox_head" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head" unique_id=560748631]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head/hurtbox_head"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head/hurtbox_head" unique_id=2022367739]
 transform = Transform3D(1, 2.91038e-11, 3.49246e-10, -5.82077e-11, 1, -2.98023e-08, 0, 2.98023e-08, 1, -2.32831e-10, 0.0663258, 0.0123575)
 shape = SubResource("SphereShape3D_xwqgb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head/hurtbox_head"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/head/hurtbox_head" unique_id=906038400]
 transform = Transform3D(1, 2.91038e-11, 1.16415e-10, 0, 1, 0, 1.16415e-10, 1.49012e-08, 1, -2.32831e-10, 0.0663258, 0.0123575)
 visible = false
 mesh = SubResource("SphereMesh_gnn2x")
 
-[node name="chest" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="chest" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1838087326]
 transform = Transform3D(1, 1.1641532e-10, 2.3748726e-07, -2.5087502e-08, 0.9946511, 0.103292294, -2.3655593e-07, -0.103292294, 0.9946511, -1.36788e-09, 1.2076206, -0.027742296)
 bone_name = "chest"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest"]
+[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest" unique_id=1077323864]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest/hurtbox_torso"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest/hurtbox_torso" unique_id=1748869989]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_g57dp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest/hurtbox_torso"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/chest/hurtbox_torso" unique_id=1854111886]
 visible = false
 mesh = SubResource("CapsuleMesh_ptidy")
 
-[node name="neck" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="neck" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=694380852]
 transform = Transform3D(1, -2.3283064e-10, 2.3841858e-07, 6.672053e-08, 0.95958894, -0.28140607, -2.2724271e-07, 0.2814061, 0.95958894, 5.820766e-11, 1.4923812, -0.05731409)
 bone_name = "neck"
 bone_idx = 4
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck"]
+[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck" unique_id=1450944590]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck/hurtbox_torso"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck/hurtbox_torso" unique_id=1498633118]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_lh4mb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck/hurtbox_torso"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/neck/hurtbox_torso" unique_id=920055768]
 visible = false
 mesh = SubResource("CapsuleMesh_u6jl3")
 
-[node name="hips" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="hips" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=230615182]
 transform = Transform3D(1, -6.9849193e-10, -9.313226e-10, -4.5838533e-10, 0.976922, -0.2135962, 9.313226e-10, 0.2135962, 0.9769219, 5.820766e-10, 0.90891004, -0.07706242)
 bone_name = "hips"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips"]
+[node name="hurtbox_torso" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips" unique_id=239421238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0827561)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips/hurtbox_torso"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips/hurtbox_torso" unique_id=81492214]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 1.65436e-24, 0, 0.0487878)
 shape = SubResource("CapsuleShape3D_6xcng")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips/hurtbox_torso"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hips/hurtbox_torso" unique_id=1503853318]
 visible = false
 mesh = SubResource("CapsuleMesh_o3lyt")
 
-[node name="thigh_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="thigh_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1071522921]
 transform = Transform3D(0.9984369, 0.055890623, -1.0002404e-06, 0.055727, -0.99551606, -0.0764395, -0.004273236, 0.076319814, -0.9970768, 0.11420601, 0.95824283, -0.02105651)
 bone_name = "thigh.L"
 bone_idx = 59
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_thigh_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L"]
+[node name="hurtbox_thigh_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L" unique_id=514576667]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L/hurtbox_thigh_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L/hurtbox_thigh_L" unique_id=200501013]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 shape = SubResource("CapsuleShape3D_lh4mb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L/hurtbox_thigh_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_L/hurtbox_thigh_L" unique_id=2044541700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_2eccu")
 
-[node name="shin_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="shin_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=250441153]
 transform = Transform3D(0.99854547, 0.053695396, -0.004953015, 0.0536588, -0.9803589, 0.18978369, 0.005334812, -0.18977407, -0.9818159, 0.14122844, 0.4769228, 0.015843201)
 bone_name = "shin.L"
 bone_idx = 60
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_shin_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L"]
+[node name="hurtbox_shin_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L" unique_id=697184006]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L/hurtbox_shin_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L/hurtbox_shin_L" unique_id=455621986]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 shape = SubResource("CapsuleShape3D_lh4mb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L/hurtbox_shin_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_L/hurtbox_shin_L" unique_id=223638132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_2eccu")
 
-[node name="foot_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="foot_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1679704035]
 transform = Transform3D(1.0000002, 3.6600977e-07, -1.6652048e-06, -1.2411983e-06, -0.53000224, -0.84799695, -1.180917e-06, 0.8479983, -0.53000385, 0.16315013, 0.07668049, -0.061634135)
 bone_name = "foot.L"
 bone_idx = 61
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_foot_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L"]
+[node name="hurtbox_foot_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L" unique_id=963008943]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L/hurtbox_foot_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L/hurtbox_foot_L" unique_id=504936673]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 shape = SubResource("CapsuleShape3D_nln6s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L/hurtbox_foot_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_L/hurtbox_foot_L" unique_id=72051208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_gnc4q")
 
-[node name="uparm_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="uparm_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1256241179]
 transform = Transform3D(-0.018606933, 0.9998259, -0.0013731737, -0.9689083, -0.01837039, -0.24673745, -0.24671957, -0.0032606218, 0.9690816, 0.186699, 1.4261402, -0.030988976)
 bone_name = "upper_arm.L"
 bone_idx = 32
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_uparm_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L"]
+[node name="hurtbox_uparm_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L" unique_id=726004683]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L/hurtbox_uparm_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L/hurtbox_uparm_L" unique_id=12476090]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CapsuleShape3D_ocsdr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L/hurtbox_uparm_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_L/hurtbox_uparm_L" unique_id=1892755577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_plkh6")
 
-[node name="forearm_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="forearm_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=975340197]
 transform = Transform3D(-0.06084316, 0.9963423, 0.059990562, 0.07273481, -0.055516437, 0.9958055, 0.99549335, 0.06495127, -0.0690912, 0.48611486, 1.420639, -0.03196547)
 bone_name = "forearm.L"
 bone_idx = 33
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_forearm_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L"]
+[node name="hurtbox_forearm_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L" unique_id=877403853]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L/hurtbox_forearm_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L/hurtbox_forearm_L" unique_id=824090427]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CapsuleShape3D_ecc8t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L/hurtbox_forearm_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_L/hurtbox_forearm_L" unique_id=828571148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_5n5y5")
 
-[node name="hand_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="hand_L" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1695596461]
 transform = Transform3D(0.09154709, 0.9809621, 0.1712652, 0.8499263, -0.16659069, 0.49987382, 0.51888776, 0.09980072, -0.8489964, 0.72573525, 1.4072871, -0.016344683)
 bone_name = "hand.L"
 bone_idx = 34
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_hand_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L"]
+[node name="hurtbox_hand_L" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L" unique_id=1375979046]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L/hurtbox_hand_L"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L/hurtbox_hand_L" unique_id=537352900]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, 0)
 shape = SubResource("CapsuleShape3D_w13a5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L/hurtbox_hand_L"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_L/hurtbox_hand_L" unique_id=162305435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_0ha5t")
 
-[node name="thigh_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="thigh_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1791302080]
 transform = Transform3D(0.9984369, -0.055890627, 1.0011718e-06, -0.055727005, -0.99551606, -0.0764395, 0.0042732377, 0.076319814, -0.99707675, -0.11420599, 0.9582429, -0.02105651)
 bone_name = "thigh.R"
 bone_idx = 55
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_thigh_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R"]
+[node name="hurtbox_thigh_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R" unique_id=31757386]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R/hurtbox_thigh_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R/hurtbox_thigh_R" unique_id=519344934]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 shape = SubResource("CapsuleShape3D_lh4mb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R/hurtbox_thigh_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/thigh_R/hurtbox_thigh_R" unique_id=932379832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_2eccu")
 
-[node name="shin_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="shin_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=813485832]
 transform = Transform3D(0.9985453, -0.053695396, 0.0049530156, -0.0536588, -0.980359, 0.1897837, -0.0053348104, -0.18977407, -0.98181593, -0.14122842, 0.4769228, 0.0158432)
 bone_name = "shin.R"
 bone_idx = 56
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_shin_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R"]
+[node name="hurtbox_shin_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R" unique_id=1729461301]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R/hurtbox_shin_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R/hurtbox_shin_R" unique_id=1201704397]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 shape = SubResource("CapsuleShape3D_lh4mb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R/hurtbox_shin_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/shin_R/hurtbox_shin_R" unique_id=1411111459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_2eccu")
 
-[node name="foot_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="foot_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=722134884]
 transform = Transform3D(1.0000002, -3.6600977e-07, 1.6652048e-06, 1.2403179e-06, -0.53000224, -0.8479969, 1.1818483e-06, 0.8479983, -0.5300038, -0.16315018, 0.07668049, -0.061634135)
 bone_name = "foot.R"
 bone_idx = 57
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_foot_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R"]
+[node name="hurtbox_foot_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R" unique_id=188565000]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R/hurtbox_foot_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R/hurtbox_foot_R" unique_id=1785101861]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 shape = SubResource("CapsuleShape3D_nln6s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R/hurtbox_foot_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/foot_R/hurtbox_foot_R" unique_id=86843283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_gnc4q")
 
-[node name="uparm_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="uparm_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1695038874]
 transform = Transform3D(-0.018606666, -0.999826, 0.0013731038, 0.96890765, -0.018370254, -0.24673729, 0.24671946, -0.003260606, 0.96908176, -0.18669899, 1.4261402, -0.03098895)
 bone_name = "upper_arm.R"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_uparm_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R"]
+[node name="hurtbox_uparm_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R" unique_id=207193198]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R/hurtbox_uparm_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R/hurtbox_uparm_R" unique_id=1768347284]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CapsuleShape3D_ocsdr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R/hurtbox_uparm_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/uparm_R/hurtbox_uparm_R" unique_id=1570167924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_plkh6")
 
-[node name="forearm_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="forearm_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1316655004]
 transform = Transform3D(-0.060843177, -0.9963433, -0.05999032, -0.072735734, -0.055516284, 0.9958047, -0.99549365, 0.0649514, -0.06909236, -0.4861149, 1.4206393, -0.031965468)
 bone_name = "forearm.R"
 bone_idx = 9
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_forearm_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R"]
+[node name="hurtbox_forearm_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R" unique_id=114192446]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R/hurtbox_forearm_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R/hurtbox_forearm_R" unique_id=1964526403]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CapsuleShape3D_ecc8t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R/hurtbox_forearm_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/forearm_R/hurtbox_forearm_R" unique_id=1737078281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_5n5y5")
 
-[node name="hand_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes"]
+[node name="hand_R" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D/hurt_boxes" unique_id=1933742553]
 transform = Transform3D(0.09154696, -0.9809631, -0.17126514, -0.8499263, -0.16659042, 0.49987268, -0.518887, 0.09980098, -0.84899735, -0.7257355, 1.4072872, -0.016344652)
 bone_name = "hand.R"
 bone_idx = 10
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="hurtbox_hand_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R"]
+[node name="hurtbox_hand_R" type="Area3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R" unique_id=2028232194]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R/hurtbox_hand_R"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R/hurtbox_hand_R" unique_id=1229737668]
 transform = Transform3D(1, -1.77636e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, 0)
 shape = SubResource("CapsuleShape3D_w13a5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R/hurtbox_hand_R"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D/hurt_boxes/hand_R/hurtbox_hand_R" unique_id=1458593018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_0ha5t")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton"]
-root_motion_track = NodePath("char/Skeleton3D:Root")
-libraries = {
-&"": SubResource("AnimationLibrary_wj084"),
-&"aLib_actions": ExtResource("21_qj7qg"),
-&"aLib_combat_sword": ExtResource("12_kfhu3"),
-&"aLib_dungeon_actions": ExtResource("22_eg6sy"),
-&"aLib_swim": ExtResource("11_f0n1c"),
-&"animationLib_climb": ExtResource("25_gl75i"),
-&"glider": ExtResource("26_484dv"),
-&"jumps_and_falling": ExtResource("25_eg6sy"),
-&"spawns_and_deaths": ExtResource("24_eg6sy"),
-&"walk_jog_run": ExtResource("27_gdtpd")
-}
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skeleton/char/Skeleton3D" unique_id=774630912]
+visible = false
+material_override = SubResource("ShaderMaterial_h8whn")
+mesh = SubResource("ArrayMesh_tqg4d")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="bouncymeshbouncer" type="Node" parent="skeleton/char/Skeleton3D/MeshInstance3D" unique_id=346800186 node_paths=PackedStringArray("b_offpoint")]
+script = ExtResource("12_tqg4d")
+b_offpoint = NodePath("../../BoneAttachment3D/Node3D")
+stiffness = 10.0
+max_disp = 0.5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="skeleton/char/Skeleton3D" unique_id=1978492384]
+visible = false
+material_override = SubResource("ShaderMaterial_h8whn")
+mesh = SubResource("ArrayMesh_eg6sy")
+
+[node name="bouncymeshbouncer" type="Node" parent="skeleton/char/Skeleton3D/MeshInstance3D2" unique_id=1418871806 node_paths=PackedStringArray("b_offpoint")]
+script = ExtResource("12_tqg4d")
+b_offpoint = NodePath("../../BoneAttachment3D/Node3D")
+stiffness = 20.0
+max_disp = 0.5
+gravity = -5.0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="skeleton/char/Skeleton3D" unique_id=1882153281]
+transform = Transform3D(1, -5.684342e-14, 2.3841852e-07, 6.709254e-08, 0.9595889, -0.28140607, -2.2878365e-07, 0.28140607, 0.9595889, 2.9345375e-14, 1.4923812, -0.05731409)
+bone_name = "neck"
+bone_idx = 4
+
+[node name="Node3D" type="Node3D" parent="skeleton/char/Skeleton3D/BoneAttachment3D" unique_id=515485680]
+transform = Transform3D(1.0000005, -4.656613e-10, -1.8626451e-09, -4.656613e-10, 1.0000005, 1.1920929e-07, -2.7939677e-09, 0, 1.0000005, -0.0024880043, -0.052853942, -0.18951035)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="skeleton" unique_id=750614704]
+root_motion_track = NodePath("char/Skeleton3D:Root")
+libraries/ = SubResource("AnimationLibrary_wj084")
+libraries/aLib_actions = ExtResource("21_qj7qg")
+libraries/aLib_combat_sword = ExtResource("12_kfhu3")
+libraries/aLib_dungeon_actions = ExtResource("22_eg6sy")
+libraries/aLib_swim = ExtResource("11_f0n1c")
+libraries/animationLib_climb = ExtResource("25_gl75i")
+libraries/glider = ExtResource("26_484dv")
+libraries/jumps_and_falling = ExtResource("25_eg6sy")
+libraries/spawns_and_deaths = ExtResource("24_eg6sy")
+libraries/walk_jog_run = ExtResource("27_gdtpd")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1780042326]
 active = false
 root_node = NodePath("../skeleton")
 root_motion_track = NodePath("char/Skeleton3D:Root")
@@ -1021,29 +1106,28 @@ parameters/BlendTree/horace/request = 0
 "parameters/mv/TURN stuff/add_amount" = 0.0
 script = ExtResource("26_k6o3x")
 
-[node name="Decal" type="Decal" parent="."]
+[node name="Decal" type="Decal" parent="." unique_id=1149538966]
 transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999997, 0, 0, 0)
 size = Vector3(1.5, 0.1, 1.5)
 texture_albedo = SubResource("GradientTexture2D_cqh8r")
 
-[node name="water_cast" type="ShapeCast3D" parent="."]
+[node name="water_cast" type="ShapeCast3D" parent="." unique_id=723880331]
 transform = Transform3D(1, 1.0186341e-10, -9.313226e-09, -4.5911293e-09, 1, 0, 9.313226e-09, 4.656613e-09, 1, 0.0031448272, 1.2410786, -0.037908666)
 shape = SubResource("SphereShape3D_kyuof")
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="DresserUpper" type="Node" parent="." node_paths=PackedStringArray("actor", "skele")]
+[node name="DresserUpper" type="Node" parent="." unique_id=1101386628 node_paths=PackedStringArray("skele")]
 script = ExtResource("51_ly8uj")
-actor = NodePath("..")
 skele = NodePath("../skeleton/char/Skeleton3D")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1933586243]
 process_mode = 1
 replication_config = SubResource("SceneReplicationConfig_0m668")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=430798916]
 max_polyphony = 4
 
-[node name="footall_sfx" type="Node" parent="."]
+[node name="footall_sfx" type="Node" parent="." unique_id=424852572]
 script = ExtResource("59_becxn")

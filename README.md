@@ -10,9 +10,9 @@ Adventure Mode is a 3D third-person template for the Godot engine that combines 
 - Not *Bloodborne* (I hate *Bloodborne*. Just go play *Devil May Cry*.)
 - **Elden Ring**
 
-Play a [demo here](https://www.eastereggproductions.com/games/browser/adventure_mode_godot/). It may take up to a minute to load. A controller is recommended. 
+Play a [demo here](https://www.eastereggproductions.com/games/browser/adventure_mode_godot/). It may take a moment to load. A controller is recommended. 
 
-This project currently targets Godot Engine 4.6, and will continue to upgrade to the latest engine release when possible. 
+This project currently targets Godot Engine 4.7, and will continue to upgrade to the latest engine release when possible. 
 ---
 
 ## Key Features
@@ -39,7 +39,7 @@ This project currently targets Godot Engine 4.6, and will continue to upgrade to
 
 - **Item Management**:
   - Usage of items such as potions (both consumable and reusable) is under construction.
-  - But a robust system called DressUp manages player visual state, allowing it to sync for all players.
+  - A system called DressUp manages player visual state, allowing it to sync for all players.
 <img width="800" alt="amode_DressUp" src="https://github.com/user-attachments/assets/cd78f1d0-c547-476b-8eb3-c6f03dee3e95"  title="Dress Up is fun"/>
 
 
@@ -108,7 +108,8 @@ To enhance your development workflow, the following tools are recommended:
 - **[Visual Studio Code](https://code.visualstudio.com/)**: A lightweight and versatile code editor available on various platforms.
   - Add-on: **[Comment Anchors](https://marketplace.visualstudio.com/items?itemName=ExodiusStudios.comment-anchors)**: Helps you organize and keep track of tasks or specific sections of code while working.
 
-- **[GodotEnv](https://github.com/chickensoft-games/GodotEnv)**: A tool for managing Godot addons efficiently. It simplifies the process of adding, updating, and organizing addons within your project. It is still young, but referencing other addons of specific versions seems like a good capability to keep the repository lean. This tool may become required to properly set up the project at some point. 
+- **[GodotEnv](https://github.com/chickensoft-games/GodotEnv)**: A tool for managing Godot addons efficiently. It simplifies the process of adding, updating, and organizing addons within your project. 
+  - The Current addons managed by this are in the `addons.jsonc` file. Some addons may have conflicts with imports, so you may need to delete it to update the addons using GodotEnv. If you wish to keep your changes, simply remove the addon from the `addons.jsonc` file, and add an exception for the folder to the .gitignore file.
 
 ## Machine Learning Tools and AI policy
 **This is a project of human artistic expression.** 

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://swa5dpn8ftki"
+path="res://.godot/imported/budding_flame.obj-3f41f1a116fcb7ef29ec52142f1a84bd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/budding_flame.obj-3f41f1a116fcb7ef29ec52142f1a84bd.mesh"]
+
+source_file="res://art/meshes/budding_flame.obj"
+dest_files=["res://.godot/imported/budding_flame.obj-3f41f1a116fcb7ef29ec52142f1a84bd.mesh", "res://.godot/imported/budding_flame.obj-3f41f1a116fcb7ef29ec52142f1a84bd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

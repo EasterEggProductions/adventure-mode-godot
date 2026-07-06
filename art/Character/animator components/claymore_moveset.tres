@@ -48,14 +48,19 @@ animation = &"jumps_and_falling/airborne_bwd"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_otd4d"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_edqvn")
 blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_u1pev")
 blend_point_1/pos = Vector2(0, 1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_0umq1")
 blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_75a3i")
 blend_point_3/pos = Vector2(-1, 0)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_fop4d")
 blend_point_4/pos = Vector2(0, -1)
+blend_point_4/name = &"4"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nlelw"]
 graph_offset = Vector2(-367, -14.5)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Garment" load_steps=6 format=4 uid="uid://elyyhh1jtb41"]
+[gd_resource type="Resource" script_class="Garment" format=4 uid="uid://elyyhh1jtb41"]
 
 [ext_resource type="Material" uid="uid://cafrak15dcwnl" path="res://art/Character/clothing/skirt_of_skorp.tres" id="1_g5oh3"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://Dress Up/Resource Definitions/Garment.gd" id="1_tbw7g"]
@@ -217,5 +217,3 @@ script = ExtResource("1_tbw7g")
 mesh = SubResource("ArrayMesh_x2bul")
 skin = SubResource("Skin_uqwaf")
 materials = Array[Material]([ExtResource("1_g5oh3")])
-tags = Array[String]([])
-bones = Array[String]([])

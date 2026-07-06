@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cabwsn82igehw"]
+[gd_scene format=3 uid="uid://cabwsn82igehw"]
 
 [ext_resource type="ArrayMesh" uid="uid://bv7kb3wlk0hq3" path="res://art/meshes/campfire.obj" id="1_wd6q8"]
 [ext_resource type="Material" uid="uid://btyn0xde5r8mh" path="res://art/materials/bark.tres" id="2_61r5n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://orn3w7f80e5i" path="res://scripts/world_rest_and_reset.gd" id="8_0k21c"]
 [ext_resource type="AudioStream" uid="uid://dobhs75v3syes" path="res://art/audio/sfx/world_reset_01.ogg" id="8_y8ccy"]
 [ext_resource type="PackedScene" uid="uid://c2x0akl6hgm86" path="res://prefabs/UI/menu_rest.tscn" id="10_12rpo"]
+[ext_resource type="ArrayMesh" uid="uid://swa5dpn8ftki" path="res://art/meshes/budding_flame.obj" id="11_b0wgs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqyqw"]
 albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
@@ -21,6 +22,8 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_gqyqw")
 radius = 1.0
 height = 0.2
+radial_segments = 7
+rings = 4
 is_hemisphere = true
 
 [sub_resource type="Gradient" id="Gradient_v5th1"]
@@ -78,8 +81,8 @@ emission = Color(0.733333, 0.0509804, 0, 1)
 radius = 1.0
 
 [sub_resource type="Gradient" id="Gradient_ee1o0"]
-offsets = PackedFloat32Array(0, 0.2631579, 0.7473684, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.996875)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0k21c"]
 gradient = SubResource("Gradient_ee1o0")
@@ -96,20 +99,33 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = -720.0
 angle_max = 720.0
-angular_velocity_min = -720.0
-angular_velocity_max = 719.99994
-gravity = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -15.000016
+angular_velocity_max = 14.999984
+orbit_velocity_min = 0.4480001
+orbit_velocity_max = 0.4480001
+radial_velocity_min = -5.0000224
+radial_velocity_max = -5.0000224
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -7.000002
+radial_accel_max = -7.000002
+tangential_accel_min = -3.0000021
+tangential_accel_max = -3.0000021
 scale_min = 14.0
 scale_max = 16.0
 scale_curve = SubResource("CurveTexture_0k21c")
 color_ramp = SubResource("GradientTexture1D_0k21c")
+turbulence_noise_strength = 0.5
 
 [sub_resource type="Gradient" id="Gradient_12rpo"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.36419752, 0.4814815, 0.61728394)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.030000031)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b0wgs"]
-frequency = 0.0038
-domain_warp_enabled = true
+fractal_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1x158"]
 noise = SubResource("FastNoiseLite_b0wgs")
@@ -120,83 +136,206 @@ seamless = true
 transparency = 1
 cull_mode = 2
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = SubResource("NoiseTexture2D_1x158")
 billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_0t4ia"]
 material = SubResource("StandardMaterial3D_kqu5i")
 
-[node name="campfire" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_1x158"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
-[node name="Campfire" type="MeshInstance3D" parent="."]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kqu5i"]
+gradient = SubResource("Gradient_1x158")
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_0t4ia"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ntlp6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1w18"]
+width = 256
+height = 64
+noise = SubResource("FastNoiseLite_ntlp6")
+color_ramp = SubResource("Gradient_0t4ia")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_vgo58"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uibih"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p0kj2"]
+width = 128
+height = 31
+noise = SubResource("FastNoiseLite_uibih")
+color_ramp = SubResource("Gradient_vgo58")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu5js"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_kqu5i")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_p0kj2")
+detail_blend_mode = 1
+detail_albedo = SubResource("NoiseTexture2D_j1w18")
+
+[sub_resource type="Gradient" id="Gradient_2ogjs"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ip31"]
+gradient = SubResource("Gradient_2ogjs")
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_c77qk"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xk1qd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0elda"]
+width = 256
+height = 64
+noise = SubResource("FastNoiseLite_xk1qd")
+color_ramp = SubResource("Gradient_c77qk")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_qng1a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eri5k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v5ciu"]
+width = 128
+height = 31
+noise = SubResource("FastNoiseLite_eri5k")
+color_ramp = SubResource("Gradient_qng1a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3jyn"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_8ip31")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_v5ciu")
+detail_blend_mode = 1
+detail_albedo = SubResource("NoiseTexture2D_0elda")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_dmb2r"]
+_data = [Vector2(0, 0.5175526), 0.0, 2.3068373, 0, 0, Vector2(1, 1), 3.8410432, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ywtll"]
+offsets = PackedFloat32Array(0, 0.12222222, 0.89444447, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="campfire" type="Node3D" unique_id=1033322738]
+
+[node name="Campfire" type="MeshInstance3D" parent="." unique_id=352691898]
 mesh = ExtResource("1_wd6q8")
 surface_material_override/0 = ExtResource("2_61r5n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165589, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=955539856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1012094, 0)
 mesh = SubResource("SphereMesh_3ufyx")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1021350225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628241, 0)
 light_color = Color(0.964706, 0.615686, 0, 1)
 shadow_enabled = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=406100793]
+visible = false
 amount = 32
 lifetime = 3.0
 explosiveness = 0.1
 process_material = SubResource("ParticleProcessMaterial_64xje")
 draw_pass_1 = SubResource("QuadMesh_mrldq")
 
-[node name="rock" type="MeshInstance3D" parent="."]
+[node name="rock" type="MeshInstance3D" parent="." unique_id=1442832831]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.148211, -2.98023e-08, 0.0629599)
 material_override = SubResource("StandardMaterial3D_27t3c")
 mesh = ExtResource("5_yaecd")
 
-[node name="rock2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0.144624, -2.98023e-08, 0.0861724)
+[node name="rock2" type="MeshInstance3D" parent="." unique_id=215019590]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0.12696323, 0.09222579, 0.0861724)
 material_override = SubResource("StandardMaterial3D_27t3c")
 mesh = ExtResource("5_yaecd")
 
-[node name="rock3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, -0.0411427, -2.98023e-08, -0.322223)
+[node name="rock3" type="MeshInstance3D" parent="." unique_id=277996129]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, -0.004704658, 0.05438544, -0.23660505)
 material_override = SubResource("StandardMaterial3D_27t3c")
 mesh = ExtResource("5_yaecd")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1924508623]
 stream = ExtResource("6_f7w52")
 autoplay = true
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=796598974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 script = ExtResource("7_ee1o0")
 message_text = "Rest"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1929387268]
 shape = SubResource("SphereShape3D_0k21c")
 
-[node name="rest_reset_effect" type="GPUParticles3D" parent="."]
+[node name="rest_reset_effect" type="GPUParticles3D" parent="." unique_id=505667927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 emitting = false
 amount = 32
-lifetime = 20.0
+lifetime = 5.0
 one_shot = true
-explosiveness = 0.9
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_y8ccy")
 draw_pass_1 = SubResource("SphereMesh_0t4ia")
 
-[node name="reset_sfx" type="AudioStreamPlayer3D" parent="."]
+[node name="reset_sfx" type="AudioStreamPlayer3D" parent="." unique_id=708550612]
 stream = ExtResource("8_y8ccy")
 volume_db = -10.0
 
-[node name="World_Rest_and_Reset" type="Node" parent="." node_paths=PackedStringArray("reset_particles", "reset_sfx")]
+[node name="World_Rest_and_Reset" type="Node" parent="." unique_id=214712224 node_paths=PackedStringArray("reset_particles", "reset_sfx")]
 script = ExtResource("8_0k21c")
 reset_particles = NodePath("../rest_reset_effect")
 reset_sfx = NodePath("../reset_sfx")
 rest_menu = ExtResource("10_12rpo")
+
+[node name="BuddingFlame" type="MeshInstance3D" parent="." unique_id=1195146551]
+visible = false
+mesh = ExtResource("11_b0wgs")
+surface_material_override/0 = SubResource("StandardMaterial3D_wu5js")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1980620400]
+material_override = SubResource("StandardMaterial3D_n3jyn")
+amount = 4
+lifetime = 10.0
+randomness = 0.25
+lifetime_randomness = 0.25
+mesh = ExtResource("11_b0wgs")
+emission_shape = 1
+emission_sphere_radius = 0.1
+particle_flag_rotate_y = true
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.9
+scale_amount_max = 1.1
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_dmb2r")
+scale_curve_z = null
+color_ramp = SubResource("Gradient_ywtll")
 
 [connection signal="do_action" from="Area3D" to="World_Rest_and_Reset" method="rest"]

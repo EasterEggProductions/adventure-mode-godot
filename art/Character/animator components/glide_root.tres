@@ -33,24 +33,34 @@ animation = &"glider/glide_slow_back"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_v46k6"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_73mwi")
 blend_point_0/pos = Vector2(0, 0.05)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_4rbh3")
 blend_point_1/pos = Vector2(0, 1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_i0bex")
 blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_srgfc")
 blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_81ecx")
 blend_point_4/pos = Vector2(-0.05, 0)
+blend_point_4/name = &"4"
 blend_point_5/node = SubResource("AnimationNodeAnimation_ykb3e")
 blend_point_5/pos = Vector2(0.05, 0)
+blend_point_5/name = &"5"
 blend_point_6/node = SubResource("AnimationNodeAnimation_isiww")
 blend_point_6/pos = Vector2(0, -0.05)
+blend_point_6/name = &"6"
 blend_point_7/node = SubResource("AnimationNodeAnimation_3rqvh")
 blend_point_7/pos = Vector2(0.3, 0)
+blend_point_7/name = &"7"
 blend_point_8/node = SubResource("AnimationNodeAnimation_n2303")
 blend_point_8/pos = Vector2(-0.3, 0)
+blend_point_8/name = &"8"
 blend_point_9/node = SubResource("AnimationNodeAnimation_eyp43")
 blend_point_9/pos = Vector2(0, -0.3)
+blend_point_9/name = &"9"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tvor1"]
 animation = &"walk/airborne"

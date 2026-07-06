@@ -59,3 +59,4 @@ func _set(property, value):
 func _get(property):
 	if property == "object_name":
 		return object_name
+	return null

@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Adventure-mode-godot"
 run/main_scene="uid://c08g4uhla3np5"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
@@ -26,10 +26,12 @@ buses/default_bus_layout="res://art/audio/default_bus_layout.tres"
 
 [autoload]
 
+console="*uid://bcl51slsjj1ab"
 MgrTransition="*res://scripts/Managers/mgr_transition.tscn"
 MgrPlayerSocket="*res://scripts/Managers/PlayerSocketManager.gd"
 MgrMultiplayer="*res://scripts/Managers/Multplayer_Manager.gd"
 MgrDungeonState="*res://scripts/Managers/mgr_dungeon_state.gd"
+FAM="*uid://br1uu1gltkc33"
 
 [display]
 
@@ -48,7 +50,6 @@ enabled=PackedStringArray("res://addons/dungeon_tools_gizmos/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Dress Up/": "purple",
 "res://Modular Mobility/": "green"
 }
 

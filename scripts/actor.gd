@@ -297,13 +297,13 @@ func right_item_inc(move : int) -> void:
 	if len(character.hand_right_slots) == 0:
 		return
 	#unequip thing if thing 
-	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	var accessory : Accessory = character.hand_right_slots[character.hand_r_current].held_item
 	dup.accessory_unequip(accessory)
 	if character.hand_r_current < 0:
 		return
 	character.hand_r_current = (character.hand_r_current + move) % len(character.hand_right_slots)
 	#equip thing
-	accessory = character.hand_right_slots[character.hand_r_current].extra_resources["accessory"] as Accessory
+	accessory = character.hand_right_slots[character.hand_r_current].held_item
 	dup.accessory_equip(accessory, "prop.R")
 	
 ## Moves <move> around the item array, wraps around array length
@@ -311,7 +311,7 @@ func left_item_inc(move : int) -> void:
 	if len(character.hand_left_slots) == 0:
 		return
 	#unequip thing if thing 
-	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	var accessory : Accessory = character.hand_left_slots[character.hand_l_current].held_item
 	dup.accessory_unequip(accessory)
 	if len(character.hand_left_slots) == 1 and character.hand_l_current == 0:
 		character.hand_l_current = -1
@@ -319,7 +319,7 @@ func left_item_inc(move : int) -> void:
 	else:
 		character.hand_l_current = (character.hand_l_current + move) % len(character.hand_left_slots)
 	#equip thing
-	accessory = character.hand_left_slots[character.hand_l_current].extra_resources["accessory"] as Accessory
+	accessory = character.hand_left_slots[character.hand_l_current].held_item
 	dup.accessory_equip(accessory,"prop.L")
 
 
@@ -352,7 +352,8 @@ func take_damage(damage_data : Dictionary, id : int) -> Armament.AttackState:
 				character.poise_current += character.stamina_current
 		else:
 			character.health_current -= damage
-			character.poise_current -= 5
+			if "poise" in damage_data.keys():
+				character.poise_current -= damage_data["poise"]
 		if character.poise_current <= 0:
 			if "poise_break" not in action_q.keys():
 				enque_action("poise_break", 1500) # stop double falling
@@ -376,11 +377,9 @@ func compile_new_anim_tree():
 	master_tree.state_machine_type = AnimationNodeStateMachine.STATE_MACHINE_TYPE_NESTED
 	var counter = 0
 	## FIXME - Hard coded adding in movement sets from weapons
-	for thing in character.hand_right_slots:
-		var arm = thing.extra_resources["armament"].instantiate() as Armament
-		var mvp = arm.moveset
-		if mvp not in movement_sets:
-			movement_sets.append(mvp)
+	for arm in character.hand_right_slots:
+		if arm.moveset not in movement_sets:
+			movement_sets.append(arm.moveset)
 	for mvpk in movement_sets:
 		master_tree.add_node(mvpk.name, mvpk.anim_tree.duplicate(true), Vector2(0, counter))
 
@@ -497,12 +496,12 @@ func anim_hurtbox_activate(stanima_cost : float, dvalues : Dictionary, hands : i
 	character.stamina_current -= stanima_cost
 	character.stamina_regen_timer = character.stamina_regen_delay
 	if hands == null or hands == 0:
-		r_wep.activate_strike(dvalues)
+		r_wep.activate_strike(character.get_current_hand_r().dvalues)
 	elif hands == 1:
-		l_wep.activate_strike(dvalues)
+		l_wep.activate_strike(character.get_current_hand_l().dvalues)
 	elif hands == 2:
-		r_wep.activate_strike(dvalues)
-		l_wep.activate_strike(dvalues)
+		r_wep.activate_strike(character.get_current_hand_r().dvalues)
+		l_wep.activate_strike(character.get_current_hand_l().dvalues)
 
 ## Inital pulling out of item, hide weapons
 func anim_item_start():

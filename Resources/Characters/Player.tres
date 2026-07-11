@@ -2,16 +2,16 @@
 
 [ext_resource type="Resource" uid="uid://dordbggjqolii" path="res://addons/EEP_DressUp/Wardrobe/godette_face.tres" id="1_e66sy"]
 [ext_resource type="Script" uid="uid://bp3abug86ikl6" path="res://scripts/Resource Definitions/Character.gd" id="2_p2okw"]
-[ext_resource type="Resource" uid="uid://no46v4visn5r" path="res://Resources/Inventory Items/inv_sword_00.tres" id="3_hi2oo"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="3_i2r5u"]
 [ext_resource type="Script" uid="uid://5mqewow4ah2q" path="res://addons/EEP_DressUp/Resource Definitions/Garment.gd" id="3_jsfxo"]
 [ext_resource type="Resource" uid="uid://bea3qd1gu8vr0" path="res://Resources/Inventory Items/coin_coin.tres" id="3_lr5lw"]
-[ext_resource type="Resource" uid="uid://cti80s5p2qdx" path="res://Resources/Inventory Items/inv_spear_00.tres" id="4_jdhlo"]
 [ext_resource type="Resource" uid="uid://dayoldxf0ult2" path="res://Resources/Inventory Items/common_fruit.tres" id="4_l7lj6"]
-[ext_resource type="Resource" uid="uid://r40l8bmnp7k5" path="res://Resources/Inventory Items/inv_greatsword_01.tres" id="5_lr5lw"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="5_d47c1"]
+[ext_resource type="Resource" uid="uid://c5a8jfvipayui" path="res://Resources/Inventory Items/Armaments/arm_sword_00.tres" id="6_218v1"]
 [ext_resource type="Resource" uid="uid://duxy5hujhcahp" path="res://art/Character/clothing/DressUp Resources/skeleton.tres" id="6_dooa3"]
-[ext_resource type="Resource" uid="uid://cpjfjvsj5dcyk" path="res://Resources/Inventory Items/inv_sword_of_godot.tres" id="6_l7lj6"]
-[ext_resource type="Resource" uid="uid://bcl0k5bycdydn" path="res://Resources/Inventory Items/inv_axe_01.tres" id="9_7fqv6"]
+[ext_resource type="Resource" uid="uid://is1qsmqolu2h" path="res://Resources/Inventory Items/Armaments/arm_sword_of_godot.tres" id="7_jv3xf"]
+[ext_resource type="Resource" uid="uid://cdfc4n3nt78bj" path="res://Resources/Inventory Items/Armaments/arm_spear_00.tres" id="8_6c382"]
+[ext_resource type="Resource" uid="uid://h6ebc1fx6qly" path="res://Resources/Inventory Items/Armaments/arm_greatsword_01.tres" id="9_d47c1"]
 [ext_resource type="Resource" uid="uid://bedu2jx3ufh5d" path="res://addons/EEP_DressUp/Wardrobe/godette_backpack.tres" id="10_7fqv6"]
 [ext_resource type="Resource" uid="uid://djoo10w4ak5w4" path="res://addons/EEP_DressUp/Wardrobe/godette_boots.tres" id="11_gvuh6"]
 [ext_resource type="Resource" uid="uid://chgq7u50cxo5l" path="res://addons/EEP_DressUp/Wardrobe/godette_gloves.tres" id="12_fe3iw"]
@@ -25,10 +25,10 @@ resource_name = "Player"
 script = ExtResource("2_p2okw")
 portrait = ExtResource("13_jdhlo")
 given_name = "Player"
-my_inventory = Array[ExtResource("3_i2r5u")]([ExtResource("4_l7lj6"), ExtResource("3_lr5lw"), ExtResource("3_hi2oo"), ExtResource("5_lr5lw"), ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("9_7fqv6")])
+my_inventory = Array[ExtResource("3_i2r5u")]([ExtResource("4_l7lj6"), ExtResource("3_lr5lw")])
 belt_items = Array[ExtResource("3_i2r5u")]([ExtResource("3_lr5lw"), ExtResource("4_l7lj6")])
-hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("6_l7lj6"), ExtResource("4_jdhlo"), ExtResource("5_lr5lw")])
-hand_left_slots = Array[ExtResource("3_i2r5u")]([ExtResource("3_hi2oo")])
+hand_right_slots = Array[ExtResource("3_i2r5u")]([ExtResource("7_jv3xf"), ExtResource("8_6c382"), ExtResource("9_d47c1")])
+hand_left_slots = Array[ExtResource("5_d47c1")]([ExtResource("6_218v1")])
 under_skeleton = ExtResource("6_dooa3")
 base_skin = ExtResource("1_e66sy")
 outfit = Array[ExtResource("3_jsfxo")]([ExtResource("10_7fqv6"), ExtResource("11_gvuh6"), ExtResource("12_fe3iw"), ExtResource("13_qlqjw"), ExtResource("14_as43j"), ExtResource("15_d47c1")])

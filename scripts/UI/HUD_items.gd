@@ -61,7 +61,7 @@ func update_spell():
 	last_spell = thrall.character.spell_current
 	update_slot(last_spell, thrall.character.spells_slots, tx_spell)
 
-func update_slot(current : int, slots : Array[InventoryItem], tx : TextureRect):
+func update_slot(current : int, slots : Array, tx : TextureRect):
 	if len(slots) == 0 or current < 0:
 		tx.texture = null
 		tx.visible = false

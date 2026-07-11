@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://vpmk8ynnwl6q"]
+
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="1_pjefg"]
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="2_n1yb5"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="3_8rupj"]
+[ext_resource type="Resource" uid="uid://ddfufc2ryu8lm" path="res://art/Character/clothing/DressUp Resources/weapons/axe_01.tres" id="3_bb8qf"]
+[ext_resource type="Texture2D" uid="uid://d1yr1h0oesfd4" path="res://art/textures/icons/icon_axe_questions.png" id="4_7h30b"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_bb8qf"]
+
+[resource]
+resource_name = "Axe"
+script = ExtResource("4_bb8qf")
+held_item = ExtResource("3_bb8qf")
+moveset = ExtResource("3_8rupj")
+dvalues = Dictionary[String, int]({
+"lacerating": 0,
+"magic": 0,
+"physical": 1,
+"poise": 0,
+"poison": 0
+})
+icon = ExtResource("4_7h30b")
+description = "The axe of questions!!!"
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("1_pjefg"),
+"armament": ExtResource("2_n1yb5")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

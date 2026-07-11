@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://is1qsmqolu2h"]
+
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="1_3xykh"]
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="2_86vlc"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="3_rnr4s"]
+[ext_resource type="Resource" uid="uid://ciel6qljda5o2" path="res://art/Character/clothing/DressUp Resources/weapons/sword_of_godot.tres" id="3_why1o"]
+[ext_resource type="Texture2D" uid="uid://crk6nukk7lov0" path="res://art/textures/icons/ico_sword_of_godot.png" id="4_51nrg"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_why1o"]
+
+[resource]
+script = ExtResource("4_why1o")
+held_item = ExtResource("3_why1o")
+moveset = ExtResource("3_rnr4s")
+icon = ExtResource("4_51nrg")
+description = "A mightly blade lent by the grace of the golem. For though he could not move, he would never be prevented from protecting those he holds dear. "
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("1_3xykh"),
+"armament": ExtResource("2_86vlc")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://cdfc4n3nt78bj"]
+
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="1_metfb"]
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="2_pliy2"]
+[ext_resource type="Resource" uid="uid://e67eeeod2wdm" path="res://art/Character/clothing/DressUp Resources/weapons/spear_00.tres" id="3_a145d"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="3_qkp0x"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_a145d"]
+[ext_resource type="Texture2D" uid="uid://c83otya1wshxo" path="res://art/textures/icons/ico_spear_debug.png" id="4_mryhx"]
+
+[resource]
+resource_name = "Spear"
+script = ExtResource("4_a145d")
+held_item = ExtResource("3_a145d")
+moveset = ExtResource("3_qkp0x")
+dvalues = Dictionary[String, int]({
+"lacerating": 0,
+"magic": 0,
+"physical": 0,
+"poise": 20,
+"poison": 0
+})
+icon = ExtResource("4_mryhx")
+description = "Platonic ideal of spear - shape, hitboxes."
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("2_pliy2"),
+"armament": ExtResource("1_metfb")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

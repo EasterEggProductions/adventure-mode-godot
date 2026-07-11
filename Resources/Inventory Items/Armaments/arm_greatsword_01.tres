@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://h6ebc1fx6qly"]
+
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="1_4uuk4"]
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="2_s2cee"]
+[ext_resource type="Resource" uid="uid://b2ase43deh88d" path="res://art/Character/clothing/DressUp Resources/weapons/claymore_01.tres" id="3_oafbc"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_0wonl"]
+[ext_resource type="Texture2D" uid="uid://ctfn7pqpaia6i" path="res://art/textures/icons/ico_greatsword_debug.png" id="4_whlms"]
+[ext_resource type="Resource" uid="uid://diybpprbfvy0g" path="res://Modular Mobility/movesets/w_claymore_moveset.tres" id="5_qxrd3"]
+
+[resource]
+resource_name = "Claymore"
+script = ExtResource("4_0wonl")
+held_item = ExtResource("3_oafbc")
+moveset = ExtResource("5_qxrd3")
+dvalues = Dictionary[String, int]({
+"lacerating": 0,
+"magic": 0,
+"physical": 30,
+"poise": 1,
+"poison": 0
+})
+icon = ExtResource("4_whlms")
+description = "Just a normal claymore, like the ones your mother made for you as a child."
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("1_4uuk4"),
+"armament": ExtResource("2_s2cee")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://bhqwnljkc5mku"]
+
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="1_5a5qk"]
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="2_mqoav"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="3_4ico5"]
+[ext_resource type="Texture2D" uid="uid://bsf01lyi6omru" path="res://art/textures/icons/ico_dagger_debug.png" id="3_mqoav"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_gl7il"]
+
+[resource]
+resource_name = "Dagger"
+script = ExtResource("4_gl7il")
+held_item = ExtResource("2_mqoav")
+moveset = ExtResource("3_4ico5")
+icon = ExtResource("3_mqoav")
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("2_mqoav"),
+"armament": ExtResource("1_5a5qk")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

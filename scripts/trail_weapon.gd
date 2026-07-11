@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var trail_height_mult = 1.0
+
 @onready var skele : Skeleton3D = $trail/Skeleton3D
 
 var max_cache_size = 6 * 2
@@ -9,6 +11,7 @@ var test_pos = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$trail/Skeleton3D/trail_mesh.scale.z = trail_height_mult
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

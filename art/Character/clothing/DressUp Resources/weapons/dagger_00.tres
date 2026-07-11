@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Accessory" format=3 uid="uid://c7l4gnsmplmrl"]
+
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="1_njkl6"]
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://addons/EEP_DressUp/Resource Definitions/Accessory.gd" id="2_yasdb"]
+
+[resource]
+resource_name = "dagger debug"
+script = ExtResource("2_yasdb")
+accessory = ExtResource("1_njkl6")
+bones = Array[String](["prop.R"])

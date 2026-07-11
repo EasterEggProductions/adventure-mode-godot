@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://r40l8bmnp7k5"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://r40l8bmnp7k5"]
 
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_3mm8t"]
 [ext_resource type="PackedScene" uid="uid://elg785mh1gua" path="res://prefabs/weapons/claymore_01.tscn" id="1_pxr5b"]

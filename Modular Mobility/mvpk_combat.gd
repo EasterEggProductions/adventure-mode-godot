@@ -8,7 +8,11 @@ func pack_type():
 	return "mvpk_combat" # godot does not support getting custom class names 
 
 func transfer_situation_check(thrall : Actor) -> bool:
-	if thrall.r_wep and thrall.r_wep.moveset == self:
+	## NOTE - If we only check that we HAVE a weapon, 
+	## it constantly transfers in a drawing the sword loop
+	## SO used to use thrall.r_wep.moveset to see if that was our moveset
+	## This was changed to the item in the characters hand InventoryArmament
+	if thrall.r_wep and thrall.character.get_current_hand_r().moveset == self:
 		return thrall.combat_mode
 	return false
 

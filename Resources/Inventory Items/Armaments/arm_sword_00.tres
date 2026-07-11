@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InventoryArmament" format=3 uid="uid://c5a8jfvipayui"]
+
+[ext_resource type="Resource" uid="uid://c7l4gnsmplmrl" path="res://art/Character/clothing/DressUp Resources/weapons/dagger_00.tres" id="1_cr37g"]
+[ext_resource type="PackedScene" uid="uid://pjpctcft1u42" path="res://prefabs/weapons/dagger_00.tscn" id="2_j0gkf"]
+[ext_resource type="Resource" uid="uid://cbifiv8rt7a6m" path="res://art/Character/clothing/DressUp Resources/weapons/sword_01.tres" id="3_f2b0a"]
+[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="3_uyrx7"]
+[ext_resource type="Texture2D" uid="uid://dm0e5di13re3l" path="res://art/textures/icons/ico_sword_debug.png" id="4_4s2f0"]
+[ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_f2b0a"]
+
+[resource]
+resource_name = "Sword"
+script = ExtResource("4_f2b0a")
+held_item = ExtResource("3_f2b0a")
+moveset = ExtResource("3_uyrx7")
+icon = ExtResource("4_4s2f0")
+description = "Platonic ideal of sword - shape, hitboxes."
+extra_resources = Dictionary[String, Resource]({
+"accessory": ExtResource("1_cr37g"),
+"armament": ExtResource("2_j0gkf")
+})
+metadata/_custom_type_script = "uid://gpvaruo1hp7j"

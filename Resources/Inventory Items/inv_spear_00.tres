@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://cti80s5p2qdx"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cti80s5p2qdx"]
 
 [ext_resource type="PackedScene" uid="uid://r324nntujads" path="res://prefabs/weapons/spear_00.tscn" id="1_2gjy6"]
 [ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="1_s4a00"]

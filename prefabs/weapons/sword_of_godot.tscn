@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://cpcq0thn0vjex"]
+[gd_scene format=4 uid="uid://cpcq0thn0vjex"]
 
 [ext_resource type="Script" uid="uid://3fyvhhrco24t" path="res://scripts/armament.gd" id="1_xh8ef"]
 [ext_resource type="PackedScene" uid="uid://cqxi7q25mnc50" path="res://prefabs/particles/bone_dust.tscn" id="2_jvrxt"]
 [ext_resource type="PackedScene" uid="uid://e4las240qute" path="res://prefabs/particles/metal_clang.tscn" id="3_2glyy"]
-[ext_resource type="Resource" uid="uid://cbn706s6jj2fj" path="res://Modular Mobility/movesets/w_1h-sword_moveset.tres" id="4_v63ga"]
 [ext_resource type="Material" uid="uid://cfbryicsvmobm" path="res://art/materials/debug_hitbox_transparent.tres" id="5_ekd1b"]
 [ext_resource type="PackedScene" uid="uid://d1kynsixmfk71" path="res://prefabs/particles/trail_weapon.tscn" id="6_36e8a"]
 [ext_resource type="Texture2D" uid="uid://u2iwschiavdg" path="res://art/Props/sword of godot_sword of godot.png" id="7_jvrxt"]
@@ -71,14 +70,13 @@ metallic_texture = ExtResource("8_2glyy")
 metallic_texture_channel = 1
 roughness_texture = ExtResource("8_2glyy")
 
-[node name="sword_of_godot" type="Node3D"]
+[node name="sword_of_godot" type="Node3D" unique_id=45636186]
 script = ExtResource("1_xh8ef")
 damage = 6
 hit_effect = ExtResource("2_jvrxt")
 block_effect = ExtResource("3_2glyy")
-moveset = ExtResource("4_v63ga")
 
-[node name="hitbox" type="ShapeCast3D" parent="."]
+[node name="hitbox" type="ShapeCast3D" parent="." unique_id=1776993195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10335082, 0)
 shape = SubResource("CapsuleShape3D_1wjdx")
 target_position = Vector3(0, -0.535, 0)
@@ -86,17 +84,17 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="hitbox_vis" type="MeshInstance3D" parent="hitbox"]
+[node name="hitbox_vis" type="MeshInstance3D" parent="hitbox" unique_id=2010346684]
 transform = Transform3D(1, 0, -2.98023e-08, 1.49012e-08, 1, 0, -1.78814e-07, 0, 1, 0, -0.535, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_jvrxt")
 skeleton = NodePath("../..")
 
-[node name="trail_weapon" parent="." instance=ExtResource("6_36e8a")]
+[node name="trail_weapon" parent="." unique_id=1599814073 instance=ExtResource("6_36e8a")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.045815, -4.03046e-08)
 visible = false
 
-[node name="sword of godot mesh" type="MeshInstance3D" parent="."]
+[node name="sword of godot mesh" type="MeshInstance3D" parent="." unique_id=1364407580]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4s0nn")
 skeleton = NodePath("")

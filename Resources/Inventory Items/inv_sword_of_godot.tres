@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://cpjfjvsj5dcyk"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cpjfjvsj5dcyk"]
 
 [ext_resource type="Resource" uid="uid://ciel6qljda5o2" path="res://art/Character/clothing/DressUp Resources/weapons/sword_of_godot.tres" id="1_sah4e"]
 [ext_resource type="PackedScene" uid="uid://cpcq0thn0vjex" path="res://prefabs/weapons/sword_of_godot.tscn" id="2_sah4e"]

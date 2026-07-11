@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b34jdvaqt8gbn"]
 
 [sub_resource type="Gradient" id="Gradient_0vf6r"]
-offsets = PackedFloat32Array(0.259901, 0.36138615, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.2549505, 0.3539604, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.27058825, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4ico5"]
 gradient = SubResource("Gradient_0vf6r")
@@ -16,6 +16,8 @@ transparency = 1
 cull_mode = 2
 no_depth_test = true
 shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
 albedo_texture = SubResource("GradientTexture2D_4ico5")
 billboard_mode = 1
 billboard_keep_scale = true

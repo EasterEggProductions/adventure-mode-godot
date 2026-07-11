@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b34jdvaqt8gbn"]
 
 [sub_resource type="Gradient" id="Gradient_0vf6r"]
-offsets = PackedFloat32Array(0, 0.37623763, 1)
+offsets = PackedFloat32Array(0.259901, 0.36138615, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4ico5"]
@@ -17,11 +17,13 @@ cull_mode = 2
 no_depth_test = true
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_4ico5")
+billboard_mode = 1
 billboard_keep_scale = true
 grow = true
+fixed_size = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_mqoav"]
-size = Vector2(0.3, 0.3)
+size = Vector2(0.05, 0.05)
 
 [node name="z_target" type="Node3D" unique_id=258481125]
 

@@ -315,19 +315,14 @@ func target_lock(delta : float, go_dir : Vector3):
 			look_lock = false
 			locked_target = null
 		else:
-			mainCam.target_curr = locked_target.global_position + Vector3(0,2,0)
-			dot.global_position = locked_target.global_position + Vector3(0,2,0)
-			dot.visible = true
-			
-			dot.look_at(mainCam.global_position)
-			dot.get_node("TargetReticle").rotate_z(delta) 
-			dot.scale = Vector3.ONE + (Vector3.ONE * ((1 + (sin(Time.get_unix_time_from_system() * 12)*0.5))) * 0.5 )
+			mainCam.target_curr = locked_target.global_position + Vector3(0,1.1,0)
+			dot.global_position = locked_target.global_position + Vector3(0,1.1,0)
+			dot.visible = true			
 
 			#TODO - put this look vector somewhere else? idk
 			var transformed_move_dir =  Vector2(( thrall.global_basis.inverse() * (thrall.global_position - locked_target.global_position).normalized()).x,-( thrall.global_basis.inverse() * -go_dir).z)
 			thrall.desired_turn = transformed_move_dir.x
 			thrall.lock_targ_pos = locked_target.global_position
-			#print(transformed_move_dir.x)
 	else:
 		dot.visible = false
 		mainCam.target_curr = Vector3.ZERO

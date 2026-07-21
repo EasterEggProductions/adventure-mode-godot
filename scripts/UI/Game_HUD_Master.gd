@@ -61,6 +61,8 @@ func inspect_new_thrall(new_thrall : Actor):
 
 func focus():
 	player_socket = MgrPlayerSocket.get_player_one()
+	await get_tree().create_timer(0.1).timeout	
+	# Delay to block input of closing the menu from dodging
 	player_socket.cont_state = player_socket.ControlState.FULL
 
 

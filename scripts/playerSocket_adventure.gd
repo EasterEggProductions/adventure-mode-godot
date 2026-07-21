@@ -114,6 +114,17 @@ func _collect_inputs(delta):
 	var go_dir = (mv_x + mv_z)
 
 	go_dir.y = Input.get_axis(player_prefix + "crouch", player_prefix + "jump")
+	if cont_state == ControlState.WALK_ONLY:
+		go_dir.y = 0
+
+	thrall.handle_movement(go_dir)
+	dot.global_position = thrall.global_position + go_dir
+	target_lock(delta, go_dir)
+
+
+	## This prevents us from gathering button inputs, but we can still move and look around. 
+	if cont_state == ControlState.WALK_ONLY:
+		return
 	
 	# SECTION - Dodge and sprinting
 	if Input.is_action_just_released(player_prefix + "dodge"):
@@ -140,12 +151,7 @@ func _collect_inputs(delta):
 		if item != null and item.use_action != "":
 			thrall.enque_action(item.use_action)
 
-	thrall.handle_movement(go_dir)
-	dot.global_position = thrall.global_position + go_dir
-	target_lock(delta, go_dir)
-	## This prevents us from gathering button inputs, but we can still move and look around. 
-	if cont_state == ControlState.WALK_ONLY:
-		return
+
 	
 	if Input.is_action_just_pressed(player_prefix + "use_item"):
 		# Grab current item from quick belt and if it has an action use it. 

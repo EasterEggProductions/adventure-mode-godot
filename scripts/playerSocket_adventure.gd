@@ -78,7 +78,9 @@ func _process(_delta):
 			thrall.enque_action(deb_action)
 			#deb_action = ""
 	#print(delta)
-	find_interactable_objects()
+
+	if cont_state == ControlState.FULL:
+		find_interactable_objects()
 
 
 	# NOTE - Demo purposes only

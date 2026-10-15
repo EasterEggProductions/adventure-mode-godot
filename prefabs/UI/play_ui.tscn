@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cex8u2k47frlg"]
+[gd_scene format=3 uid="uid://cex8u2k47frlg"]
 
 [ext_resource type="Script" uid="uid://01j88orv267w" path="res://scripts/UI/Game_HUD_Master.gd" id="1_x4s8j"]
 [ext_resource type="PackedScene" uid="uid://b7hmf2emqb4n7" path="res://prefabs/UI/menu_play_start.tscn" id="2_d0n6b"]
@@ -70,7 +70,7 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[node name="play_ui" type="Control"]
+[node name="play_ui" type="Control" unique_id=1980035341]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vignette" type="TextureRect" parent="."]
+[node name="vignette" type="TextureRect" parent="." unique_id=1286235451]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_ekrka")
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=1857936152]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,14 +98,14 @@ mouse_filter = 2
 script = ExtResource("1_x4s8j")
 menu_start = ExtResource("2_d0n6b")
 
-[node name="status_readout" type="Control" parent="HUD"]
+[node name="status_readout" type="Control" parent="HUD" unique_id=199832332]
 editor_description = "Displays health, stamina, but never EVER FP OR MANNA. I swear to god I'll add it in the licence that there will NEVER be a god damn manna bar. And status effect icons"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_oaww2")
 
-[node name="background" type="TextureRect" parent="HUD/status_readout"]
+[node name="background" type="TextureRect" parent="HUD/status_readout" unique_id=1196790357]
 layout_mode = 0
 offset_left = -7.0
 offset_top = 10.0
@@ -114,7 +114,7 @@ offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_hn0oc")
 expand_mode = 1
 
-[node name="bar_health" type="ProgressBar" parent="HUD/status_readout"]
+[node name="bar_health" type="ProgressBar" parent="HUD/status_readout" unique_id=56537291]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 49.0
@@ -125,7 +125,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gkepa")
 value = 50.0
 show_percentage = false
 
-[node name="bar_stamina" type="ProgressBar" parent="HUD/status_readout"]
+[node name="bar_stamina" type="ProgressBar" parent="HUD/status_readout" unique_id=743712660]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 74.0
@@ -136,7 +136,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8m6ce")
 value = 100.0
 show_percentage = false
 
-[node name="bar_poise" type="ProgressBar" parent="HUD/status_readout"]
+[node name="bar_poise" type="ProgressBar" parent="HUD/status_readout" unique_id=1651771844]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 99.0
@@ -147,7 +147,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_rfbhy")
 value = 100.0
 show_percentage = false
 
-[node name="TextureRect" type="TextureRect" parent="HUD/status_readout"]
+[node name="TextureRect" type="TextureRect" parent="HUD/status_readout" unique_id=148335147]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 45.0
@@ -156,32 +156,32 @@ offset_bottom = 126.0
 texture = ExtResource("4_1rojg")
 expand_mode = 1
 
-[node name="effect_icons" type="HBoxContainer" parent="HUD/status_readout"]
+[node name="effect_icons" type="HBoxContainer" parent="HUD/status_readout" unique_id=203882615]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 135.0
 offset_right = 212.0
 offset_bottom = 175.0
 
-[node name="effect_Questioned" type="TextureRect" parent="HUD/status_readout/effect_icons"]
+[node name="effect_Questioned" type="TextureRect" parent="HUD/status_readout/effect_icons" unique_id=113440078]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("5_wrl8y")
 expand_mode = 1
 
-[node name="effect_Fruitification" type="TextureRect" parent="HUD/status_readout/effect_icons"]
+[node name="effect_Fruitification" type="TextureRect" parent="HUD/status_readout/effect_icons" unique_id=1677136492]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("6_b3ofv")
 expand_mode = 2
 
-[node name="effect_BlastedUp" type="TextureRect" parent="HUD/status_readout/effect_icons"]
+[node name="effect_BlastedUp" type="TextureRect" parent="HUD/status_readout/effect_icons" unique_id=930478786]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_3pq16")
 expand_mode = 2
 
-[node name="dpad_itemMenu" type="Control" parent="HUD"]
+[node name="dpad_itemMenu" type="Control" parent="HUD" unique_id=747562360]
 editor_description = "Displayes currently readied items."
 layout_mode = 1
 anchors_preset = 2
@@ -189,14 +189,14 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = -251.0
-offset_right = 253.0
-offset_bottom = -30.0
+offset_right = 252.0
+offset_bottom = -31.0
 grow_vertical = 0
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(0, 221)
 script = ExtResource("8_78xyw")
 
-[node name="background" type="Control" parent="HUD/dpad_itemMenu"]
+[node name="background" type="Control" parent="HUD/dpad_itemMenu" unique_id=568229712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,7 +204,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="HUD/dpad_itemMenu/background"]
+[node name="Control" type="Control" parent="HUD/dpad_itemMenu/background" unique_id=1158001406]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -220,7 +220,7 @@ grow_vertical = 2
 rotation = 0.785398
 pivot_offset = Vector2(20, 20)
 
-[node name="TextureRect" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control"]
+[node name="TextureRect" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control" unique_id=1058051940]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -236,7 +236,7 @@ grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_rhyjy")
 
-[node name="TextureRect2" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control"]
+[node name="TextureRect2" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control" unique_id=1700280540]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,7 +252,7 @@ grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_rhyjy")
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control"]
+[node name="TextureRect3" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control" unique_id=1374023819]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,7 +268,7 @@ grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_rhyjy")
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control"]
+[node name="TextureRect4" type="TextureRect" parent="HUD/dpad_itemMenu/background/Control" unique_id=1696250699]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,60 +284,65 @@ grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_rhyjy")
 
-[node name="TextureRect" type="TextureRect" parent="HUD/dpad_itemMenu/background"]
+[node name="TextureRect" type="TextureRect" parent="HUD/dpad_itemMenu/background" unique_id=351062899]
 layout_mode = 0
 offset_right = 220.0
 offset_bottom = 220.0
 texture = ExtResource("9_owkvl")
 expand_mode = 1
 
-[node name="item_belt" type="TextureRect" parent="HUD/dpad_itemMenu"]
+[node name="item_belt" type="TextureRect" parent="HUD/dpad_itemMenu" unique_id=1476410145]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 24.5
-offset_right = 20.0
-offset_bottom = 64.5
+offset_left = -32.0
+offset_top = 25.0
+offset_right = 31.99974
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(32, -25)
 texture = ExtResource("6_b3ofv")
+expand_mode = 1
 
-[node name="item_left" type="TextureRect" parent="HUD/dpad_itemMenu"]
+[node name="item_left" type="TextureRect" parent="HUD/dpad_itemMenu" unique_id=1054683408]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -20.0
-offset_right = -25.5
-offset_bottom = 20.0
+offset_left = -89.0
+offset_top = -32.0
+offset_right = -25.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(89, 32)
 texture = ExtResource("10_wm560")
 expand_mode = 1
 
-[node name="item_right" type="TextureRect" parent="HUD/dpad_itemMenu"]
+[node name="item_right" type="TextureRect" parent="HUD/dpad_itemMenu" unique_id=1725615024]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.5
-offset_top = -20.0
-offset_right = 68.5
-offset_bottom = 20.0
+offset_left = 25.0
+offset_top = -32.0
+offset_right = 89.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(-25, 32)
 texture = ExtResource("11_ve7uo")
+expand_mode = 1
 
-[node name="item_spell" type="TextureRect" parent="HUD/dpad_itemMenu"]
+[node name="item_spell" type="TextureRect" parent="HUD/dpad_itemMenu" unique_id=1629589321]
 modulate = Color(1, 0.35, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -345,21 +350,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -87.5
-offset_right = 28.5
-offset_bottom = -28.5
+offset_left = -32.0
+offset_top = -96.0
+offset_right = 32.00006
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(32, 96)
 texture = ExtResource("12_b5t3p")
 expand_mode = 1
 
-[node name="aud" type="AudioStreamPlayer" parent="HUD/dpad_itemMenu"]
+[node name="aud" type="AudioStreamPlayer" parent="HUD/dpad_itemMenu" unique_id=481536403]
 stream = ExtResource("13_m66qf")
 pitch_scale = 0.81
 max_polyphony = 2
 
-[node name="currency_readout" type="Control" parent="HUD"]
+[node name="currency_readout" type="Control" parent="HUD" unique_id=1377453404]
 editor_description = "Holds a readout of currency, and displays inventory item changes above itself."
 layout_mode = 1
 anchors_preset = 3
@@ -376,7 +382,7 @@ grow_vertical = 0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("14_rxmh7")
 
-[node name="background" type="TextureRect" parent="HUD/currency_readout"]
+[node name="background" type="TextureRect" parent="HUD/currency_readout" unique_id=707346151]
 layout_mode = 0
 offset_left = -129.0
 offset_top = -19.0
@@ -384,7 +390,7 @@ offset_bottom = 9.0
 texture = SubResource("GradientTexture2D_hn0oc")
 expand_mode = 1
 
-[node name="currency_icon" type="TextureRect" parent="HUD/currency_readout"]
+[node name="currency_icon" type="TextureRect" parent="HUD/currency_readout" unique_id=44613914]
 layout_mode = 0
 offset_left = -39.0
 offset_top = -24.0
@@ -392,7 +398,7 @@ offset_right = 1.0
 offset_bottom = 16.0
 texture = ExtResource("15_mrcvc")
 
-[node name="Label" type="Label" parent="HUD/currency_readout"]
+[node name="Label" type="Label" parent="HUD/currency_readout" unique_id=651374762]
 layout_mode = 0
 offset_left = -81.0
 offset_top = -16.0
@@ -402,5 +408,5 @@ text = "412"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Action_prompt" parent="HUD" instance=ExtResource("16_43uab")]
+[node name="Action_prompt" parent="HUD" unique_id=1095908345 instance=ExtResource("16_43uab")]
 layout_mode = 1

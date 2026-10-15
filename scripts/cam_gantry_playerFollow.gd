@@ -55,16 +55,17 @@ func player_look(delta):
 	var disLook =  Input.get_vector("p1_look_left", "p1_look_right", "p1_look_dn", "p1_look_up")
 	look_rotation_vel = disLook * delta * camLookAccell
 	var default_angle = -20
+
 	if cam.target_curr == Vector3.ZERO: # NOTE - No target
 		rotate(global_basis.x.normalized(), look_rotation_vel.y)
 		rotate_y(-look_rotation_vel.x)
-		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -60,20)
+		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -88,88)
 	else:
 		var original_rot_x = global_rotation_degrees.x
 		look_at(cam.target_curr)
 		global_rotation_degrees.x = original_rot_x
 		#global_rotation_degrees.y = global_rotation_degrees.y #rotate_toward(original_rot_y, global_rotation_degrees.y, 50 * delta)
-		default_angle = -35
+		default_angle = -65
 	global_rotation_degrees.z = 0
 	#recentering here, add some timer so the rebound isn't immediate 
 	if disLook.length() != 0: #some kind of input 

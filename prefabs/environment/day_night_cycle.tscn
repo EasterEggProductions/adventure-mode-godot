@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buw61jj5xaa1f"]
+[gd_scene format=3 uid="uid://buw61jj5xaa1f"]
 
 [ext_resource type="Script" uid="uid://d1urdaxx0wfn8" path="res://scripts/day_night_cycle.gd" id="1_e4bus"]
 
@@ -31,12 +31,12 @@ colors = PackedColorArray(0.2, 0.2, 0.2, 1, 0.53333336, 0.53333336, 0.53333336, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_sn7m8"]
 gradient = SubResource("Gradient_6omy6")
 
-[node name="DayNightCycle" type="WorldEnvironment"]
+[node name="DayNightCycle" type="WorldEnvironment" unique_id=387065400]
 environment = SubResource("Environment_4dyh5")
 script = ExtResource("1_e4bus")
-day_length = 600.0
+day_length = 86400.0
 time_of_day = 0.5
 lighting = SubResource("GradientTexture1D_sn7m8")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=139961465]
 shadow_enabled = true

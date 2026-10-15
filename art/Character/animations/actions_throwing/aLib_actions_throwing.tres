@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://b5fer4ute7dtp"]
+
+[ext_resource type="Animation" uid="uid://oj1rsbm4smto" path="res://art/Character/animations/actions_throwing/item_throw_grenade.tres" id="1_5qn5x"]
+
+[resource]
+_data = {
+&"item_throw_grenade": ExtResource("1_5qn5x")
+}

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://d0um06j250xic"]
+
+[ext_resource type="PackedScene" uid="uid://bnyav7wbuah4f" path="res://prefabs/projectiles/temp_skull.tscn" id="1_5ijmi"]
+[ext_resource type="Texture2D" uid="uid://b45iuqgqqsv73" path="res://art/textures/icons/ico_skull_blank.png" id="1_20vob"]
+[ext_resource type="PackedScene" uid="uid://bgn70jjqhx4f4" path="res://art/Props/cursed_skull.glb" id="1_lpw5m"]
+[ext_resource type="Script" uid="uid://dv03uv3dfmr4a" path="res://scripts/Resource Definitions/InventoryItem.gd" id="2_lpw5m"]
+[ext_resource type="Script" uid="uid://coekv5bjwcf8j" path="res://addons/EEP_DressUp/Resource Definitions/Accessory.gd" id="2_q6rv7"]
+
+[sub_resource type="Resource" id="Resource_5ijmi"]
+script = ExtResource("2_q6rv7")
+accessory = ExtResource("1_lpw5m")
+metadata/_custom_type_script = "uid://coekv5bjwcf8j"
+
+[resource]
+resource_name = "Cursed Skull"
+script = ExtResource("2_lpw5m")
+icon = ExtResource("1_20vob")
+description = "No matter how hard or far you throw this skull, the curse makes it show right back up in your bag. Put it to good use by filling it with explosives!
+
+~ Reusable Crafting Item"
+extra_resources = Dictionary[String, Resource]({
+"projectile": ExtResource("1_5ijmi"),
+"prop.R": SubResource("Resource_5ijmi")
+})
+use_action = "item_throw_grenade"
+metadata/_custom_type_script = "uid://dv03uv3dfmr4a"

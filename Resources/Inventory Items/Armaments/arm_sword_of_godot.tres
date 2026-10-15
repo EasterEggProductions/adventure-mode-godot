@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://gpvaruo1hp7j" path="res://scripts/Resource Definitions/InventoryArmament.gd" id="4_why1o"]
 
 [resource]
+resource_name = "Sword of Godot"
 script = ExtResource("4_why1o")
 held_item = ExtResource("3_why1o")
 moveset = ExtResource("3_rnr4s")

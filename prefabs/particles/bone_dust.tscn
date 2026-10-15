@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqxi7q25mnc50"]
+[gd_scene format=3 uid="uid://cqxi7q25mnc50"]
 
 [ext_resource type="Texture2D" uid="uid://cic2vayv6qx4i" path="res://art/textures/particles/particle_smoke.png" id="1_w5ihn"]
 [ext_resource type="AudioStream" uid="uid://cmghgljomtesv" path="res://art/audio/sfx/bone_rattle.ogg" id="2_23hie"]
@@ -54,7 +54,7 @@ top_radius = 0.0
 bottom_radius = 0.06
 height = 0.5
 
-[node name="bone_dust" type="GPUParticles3D"]
+[node name="bone_dust" type="GPUParticles3D" unique_id=1180412047]
 emitting = false
 amount = 32
 lifetime = 0.5
@@ -63,16 +63,16 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3kcoy")
 draw_pass_1 = SubResource("QuadMesh_q34g1")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2145089604]
 stream = ExtResource("2_23hie")
 pitch_scale = 0.89
 autoplay = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1463127622]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -0.303217)
 visible = false
 mesh = SubResource("CylinderMesh_vk1r8")
 
-[node name="RemoveAfterDelay" type="Timer" parent="."]
+[node name="RemoveAfterDelay" type="Timer" parent="." unique_id=1121338996]
 wait_time = 3.0
 script = ExtResource("3_2csx1")

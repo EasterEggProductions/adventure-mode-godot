@@ -89,6 +89,7 @@ var spell_current : int = 0
 @export var spells_slots : Array[InventoryItem]
 @export var spells_size : int = 3
 
+
 @export_group("Dress Up")
 ## Base skeleton used for effects such as dissolve or undead
 @export var under_skeleton : Garment
@@ -97,6 +98,8 @@ var spell_current : int = 0
 ## The garments applied. These can be hand set in the inspector for NPCs,
 ## but for players it is intended that equipped items will control this. 
 @export var outfit : Array[Garment]
+
+signal equipped_items_changed
 
 
 ## Sets attributes to max. For respawn, revitalize.
@@ -135,6 +138,24 @@ func get_current_spell() -> InventoryItem:
 	if len(spells_slots) > 0:
 		return spells_slots[spell_current]
 	return null
+
+func inventory_add(item : InventoryItem):
+	my_inventory.append(item) 
+
+func equip_item(slots : Array, index : int, item : InventoryItem):
+	if slots[index] != null:
+		unequip_item(slots, item)
+	slots[index] = item
+	equipped_items_changed.emit()
+
+func unequip_item(slots : Array, item : InventoryItem):
+	if item in slots:
+		var pos = slots.find(item)
+		# Assure item remains in the whole inventory
+		if item not in my_inventory:
+			my_inventory.append(item) 
+		slots[pos] = null
+	equipped_items_changed.emit() # for things updating their icon of this item, etc
 
 # !SECTION
 

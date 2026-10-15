@@ -62,7 +62,7 @@ func update_spell():
 	update_slot(last_spell, thrall.character.spells_slots, tx_spell)
 
 func update_slot(current : int, slots : Array, tx : TextureRect):
-	if len(slots) == 0 or current < 0:
+	if len(slots) == 0 or current < 0 or slots[current] == null:
 		tx.texture = null
 		tx.visible = false
 		aud.play()

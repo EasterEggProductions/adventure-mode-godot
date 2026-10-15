@@ -96,7 +96,7 @@ func button_press(item : InventoryItem, index : int):
 	image_box.texture = null
 
 func button_focus(item : InventoryItem) -> void:
-	flavor_textbox.text = "[b][center]" + item.resource_name + "[/center][/b]\n\n" + item.description
+	flavor_textbox.text = "[b][center]" + item.resource_name + "[/center][/b]\n" + item.description
 	image_box.texture = item.icon
 
 func inventory_debug() :

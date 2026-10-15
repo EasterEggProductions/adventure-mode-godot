@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://brjhnn7mf24y"]
+[gd_scene format=3 uid="uid://brjhnn7mf24y"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_rfy8p"]
-[ext_resource type="Script" path="res://scripts/UI/ui_inventory_control.gd" id="3_wuk5u"]
+[ext_resource type="Texture2D" uid="uid://b45iuqgqqsv73" path="res://art/textures/icons/ico_skull_blank.png" id="2_wuk5u"]
+[ext_resource type="Script" uid="uid://cmllxk4amewlm" path="res://scripts/UI/ui_inventory_control.gd" id="3_wuk5u"]
 [ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_pv2t1"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
@@ -17,7 +18,7 @@ fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv2t1"]
-bg_color = Color(0, 0, 0, 0.16862746)
+bg_color = Color(0, 0, 0, 0.7490196)
 
 [sub_resource type="Gradient" id="Gradient_pv2t1"]
 offsets = PackedFloat32Array(0.8625, 0.940625, 1)
@@ -30,7 +31,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.53)
 metadata/_snap_enabled = true
 
-[node name="menu_player_inventory" type="Control" node_paths=PackedStringArray("close_button")]
+[node name="menu_player_inventory" type="Control" unique_id=1508026464 node_paths=PackedStringArray("close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +42,8 @@ mouse_filter = 2
 script = ExtResource("1_rfy8p")
 close_button = NodePath("Button resume")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=566072980]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_5ujdn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=835742090]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 105.0
@@ -60,7 +62,7 @@ bbcode_enabled = true
 text = "[font_size=30][i]Inventory[/i][/font_size]"
 autowrap_mode = 0
 
-[node name="Button resume" type="Button" parent="."]
+[node name="Button resume" type="Button" parent="." unique_id=2140328214]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 923.0
@@ -69,16 +71,16 @@ offset_bottom = 981.0
 theme_override_font_sizes/font_size = 36
 text = "resyoom :)"
 
-[node name="InventoryContainerPanel" type="Panel" parent="."]
+[node name="InventoryContainerPanel" type="Panel" parent="." unique_id=856364403]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 632.0
-offset_top = 232.0
+offset_left = 470.0
+offset_top = 155.0
 offset_right = 1185.0
-offset_bottom = 891.0
+offset_bottom = 932.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
 
-[node name="GridContainer" type="GridContainer" parent="InventoryContainerPanel"]
+[node name="GridContainer" type="GridContainer" parent="InventoryContainerPanel" unique_id=1931115446]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,9 +91,109 @@ offset_right = -19.0
 offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 4
+columns = 5
 
-[node name="Inv_tool_tip" type="RichTextLabel" parent="InventoryContainerPanel"]
+[node name="test_item_0" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1817269271]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_1" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=2108870159]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_2" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1027316472]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_3" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1059433593]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_4" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1439920151]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_5" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=367794295]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_6" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1154938960]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_7" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=56157227]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_8" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=197970742]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_9" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=427940690]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_10" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=494151185]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_11" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1395179563]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_12" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=885366404]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_13" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1222380553]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_14" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=487600213]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_15" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1149411841]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_16" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=438838493]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_17" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=350525259]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_18" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1416079292]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="test_item_19" type="TextureRect" parent="InventoryContainerPanel/GridContainer" unique_id=1055275013]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_wuk5u")
+
+[node name="Inv_tool_tip" type="RichTextLabel" parent="InventoryContainerPanel" unique_id=1273487300]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.335
@@ -105,7 +207,7 @@ offset_bottom = 137.91098
 text = "(A) / [Space] : Drop Item
  D-Pad / Arrow Keys: Select Item"
 
-[node name="ui_inventory_control" type="Node" parent="." node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
+[node name="ui_inventory_control" type="Node" parent="." unique_id=2034185126 node_paths=PackedStringArray("item_button_spot", "flavor_textbox", "image_box")]
 script = ExtResource("3_wuk5u")
 inspectingChar = ExtResource("4_pv2t1")
 item_button_spot = NodePath("../InventoryContainerPanel/GridContainer")
@@ -113,16 +215,16 @@ hover_tex = SubResource("GradientTexture2D_6agwg")
 flavor_textbox = NodePath("../InventoryContainerPanel2/RichTextLabel")
 image_box = NodePath("../InventoryContainerPanel2/TextureRect")
 
-[node name="InventoryContainerPanel2" type="Panel" parent="."]
+[node name="InventoryContainerPanel2" type="Panel" parent="." unique_id=1787611958]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 1229.0
-offset_top = 232.0
+offset_top = 155.0
 offset_right = 1729.0
-offset_bottom = 891.0
+offset_bottom = 932.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
 
-[node name="Image_bg" type="Panel" parent="InventoryContainerPanel2"]
+[node name="Image_bg" type="Panel" parent="InventoryContainerPanel2" unique_id=67362900]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -130,21 +232,22 @@ anchor_left = 0.16600001
 anchor_top = 0.106000006
 anchor_right = 0.16600001
 anchor_bottom = 0.106000006
-offset_top = -0.07000351
-offset_right = 323.0
-offset_bottom = 322.93
+offset_left = -22.0
+offset_top = -22.07
+offset_right = 345.0
+offset_bottom = 344.93
 theme_override_styles/panel = SubResource("StyleBoxFlat_pv2t1")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainerPanel2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainerPanel2" unique_id=480847314]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.062000003
 anchor_top = 0.65500003
 anchor_right = 0.062000003
 anchor_bottom = 0.65500003
-offset_top = 34.274994
+offset_top = -22.64505
 offset_right = 438.0
-offset_bottom = 180.275
+offset_bottom = 217.49997
 theme_override_font_sizes/normal_font_size = 23
 theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/bold_italics_font_size = 23
@@ -153,7 +256,7 @@ theme_override_font_sizes/mono_font_size = 23
 bbcode_enabled = true
 fit_content = true
 
-[node name="TextureRect" type="TextureRect" parent="InventoryContainerPanel2"]
+[node name="TextureRect" type="TextureRect" parent="InventoryContainerPanel2" unique_id=437068459]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.16600001

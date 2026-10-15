@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4kj61dulvwn"]
+[gd_scene format=3 uid="uid://4kj61dulvwn"]
 
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_8m2wu"]
+[ext_resource type="Texture2D" uid="uid://b45iuqgqqsv73" path="res://art/textures/icons/ico_skull_blank.png" id="2_jprct"]
+[ext_resource type="Script" uid="uid://bs7h5fu4sjj3v" path="res://scripts/UI/ui_equipment_control.gd" id="3_5axi8"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
 interpolation_mode = 2
@@ -14,7 +16,32 @@ fill_from = Vector2(1, 0.6)
 fill_to = Vector2(0.1, 0.1)
 metadata/_snap_enabled = true
 
-[node name="menu_player_equip" type="Control" node_paths=PackedStringArray("close_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5axi8"]
+bg_color = Color(0, 0, 0, 0.7490196)
+
+[sub_resource type="Gradient" id="Gradient_pv2t1"]
+offsets = PackedFloat32Array(0.8625, 0.940625, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3es4l"]
+gradient = SubResource("Gradient_pv2t1")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.53)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vok1m"]
+offsets = PackedFloat32Array(0, 0.8910891, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.48514852, 0.48514852, 0.48514852, 0.51485145, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5axi8"]
+gradient = SubResource("Gradient_vok1m")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[node name="menu_player_equip" type="Control" unique_id=123402214 node_paths=PackedStringArray("close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +52,8 @@ mouse_filter = 2
 script = ExtResource("1_8m2wu")
 close_button = NodePath("Button resume")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1627899670]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_5ujdn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1532108317]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 105.0
@@ -44,7 +72,7 @@ bbcode_enabled = true
 text = "[font_size=30][i]Player Equipment[/i][/font_size]"
 autowrap_mode = 0
 
-[node name="Button resume" type="Button" parent="."]
+[node name="Button resume" type="Button" parent="." unique_id=1322221421]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 927.0
@@ -52,3 +80,349 @@ offset_right = 370.0
 offset_bottom = 985.0
 theme_override_font_sizes/font_size = 36
 text = "resyoom :)"
+
+[node name="equipment_slots" type="Panel" parent="." unique_id=1018476790]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 470.0
+offset_top = 155.0
+offset_right = 1185.0
+offset_bottom = 932.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5axi8")
+
+[node name="GridContainer" type="GridContainer" parent="equipment_slots" unique_id=98688427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="test_item_0" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1824355030]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_1" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=2125888036]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_2" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1628430460]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_3" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1007090629]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_4" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1412586052]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_5" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=892504431]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_6" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1217901398]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_7" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1184615097]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_8" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1635800984]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_9" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1275346719]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_10" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1755406984]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_11" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1251954622]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="HSeparator" type="HSeparator" parent="equipment_slots/GridContainer" unique_id=59341340]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="equipment_slots/GridContainer" unique_id=340579470]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="equipment_slots/GridContainer" unique_id=1485065353]
+layout_mode = 2
+
+[node name="test_item_12" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1438242294]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_13" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=2103341301]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_14" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=887216336]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_15" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1396330681]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_16" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=79199717]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_17" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=446897643]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_18" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=336578421]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_19" type="TextureRect" parent="equipment_slots/GridContainer" unique_id=1476879406]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="Label" type="Label" parent="equipment_slots/GridContainer" unique_id=328978569]
+layout_mode = 2
+text = "Sample Text"
+
+[node name="Inv_tool_tip" type="RichTextLabel" parent="equipment_slots" unique_id=2013110320]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.771
+anchor_right = 0.335
+anchor_bottom = 0.771
+offset_left = -173.255
+offset_top = 84.91098
+offset_right = 355.745
+offset_bottom = 137.91098
+text = "(A) / [Space] : Drop Item
+ D-Pad / Arrow Keys: Select Item"
+
+[node name="item_select" type="Panel" parent="." unique_id=873615299]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 470.0
+offset_top = 155.0
+offset_right = 1185.0
+offset_bottom = 932.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5axi8")
+
+[node name="GridContainer" type="GridContainer" parent="item_select" unique_id=296438843]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="test_item_0" type="TextureRect" parent="item_select/GridContainer" unique_id=727134452]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_1" type="TextureRect" parent="item_select/GridContainer" unique_id=1514517699]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_2" type="TextureRect" parent="item_select/GridContainer" unique_id=806939822]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_3" type="TextureRect" parent="item_select/GridContainer" unique_id=1911984634]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_4" type="TextureRect" parent="item_select/GridContainer" unique_id=1286082582]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_5" type="TextureRect" parent="item_select/GridContainer" unique_id=1321002992]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_6" type="TextureRect" parent="item_select/GridContainer" unique_id=219103418]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_7" type="TextureRect" parent="item_select/GridContainer" unique_id=584809181]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_8" type="TextureRect" parent="item_select/GridContainer" unique_id=2031929377]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_9" type="TextureRect" parent="item_select/GridContainer" unique_id=926064565]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_10" type="TextureRect" parent="item_select/GridContainer" unique_id=984574014]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_11" type="TextureRect" parent="item_select/GridContainer" unique_id=174419881]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_12" type="TextureRect" parent="item_select/GridContainer" unique_id=793478870]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_13" type="TextureRect" parent="item_select/GridContainer" unique_id=1346759640]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_14" type="TextureRect" parent="item_select/GridContainer" unique_id=1368307360]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_15" type="TextureRect" parent="item_select/GridContainer" unique_id=1165478949]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_16" type="TextureRect" parent="item_select/GridContainer" unique_id=1566594179]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_17" type="TextureRect" parent="item_select/GridContainer" unique_id=432821354]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_18" type="TextureRect" parent="item_select/GridContainer" unique_id=829222890]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="test_item_19" type="TextureRect" parent="item_select/GridContainer" unique_id=1003810731]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jprct")
+
+[node name="Inv_tool_tip" type="RichTextLabel" parent="item_select" unique_id=1520124557]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.771
+anchor_right = 0.335
+anchor_bottom = 0.771
+offset_left = -173.255
+offset_top = 84.91098
+offset_right = 355.745
+offset_bottom = 137.91098
+text = "(A) / [Space] : Drop Item
+ D-Pad / Arrow Keys: Select Item"
+
+[node name="stats_readout" type="Panel" parent="." unique_id=2130145783]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1229.0
+offset_top = 155.0
+offset_right = 1729.0
+offset_bottom = 932.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5axi8")
+
+[node name="Image_bg" type="Panel" parent="stats_readout" unique_id=1165708387]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_left = -22.0
+offset_top = -22.07
+offset_right = 345.0
+offset_bottom = 344.93
+theme_override_styles/panel = SubResource("StyleBoxFlat_5axi8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="stats_readout" unique_id=1242890258]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.65500003
+anchor_right = 0.062000003
+anchor_bottom = 0.65500003
+offset_top = -22.64505
+offset_right = 438.0
+offset_bottom = 217.49997
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+theme_override_font_sizes/bold_italics_font_size = 23
+theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 23
+bbcode_enabled = true
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="stats_readout" unique_id=463293848]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.106000006
+anchor_right = 0.16600001
+anchor_bottom = 0.106000006
+offset_top = -0.07000351
+offset_right = 323.0
+offset_bottom = 322.93
+
+[node name="ui_equipment_control" type="Node" parent="." unique_id=1832631657 node_paths=PackedStringArray("equip_button_spot", "flavor_textbox", "image_box")]
+script = ExtResource("3_5axi8")
+equip_button_spot = NodePath("../equipment_slots/GridContainer")
+hover_tex = SubResource("GradientTexture2D_3es4l")
+empty_slot = SubResource("GradientTexture2D_5axi8")
+flavor_textbox = NodePath("../stats_readout/RichTextLabel")
+image_box = NodePath("../stats_readout/TextureRect")

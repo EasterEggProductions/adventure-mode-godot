@@ -515,9 +515,35 @@ func anim_item_start():
 	pass 
 
 ## Actual use and consumption of item, apply effect
-func anim_item_use():
+func anim_item_use(hide_item : bool = false):
+	if hide_item == true:
+		anim_item_hide() 
+	var current_item = character.get_current_belt()
+	if "projectile" in current_item.extra_resources.keys():
+		# Do projectile stuff 
+		var pro = current_item.extra_resources["projectile"] as PackedScene
+		var projectile = pro.instantiate()
+		get_tree().current_scene.add_child(projectile)
+		var bb = $skeleton/char/Skeleton3D as Skeleton3D
+		var bone_final_pose = bb.get_bone_global_pose(bb.find_bone("prop.R"))
+		projectile.global_transform = global_transform
+		print(bone_final_pose)
+		#bone_pos = 
+		projectile.global_position =  bb.to_global(bone_final_pose.origin)
 
-	pass 
+		# NOTE - Hack, do not keep this in! 
+		# Get up/down from player camera somehow
+		var sock = MgrPlayerSocket.get_player_one()
+		
+		var pew : RigidBody3D = projectile
+		pew.apply_impulse(-sock.ganty_thing.global_basis.z * 10, pew.global_position)
+		#animation_tree.anim_player.
+		
+
+func anim_item_hide():
+	var current_item = character.get_current_belt()
+	if "prop.R" in current_item.extra_resources.keys():
+		dup.accessory_unequip(current_item.extra_resources["prop.R"], "prop.R")
 
 ## Turn off temporary item, return to weapons
 func anim_item_end():

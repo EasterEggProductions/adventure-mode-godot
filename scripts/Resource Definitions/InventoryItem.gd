@@ -10,8 +10,11 @@ class_name InventoryItem
 
 ## Options for the item's inventory behaviour
 @export_group("Flags")
+## Items form a stack in the inventory, like potions, or do not, like duplicates of the same weapon
 @export var stackable = true
-@export var fungible = false
+## Identical instances can stack
+@export var fungible = false 
+## Use a float for amount? For things like water. NOTE - perhaps a fixed decimal amount is fine for a game, avoids floating point errors
 @export var volumetric = false 
 
 @export_group("Extra Data")
@@ -19,3 +22,10 @@ class_name InventoryItem
 
 ## The action to use the item if any, string for action_q
 @export var use_action = ""
+
+## If this item has been tweaked or modified, for example to keep
+## an amount value, weapon damage, durability, etc, it will use 
+## this reference for checking if things are the same item, or
+## reverting back to a base state. DO NOT USE THIS unless you
+## are absolutely sure what you are doing. 
+@export var base_item : InventoryItem

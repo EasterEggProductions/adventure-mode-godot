@@ -185,7 +185,6 @@ properties/4/replication_mode = 1
 
 [node name="actor" type="CharacterBody3D" unique_id=1741489139]
 transform = Transform3D(0.999896, 0.00712085, -0.0125515, -0.0072158, 0.999946, -0.00753587, 0.0124971, 0.00762566, 0.999893, 0, 0, 0)
-collision_layer = 0
 script = ExtResource("1_u4ehk")
 character = ExtResource("2_y0m84")
 prop_R_hurtbox = true

@@ -139,12 +139,32 @@ func get_current_spell() -> InventoryItem:
 		return spells_slots[spell_current]
 	return null
 
+func get_num_equip_belt() -> int:
+	return len(belt_items) - _nullcount(belt_items)
+func get_num_hand_r() -> int:
+	return len(hand_right_slots) - _nullcount(hand_right_slots)
+func get_num_hand_l() -> int:
+	return len(hand_left_slots) - _nullcount(hand_left_slots)
+func get_num_spells() -> int:
+	return len(spells_slots) - _nullcount(spells_slots)
+
+func _nullcount(arr : Array) -> int:
+	var returnable = 0
+	for item in arr:
+		if item == null:
+			returnable += 1
+	return returnable
+
 func inventory_add(item : InventoryItem):
 	my_inventory.append(item) 
 
 func equip_item(slots : Array, index : int, item : InventoryItem):
-	if slots[index] != null:
-		unequip_item(slots, item)
+	unequip_item(belt_items, item)			# NOTE - Messy
+	unequip_item(hand_right_slots, item)	# This is a workaround to assure
+	unequip_item(hand_left_slots, item)		# an item is  removed from where
+	unequip_item(spells_slots, item)		# it was previously, if there
+	#if slots[index] != null:
+	#	unequip_item(slots, item)
 	slots[index] = item
 	equipped_items_changed.emit()
 

@@ -112,6 +112,7 @@ func make_item_button(item : InventoryItem, index : int, slots : Array) -> Textu
 	nb.custom_minimum_size = Vector2(128, 128)
 	nb.custom_maximum_size = Vector2(128, 128)
 	nb.connect("pressed", button_press.bind(slots).bind(index).bind(item).bind(nb))
+	nb.connect("mouse_entered", nb.grab_focus) # makes it so mousing over moves the focus.
 	nb.connect("focus_entered", button_focus.bind(item))
 	return nb
 
@@ -157,6 +158,7 @@ func quick_picker(slots : Array, index : int):
 		nb.custom_minimum_size = Vector2(128, 128)
 		nb.custom_maximum_size = Vector2(128, 128)
 		nb.connect("pressed", qp_button_press.bind(index).bind(slots).bind(item))
+		nb.connect("mouse_entered", nb.grab_focus) # makes it so mousing over moves the focus.
 		nb.connect("focus_entered", button_focus.bind(item))
 		#nb.focus_mode = Control.FOCUS_ALL
 		buttons.append(nb)
@@ -166,8 +168,9 @@ func quick_picker(slots : Array, index : int):
 
 	if focus_item == null:
 		focus_item = buttons[0]
-	await get_tree().create_timer(1).timeout
-	focus_item.grab_focus()
+	focus_item.grab_focus.call_deferred()
+	#await get_tree().create_timer(1).timeout
+	#focus_item.grab_focus()
 		
 
 # NOTE - Messy 
@@ -177,4 +180,7 @@ func qp_button_press(item : InventoryItem, slots : Array, index : int):
 	flavor_textbox.text = ""
 	image_box.texture = empty_slot
 	equip_button_spot.get_parent().find_child("item_pick", false, false).queue_free()
+
+	kill_all_children()
+	make_item_buttons()
 	equip_button_spot.visible = true

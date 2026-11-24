@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://crhlrtdw5rhsq" path="res://scripts/UI/menu.gd" id="1_8m2wu"]
 [ext_resource type="Texture2D" uid="uid://b45iuqgqqsv73" path="res://art/textures/icons/ico_skull_blank.png" id="2_jprct"]
 [ext_resource type="Script" uid="uid://bs7h5fu4sjj3v" path="res://scripts/UI/ui_equipment_control.gd" id="3_5axi8"]
+[ext_resource type="Resource" uid="uid://pyeylu3rn4gk" path="res://Resources/Characters/Player.tres" id="4_3es4l"]
 
 [sub_resource type="Gradient" id="Gradient_81d6m"]
 interpolation_mode = 2
@@ -421,6 +422,7 @@ offset_bottom = 322.93
 
 [node name="ui_equipment_control" type="Node" parent="." unique_id=1832631657 node_paths=PackedStringArray("equip_button_spot", "flavor_textbox", "image_box")]
 script = ExtResource("3_5axi8")
+inspectingChar = ExtResource("4_3es4l")
 equip_button_spot = NodePath("../equipment_slots/GridContainer")
 hover_tex = SubResource("GradientTexture2D_3es4l")
 empty_slot = SubResource("GradientTexture2D_5axi8")

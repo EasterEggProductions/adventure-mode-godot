@@ -217,7 +217,7 @@ func _collect_inputs(delta):
 			locked_target = find_closest_target() #Moved proceeding code into function
 			if locked_target == null:
 				look_lock = false
-				ganty_thing.look_at(thrall.global_position + (thrall.global_basis.z * 100))
+				ganty_thing.look_at(thrall.global_position + (thrall.global_basis.z * 50))
 
 #Logic extracted into function to be reusable upon target dying
 func find_closest_target():

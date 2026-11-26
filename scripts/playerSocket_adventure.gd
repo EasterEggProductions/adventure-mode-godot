@@ -212,42 +212,44 @@ func _collect_inputs(delta):
 
 	# SECTION - Camera and lock on stuff
 	if Input.is_action_just_pressed(player_prefix + "look_lock"):
-		var potential_enemies = get_tree().get_nodes_in_group("enemies")
-		if MgrPlayerSocket.player_type == "enemy":
-			potential_enemies = get_tree().get_nodes_in_group("allies")
-		enemies.clear()
-		for enemy in potential_enemies:
-			if enemy is Actor:
-				enemies.append(enemy)
 		look_lock = !look_lock
 		if look_lock:
-			#print("look lock")
-			# FIXME - thrall logic in socket
-			thrall.combat_mode = true
-			thrall.combat_relax_timer = 3.0
-			# Find target closest to center forward of screen.
-			var winner = null
-			var win_dot = 10.0
-			for enemy in enemies:
-				# easy out checks 
-				if enemy.alive == false:
-					continue
-				if thrall.global_position.distance_to(enemy.global_position) > 20:
-					continue
-				# cull front half of camera? wait, vector math? here?
-				var my_dot = mainCam.global_basis.z.dot((enemy.global_position - mainCam.global_position).normalized())
-				if my_dot < win_dot:
-					winner = enemy
-					win_dot = my_dot
-			if winner != null:
-				locked_target = winner
-			else:
-				locked_target = null
+			locked_target = find_closest_target() #Moved proceeding code into function
+			if locked_target == null:
 				look_lock = false
 				ganty_thing.look_at(thrall.global_position + (thrall.global_basis.z * 50))
 
-		#else:
-			#print("look unlock")
+#Logic extracted into function to be reusable upon target dying
+func find_closest_target():
+	var potential_enemies = get_tree().get_nodes_in_group("enemies")
+	if MgrPlayerSocket.player_type == "enemy":
+		potential_enemies = get_tree().get_nodes_in_group("allies")
+		enemies.clear()
+	for enemy in potential_enemies:
+		if enemy is Actor:
+			enemies.append(enemy)		
+	#print("look lock")
+	# FIXME - thrall logic in socket
+	thrall.combat_mode = true
+	thrall.combat_relax_timer = 3.0
+	# Find target closest to center forward of screen.
+	var winner = null
+	var win_dot = 10.0
+	for enemy in enemies:
+		# easy out checks 
+		if enemy.character.alive == false:	#FIXME: another instance of nested lookup that probably shouln't happen?
+			continue
+		if thrall.global_position.distance_to(enemy.global_position) > 20:
+			continue
+		# cull front half of camera? wait, vector math? here?
+		var my_dot = mainCam.global_basis.z.dot((enemy.global_position - mainCam.global_position).normalized())
+		if my_dot < win_dot:
+			winner = enemy
+			win_dot = my_dot
+	return winner
+
+#else:
+	#print("look unlock")
 
 
 @export var action_prompt : Control
@@ -319,9 +321,10 @@ func input_hand_switching():
 
 func target_lock(delta : float, go_dir : Vector3):
 	if look_lock:
-		if locked_target.alive == false:
-			look_lock = false
-			locked_target = null
+		if locked_target.character.alive == false:	#FIXME: This is going to require some tweaks in actor.gd, currently the character var for alive is changed but not the actor var			
+			locked_target = find_closest_target()	#instead of unlocking, find the next viable target to lock onto
+			if locked_target == null:
+				look_lock = false
 		else:
 			mainCam.target_curr = locked_target.global_position + Vector3(0,1.1,0)
 			dot.global_position = locked_target.global_position + Vector3(0,1.1,0)
